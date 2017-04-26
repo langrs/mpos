@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TdSaleDetailAgio">
+	<resultMap id="TdSaleDetailAgio" type="com.site.entity.TdSaleDetailAgio">
+		<result property= "saledetailagioid" column="Sale_Detail_Agio_ID" jdbcType="VARCHAR" />
+		<result property= "saledetailid" column="Sale_Detail_ID" jdbcType="VARCHAR" />
+		<result property= "saleid" column="Sale_ID" jdbcType="VARCHAR" />
+		<result property= "mitem" column="MItem" jdbcType="INTEGER" />
+		<result property= "item" column="Item" jdbcType="INTEGER" />
+		<result property= "dctype" column="DCTYPE" jdbcType="INTEGER" />
+		<result property= "qty" column="QTY" jdbcType="NUMERIC" />
+		<result property= "amt" column="AMT" jdbcType="NUMERIC" />
+		<result property= "inputdisc" column="InputDisc" jdbcType="NUMERIC" />
+		<result property= "disc" column="DISC" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "saleno" column="SaleNO" jdbcType="VARCHAR" />
+		<result property= "pmtno" column="PMTNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "giftctf" column="GIFTCTF" jdbcType="VARCHAR" />
+		<result property= "giftctfno" column="GIFTCTFNO" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Sale_Detail_Agio_ID,
+		Sale_Detail_ID,
+		Sale_ID,
+		MItem,
+		Item,
+		DCTYPE,
+		QTY,
+		AMT,
+		InputDisc,
+		DISC,
+		CompanyNo,
+		OrganizationNO,
+		Shop,
+		SaleNO,
+		PMTNO,
+		tran_time,
+		CNFFLG,
+		GIFTCTF,
+		GIFTCTFNO,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="saledetailagioid != null"> AND Sale_Detail_Agio_ID like '%${saledetailagioid}%' </if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID like '%${saledetailid}%' </if>
+       	<if test="saleid != null"> AND Sale_ID like '%${saleid}%' </if>
+       	<if test="mitem != null"> AND MItem like '%${mitem}%' </if>
+       	<if test="item != null"> AND Item like '%${item}%' </if>
+       	<if test="dctype != null"> AND DCTYPE like '%${dctype}%' </if>
+       	<if test="qty != null"> AND QTY like '%${qty}%' </if>
+       	<if test="amt != null"> AND AMT like '%${amt}%' </if>
+       	<if test="inputdisc != null"> AND InputDisc like '%${inputdisc}%' </if>
+       	<if test="disc != null"> AND DISC like '%${disc}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="saleno != null"> AND SaleNO like '%${saleno}%' </if>
+       	<if test="pmtno != null"> AND PMTNO like '%${pmtno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="giftctf != null"> AND GIFTCTF like '%${giftctf}%' </if>
+       	<if test="giftctfno != null"> AND GIFTCTFNO like '%${giftctfno}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="saledetailagioid != null"> AND Sale_Detail_Agio_ID = #{saledetailagioid}</if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID = #{saledetailid}</if>
+       	<if test="saleid != null"> AND Sale_ID = #{saleid}</if>
+       	<if test="mitem != null"> AND MItem = #{mitem}</if>
+       	<if test="item != null"> AND Item = #{item}</if>
+       	<if test="dctype != null"> AND DCTYPE = #{dctype}</if>
+       	<if test="qty != null"> AND QTY = #{qty}</if>
+       	<if test="amt != null"> AND AMT = #{amt}</if>
+       	<if test="inputdisc != null"> AND InputDisc = #{inputdisc}</if>
+       	<if test="disc != null"> AND DISC = #{disc}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="saleno != null"> AND SaleNO = #{saleno}</if>
+       	<if test="pmtno != null"> AND PMTNO = #{pmtno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="giftctf != null"> AND GIFTCTF = #{giftctf}</if>
+       	<if test="giftctfno != null"> AND GIFTCTFNO = #{giftctfno}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TdSaleDetailAgio">
+		INSERT INTO td_Sale_Detail_Agio
+		(<include refid="columns"/>)
+		VALUES(
+		#{saledetailagioid,jdbcType=VARCHAR},
+		#{saledetailid,jdbcType=VARCHAR},
+		#{saleid,jdbcType=VARCHAR},
+		#{mitem,jdbcType=INTEGER},
+		#{item,jdbcType=INTEGER},
+		#{dctype,jdbcType=INTEGER},
+		#{qty,jdbcType=NUMERIC},
+		#{amt,jdbcType=NUMERIC},
+		#{inputdisc,jdbcType=NUMERIC},
+		#{disc,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{shop,jdbcType=VARCHAR},
+		#{saleno,jdbcType=VARCHAR},
+		#{pmtno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{giftctf,jdbcType=VARCHAR},
+		#{giftctfno,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM td_Sale_Detail_Agio 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TdSaleDetailAgio">
+		UPDATE td_Sale_Detail_Agio SET
+               Sale_Detail_Agio_ID=#{saledetailagioid,jdbcType=VARCHAR},
+               Sale_Detail_ID=#{saledetailid,jdbcType=VARCHAR},
+               Sale_ID=#{saleid,jdbcType=VARCHAR},
+               MItem=#{mitem,jdbcType=INTEGER},
+               Item=#{item,jdbcType=INTEGER},
+               DCTYPE=#{dctype,jdbcType=INTEGER},
+               QTY=#{qty,jdbcType=NUMERIC},
+               AMT=#{amt,jdbcType=NUMERIC},
+               InputDisc=#{inputdisc,jdbcType=NUMERIC},
+               DISC=#{disc,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               Shop=#{shop,jdbcType=VARCHAR},
+               SaleNO=#{saleno,jdbcType=VARCHAR},
+               PMTNO=#{pmtno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               GIFTCTF=#{giftctf,jdbcType=VARCHAR},
+               GIFTCTFNO=#{giftctfno,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TdSaleDetailAgio">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail_Agio
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TdSaleDetailAgio">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail_Agio   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TdSaleDetailAgio">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail_Agio   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TdSaleDetailAgio">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail_Agio   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TdSaleDetailAgio">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail_Agio   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

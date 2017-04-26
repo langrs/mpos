@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TbTaxCategory">
+	<resultMap id="TbTaxCategory" type="com.site.entity.TbTaxCategory">
+		<result property= "taxrate" column="TaxRate" jdbcType="NUMERIC" />
+		<result property= "fixtax" column="FixTax" jdbcType="NUMERIC" />
+		<result property= "taxcode" column="TaxCode" jdbcType="VARCHAR" />
+		<result property= "taxname" column="TaxName" jdbcType="VARCHAR" />
+		<result property= "taxtype" column="TaxType" jdbcType="VARCHAR" />
+		<result property= "incltax" column="InclTax" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CnfFlg" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		TaxRate,
+		FixTax,
+		TaxCode,
+		TaxName,
+		TaxType,
+		InclTax,
+		CnfFlg,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="taxrate != null"> AND TaxRate like '%${taxrate}%' </if>
+       	<if test="fixtax != null"> AND FixTax like '%${fixtax}%' </if>
+       	<if test="taxcode != null"> AND TaxCode like '%${taxcode}%' </if>
+       	<if test="taxname != null"> AND TaxName like '%${taxname}%' </if>
+       	<if test="taxtype != null"> AND TaxType like '%${taxtype}%' </if>
+       	<if test="incltax != null"> AND InclTax like '%${incltax}%' </if>
+       	<if test="cnfflg != null"> AND CnfFlg like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="taxrate != null"> AND TaxRate = #{taxrate}</if>
+       	<if test="fixtax != null"> AND FixTax = #{fixtax}</if>
+       	<if test="taxcode != null"> AND TaxCode = #{taxcode}</if>
+       	<if test="taxname != null"> AND TaxName = #{taxname}</if>
+       	<if test="taxtype != null"> AND TaxType = #{taxtype}</if>
+       	<if test="incltax != null"> AND InclTax = #{incltax}</if>
+       	<if test="cnfflg != null"> AND CnfFlg = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TbTaxCategory">
+		INSERT INTO tb_TaxCategory
+		(<include refid="columns"/>)
+		VALUES(
+		#{taxrate,jdbcType=NUMERIC},
+		#{fixtax,jdbcType=NUMERIC},
+		#{taxcode,jdbcType=VARCHAR},
+		#{taxname,jdbcType=VARCHAR},
+		#{taxtype,jdbcType=VARCHAR},
+		#{incltax,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tb_TaxCategory 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TbTaxCategory">
+		UPDATE tb_TaxCategory SET
+               TaxRate=#{taxrate,jdbcType=NUMERIC},
+               FixTax=#{fixtax,jdbcType=NUMERIC},
+               TaxCode=#{taxcode,jdbcType=VARCHAR},
+               TaxName=#{taxname,jdbcType=VARCHAR},
+               TaxType=#{taxtype,jdbcType=VARCHAR},
+               InclTax=#{incltax,jdbcType=VARCHAR},
+               CnfFlg=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TbTaxCategory">
+		SELECT <include refid="columns"/>
+		FROM tb_TaxCategory
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TbTaxCategory">
+		SELECT <include refid="columns"/>
+		FROM tb_TaxCategory   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TbTaxCategory">
+		SELECT <include refid="columns"/>
+		FROM tb_TaxCategory   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TbTaxCategory">
+		SELECT <include refid="columns"/>
+		FROM tb_TaxCategory   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TbTaxCategory">
+		SELECT <include refid="columns"/>
+		FROM tb_TaxCategory   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

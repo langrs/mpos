@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--修改了有效期的查询方式,通过大于的方式来查询-->
+<mapper namespace="com.site.entity.TfCardTypeStatus">
+	<resultMap id="TfCardTypeStatus" type="com.site.entity.TfCardTypeStatus">
+		<result property= "ypoint" column="YPoint" jdbcType="NUMERIC" />
+		<result property= "memberno" column="MemberNO" jdbcType="VARCHAR" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "cardno" column="CardNO" jdbcType="VARCHAR" />
+		<result property= "cardstatus" column="CardStatus" jdbcType="VARCHAR" />
+		<result property= "validity" column="Validity" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		YPoint,
+		MemberNO,
+		CTNO,
+		CardNO,
+		CardStatus,
+		Validity,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ypoint != null"> AND YPoint like '%${ypoint}%' </if>
+       	<if test="memberno != null"> AND MemberNO like '%${memberno}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="cardno != null"> AND CardNO like '%${cardno}%' </if>
+       	<if test="cardstatus != null"> AND CardStatus like '%${cardstatus}%' </if>
+       	<if test="validity != null"> AND Validity &gt;= '${validity}' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ypoint != null"> AND YPoint = #{ypoint}</if>
+       	<if test="memberno != null"> AND MemberNO = #{memberno}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="cardno != null"> AND CardNO = #{cardno}</if>
+       	<if test="cardstatus != null"> AND CardStatus = #{cardstatus}</if>
+       	<if test="validity != null"> AND Validity &gt;= #{validity}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardTypeStatus">
+		INSERT INTO tf_CardType_Status
+		(<include refid="columns"/>)
+		VALUES(
+		#{ypoint,jdbcType=NUMERIC},
+		#{memberno,jdbcType=VARCHAR},
+		#{ctno,jdbcType=VARCHAR},
+		#{cardno,jdbcType=VARCHAR},
+		#{cardstatus,jdbcType=VARCHAR},
+		#{validity,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_CardType_Status 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardTypeStatus">
+		UPDATE tf_CardType_Status SET
+               YPoint=#{ypoint,jdbcType=NUMERIC},
+               MemberNO=#{memberno,jdbcType=VARCHAR},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               CardNO=#{cardno,jdbcType=VARCHAR},
+               CardStatus=#{cardstatus,jdbcType=VARCHAR},
+               Validity=#{validity,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardTypeStatus">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Status
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardTypeStatus">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Status   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardTypeStatus">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Status   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardTypeStatus">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Status   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardTypeStatus">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Status   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

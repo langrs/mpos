@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TaPayment">
+	<resultMap id="TaPayment" type="com.site.entity.TaPayment">
+		<result property= "mustch" column="MUSTCH" jdbcType="NUMERIC" />
+		<result property= "limitamt" column="LimitAMT" jdbcType="NUMERIC" />
+		<result property= "exrate" column="EXRate" jdbcType="NUMERIC" />
+		<result property= "priority" column="Priority" jdbcType="NUMERIC" />
+		<result property= "funcno" column="FuncNO" jdbcType="VARCHAR" />
+		<result property= "paycode" column="PayCode" jdbcType="VARCHAR" />
+		<result property= "paycodeerp" column="PayCodeERP" jdbcType="VARCHAR" />
+		<result property= "payname" column="PayName" jdbcType="VARCHAR" />
+		<result property= "paych" column="PayCH" jdbcType="VARCHAR" />
+		<result property= "spill" column="Spill" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "erppayno" column="ERPPayNo" jdbcType="VARCHAR" />
+		<result property= "ispaydisc" column="ISPayDisc" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		MUSTCH,
+		LimitAMT,
+		EXRate,
+		Priority,
+		FuncNO,
+		PayCode,
+		PayCodeERP,
+		PayName,
+		PayCH,
+		Spill,
+		DefTime,
+		ReservedFileld,
+		CNFFLG,
+		ERPPayNo,
+		ISPayDisc,
+		CompanyNo,
+		OrganizationNO,
+		tran_time
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="mustch != null"> AND MUSTCH like '%${mustch}%' </if>
+       	<if test="limitamt != null"> AND LimitAMT like '%${limitamt}%' </if>
+       	<if test="exrate != null"> AND EXRate like '%${exrate}%' </if>
+       	<if test="priority != null"> AND Priority like '%${priority}%' </if>
+       	<if test="funcno != null"> AND FuncNO like '%${funcno}%' </if>
+       	<if test="paycode != null"> AND PayCode like '%${paycode}%' </if>
+       	<if test="paycodeerp != null"> AND PayCodeERP like '%${paycodeerp}%' </if>
+       	<if test="payname != null"> AND PayName like '%${payname}%' </if>
+       	<if test="paych != null"> AND PayCH like '%${paych}%' </if>
+       	<if test="spill != null"> AND Spill like '%${spill}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="erppayno != null"> AND ERPPayNo like '%${erppayno}%' </if>
+       	<if test="ispaydisc != null"> AND ISPayDisc like '%${ispaydisc}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="mustch != null"> AND MUSTCH = #{mustch}</if>
+       	<if test="limitamt != null"> AND LimitAMT = #{limitamt}</if>
+       	<if test="exrate != null"> AND EXRate = #{exrate}</if>
+       	<if test="priority != null"> AND Priority = #{priority}</if>
+       	<if test="funcno != null"> AND FuncNO = #{funcno}</if>
+       	<if test="paycode != null"> AND PayCode = #{paycode}</if>
+       	<if test="paycodeerp != null"> AND PayCodeERP = #{paycodeerp}</if>
+       	<if test="payname != null"> AND PayName = #{payname}</if>
+       	<if test="paych != null"> AND PayCH = #{paych}</if>
+       	<if test="spill != null"> AND Spill = #{spill}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="erppayno != null"> AND ERPPayNo = #{erppayno}</if>
+       	<if test="ispaydisc != null"> AND ISPayDisc = #{ispaydisc}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TaPayment">
+		INSERT INTO ta_Payment
+		(<include refid="columns"/>)
+		VALUES(
+		#{mustch,jdbcType=NUMERIC},
+		#{limitamt,jdbcType=NUMERIC},
+		#{exrate,jdbcType=NUMERIC},
+		#{priority,jdbcType=NUMERIC},
+		#{funcno,jdbcType=VARCHAR},
+		#{paycode,jdbcType=VARCHAR},
+		#{paycodeerp,jdbcType=VARCHAR},
+		#{payname,jdbcType=VARCHAR},
+		#{paych,jdbcType=VARCHAR},
+		#{spill,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{erppayno,jdbcType=VARCHAR},
+		#{ispaydisc,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM ta_Payment 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TaPayment">
+		UPDATE ta_Payment SET
+               MUSTCH=#{mustch,jdbcType=NUMERIC},
+               LimitAMT=#{limitamt,jdbcType=NUMERIC},
+               EXRate=#{exrate,jdbcType=NUMERIC},
+               Priority=#{priority,jdbcType=NUMERIC},
+               FuncNO=#{funcno,jdbcType=VARCHAR},
+               PayCode=#{paycode,jdbcType=VARCHAR},
+               PayCodeERP=#{paycodeerp,jdbcType=VARCHAR},
+               PayName=#{payname,jdbcType=VARCHAR},
+               PayCH=#{paych,jdbcType=VARCHAR},
+               Spill=#{spill,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               ERPPayNo=#{erppayno,jdbcType=VARCHAR},
+               ISPayDisc=#{ispaydisc,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TaPayment">
+		SELECT <include refid="columns"/>
+		FROM ta_Payment
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TaPayment">
+		SELECT <include refid="columns"/>
+		FROM ta_Payment   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TaPayment">
+		SELECT <include refid="columns"/>
+		FROM ta_Payment   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TaPayment">
+		SELECT <include refid="columns"/>
+		FROM ta_Payment   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TaPayment">
+		SELECT <include refid="columns"/>
+		FROM ta_Payment   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

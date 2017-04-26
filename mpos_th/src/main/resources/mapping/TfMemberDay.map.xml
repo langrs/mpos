@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfMemberDay">
+	<resultMap id="TfMemberDay" type="com.site.entity.TfMemberDay">
+		<result property= "memberno" column="MemberNO" jdbcType="VARCHAR" />
+		<result property= "memorialno" column="MemorialNO" jdbcType="VARCHAR" />
+		<result property= "explain" column="Explain" jdbcType="VARCHAR" />
+		<result property= "mdate" column="MDate" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		MemberNO,
+		MemorialNO,
+		Explain,
+		MDate,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="memberno != null"> AND MemberNO like '%${memberno}%' </if>
+       	<if test="memorialno != null"> AND MemorialNO like '%${memorialno}%' </if>
+       	<if test="explain != null"> AND Explain like '%${explain}%' </if>
+       	<if test="mdate != null"> AND MDate like '%${mdate}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="memberno != null"> AND MemberNO = #{memberno}</if>
+       	<if test="memorialno != null"> AND MemorialNO = #{memorialno}</if>
+       	<if test="explain != null"> AND Explain = #{explain}</if>
+       	<if test="mdate != null"> AND MDate = #{mdate}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfMemberDay">
+		INSERT INTO tf_Member_Day
+		(<include refid="columns"/>)
+		VALUES(
+		#{memberno,jdbcType=VARCHAR},
+		#{memorialno,jdbcType=VARCHAR},
+		#{explain,jdbcType=VARCHAR},
+		#{mdate,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_Member_Day 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfMemberDay">
+		UPDATE tf_Member_Day SET
+               MemberNO=#{memberno,jdbcType=VARCHAR},
+               MemorialNO=#{memorialno,jdbcType=VARCHAR},
+               Explain=#{explain,jdbcType=VARCHAR},
+               MDate=#{mdate,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfMemberDay">
+		SELECT <include refid="columns"/>
+		FROM tf_Member_Day
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfMemberDay">
+		SELECT <include refid="columns"/>
+		FROM tf_Member_Day   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfMemberDay">
+		SELECT <include refid="columns"/>
+		FROM tf_Member_Day   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfMemberDay">
+		SELECT <include refid="columns"/>
+		FROM tf_Member_Day   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfMemberDay">
+		SELECT <include refid="columns"/>
+		FROM tf_Member_Day   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

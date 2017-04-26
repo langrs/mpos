@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TePromTime">
+	<resultMap id="TePromTime" type="com.site.entity.TePromTime">
+		<result property= "timeno" column="TimeNO" jdbcType="INTEGER" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "groupno" column="GroupNO" jdbcType="VARCHAR" />
+		<result property= "lbdate" column="LBDate" jdbcType="VARCHAR" />
+		<result property= "ledate" column="LEDate" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "lbtime" column="LBTime" jdbcType="VARCHAR" />
+		<result property= "letime" column="LETime" jdbcType="VARCHAR" />
+		<result property= "fixeddate" column="FixedDate" jdbcType="VARCHAR" />
+		<result property= "week" column="Week" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		TimeNO,
+		CompanyNo,
+		OrganizationNO,
+		PromNO,
+		GroupNO,
+		LBDate,
+		LEDate,
+		DefTime,
+		ReservedFileld,
+		LBTime,
+		LETime,
+		FixedDate,
+		Week,
+		tran_time,
+		CNFFLG
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="timeno != null"> AND TimeNO like '%${timeno}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="promno != null"> AND PromNO like '%${promno}%' </if>
+       	<if test="groupno != null"> AND GroupNO like '%${groupno}%' </if>
+       	<if test="lbdate != null"> AND LBDate like '%${lbdate}%' </if>
+       	<if test="ledate != null"> AND LEDate like '%${ledate}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="lbtime != null"> AND LBTime like '%${lbtime}%' </if>
+       	<if test="letime != null"> AND LETime like '%${letime}%' </if>
+       	<if test="fixeddate != null"> AND FixedDate like '%${fixeddate}%' </if>
+       	<if test="week != null"> AND Week like '%${week}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="timeno != null"> AND TimeNO = #{timeno}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="promno != null"> AND PromNO = #{promno}</if>
+       	<if test="groupno != null"> AND GroupNO = #{groupno}</if>
+       	<if test="lbdate != null"> AND LBDate = #{lbdate}</if>
+       	<if test="ledate != null"> AND LEDate = #{ledate}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="lbtime != null"> AND LBTime = #{lbtime}</if>
+       	<if test="letime != null"> AND LETime = #{letime}</if>
+       	<if test="fixeddate != null"> AND FixedDate = #{fixeddate}</if>
+       	<if test="week != null"> AND Week = #{week}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TePromTime">
+		INSERT INTO te_PromTime
+		(<include refid="columns"/>)
+		VALUES(
+		#{timeno,jdbcType=INTEGER},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{promno,jdbcType=VARCHAR},
+		#{groupno,jdbcType=VARCHAR},
+		#{lbdate,jdbcType=VARCHAR},
+		#{ledate,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{lbtime,jdbcType=VARCHAR},
+		#{letime,jdbcType=VARCHAR},
+		#{fixeddate,jdbcType=VARCHAR},
+		#{week,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM te_PromTime 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TePromTime">
+		UPDATE te_PromTime SET
+               TimeNO=#{timeno,jdbcType=INTEGER},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PromNO=#{promno,jdbcType=VARCHAR},
+               GroupNO=#{groupno,jdbcType=VARCHAR},
+               LBDate=#{lbdate,jdbcType=VARCHAR},
+               LEDate=#{ledate,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               LBTime=#{lbtime,jdbcType=VARCHAR},
+               LETime=#{letime,jdbcType=VARCHAR},
+               FixedDate=#{fixeddate,jdbcType=VARCHAR},
+               Week=#{week,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TePromTime">
+		SELECT <include refid="columns"/>
+		FROM te_PromTime
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TePromTime">
+		SELECT <include refid="columns"/>
+		FROM te_PromTime   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TePromTime">
+		SELECT <include refid="columns"/>
+		FROM te_PromTime   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TePromTime">
+		SELECT <include refid="columns"/>
+		FROM te_PromTime   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TePromTime">
+		SELECT <include refid="columns"/>
+		FROM te_PromTime   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

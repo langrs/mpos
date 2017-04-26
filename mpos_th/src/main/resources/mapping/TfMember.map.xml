@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfMember">
+	<resultMap id="TfMember" type="com.site.entity.TfMember">
+		<result property= "memberno" column="MemberNO" jdbcType="VARCHAR" />
+		<result property= "membername" column="MemberName" jdbcType="VARCHAR" />
+		<result property= "birthday" column="BirthDay" jdbcType="VARCHAR" />
+		<result property= "membergrade" column="MemberGrade" jdbcType="VARCHAR" />
+		<result property= "membertype" column="MemberType" jdbcType="VARCHAR" />
+		<result property= "address" column="Address" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "interest" column="Interest" jdbcType="VARCHAR" />
+		<result property= "otherclass1" column="OtherClass1" jdbcType="VARCHAR" />
+		<result property= "otherclass2" column="OtherClass2" jdbcType="VARCHAR" />
+		<result property= "otherclass3" column="OtherClass3" jdbcType="VARCHAR" />
+		<result property= "otherclass4" column="OtherClass4" jdbcType="VARCHAR" />
+		<result property= "otherclass5" column="OtherClass5" jdbcType="VARCHAR" />
+		<result property= "age" column="Age" jdbcType="VARCHAR" />
+		<result property= "marital" column="Marital" jdbcType="VARCHAR" />
+		<result property= "education" column="Education" jdbcType="VARCHAR" />
+		<result property= "applysource" column="ApplySource" jdbcType="VARCHAR" />
+		<result property= "occupation" column="Occupation" jdbcType="VARCHAR" />
+		<result property= "income" column="Income" jdbcType="VARCHAR" />
+		<result property= "postalcode" column="Postalcode" jdbcType="VARCHAR" />
+		<result property= "telephone" column="Telephone" jdbcType="VARCHAR" />
+		<result property= "mobile" column="Mobile" jdbcType="VARCHAR" />
+		<result property= "email" column="Email" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "sex" column="Sex" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		MemberNO,
+		MemberName,
+		BirthDay,
+		MemberGrade,
+		MemberType,
+		Address,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld,
+		Interest,
+		OtherClass1,
+		OtherClass2,
+		OtherClass3,
+		OtherClass4,
+		OtherClass5,
+		Age,
+		Marital,
+		Education,
+		ApplySource,
+		Occupation,
+		Income,
+		Postalcode,
+		Telephone,
+		Mobile,
+		Email,
+		CNFFLG,
+		Sex
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="memberno != null"> AND MemberNO like '%${memberno}%' </if>
+       	<if test="membername != null"> AND MemberName like '%${membername}%' </if>
+       	<if test="birthday != null"> AND BirthDay like '%${birthday}%' </if>
+       	<if test="membergrade != null"> AND MemberGrade like '%${membergrade}%' </if>
+       	<if test="membertype != null"> AND MemberType like '%${membertype}%' </if>
+       	<if test="address != null"> AND Address like '%${address}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="interest != null"> AND Interest like '%${interest}%' </if>
+       	<if test="otherclass1 != null"> AND OtherClass1 like '%${otherclass1}%' </if>
+       	<if test="otherclass2 != null"> AND OtherClass2 like '%${otherclass2}%' </if>
+       	<if test="otherclass3 != null"> AND OtherClass3 like '%${otherclass3}%' </if>
+       	<if test="otherclass4 != null"> AND OtherClass4 like '%${otherclass4}%' </if>
+       	<if test="otherclass5 != null"> AND OtherClass5 like '%${otherclass5}%' </if>
+       	<if test="age != null"> AND Age like '%${age}%' </if>
+       	<if test="marital != null"> AND Marital like '%${marital}%' </if>
+       	<if test="education != null"> AND Education like '%${education}%' </if>
+       	<if test="applysource != null"> AND ApplySource like '%${applysource}%' </if>
+       	<if test="occupation != null"> AND Occupation like '%${occupation}%' </if>
+       	<if test="income != null"> AND Income like '%${income}%' </if>
+       	<if test="postalcode != null"> AND Postalcode like '%${postalcode}%' </if>
+       	<if test="telephone != null"> AND Telephone like '%${telephone}%' </if>
+       	<if test="mobile != null"> AND Mobile like '%${mobile}%' </if>
+       	<if test="email != null"> AND Email like '%${email}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="sex != null"> AND Sex like '%${sex}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="memberno != null"> AND MemberNO = #{memberno}</if>
+       	<if test="membername != null"> AND MemberName = #{membername}</if>
+       	<if test="birthday != null"> AND BirthDay = #{birthday}</if>
+       	<if test="membergrade != null"> AND MemberGrade = #{membergrade}</if>
+       	<if test="membertype != null"> AND MemberType = #{membertype}</if>
+       	<if test="address != null"> AND Address = #{address}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="interest != null"> AND Interest = #{interest}</if>
+       	<if test="otherclass1 != null"> AND OtherClass1 = #{otherclass1}</if>
+       	<if test="otherclass2 != null"> AND OtherClass2 = #{otherclass2}</if>
+       	<if test="otherclass3 != null"> AND OtherClass3 = #{otherclass3}</if>
+       	<if test="otherclass4 != null"> AND OtherClass4 = #{otherclass4}</if>
+       	<if test="otherclass5 != null"> AND OtherClass5 = #{otherclass5}</if>
+       	<if test="age != null"> AND Age = #{age}</if>
+       	<if test="marital != null"> AND Marital = #{marital}</if>
+       	<if test="education != null"> AND Education = #{education}</if>
+       	<if test="applysource != null"> AND ApplySource = #{applysource}</if>
+       	<if test="occupation != null"> AND Occupation = #{occupation}</if>
+       	<if test="income != null"> AND Income = #{income}</if>
+       	<if test="postalcode != null"> AND Postalcode = #{postalcode}</if>
+       	<if test="telephone != null"> AND Telephone = #{telephone}</if>
+       	<if test="mobile != null"> AND Mobile = #{mobile}</if>
+       	<if test="email != null"> AND Email = #{email}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="sex != null"> AND Sex = #{sex}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfMember">
+		INSERT INTO tf_Member
+		(<include refid="columns"/>)
+		VALUES(
+		#{memberno,jdbcType=VARCHAR},
+		#{membername,jdbcType=VARCHAR},
+		#{birthday,jdbcType=VARCHAR},
+		#{membergrade,jdbcType=VARCHAR},
+		#{membertype,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{interest,jdbcType=VARCHAR},
+		#{otherclass1,jdbcType=VARCHAR},
+		#{otherclass2,jdbcType=VARCHAR},
+		#{otherclass3,jdbcType=VARCHAR},
+		#{otherclass4,jdbcType=VARCHAR},
+		#{otherclass5,jdbcType=VARCHAR},
+		#{age,jdbcType=VARCHAR},
+		#{marital,jdbcType=VARCHAR},
+		#{education,jdbcType=VARCHAR},
+		#{applysource,jdbcType=VARCHAR},
+		#{occupation,jdbcType=VARCHAR},
+		#{income,jdbcType=VARCHAR},
+		#{postalcode,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR},
+		#{mobile,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_Member 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfMember">
+		UPDATE tf_Member SET
+               MemberNO=#{memberno,jdbcType=VARCHAR},
+               MemberName=#{membername,jdbcType=VARCHAR},
+               BirthDay=#{birthday,jdbcType=VARCHAR},
+               MemberGrade=#{membergrade,jdbcType=VARCHAR},
+               MemberType=#{membertype,jdbcType=VARCHAR},
+               Address=#{address,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               Interest=#{interest,jdbcType=VARCHAR},
+               OtherClass1=#{otherclass1,jdbcType=VARCHAR},
+               OtherClass2=#{otherclass2,jdbcType=VARCHAR},
+               OtherClass3=#{otherclass3,jdbcType=VARCHAR},
+               OtherClass4=#{otherclass4,jdbcType=VARCHAR},
+               OtherClass5=#{otherclass5,jdbcType=VARCHAR},
+               Age=#{age,jdbcType=VARCHAR},
+               Marital=#{marital,jdbcType=VARCHAR},
+               Education=#{education,jdbcType=VARCHAR},
+               ApplySource=#{applysource,jdbcType=VARCHAR},
+               Occupation=#{occupation,jdbcType=VARCHAR},
+               Income=#{income,jdbcType=VARCHAR},
+               Postalcode=#{postalcode,jdbcType=VARCHAR},
+               Telephone=#{telephone,jdbcType=VARCHAR},
+               Mobile=#{mobile,jdbcType=VARCHAR},
+               Email=#{email,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               Sex=#{sex,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfMember">
+		SELECT <include refid="columns"/>
+		FROM tf_Member
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfMember">
+		SELECT <include refid="columns"/>
+		FROM tf_Member   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfMember">
+		SELECT <include refid="columns"/>
+		FROM tf_Member   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfMember">
+		SELECT <include refid="columns"/>
+		FROM tf_Member   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfMember">
+		SELECT <include refid="columns"/>
+		FROM tf_Member   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfCardRule">
+	<resultMap id="TfCardRule" type="com.site.entity.TfCardRule">
+		<result property= "collectway" column="CollectWay" jdbcType="INTEGER" />
+		<result property= "reachamt" column="ReachAMT" jdbcType="NUMERIC" />
+		<result property= "recoveramt" column="RecoverAMT" jdbcType="NUMERIC" />
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "lbdate" column="LBDate" jdbcType="VARCHAR" />
+		<result property= "ledate" column="LEDate" jdbcType="VARCHAR" />
+		<result property= "ruleway" column="RuleWay" jdbcType="VARCHAR" />
+		<result property= "exclude" column="Exclude" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "isfulfil" column="IsFulfil" jdbcType="VARCHAR" />
+		<result property= "canpaycoupon" column="CanPayCoupon" jdbcType="VARCHAR" />
+		<result property= "canpaycard" column="CanPayCard" jdbcType="VARCHAR" />
+		<result property= "canvipagio" column="CanVIPAgio" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		CollectWay,
+		ReachAMT,
+		RecoverAMT,
+		RuleNo,
+		CTNO,
+		LBDate,
+		LEDate,
+		RuleWay,
+		Exclude,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld,
+		IsFulfil,
+		CanPayCoupon,
+		CanPayCard,
+		CanVIPAgio,
+		CNFFLG,
+		CompanyNo
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="collectway != null"> AND CollectWay like '%${collectway}%' </if>
+       	<if test="reachamt != null"> AND ReachAMT like '%${reachamt}%' </if>
+       	<if test="recoveramt != null"> AND RecoverAMT like '%${recoveramt}%' </if>
+       	<if test="ruleno != null"> AND RuleNo like '%${ruleno}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="lbdate != null"> AND LBDate like '%${lbdate}%' </if>
+       	<if test="ledate != null"> AND LEDate like '%${ledate}%' </if>
+       	<if test="ruleway != null"> AND RuleWay like '%${ruleway}%' </if>
+       	<if test="exclude != null"> AND Exclude like '%${exclude}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="isfulfil != null"> AND IsFulfil like '%${isfulfil}%' </if>
+       	<if test="canpaycoupon != null"> AND CanPayCoupon like '%${canpaycoupon}%' </if>
+       	<if test="canpaycard != null"> AND CanPayCard like '%${canpaycard}%' </if>
+       	<if test="canvipagio != null"> AND CanVIPAgio like '%${canvipagio}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="collectway != null"> AND CollectWay = #{collectway}</if>
+       	<if test="reachamt != null"> AND ReachAMT = #{reachamt}</if>
+       	<if test="recoveramt != null"> AND RecoverAMT = #{recoveramt}</if>
+       	<if test="ruleno != null"> AND RuleNo = #{ruleno}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="lbdate != null"> AND LBDate = #{lbdate}</if>
+       	<if test="ledate != null"> AND LEDate = #{ledate}</if>
+       	<if test="ruleway != null"> AND RuleWay = #{ruleway}</if>
+       	<if test="exclude != null"> AND Exclude = #{exclude}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="isfulfil != null"> AND IsFulfil = #{isfulfil}</if>
+       	<if test="canpaycoupon != null"> AND CanPayCoupon = #{canpaycoupon}</if>
+       	<if test="canpaycard != null"> AND CanPayCard = #{canpaycard}</if>
+       	<if test="canvipagio != null"> AND CanVIPAgio = #{canvipagio}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardRule">
+		INSERT INTO tf_Card_Rule
+		(<include refid="columns"/>)
+		VALUES(
+		#{collectway,jdbcType=INTEGER},
+		#{reachamt,jdbcType=NUMERIC},
+		#{recoveramt,jdbcType=NUMERIC},
+		#{ruleno,jdbcType=VARCHAR},
+		#{ctno,jdbcType=VARCHAR},
+		#{lbdate,jdbcType=VARCHAR},
+		#{ledate,jdbcType=VARCHAR},
+		#{ruleway,jdbcType=VARCHAR},
+		#{exclude,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{isfulfil,jdbcType=VARCHAR},
+		#{canpaycoupon,jdbcType=VARCHAR},
+		#{canpaycard,jdbcType=VARCHAR},
+		#{canvipagio,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_Card_Rule 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardRule">
+		UPDATE tf_Card_Rule SET
+               CollectWay=#{collectway,jdbcType=INTEGER},
+               ReachAMT=#{reachamt,jdbcType=NUMERIC},
+               RecoverAMT=#{recoveramt,jdbcType=NUMERIC},
+               RuleNo=#{ruleno,jdbcType=VARCHAR},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               LBDate=#{lbdate,jdbcType=VARCHAR},
+               LEDate=#{ledate,jdbcType=VARCHAR},
+               RuleWay=#{ruleway,jdbcType=VARCHAR},
+               Exclude=#{exclude,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               IsFulfil=#{isfulfil,jdbcType=VARCHAR},
+               CanPayCoupon=#{canpaycoupon,jdbcType=VARCHAR},
+               CanPayCard=#{canpaycard,jdbcType=VARCHAR},
+               CanVIPAgio=#{canvipagio,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardRule">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardRule">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardRule">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardRule">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardRule">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule   
+		<include refid="oneWhere" />
+	</select>
+	<!--查找当天有效的所有的收卡规则-->
+	<!--GetCardRuleResult这个类和收卡规则共用了-->
+	<resultMap id="GetCardRuleResult" type="com.site.entity.respon.GetCardRuleResult">
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "isfulfil" column="IsFulfil" jdbcType="VARCHAR" />
+		<result property= "ruleway" column="RuleWay" jdbcType="NUMERIC" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getCardRule"  parameterType="java.util.HashMap" resultMap="GetCardRuleResult">
+	select a.RuleNo,a.IsFulfil,a.RuleWay,a.CTNO
+	from tf_Card_Rule a,tf_Card_Rule_Range b,tf_Card_Rule_Time c
+	where a.RuleNo = b.RuleNo and a.RuleNo = c.RuleNo  and a.CNFFLG = 'Y' and
+	b.CNFFLG = 'Y' and c.CNFFLG ='Y' and
+	c.LBDate &lt;= #{lbdate} and c.LEDate &gt;=#{lbdate} and b.RangeShop = #{shop}
+	</select>
+</mapper>	

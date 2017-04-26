@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TdSalePayDetail">
+	<resultMap id="TdSalePayDetail" type="com.site.entity.TdSalePayDetail">
+		<result property= "salepaydetailid" column="Sale_Pay_Detail_ID" jdbcType="VARCHAR" />
+		<result property= "saleid" column="Sale_ID" jdbcType="VARCHAR" />
+		<result property= "salepayid" column="Sale_Pay_ID" jdbcType="VARCHAR" />
+		<result property= "saledetailid" column="Sale_Detail_ID" jdbcType="VARCHAR" />
+		<result property= "mitem" column="MItem" jdbcType="INTEGER" />
+		<result property= "item" column="Item" jdbcType="INTEGER" />
+		<result property= "descore" column="DEScore" jdbcType="NUMERIC" />
+		<result property= "pay" column="PAY" jdbcType="NUMERIC" />
+		<result property= "extra" column="EXTRA" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "saleno" column="SaleNO" jdbcType="VARCHAR" />
+		<result property= "paycode" column="PayCode" jdbcType="VARCHAR" />
+		<result property= "paycodeerp" column="PayCodeERP" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "erppayno" column="ERPPayNo" jdbcType="VARCHAR" />
+		<result property= "cttype" column="CTType" jdbcType="VARCHAR" />
+		<result property= "paysernum" column="PAYSERNUM" jdbcType="VARCHAR" />
+		<result property= "sdate" column="SDate" jdbcType="VARCHAR" />
+		<result property= "stime" column="STime" jdbcType="VARCHAR" />
+		<result property= "isverification" column="Isverification" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Sale_Pay_Detail_ID,
+		Sale_ID,
+		Sale_Pay_ID,
+		Sale_Detail_ID,
+		MItem,
+		Item,
+		DEScore,
+		PAY,
+		EXTRA,
+		CompanyNo,
+		OrganizationNO,
+		Shop,
+		SaleNO,
+		PayCode,
+		PayCodeERP,
+		tran_time,
+		CNFFLG,
+		DefTime,
+		ReservedFileld,
+		ERPPayNo,
+		CTType,
+		PAYSERNUM,
+		SDate,
+		STime,
+		Isverification
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="salepaydetailid != null"> AND Sale_Pay_Detail_ID like '%${salepaydetailid}%' </if>
+       	<if test="saleid != null"> AND Sale_ID like '%${saleid}%' </if>
+       	<if test="salepayid != null"> AND Sale_Pay_ID like '%${salepayid}%' </if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID like '%${saledetailid}%' </if>
+       	<if test="mitem != null"> AND MItem like '%${mitem}%' </if>
+       	<if test="item != null"> AND Item like '%${item}%' </if>
+       	<if test="descore != null"> AND DEScore like '%${descore}%' </if>
+       	<if test="pay != null"> AND PAY like '%${pay}%' </if>
+       	<if test="extra != null"> AND EXTRA like '%${extra}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="saleno != null"> AND SaleNO like '%${saleno}%' </if>
+       	<if test="paycode != null"> AND PayCode like '%${paycode}%' </if>
+       	<if test="paycodeerp != null"> AND PayCodeERP like '%${paycodeerp}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="erppayno != null"> AND ERPPayNo like '%${erppayno}%' </if>
+       	<if test="cttype != null"> AND CTType like '%${cttype}%' </if>
+       	<if test="paysernum != null"> AND PAYSERNUM like '%${paysernum}%' </if>
+       	<if test="sdate != null"> AND SDate like '%${sdate}%' </if>
+       	<if test="stime != null"> AND STime like '%${stime}%' </if>
+       	<if test="isverification != null"> AND Isverification like '%${isverification}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="salepaydetailid != null"> AND Sale_Pay_Detail_ID = #{salepaydetailid}</if>
+       	<if test="saleid != null"> AND Sale_ID = #{saleid}</if>
+       	<if test="salepayid != null"> AND Sale_Pay_ID = #{salepayid}</if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID = #{saledetailid}</if>
+       	<if test="mitem != null"> AND MItem = #{mitem}</if>
+       	<if test="item != null"> AND Item = #{item}</if>
+       	<if test="descore != null"> AND DEScore = #{descore}</if>
+       	<if test="pay != null"> AND PAY = #{pay}</if>
+       	<if test="extra != null"> AND EXTRA = #{extra}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="saleno != null"> AND SaleNO = #{saleno}</if>
+       	<if test="paycode != null"> AND PayCode = #{paycode}</if>
+       	<if test="paycodeerp != null"> AND PayCodeERP = #{paycodeerp}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="erppayno != null"> AND ERPPayNo = #{erppayno}</if>
+       	<if test="cttype != null"> AND CTType = #{cttype}</if>
+       	<if test="paysernum != null"> AND PAYSERNUM = #{paysernum}</if>
+       	<if test="sdate != null"> AND SDate = #{sdate}</if>
+       	<if test="stime != null"> AND STime = #{stime}</if>
+       	<if test="isverification != null"> AND Isverification = #{isverification}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TdSalePayDetail">
+		INSERT INTO td_Sale_Pay_Detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{salepaydetailid,jdbcType=VARCHAR},
+		#{saleid,jdbcType=VARCHAR},
+		#{salepayid,jdbcType=VARCHAR},
+		#{saledetailid,jdbcType=VARCHAR},
+		#{mitem,jdbcType=INTEGER},
+		#{item,jdbcType=INTEGER},
+		#{descore,jdbcType=NUMERIC},
+		#{pay,jdbcType=NUMERIC},
+		#{extra,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{shop,jdbcType=VARCHAR},
+		#{saleno,jdbcType=VARCHAR},
+		#{paycode,jdbcType=VARCHAR},
+		#{paycodeerp,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{erppayno,jdbcType=VARCHAR},
+		#{cttype,jdbcType=VARCHAR},
+		#{paysernum,jdbcType=VARCHAR},
+		#{sdate,jdbcType=VARCHAR},
+		#{stime,jdbcType=VARCHAR},
+		#{isverification,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM td_Sale_Pay_Detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TdSalePayDetail">
+		UPDATE td_Sale_Pay_Detail SET
+               Sale_Pay_Detail_ID=#{salepaydetailid,jdbcType=VARCHAR},
+               Sale_ID=#{saleid,jdbcType=VARCHAR},
+               Sale_Pay_ID=#{salepayid,jdbcType=VARCHAR},
+               Sale_Detail_ID=#{saledetailid,jdbcType=VARCHAR},
+               MItem=#{mitem,jdbcType=INTEGER},
+               Item=#{item,jdbcType=INTEGER},
+               DEScore=#{descore,jdbcType=NUMERIC},
+               PAY=#{pay,jdbcType=NUMERIC},
+               EXTRA=#{extra,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               Shop=#{shop,jdbcType=VARCHAR},
+               SaleNO=#{saleno,jdbcType=VARCHAR},
+               PayCode=#{paycode,jdbcType=VARCHAR},
+               PayCodeERP=#{paycodeerp,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               ERPPayNo=#{erppayno,jdbcType=VARCHAR},
+               CTType=#{cttype,jdbcType=VARCHAR},
+               PAYSERNUM=#{paysernum,jdbcType=VARCHAR},
+               SDate=#{sdate,jdbcType=VARCHAR},
+               STime=#{stime,jdbcType=VARCHAR},
+               Isverification=#{isverification,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TdSalePayDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Pay_Detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TdSalePayDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Pay_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TdSalePayDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Pay_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TdSalePayDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Pay_Detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TdSalePayDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Pay_Detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

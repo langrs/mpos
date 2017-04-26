@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 改动:修改了lbdate的查询方式;增加排序-->
+<mapper namespace="com.site.entity.TfCardTypeRule">
+	<resultMap id="TfCardTypeRule" type="com.site.entity.TfCardTypeRule">
+		<result property= "ruletype" column="RuleType" jdbcType="INTEGER" />
+		<result property= "priority" column="Priority" jdbcType="NUMERIC" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "ruleway" column="RuleWay" jdbcType="VARCHAR" />
+		<result property= "exclude" column="Exclude" jdbcType="VARCHAR" />
+		<result property= "lbdate" column="LBDate" jdbcType="VARCHAR" />
+		<result property= "ledate" column="LEDate" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "discway" column="DiscWay" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "ctnotype" column="CTNOType" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		RuleType,
+		Priority,
+		CTNO,
+		RuleWay,
+		Exclude,
+		LBDate,
+		LEDate,
+		CNFFLG,
+		DefTime,
+		ReservedFileld,
+		DiscWay,
+		CompanyNo,
+		RuleNo,
+		CTNOType,
+		OrganizationNO,
+		tran_time
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType like '%${ruletype}%' </if>
+       	<if test="priority != null"> AND Priority like '%${priority}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="ruleway != null"> AND RuleWay like '%${ruleway}%' </if>
+       	<if test="exclude != null"> AND Exclude like '%${exclude}%' </if>
+       	<if test="lbdate != null"> AND LBDate &lt;= '${lbdate}' AND LEDate &gt;= '${lbdate}' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="discway != null"> AND DiscWay like '%${discway}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="ruleno != null"> AND RuleNo like '%${ruleno}%' </if>
+       	<if test="ctnotype != null"> AND CTNOType like '%${ctnotype}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType = #{ruletype}</if>
+       	<if test="priority != null"> AND Priority = #{priority}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="ruleway != null"> AND RuleWay = #{ruleway}</if>
+       	<if test="exclude != null"> AND Exclude = #{exclude}</if>
+       	<if test="lbdate != null"> AND LBDate &lt;= #{lbdate} AND LEDate &gt;= #{lbdate}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="discway != null"> AND DiscWay = #{discway}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="ruleno != null"> AND RuleNo = #{ruleno}</if>
+       	<if test="ctnotype != null"> AND CTNOType = #{ctnotype}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardTypeRule">
+		INSERT INTO tf_CardType_Rule
+		(<include refid="columns"/>)
+		VALUES(
+		#{ruletype,jdbcType=INTEGER},
+		#{priority,jdbcType=NUMERIC},
+		#{ctno,jdbcType=VARCHAR},
+		#{ruleway,jdbcType=VARCHAR},
+		#{exclude,jdbcType=VARCHAR},
+		#{lbdate,jdbcType=VARCHAR},
+		#{ledate,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{discway,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{ruleno,jdbcType=VARCHAR},
+		#{ctnotype,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_CardType_Rule 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardTypeRule">
+		UPDATE tf_CardType_Rule SET
+               RuleType=#{ruletype,jdbcType=INTEGER},
+               Priority=#{priority,jdbcType=NUMERIC},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               RuleWay=#{ruleway,jdbcType=VARCHAR},
+               Exclude=#{exclude,jdbcType=VARCHAR},
+               LBDate=#{lbdate,jdbcType=VARCHAR},
+               LEDate=#{ledate,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               DiscWay=#{discway,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               RuleNo=#{ruleno,jdbcType=VARCHAR},
+               CTNOType=#{ctnotype,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardTypeRule">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule
+		WHERE
+		<include refid="whereId"/>
+		ORDER BY Priority DESC
+	</select>
+	
+	<select id="query" resultMap="TfCardTypeRule">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule   
+		<include refid="dynamicWhere" />
+		ORDER BY Priority DESC
+	</select>
+	<select id="search" resultMap="TfCardTypeRule">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule   
+		<include refid="dynamicWhere" />
+		ORDER BY Priority DESC
+	</select>
+	<select id="getOne" resultMap="TfCardTypeRule">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule   
+		<include refid="oneWhere" />
+		ORDER BY Priority DESC
+	</select>
+	
+	<select id="getList" resultMap="TfCardTypeRule">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule   
+		<include refid="oneWhere" />
+		ORDER BY Priority DESC
+	</select>
+</mapper>	

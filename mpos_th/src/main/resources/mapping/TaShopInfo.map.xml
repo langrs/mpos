@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TaShopInfo">
+	<resultMap id="TaShopInfo" type="com.site.entity.TaShopInfo">
+		<result property= "eshopid" column="e_ShopID" jdbcType="VARCHAR" />
+		<result property= "subrate1" column="SUBRate1" jdbcType="INTEGER" />
+		<result property= "subrate2" column="SUBRate2" jdbcType="INTEGER" />
+		<result property= "subrate3" column="SUBRate3" jdbcType="INTEGER" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "shopname" column="ShopName" jdbcType="VARCHAR" />
+		<result property= "shoptype" column="ShopType" jdbcType="VARCHAR" />
+		<result property= "password" column="PassWord" jdbcType="VARCHAR" />
+		<result property= "legalper" column="LegalPer" jdbcType="VARCHAR" />
+		<result property= "sellerguino" column="SellerGuiNo" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "einvoicekey" column="EInvoiceKey" jdbcType="VARCHAR" />
+		<result property= "alipartner" column="AliPartner" jdbcType="VARCHAR" />
+		<result property= "alisign" column="AliSign" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "telephone" column="Telephone" jdbcType="VARCHAR" />
+		<result property= "address" column="Address" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		e_ShopID,
+		SUBRate1,
+		SUBRate2,
+		SUBRate3,
+		Shop,
+		ShopName,
+		ShopType,
+		PassWord,
+		LegalPer,
+		SellerGuiNo,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld,
+		EInvoiceKey,
+		AliPartner,
+		AliSign,
+		CNFFLG,
+		Telephone,
+		Address
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="eshopid != null"> AND e_ShopID like '%${eshopid}%' </if>
+       	<if test="subrate1 != null"> AND SUBRate1 like '%${subrate1}%' </if>
+       	<if test="subrate2 != null"> AND SUBRate2 like '%${subrate2}%' </if>
+       	<if test="subrate3 != null"> AND SUBRate3 like '%${subrate3}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="shopname != null"> AND ShopName like '%${shopname}%' </if>
+       	<if test="shoptype != null"> AND ShopType like '%${shoptype}%' </if>
+       	<if test="password != null"> AND PassWord like '%${password}%' </if>
+       	<if test="legalper != null"> AND LegalPer like '%${legalper}%' </if>
+       	<if test="sellerguino != null"> AND SellerGuiNo like '%${sellerguino}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="einvoicekey != null"> AND EInvoiceKey like '%${einvoicekey}%' </if>
+       	<if test="alipartner != null"> AND AliPartner like '%${alipartner}%' </if>
+       	<if test="alisign != null"> AND AliSign like '%${alisign}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="telephone != null"> AND Telephone like '%${telephone}%' </if>
+       	<if test="address != null"> AND Address like '%${address}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="eshopid != null"> AND e_ShopID = #{eshopid}</if>
+       	<if test="subrate1 != null"> AND SUBRate1 = #{subrate1}</if>
+       	<if test="subrate2 != null"> AND SUBRate2 = #{subrate2}</if>
+       	<if test="subrate3 != null"> AND SUBRate3 = #{subrate3}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="shopname != null"> AND ShopName = #{shopname}</if>
+       	<if test="shoptype != null"> AND ShopType = #{shoptype}</if>
+       	<if test="password != null"> AND PassWord = #{password}</if>
+       	<if test="legalper != null"> AND LegalPer = #{legalper}</if>
+       	<if test="sellerguino != null"> AND SellerGuiNo = #{sellerguino}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="einvoicekey != null"> AND EInvoiceKey = #{einvoicekey}</if>
+       	<if test="alipartner != null"> AND AliPartner = #{alipartner}</if>
+       	<if test="alisign != null"> AND AliSign = #{alisign}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="telephone != null"> AND Telephone = #{telephone}</if>
+       	<if test="address != null"> AND Address = #{address}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TaShopInfo">
+		INSERT INTO ta_ShopInfo
+		(<include refid="columns"/>)
+		VALUES(
+		#{eshopid,jdbcType=VARCHAR},
+		#{subrate1,jdbcType=INTEGER},
+		#{subrate2,jdbcType=INTEGER},
+		#{subrate3,jdbcType=INTEGER},
+		#{shop,jdbcType=VARCHAR},
+		#{shopname,jdbcType=VARCHAR},
+		#{shoptype,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{legalper,jdbcType=VARCHAR},
+		#{sellerguino,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{einvoicekey,jdbcType=VARCHAR},
+		#{alipartner,jdbcType=VARCHAR},
+		#{alisign,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM ta_ShopInfo 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TaShopInfo">
+		UPDATE ta_ShopInfo SET
+               e_ShopID=#{eshopid,jdbcType=VARCHAR},
+               SUBRate1=#{subrate1,jdbcType=INTEGER},
+               SUBRate2=#{subrate2,jdbcType=INTEGER},
+               SUBRate3=#{subrate3,jdbcType=INTEGER},
+               Shop=#{shop,jdbcType=VARCHAR},
+               ShopName=#{shopname,jdbcType=VARCHAR},
+               ShopType=#{shoptype,jdbcType=VARCHAR},
+               PassWord=#{password,jdbcType=VARCHAR},
+               LegalPer=#{legalper,jdbcType=VARCHAR},
+               SellerGuiNo=#{sellerguino,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               EInvoiceKey=#{einvoicekey,jdbcType=VARCHAR},
+               AliPartner=#{alipartner,jdbcType=VARCHAR},
+               AliSign=#{alisign,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               Telephone=#{telephone,jdbcType=VARCHAR},
+               Address=#{address,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TaShopInfo">
+		SELECT <include refid="columns"/>
+		FROM ta_ShopInfo
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TaShopInfo">
+		SELECT <include refid="columns"/>
+		FROM ta_ShopInfo   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TaShopInfo">
+		SELECT <include refid="columns"/>
+		FROM ta_ShopInfo   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TaShopInfo">
+		SELECT <include refid="columns"/>
+		FROM ta_ShopInfo   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TaShopInfo">
+		SELECT <include refid="columns"/>
+		FROM ta_ShopInfo   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

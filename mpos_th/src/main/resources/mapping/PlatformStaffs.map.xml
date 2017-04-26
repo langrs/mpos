@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.PlatformStaffs">
+	<resultMap id="PlatformStaffs" type="com.site.entity.PlatformStaffs">
+		<id property="opno" column="OPNO" jdbcType="VARCHAR" />
+		<result property= "opname" column="OPName" jdbcType="VARCHAR" />
+		<result property= "password" column="PassWord" jdbcType="VARCHAR" />
+		<result property= "opgroup" column="OPGroup" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "powercard" column="PowerCard" jdbcType="VARCHAR" />
+		<result property= "counterno" column="CounterNO" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	opno=#{opno}
+	</sql>
+	
+	<sql id="columns">
+		OPNO,
+		OPName,
+		PassWord,
+		OPGroup,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		PowerCard,
+		CounterNO
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="opno != null"> AND OPNO like '%${opno}%' </if>
+       	<if test="opname != null"> AND OPName like '%${opname}%' </if>
+       	<if test="password != null"> AND PassWord like '%${password}%' </if>
+       	<if test="opgroup != null"> AND OPGroup like '%${opgroup}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="powercard != null"> AND PowerCard like '%${powercard}%' </if>
+       	<if test="counterno != null"> AND CounterNO like '%${counterno}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="opno != null"> AND OPNO = #{opno}</if>
+       	<if test="opname != null"> AND OPName = #{opname}</if>
+       	<if test="password != null"> AND PassWord = #{password}</if>
+       	<if test="opgroup != null"> AND OPGroup = #{opgroup}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="powercard != null"> AND PowerCard = #{powercard}</if>
+       	<if test="counterno != null"> AND CounterNO = #{counterno}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.PlatformStaffs">
+		INSERT INTO Platform_Staffs
+		(<include refid="columns"/>)
+		VALUES(
+		#{opno,jdbcType=VARCHAR},
+		#{opname,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{opgroup,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{powercard,jdbcType=VARCHAR},
+		#{counterno,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM Platform_Staffs 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.PlatformStaffs">
+		UPDATE Platform_Staffs SET
+               OPNO=#{opno,jdbcType=VARCHAR},
+               OPName=#{opname,jdbcType=VARCHAR},
+               PassWord=#{password,jdbcType=VARCHAR},
+               OPGroup=#{opgroup,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               PowerCard=#{powercard,jdbcType=VARCHAR},
+               CounterNO=#{counterno,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="PlatformStaffs">
+		SELECT <include refid="columns"/>
+		FROM Platform_Staffs
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="PlatformStaffs">
+		SELECT <include refid="columns"/>
+		FROM Platform_Staffs   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="PlatformStaffs">
+		SELECT <include refid="columns"/>
+		FROM Platform_Staffs   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="PlatformStaffs">
+		SELECT <include refid="columns"/>
+		FROM Platform_Staffs   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="PlatformStaffs">
+		SELECT <include refid="columns"/>
+		FROM Platform_Staffs   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

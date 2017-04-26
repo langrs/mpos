@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfCardRuleDetail">
+	<resultMap id="TfCardRuleDetail" type="com.site.entity.TfCardRuleDetail">
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "code" column="Code" jdbcType="VARCHAR" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "lbdate" column="LBDate" jdbcType="VARCHAR" />
+		<result property= "ledate" column="LEDate" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		RuleNo,
+		Code,
+		CTNO,
+		LBDate,
+		LEDate,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ruleno != null"> AND RuleNo like '%${ruleno}%' </if>
+       	<if test="code != null"> AND Code like '%${code}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="lbdate != null"> AND LBDate like '%${lbdate}%' </if>
+       	<if test="ledate != null"> AND LEDate like '%${ledate}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ruleno != null"> AND RuleNo = #{ruleno}</if>
+       	<if test="code != null"> AND Code = #{code}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="lbdate != null"> AND LBDate = #{lbdate}</if>
+       	<if test="ledate != null"> AND LEDate = #{ledate}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardRuleDetail">
+		INSERT INTO tf_Card_Rule_Detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{ruleno,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR},
+		#{ctno,jdbcType=VARCHAR},
+		#{lbdate,jdbcType=VARCHAR},
+		#{ledate,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_Card_Rule_Detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardRuleDetail">
+		UPDATE tf_Card_Rule_Detail SET
+               RuleNo=#{ruleno,jdbcType=VARCHAR},
+               Code=#{code,jdbcType=VARCHAR},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               LBDate=#{lbdate,jdbcType=VARCHAR},
+               LEDate=#{ledate,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule_Detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule_Detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_Card_Rule_Detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

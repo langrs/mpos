@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TdSaleDetail">
+	<resultMap id="TdSaleDetail" type="com.site.entity.TdSaleDetail">
+		<result property= "saleid" column="Sale_ID" jdbcType="VARCHAR" />
+		<result property= "oldid" column="Old_ID" jdbcType="VARCHAR" />
+		<result property= "saledetailid" column="Sale_Detail_ID" jdbcType="VARCHAR" />
+		<result property= "item" column="Item" jdbcType="INTEGER" />
+		<result property= "oitem" column="OItem" jdbcType="INTEGER" />
+		<result property= "pricefactor" column="PriceFactor" jdbcType="INTEGER" />
+		<result property= "oldprice" column="OldPrice" jdbcType="NUMERIC" />
+		<result property= "price" column="Price" jdbcType="NUMERIC" />
+		<result property= "price2" column="Price2" jdbcType="NUMERIC" />
+		<result property= "price3" column="Price3" jdbcType="NUMERIC" />
+		<result property= "qty" column="QTY" jdbcType="NUMERIC" />
+		<result property= "disc" column="DISC" jdbcType="NUMERIC" />
+		<result property= "ramt" column="RAMT" jdbcType="NUMERIC" />
+		<result property= "mqty" column="MQTY" jdbcType="NUMERIC" />
+		<result property= "unitratio" column="UnitRatio" jdbcType="NUMERIC" />
+		<result property= "amt" column="AMT" jdbcType="NUMERIC" />
+		<result property= "uamt" column="UAMT" jdbcType="NUMERIC" />
+		<result property= "counteramt" column="CounterAMT" jdbcType="NUMERIC" />
+		<result property= "pointqty" column="POINT_QTY" jdbcType="NUMERIC" />
+		<result property= "rpointqty" column="RPOINT_QTY" jdbcType="NUMERIC" />
+		<result property= "rqty" column="RQTY" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "saleno" column="SaleNO" jdbcType="VARCHAR" />
+		<result property= "clerkno" column="ClerkNO" jdbcType="VARCHAR" />
+		<result property= "accno" column="ACCNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "isscan" column="ISScan" jdbcType="VARCHAR" />
+		<result property= "taxcode" column="TaxCode" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "attr01" column="Attr01" jdbcType="VARCHAR" />
+		<result property= "attr02" column="Attr02" jdbcType="VARCHAR" />
+		<result property= "rarea" column="Rarea" jdbcType="VARCHAR" />
+		<result property= "sunit" column="Sunit" jdbcType="VARCHAR" />
+		<result property= "datasource" column="DataSource" jdbcType="VARCHAR" />
+		<result property= "mno" column="MNO" jdbcType="VARCHAR" />
+		<result property= "sdate" column="SDATE" jdbcType="VARCHAR" />
+		<result property= "stime" column="STime" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "memo" column="MEMO" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "pluno" column="PLUNO" jdbcType="VARCHAR" />
+		<result property= "featureno" column="FeatureNo" jdbcType="VARCHAR" />
+		<result property= "plubarcode" column="PLUBarcode" jdbcType="VARCHAR" />
+		<result property= "scanno" column="SCANNO" jdbcType="VARCHAR" />
+		<result property= "counterno" column="CounterNO" jdbcType="VARCHAR" />
+		<result property= "unit" column="Unit" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Sale_ID,
+		Old_ID,
+		Sale_Detail_ID,
+		Item,
+		OItem,
+		PriceFactor,
+		OldPrice,
+		Price,
+		Price2,
+		Price3,
+		QTY,
+		DISC,
+		RAMT,
+		MQTY,
+		UnitRatio,
+		AMT,
+		UAMT,
+		CounterAMT,
+		POINT_QTY,
+		RPOINT_QTY,
+		RQTY,
+		CompanyNo,
+		OrganizationNO,
+		Shop,
+		SaleNO,
+		ClerkNO,
+		ACCNO,
+		tran_time,
+		ISScan,
+		TaxCode,
+		ReservedFileld,
+		Attr01,
+		Attr02,
+		Rarea,
+		Sunit,
+		DataSource,
+		MNO,
+		SDATE,
+		STime,
+		CNFFLG,
+		MEMO,
+		DefTime,
+		PLUNO,
+		FeatureNo,
+		PLUBarcode,
+		SCANNO,
+		CounterNO,
+		Unit
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="saleid != null"> AND Sale_ID like '%${saleid}%' </if>
+       	<if test="oldid != null"> AND Old_ID like '%${oldid}%' </if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID like '%${saledetailid}%' </if>
+       	<if test="item != null"> AND Item like '%${item}%' </if>
+       	<if test="oitem != null"> AND OItem like '%${oitem}%' </if>
+       	<if test="pricefactor != null"> AND PriceFactor like '%${pricefactor}%' </if>
+       	<if test="oldprice != null"> AND OldPrice like '%${oldprice}%' </if>
+       	<if test="price != null"> AND Price like '%${price}%' </if>
+       	<if test="price2 != null"> AND Price2 like '%${price2}%' </if>
+       	<if test="price3 != null"> AND Price3 like '%${price3}%' </if>
+       	<if test="qty != null"> AND QTY like '%${qty}%' </if>
+       	<if test="disc != null"> AND DISC like '%${disc}%' </if>
+       	<if test="ramt != null"> AND RAMT like '%${ramt}%' </if>
+       	<if test="mqty != null"> AND MQTY like '%${mqty}%' </if>
+       	<if test="unitratio != null"> AND UnitRatio like '%${unitratio}%' </if>
+       	<if test="amt != null"> AND AMT like '%${amt}%' </if>
+       	<if test="uamt != null"> AND UAMT like '%${uamt}%' </if>
+       	<if test="counteramt != null"> AND CounterAMT like '%${counteramt}%' </if>
+       	<if test="pointqty != null"> AND POINT_QTY like '%${pointqty}%' </if>
+       	<if test="rpointqty != null"> AND RPOINT_QTY like '%${rpointqty}%' </if>
+       	<if test="rqty != null"> AND RQTY like '%${rqty}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="saleno != null"> AND SaleNO like '%${saleno}%' </if>
+       	<if test="clerkno != null"> AND ClerkNO like '%${clerkno}%' </if>
+       	<if test="accno != null"> AND ACCNO like '%${accno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="isscan != null"> AND ISScan like '%${isscan}%' </if>
+       	<if test="taxcode != null"> AND TaxCode like '%${taxcode}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="attr01 != null"> AND Attr01 like '%${attr01}%' </if>
+       	<if test="attr02 != null"> AND Attr02 like '%${attr02}%' </if>
+       	<if test="rarea != null"> AND Rarea like '%${rarea}%' </if>
+       	<if test="sunit != null"> AND Sunit like '%${sunit}%' </if>
+       	<if test="datasource != null"> AND DataSource like '%${datasource}%' </if>
+       	<if test="mno != null"> AND MNO like '%${mno}%' </if>
+       	<if test="sdate != null"> AND SDATE like '%${sdate}%' </if>
+       	<if test="stime != null"> AND STime like '%${stime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="memo != null"> AND MEMO like '%${memo}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="pluno != null"> AND PLUNO like '%${pluno}%' </if>
+       	<if test="featureno != null"> AND FeatureNo like '%${featureno}%' </if>
+       	<if test="plubarcode != null"> AND PLUBarcode like '%${plubarcode}%' </if>
+       	<if test="scanno != null"> AND SCANNO like '%${scanno}%' </if>
+       	<if test="counterno != null"> AND CounterNO like '%${counterno}%' </if>
+       	<if test="unit != null"> AND Unit like '%${unit}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="saleid != null"> AND Sale_ID = #{saleid}</if>
+       	<if test="oldid != null"> AND Old_ID = #{oldid}</if>
+       	<if test="saledetailid != null"> AND Sale_Detail_ID = #{saledetailid}</if>
+       	<if test="item != null"> AND Item = #{item}</if>
+       	<if test="oitem != null"> AND OItem = #{oitem}</if>
+       	<if test="pricefactor != null"> AND PriceFactor = #{pricefactor}</if>
+       	<if test="oldprice != null"> AND OldPrice = #{oldprice}</if>
+       	<if test="price != null"> AND Price = #{price}</if>
+       	<if test="price2 != null"> AND Price2 = #{price2}</if>
+       	<if test="price3 != null"> AND Price3 = #{price3}</if>
+       	<if test="qty != null"> AND QTY = #{qty}</if>
+       	<if test="disc != null"> AND DISC = #{disc}</if>
+       	<if test="ramt != null"> AND RAMT = #{ramt}</if>
+       	<if test="mqty != null"> AND MQTY = #{mqty}</if>
+       	<if test="unitratio != null"> AND UnitRatio = #{unitratio}</if>
+       	<if test="amt != null"> AND AMT = #{amt}</if>
+       	<if test="uamt != null"> AND UAMT = #{uamt}</if>
+       	<if test="counteramt != null"> AND CounterAMT = #{counteramt}</if>
+       	<if test="pointqty != null"> AND POINT_QTY = #{pointqty}</if>
+       	<if test="rpointqty != null"> AND RPOINT_QTY = #{rpointqty}</if>
+       	<if test="rqty != null"> AND RQTY = #{rqty}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="saleno != null"> AND SaleNO = #{saleno}</if>
+       	<if test="clerkno != null"> AND ClerkNO = #{clerkno}</if>
+       	<if test="accno != null"> AND ACCNO = #{accno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="isscan != null"> AND ISScan = #{isscan}</if>
+       	<if test="taxcode != null"> AND TaxCode = #{taxcode}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="attr01 != null"> AND Attr01 = #{attr01}</if>
+       	<if test="attr02 != null"> AND Attr02 = #{attr02}</if>
+       	<if test="rarea != null"> AND Rarea = #{rarea}</if>
+       	<if test="sunit != null"> AND Sunit = #{sunit}</if>
+       	<if test="datasource != null"> AND DataSource = #{datasource}</if>
+       	<if test="mno != null"> AND MNO = #{mno}</if>
+       	<if test="sdate != null"> AND SDATE = #{sdate}</if>
+       	<if test="stime != null"> AND STime = #{stime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="memo != null"> AND MEMO = #{memo}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="pluno != null"> AND PLUNO = #{pluno}</if>
+       	<if test="featureno != null"> AND FeatureNo = #{featureno}</if>
+       	<if test="plubarcode != null"> AND PLUBarcode = #{plubarcode}</if>
+       	<if test="scanno != null"> AND SCANNO = #{scanno}</if>
+       	<if test="counterno != null"> AND CounterNO = #{counterno}</if>
+       	<if test="unit != null"> AND Unit = #{unit}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TdSaleDetail">
+		INSERT INTO td_Sale_Detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{saleid,jdbcType=VARCHAR},
+		#{oldid,jdbcType=VARCHAR},
+		#{saledetailid,jdbcType=VARCHAR},
+		#{item,jdbcType=INTEGER},
+		#{oitem,jdbcType=INTEGER},
+		#{pricefactor,jdbcType=INTEGER},
+		#{oldprice,jdbcType=NUMERIC},
+		#{price,jdbcType=NUMERIC},
+		#{price2,jdbcType=NUMERIC},
+		#{price3,jdbcType=NUMERIC},
+		#{qty,jdbcType=NUMERIC},
+		#{disc,jdbcType=NUMERIC},
+		#{ramt,jdbcType=NUMERIC},
+		#{mqty,jdbcType=NUMERIC},
+		#{unitratio,jdbcType=NUMERIC},
+		#{amt,jdbcType=NUMERIC},
+		#{uamt,jdbcType=NUMERIC},
+		#{counteramt,jdbcType=NUMERIC},
+		#{pointqty,jdbcType=NUMERIC},
+		#{rpointqty,jdbcType=NUMERIC},
+		#{rqty,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{shop,jdbcType=VARCHAR},
+		#{saleno,jdbcType=VARCHAR},
+		#{clerkno,jdbcType=VARCHAR},
+		#{accno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{isscan,jdbcType=VARCHAR},
+		#{taxcode,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{attr01,jdbcType=VARCHAR},
+		#{attr02,jdbcType=VARCHAR},
+		#{rarea,jdbcType=VARCHAR},
+		#{sunit,jdbcType=VARCHAR},
+		#{datasource,jdbcType=VARCHAR},
+		#{mno,jdbcType=VARCHAR},
+		#{sdate,jdbcType=VARCHAR},
+		#{stime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{pluno,jdbcType=VARCHAR},
+		#{featureno,jdbcType=VARCHAR},
+		#{plubarcode,jdbcType=VARCHAR},
+		#{scanno,jdbcType=VARCHAR},
+		#{counterno,jdbcType=VARCHAR},
+		#{unit,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM td_Sale_Detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TdSaleDetail">
+		UPDATE td_Sale_Detail SET
+               Sale_ID=#{saleid,jdbcType=VARCHAR},
+               Old_ID=#{oldid,jdbcType=VARCHAR},
+               Sale_Detail_ID=#{saledetailid,jdbcType=VARCHAR},
+               Item=#{item,jdbcType=INTEGER},
+               OItem=#{oitem,jdbcType=INTEGER},
+               PriceFactor=#{pricefactor,jdbcType=INTEGER},
+               OldPrice=#{oldprice,jdbcType=NUMERIC},
+               Price=#{price,jdbcType=NUMERIC},
+               Price2=#{price2,jdbcType=NUMERIC},
+               Price3=#{price3,jdbcType=NUMERIC},
+               QTY=#{qty,jdbcType=NUMERIC},
+               DISC=#{disc,jdbcType=NUMERIC},
+               RAMT=#{ramt,jdbcType=NUMERIC},
+               MQTY=#{mqty,jdbcType=NUMERIC},
+               UnitRatio=#{unitratio,jdbcType=NUMERIC},
+               AMT=#{amt,jdbcType=NUMERIC},
+               UAMT=#{uamt,jdbcType=NUMERIC},
+               CounterAMT=#{counteramt,jdbcType=NUMERIC},
+               POINT_QTY=#{pointqty,jdbcType=NUMERIC},
+               RPOINT_QTY=#{rpointqty,jdbcType=NUMERIC},
+               RQTY=#{rqty,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               Shop=#{shop,jdbcType=VARCHAR},
+               SaleNO=#{saleno,jdbcType=VARCHAR},
+               ClerkNO=#{clerkno,jdbcType=VARCHAR},
+               ACCNO=#{accno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               ISScan=#{isscan,jdbcType=VARCHAR},
+               TaxCode=#{taxcode,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               Attr01=#{attr01,jdbcType=VARCHAR},
+               Attr02=#{attr02,jdbcType=VARCHAR},
+               Rarea=#{rarea,jdbcType=VARCHAR},
+               Sunit=#{sunit,jdbcType=VARCHAR},
+               DataSource=#{datasource,jdbcType=VARCHAR},
+               MNO=#{mno,jdbcType=VARCHAR},
+               SDATE=#{sdate,jdbcType=VARCHAR},
+               STime=#{stime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               MEMO=#{memo,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               PLUNO=#{pluno,jdbcType=VARCHAR},
+               FeatureNo=#{featureno,jdbcType=VARCHAR},
+               PLUBarcode=#{plubarcode,jdbcType=VARCHAR},
+               SCANNO=#{scanno,jdbcType=VARCHAR},
+               CounterNO=#{counterno,jdbcType=VARCHAR},
+               Unit=#{unit,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TdSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TdSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TdSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TdSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TdSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

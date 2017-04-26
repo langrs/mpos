@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfCardTypeRuleMTime">
+	<resultMap id="TfCardTypeRuleMTime" type="com.site.entity.TfCardTypeRuleMTime">
+		<result property= "ruletype" column="RuleType" jdbcType="INTEGER" />
+		<result property= "timeno" column="TimeNO" jdbcType="INTEGER" />
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "memorialno" column="MemorialNO" jdbcType="VARCHAR" />
+		<result property= "hruletype" column="HRuleType" jdbcType="VARCHAR" />
+		<result property= "begindate" column="BeginDate" jdbcType="VARCHAR" />
+		<result property= "enddate" column="EndDate" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "lbtime" column="LBTime" jdbcType="VARCHAR" />
+		<result property= "letime" column="LETime" jdbcType="VARCHAR" />
+		<result property= "fixeddate" column="FixedDate" jdbcType="VARCHAR" />
+		<result property= "week" column="Week" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		RuleType,
+		TimeNO,
+		RuleNo,
+		CTNO,
+		MemorialNO,
+		HRuleType,
+		BeginDate,
+		EndDate,
+		OrganizationNO,
+		tran_time,
+		LBTime,
+		LETime,
+		FixedDate,
+		Week,
+		CNFFLG,
+		CompanyNo
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType like '%${ruletype}%' </if>
+       	<if test="timeno != null"> AND TimeNO like '%${timeno}%' </if>
+       	<if test="ruleno != null"> AND RuleNo like '%${ruleno}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="memorialno != null"> AND MemorialNO like '%${memorialno}%' </if>
+       	<if test="hruletype != null"> AND HRuleType like '%${hruletype}%' </if>
+       	<if test="begindate != null"> AND BeginDate like '%${begindate}%' </if>
+       	<if test="enddate != null"> AND EndDate like '%${enddate}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="lbtime != null"> AND LBTime like '%${lbtime}%' </if>
+       	<if test="letime != null"> AND LETime like '%${letime}%' </if>
+       	<if test="fixeddate != null"> AND FixedDate like '%${fixeddate}%' </if>
+       	<if test="week != null"> AND Week like '%${week}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType = #{ruletype}</if>
+       	<if test="timeno != null"> AND TimeNO = #{timeno}</if>
+       	<if test="ruleno != null"> AND RuleNo = #{ruleno}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="memorialno != null"> AND MemorialNO = #{memorialno}</if>
+       	<if test="hruletype != null"> AND HRuleType = #{hruletype}</if>
+       	<if test="begindate != null"> AND BeginDate = #{begindate}</if>
+       	<if test="enddate != null"> AND EndDate = #{enddate}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="lbtime != null"> AND LBTime = #{lbtime}</if>
+       	<if test="letime != null"> AND LETime = #{letime}</if>
+       	<if test="fixeddate != null"> AND FixedDate = #{fixeddate}</if>
+       	<if test="week != null"> AND Week = #{week}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardTypeRuleMTime">
+		INSERT INTO tf_CardType_Rule_MTime
+		(<include refid="columns"/>)
+		VALUES(
+		#{ruletype,jdbcType=INTEGER},
+		#{timeno,jdbcType=INTEGER},
+		#{ruleno,jdbcType=VARCHAR},
+		#{ctno,jdbcType=VARCHAR},
+		#{memorialno,jdbcType=VARCHAR},
+		#{hruletype,jdbcType=VARCHAR},
+		#{begindate,jdbcType=VARCHAR},
+		#{enddate,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{lbtime,jdbcType=VARCHAR},
+		#{letime,jdbcType=VARCHAR},
+		#{fixeddate,jdbcType=VARCHAR},
+		#{week,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_CardType_Rule_MTime 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardTypeRuleMTime">
+		UPDATE tf_CardType_Rule_MTime SET
+               RuleType=#{ruletype,jdbcType=INTEGER},
+               TimeNO=#{timeno,jdbcType=INTEGER},
+               RuleNo=#{ruleno,jdbcType=VARCHAR},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               MemorialNO=#{memorialno,jdbcType=VARCHAR},
+               HRuleType=#{hruletype,jdbcType=VARCHAR},
+               BeginDate=#{begindate,jdbcType=VARCHAR},
+               EndDate=#{enddate,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               LBTime=#{lbtime,jdbcType=VARCHAR},
+               LETime=#{letime,jdbcType=VARCHAR},
+               FixedDate=#{fixeddate,jdbcType=VARCHAR},
+               Week=#{week,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardTypeRuleMTime">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_MTime
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardTypeRuleMTime">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_MTime   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardTypeRuleMTime">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_MTime   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardTypeRuleMTime">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_MTime   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardTypeRuleMTime">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_MTime   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

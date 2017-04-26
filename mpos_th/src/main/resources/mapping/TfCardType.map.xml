@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfCardType">
+	<resultMap id="TfCardType" type="com.site.entity.TfCardType">
+		<result property= "disc" column="DISC" jdbcType="INTEGER" />
+		<result property= "vipprice" column="VIPPrice" jdbcType="INTEGER" />
+		<result property= "bintegral" column="Bintegral" jdbcType="INTEGER" />
+		<result property= "uintegral" column="Uintegral" jdbcType="INTEGER" />
+		<result property= "absorbrate" column="AbsorbRate" jdbcType="INTEGER" />
+		<result property= "absorbway" column="AbsorbWay" jdbcType="INTEGER" />
+		<result property= "returnrate" column="ReturnRate" jdbcType="INTEGER" />
+		<result property= "actdays" column="ActDays" jdbcType="INTEGER" />
+		<result property= "deffull" column="DefFull" jdbcType="INTEGER" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "ctname" column="CTName" jdbcType="VARCHAR" />
+		<result property= "canpoint" column="CanPoint" jdbcType="VARCHAR" />
+		<result property= "ispayscore" column="IsPayScore" jdbcType="VARCHAR" />
+		<result property= "ismpassword" column="ISMPassWord" jdbcType="VARCHAR" />
+		<result property= "returnsc" column="ReturnSC" jdbcType="VARCHAR" />
+		<result property= "isuseprom" column="IsUseProm" jdbcType="VARCHAR" />
+		<result property= "ismutex" column="IsMutex" jdbcType="VARCHAR" />
+		<result property= "trunway" column="TrunWay" jdbcType="VARCHAR" />
+		<result property= "isrecharge" column="IsRecharge" jdbcType="VARCHAR" />
+		<result property= "isscore" column="ISScore" jdbcType="VARCHAR" />
+		<result property= "spill" column="Spill" jdbcType="VARCHAR" />
+		<result property= "erppayno" column="ERPPayNo" jdbcType="VARCHAR" />
+		<result property= "discprint" column="DISCPrint" jdbcType="VARCHAR" />
+		<result property= "salecardtaxcode" column="SaleCardTaxCode" jdbcType="VARCHAR" />
+		<result property= "rechargetaxcode" column="RechargeTaxCode" jdbcType="VARCHAR" />
+		<result property= "cttype" column="CTType" jdbcType="VARCHAR" />
+		<result property= "isdisc" column="IsDisc" jdbcType="VARCHAR" />
+		<result property= "defunit" column="DefUnit" jdbcType="VARCHAR" />
+		<result property= "integraltrun" column="IntegralTrun" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		DISC,
+		VIPPrice,
+		Bintegral,
+		Uintegral,
+		AbsorbRate,
+		AbsorbWay,
+		ReturnRate,
+		ActDays,
+		DefFull,
+		CTNO,
+		CTName,
+		CanPoint,
+		IsPayScore,
+		ISMPassWord,
+		ReturnSC,
+		IsUseProm,
+		IsMutex,
+		TrunWay,
+		IsRecharge,
+		ISScore,
+		Spill,
+		ERPPayNo,
+		DISCPrint,
+		SaleCardTaxCode,
+		RechargeTaxCode,
+		CTType,
+		IsDisc,
+		DefUnit,
+		IntegralTrun,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="disc != null"> AND DISC like '%${disc}%' </if>
+       	<if test="vipprice != null"> AND VIPPrice like '%${vipprice}%' </if>
+       	<if test="bintegral != null"> AND Bintegral like '%${bintegral}%' </if>
+       	<if test="uintegral != null"> AND Uintegral like '%${uintegral}%' </if>
+       	<if test="absorbrate != null"> AND AbsorbRate like '%${absorbrate}%' </if>
+       	<if test="absorbway != null"> AND AbsorbWay like '%${absorbway}%' </if>
+       	<if test="returnrate != null"> AND ReturnRate like '%${returnrate}%' </if>
+       	<if test="actdays != null"> AND ActDays like '%${actdays}%' </if>
+       	<if test="deffull != null"> AND DefFull like '%${deffull}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="ctname != null"> AND CTName like '%${ctname}%' </if>
+       	<if test="canpoint != null"> AND CanPoint like '%${canpoint}%' </if>
+       	<if test="ispayscore != null"> AND IsPayScore like '%${ispayscore}%' </if>
+       	<if test="ismpassword != null"> AND ISMPassWord like '%${ismpassword}%' </if>
+       	<if test="returnsc != null"> AND ReturnSC like '%${returnsc}%' </if>
+       	<if test="isuseprom != null"> AND IsUseProm like '%${isuseprom}%' </if>
+       	<if test="ismutex != null"> AND IsMutex like '%${ismutex}%' </if>
+       	<if test="trunway != null"> AND TrunWay like '%${trunway}%' </if>
+       	<if test="isrecharge != null"> AND IsRecharge like '%${isrecharge}%' </if>
+       	<if test="isscore != null"> AND ISScore like '%${isscore}%' </if>
+       	<if test="spill != null"> AND Spill like '%${spill}%' </if>
+       	<if test="erppayno != null"> AND ERPPayNo like '%${erppayno}%' </if>
+       	<if test="discprint != null"> AND DISCPrint like '%${discprint}%' </if>
+       	<if test="salecardtaxcode != null"> AND SaleCardTaxCode like '%${salecardtaxcode}%' </if>
+       	<if test="rechargetaxcode != null"> AND RechargeTaxCode like '%${rechargetaxcode}%' </if>
+       	<if test="cttype != null"> AND CTType like '%${cttype}%' </if>
+       	<if test="isdisc != null"> AND IsDisc like '%${isdisc}%' </if>
+       	<if test="defunit != null"> AND DefUnit like '%${defunit}%' </if>
+       	<if test="integraltrun != null"> AND IntegralTrun like '%${integraltrun}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="disc != null"> AND DISC = #{disc}</if>
+       	<if test="vipprice != null"> AND VIPPrice = #{vipprice}</if>
+       	<if test="bintegral != null"> AND Bintegral = #{bintegral}</if>
+       	<if test="uintegral != null"> AND Uintegral = #{uintegral}</if>
+       	<if test="absorbrate != null"> AND AbsorbRate = #{absorbrate}</if>
+       	<if test="absorbway != null"> AND AbsorbWay = #{absorbway}</if>
+       	<if test="returnrate != null"> AND ReturnRate = #{returnrate}</if>
+       	<if test="actdays != null"> AND ActDays = #{actdays}</if>
+       	<if test="deffull != null"> AND DefFull = #{deffull}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="ctname != null"> AND CTName = #{ctname}</if>
+       	<if test="canpoint != null"> AND CanPoint = #{canpoint}</if>
+       	<if test="ispayscore != null"> AND IsPayScore = #{ispayscore}</if>
+       	<if test="ismpassword != null"> AND ISMPassWord = #{ismpassword}</if>
+       	<if test="returnsc != null"> AND ReturnSC = #{returnsc}</if>
+       	<if test="isuseprom != null"> AND IsUseProm = #{isuseprom}</if>
+       	<if test="ismutex != null"> AND IsMutex = #{ismutex}</if>
+       	<if test="trunway != null"> AND TrunWay = #{trunway}</if>
+       	<if test="isrecharge != null"> AND IsRecharge = #{isrecharge}</if>
+       	<if test="isscore != null"> AND ISScore = #{isscore}</if>
+       	<if test="spill != null"> AND Spill = #{spill}</if>
+       	<if test="erppayno != null"> AND ERPPayNo = #{erppayno}</if>
+       	<if test="discprint != null"> AND DISCPrint = #{discprint}</if>
+       	<if test="salecardtaxcode != null"> AND SaleCardTaxCode = #{salecardtaxcode}</if>
+       	<if test="rechargetaxcode != null"> AND RechargeTaxCode = #{rechargetaxcode}</if>
+       	<if test="cttype != null"> AND CTType = #{cttype}</if>
+       	<if test="isdisc != null"> AND IsDisc = #{isdisc}</if>
+       	<if test="defunit != null"> AND DefUnit = #{defunit}</if>
+       	<if test="integraltrun != null"> AND IntegralTrun = #{integraltrun}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardType">
+		INSERT INTO tf_CardType
+		(<include refid="columns"/>)
+		VALUES(
+		#{disc,jdbcType=INTEGER},
+		#{vipprice,jdbcType=INTEGER},
+		#{bintegral,jdbcType=INTEGER},
+		#{uintegral,jdbcType=INTEGER},
+		#{absorbrate,jdbcType=INTEGER},
+		#{absorbway,jdbcType=INTEGER},
+		#{returnrate,jdbcType=INTEGER},
+		#{actdays,jdbcType=INTEGER},
+		#{deffull,jdbcType=INTEGER},
+		#{ctno,jdbcType=VARCHAR},
+		#{ctname,jdbcType=VARCHAR},
+		#{canpoint,jdbcType=VARCHAR},
+		#{ispayscore,jdbcType=VARCHAR},
+		#{ismpassword,jdbcType=VARCHAR},
+		#{returnsc,jdbcType=VARCHAR},
+		#{isuseprom,jdbcType=VARCHAR},
+		#{ismutex,jdbcType=VARCHAR},
+		#{trunway,jdbcType=VARCHAR},
+		#{isrecharge,jdbcType=VARCHAR},
+		#{isscore,jdbcType=VARCHAR},
+		#{spill,jdbcType=VARCHAR},
+		#{erppayno,jdbcType=VARCHAR},
+		#{discprint,jdbcType=VARCHAR},
+		#{salecardtaxcode,jdbcType=VARCHAR},
+		#{rechargetaxcode,jdbcType=VARCHAR},
+		#{cttype,jdbcType=VARCHAR},
+		#{isdisc,jdbcType=VARCHAR},
+		#{defunit,jdbcType=VARCHAR},
+		#{integraltrun,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_CardType 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardType">
+		UPDATE tf_CardType SET
+               DISC=#{disc,jdbcType=INTEGER},
+               VIPPrice=#{vipprice,jdbcType=INTEGER},
+               Bintegral=#{bintegral,jdbcType=INTEGER},
+               Uintegral=#{uintegral,jdbcType=INTEGER},
+               AbsorbRate=#{absorbrate,jdbcType=INTEGER},
+               AbsorbWay=#{absorbway,jdbcType=INTEGER},
+               ReturnRate=#{returnrate,jdbcType=INTEGER},
+               ActDays=#{actdays,jdbcType=INTEGER},
+               DefFull=#{deffull,jdbcType=INTEGER},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               CTName=#{ctname,jdbcType=VARCHAR},
+               CanPoint=#{canpoint,jdbcType=VARCHAR},
+               IsPayScore=#{ispayscore,jdbcType=VARCHAR},
+               ISMPassWord=#{ismpassword,jdbcType=VARCHAR},
+               ReturnSC=#{returnsc,jdbcType=VARCHAR},
+               IsUseProm=#{isuseprom,jdbcType=VARCHAR},
+               IsMutex=#{ismutex,jdbcType=VARCHAR},
+               TrunWay=#{trunway,jdbcType=VARCHAR},
+               IsRecharge=#{isrecharge,jdbcType=VARCHAR},
+               ISScore=#{isscore,jdbcType=VARCHAR},
+               Spill=#{spill,jdbcType=VARCHAR},
+               ERPPayNo=#{erppayno,jdbcType=VARCHAR},
+               DISCPrint=#{discprint,jdbcType=VARCHAR},
+               SaleCardTaxCode=#{salecardtaxcode,jdbcType=VARCHAR},
+               RechargeTaxCode=#{rechargetaxcode,jdbcType=VARCHAR},
+               CTType=#{cttype,jdbcType=VARCHAR},
+               IsDisc=#{isdisc,jdbcType=VARCHAR},
+               DefUnit=#{defunit,jdbcType=VARCHAR},
+               IntegralTrun=#{integraltrun,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardType">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardType">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardType">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardType">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardType">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

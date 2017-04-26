@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TbCounter">
+	<resultMap id="TbCounter" type="com.site.entity.TbCounter">
+		<result property= "ldisc" column="LDISC" jdbcType="INTEGER" />
+		<result property= "counterno" column="CounterNO" jdbcType="VARCHAR" />
+		<result property= "countername" column="CounterName" jdbcType="VARCHAR" />
+		<result property= "lbdate" column="LBDate" jdbcType="VARCHAR" />
+		<result property= "ledate" column="LEDate" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		LDISC,
+		CounterNO,
+		CounterName,
+		LBDate,
+		LEDate,
+		CNFFLG,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ldisc != null"> AND LDISC like '%${ldisc}%' </if>
+       	<if test="counterno != null"> AND CounterNO like '%${counterno}%' </if>
+       	<if test="countername != null"> AND CounterName like '%${countername}%' </if>
+       	<if test="lbdate != null"> AND LBDate like '%${lbdate}%' </if>
+       	<if test="ledate != null"> AND LEDate like '%${ledate}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ldisc != null"> AND LDISC = #{ldisc}</if>
+       	<if test="counterno != null"> AND CounterNO = #{counterno}</if>
+       	<if test="countername != null"> AND CounterName = #{countername}</if>
+       	<if test="lbdate != null"> AND LBDate = #{lbdate}</if>
+       	<if test="ledate != null"> AND LEDate = #{ledate}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TbCounter">
+		INSERT INTO tb_Counter
+		(<include refid="columns"/>)
+		VALUES(
+		#{ldisc,jdbcType=INTEGER},
+		#{counterno,jdbcType=VARCHAR},
+		#{countername,jdbcType=VARCHAR},
+		#{lbdate,jdbcType=VARCHAR},
+		#{ledate,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tb_Counter 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TbCounter">
+		UPDATE tb_Counter SET
+               LDISC=#{ldisc,jdbcType=INTEGER},
+               CounterNO=#{counterno,jdbcType=VARCHAR},
+               CounterName=#{countername,jdbcType=VARCHAR},
+               LBDate=#{lbdate,jdbcType=VARCHAR},
+               LEDate=#{ledate,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TbCounter">
+		SELECT <include refid="columns"/>
+		FROM tb_Counter
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TbCounter">
+		SELECT <include refid="columns"/>
+		FROM tb_Counter   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TbCounter">
+		SELECT <include refid="columns"/>
+		FROM tb_Counter   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TbCounter">
+		SELECT <include refid="columns"/>
+		FROM tb_Counter   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TbCounter">
+		SELECT <include refid="columns"/>
+		FROM tb_Counter   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

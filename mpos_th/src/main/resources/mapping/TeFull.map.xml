@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TeFull">
+	<resultMap id="TeFull" type="com.site.entity.TeFull">
+		<result property= "promway" column="PromWay" jdbcType="INTEGER" />
+		<result property= "extent" column="Extent" jdbcType="INTEGER" />
+		<result property= "optional" column="Optional" jdbcType="INTEGER" />
+		<result property= "exchangeway" column="ExchangeWay" jdbcType="INTEGER" />
+		<result property= "condtype" column="CondType" jdbcType="INTEGER" />
+		<result property= "totlmecount" column="TOTLMECount" jdbcType="INTEGER" />
+		<result property= "lexchangecount" column="LExchangeCount" jdbcType="INTEGER" />
+		<result property= "priority" column="Priority" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "canmedisc" column="CanMeDISC" jdbcType="VARCHAR" />
+		<result property= "canexchange" column="CanExchange" jdbcType="VARCHAR" />
+		<result property= "ladder" column="Ladder" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "canvipdiscexchange" column="CanVipDiscExchange" jdbcType="VARCHAR" />
+		<result property= "parobjet" column="ParObjet" jdbcType="VARCHAR" />
+		<result property= "baselow" column="BaseLow" jdbcType="VARCHAR" />
+		<result property= "exchangecomp" column="ExchangeComp" jdbcType="VARCHAR" />
+		<result property= "promcond" column="PromCond" jdbcType="VARCHAR" />
+		<result property= "promstack" column="PromStack" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "isprint" column="ISPrint" jdbcType="VARCHAR" />
+		<result property= "printinfo" column="Printinfo" jdbcType="VARCHAR" />
+		<result property= "paylimit" column="PayLimit" jdbcType="VARCHAR" />
+		<result property= "inputway" column="InputWay" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		PromWay,
+		Extent,
+		Optional,
+		ExchangeWay,
+		CondType,
+		TOTLMECount,
+		LExchangeCount,
+		Priority,
+		CompanyNo,
+		OrganizationNO,
+		PromNO,
+		CanMeDISC,
+		CanExchange,
+		Ladder,
+		ReservedFileld,
+		CanVipDiscExchange,
+		ParObjet,
+		BaseLow,
+		ExchangeComp,
+		PromCond,
+		PromStack,
+		DefTime,
+		tran_time,
+		CNFFLG,
+		ISPrint,
+		Printinfo,
+		PayLimit,
+		InputWay
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="promway != null"> AND PromWay like '%${promway}%' </if>
+       	<if test="extent != null"> AND Extent like '%${extent}%' </if>
+       	<if test="optional != null"> AND Optional like '%${optional}%' </if>
+       	<if test="exchangeway != null"> AND ExchangeWay like '%${exchangeway}%' </if>
+       	<if test="condtype != null"> AND CondType like '%${condtype}%' </if>
+       	<if test="totlmecount != null"> AND TOTLMECount like '%${totlmecount}%' </if>
+       	<if test="lexchangecount != null"> AND LExchangeCount like '%${lexchangecount}%' </if>
+       	<if test="priority != null"> AND Priority like '%${priority}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="promno != null"> AND PromNO like '%${promno}%' </if>
+       	<if test="canmedisc != null"> AND CanMeDISC like '%${canmedisc}%' </if>
+       	<if test="canexchange != null"> AND CanExchange like '%${canexchange}%' </if>
+       	<if test="ladder != null"> AND Ladder like '%${ladder}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="canvipdiscexchange != null"> AND CanVipDiscExchange like '%${canvipdiscexchange}%' </if>
+       	<if test="parobjet != null"> AND ParObjet like '%${parobjet}%' </if>
+       	<if test="baselow != null"> AND BaseLow like '%${baselow}%' </if>
+       	<if test="exchangecomp != null"> AND ExchangeComp like '%${exchangecomp}%' </if>
+       	<if test="promcond != null"> AND PromCond like '%${promcond}%' </if>
+       	<if test="promstack != null"> AND PromStack like '%${promstack}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="isprint != null"> AND ISPrint like '%${isprint}%' </if>
+       	<if test="printinfo != null"> AND Printinfo like '%${printinfo}%' </if>
+       	<if test="paylimit != null"> AND PayLimit like '%${paylimit}%' </if>
+       	<if test="inputway != null"> AND InputWay like '%${inputway}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="promway != null"> AND PromWay = #{promway}</if>
+       	<if test="extent != null"> AND Extent = #{extent}</if>
+       	<if test="optional != null"> AND Optional = #{optional}</if>
+       	<if test="exchangeway != null"> AND ExchangeWay = #{exchangeway}</if>
+       	<if test="condtype != null"> AND CondType = #{condtype}</if>
+       	<if test="totlmecount != null"> AND TOTLMECount = #{totlmecount}</if>
+       	<if test="lexchangecount != null"> AND LExchangeCount = #{lexchangecount}</if>
+       	<if test="priority != null"> AND Priority = #{priority}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="promno != null"> AND PromNO = #{promno}</if>
+       	<if test="canmedisc != null"> AND CanMeDISC = #{canmedisc}</if>
+       	<if test="canexchange != null"> AND CanExchange = #{canexchange}</if>
+       	<if test="ladder != null"> AND Ladder = #{ladder}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="canvipdiscexchange != null"> AND CanVipDiscExchange = #{canvipdiscexchange}</if>
+       	<if test="parobjet != null"> AND ParObjet = #{parobjet}</if>
+       	<if test="baselow != null"> AND BaseLow = #{baselow}</if>
+       	<if test="exchangecomp != null"> AND ExchangeComp = #{exchangecomp}</if>
+       	<if test="promcond != null"> AND PromCond = #{promcond}</if>
+       	<if test="promstack != null"> AND PromStack = #{promstack}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="isprint != null"> AND ISPrint = #{isprint}</if>
+       	<if test="printinfo != null"> AND Printinfo = #{printinfo}</if>
+       	<if test="paylimit != null"> AND PayLimit = #{paylimit}</if>
+       	<if test="inputway != null"> AND InputWay = #{inputway}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TeFull">
+		INSERT INTO te_Full
+		(<include refid="columns"/>)
+		VALUES(
+		#{promway,jdbcType=INTEGER},
+		#{extent,jdbcType=INTEGER},
+		#{optional,jdbcType=INTEGER},
+		#{exchangeway,jdbcType=INTEGER},
+		#{condtype,jdbcType=INTEGER},
+		#{totlmecount,jdbcType=INTEGER},
+		#{lexchangecount,jdbcType=INTEGER},
+		#{priority,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{promno,jdbcType=VARCHAR},
+		#{canmedisc,jdbcType=VARCHAR},
+		#{canexchange,jdbcType=VARCHAR},
+		#{ladder,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{canvipdiscexchange,jdbcType=VARCHAR},
+		#{parobjet,jdbcType=VARCHAR},
+		#{baselow,jdbcType=VARCHAR},
+		#{exchangecomp,jdbcType=VARCHAR},
+		#{promcond,jdbcType=VARCHAR},
+		#{promstack,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{isprint,jdbcType=VARCHAR},
+		#{printinfo,jdbcType=VARCHAR},
+		#{paylimit,jdbcType=VARCHAR},
+		#{inputway,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM te_Full 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TeFull">
+		UPDATE te_Full SET
+               PromWay=#{promway,jdbcType=INTEGER},
+               Extent=#{extent,jdbcType=INTEGER},
+               Optional=#{optional,jdbcType=INTEGER},
+               ExchangeWay=#{exchangeway,jdbcType=INTEGER},
+               CondType=#{condtype,jdbcType=INTEGER},
+               TOTLMECount=#{totlmecount,jdbcType=INTEGER},
+               LExchangeCount=#{lexchangecount,jdbcType=INTEGER},
+               Priority=#{priority,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PromNO=#{promno,jdbcType=VARCHAR},
+               CanMeDISC=#{canmedisc,jdbcType=VARCHAR},
+               CanExchange=#{canexchange,jdbcType=VARCHAR},
+               Ladder=#{ladder,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               CanVipDiscExchange=#{canvipdiscexchange,jdbcType=VARCHAR},
+               ParObjet=#{parobjet,jdbcType=VARCHAR},
+               BaseLow=#{baselow,jdbcType=VARCHAR},
+               ExchangeComp=#{exchangecomp,jdbcType=VARCHAR},
+               PromCond=#{promcond,jdbcType=VARCHAR},
+               PromStack=#{promstack,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               ISPrint=#{isprint,jdbcType=VARCHAR},
+               Printinfo=#{printinfo,jdbcType=VARCHAR},
+               PayLimit=#{paylimit,jdbcType=VARCHAR},
+               InputWay=#{inputway,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TeFull">
+		SELECT <include refid="columns"/>
+		FROM te_Full
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TeFull">
+		SELECT <include refid="columns"/>
+		FROM te_Full   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TeFull">
+		SELECT <include refid="columns"/>
+		FROM te_Full   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TeFull">
+		SELECT <include refid="columns"/>
+		FROM te_Full   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TeFull">
+		SELECT <include refid="columns"/>
+		FROM te_Full   
+		<include refid="oneWhere" />
+	</select>
+
+	<resultMap id="getPromResult" type="com.site.entity.respon.GetPromResult">
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "type" column="Type" jdbcType="VARCHAR" />
+		<result property= "priority" column="Priority" jdbcType="NUMERIC" />
+		<result property= "promway" column="PromWay" jdbcType="VARCHAR" />
+		<result property= "exchangeway" column="ExchangeWay" jdbcType="VARCHAR" />
+		<result property= "canexchange" column="CanExchange" jdbcType="VARCHAR" />
+
+	</resultMap>
+	<!--查找当天有效的所有的满额满量促销单,按会员查询ParObjet-->
+	<select id="getPromHy" parameterType="java.util.HashMap" resultMap="getPromResult">
+		select a.PromNO,a.Priority,a.PromWay,a.ExchangeWay,a.CanExchange,max(b.Type) as Type
+		from te_Full a,te_Full_Goods b,te_PromTime c
+		where a.PromNO = b.PromNO and a.PromNO = c.PromNO  and a.CNFFLG = 'Y' and b.CNFFLG = 'Y' and c.CNFFLG ='Y' and
+		c.LBDate &lt;= #{lbdate} and c.LEDate &gt;=#{lbdate} and a.OrganizationNO = #{shop} and a.ParObjet in('2','3')
+		group by a.PromNo,a.Priority,a.PromWay,ExchangeWay,a.CanExchange order by Priority desc
+	</select>	<!--查找当天有效的所有的满额满量促销单,按散客查询ParObjet-->
+	<select id="getPromSk" parameterType="java.util.HashMap" resultMap="getPromResult">
+		select a.PromNO,a.Priority,a.PromWay,a.ExchangeWay,a.CanExchange,max(b.Type) as Type
+		from te_Full a,te_Full_Goods b,te_PromTime c
+		where a.PromNO = b.PromNO and a.PromNO = c.PromNO  and a.CNFFLG = 'Y' and b.CNFFLG = 'Y' and c.CNFFLG ='Y' and
+		c.LBDate &lt;= #{lbdate} and c.LEDate &gt;=#{lbdate} and a.OrganizationNO = #{shop} and a.ParObjet in('1','3')
+		group by a.PromNo,a.Priority,a.PromWay,ExchangeWay,a.CanExchange order by Priority desc
+	</select>
+</mapper>	

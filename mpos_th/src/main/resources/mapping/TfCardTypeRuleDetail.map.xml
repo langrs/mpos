@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TfCardTypeRuleDetail">
+	<resultMap id="TfCardTypeRuleDetail" type="com.site.entity.TfCardTypeRuleDetail">
+		<result property= "ruletype" column="RuleType" jdbcType="INTEGER" />
+		<result property= "stdscore" column="STDScore" jdbcType="INTEGER" />
+		<result property= "unitscore" column="UnitScore" jdbcType="INTEGER" />
+		<result property= "disc" column="DISC" jdbcType="INTEGER" />
+		<result property= "deffull" column="DefFull" jdbcType="INTEGER" />
+		<result property= "pcexstdscore" column="PC_EXSTDScore" jdbcType="INTEGER" />
+		<result property= "pcexunitscore" column="PC_EXUnitScore" jdbcType="INTEGER" />
+		<result property= "exstdscore" column="EXSTDScore" jdbcType="INTEGER" />
+		<result property= "exunitscore" column="EXUnitScore" jdbcType="INTEGER" />
+		<result property= "ctno" column="CTNO" jdbcType="VARCHAR" />
+		<result property= "code" column="Code" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "defunit" column="DefUnit" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "ruleno" column="RuleNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		RuleType,
+		STDScore,
+		UnitScore,
+		DISC,
+		DefFull,
+		PC_EXSTDScore,
+		PC_EXUnitScore,
+		EXSTDScore,
+		EXUnitScore,
+		CTNO,
+		Code,
+		CNFFLG,
+		DefUnit,
+		CompanyNo,
+		RuleNo,
+		OrganizationNO,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType like '%${ruletype}%' </if>
+       	<if test="stdscore != null"> AND STDScore like '%${stdscore}%' </if>
+       	<if test="unitscore != null"> AND UnitScore like '%${unitscore}%' </if>
+       	<if test="disc != null"> AND DISC like '%${disc}%' </if>
+       	<if test="deffull != null"> AND DefFull like '%${deffull}%' </if>
+       	<if test="pcexstdscore != null"> AND PC_EXSTDScore like '%${pcexstdscore}%' </if>
+       	<if test="pcexunitscore != null"> AND PC_EXUnitScore like '%${pcexunitscore}%' </if>
+       	<if test="exstdscore != null"> AND EXSTDScore like '%${exstdscore}%' </if>
+       	<if test="exunitscore != null"> AND EXUnitScore like '%${exunitscore}%' </if>
+       	<if test="ctno != null"> AND CTNO like '%${ctno}%' </if>
+       	<if test="code != null"> AND Code like '%${code}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="defunit != null"> AND DefUnit like '%${defunit}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="ruleno != null"> AND RuleNo like '%${ruleno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ruletype != null"> AND RuleType = #{ruletype}</if>
+       	<if test="stdscore != null"> AND STDScore = #{stdscore}</if>
+       	<if test="unitscore != null"> AND UnitScore = #{unitscore}</if>
+       	<if test="disc != null"> AND DISC = #{disc}</if>
+       	<if test="deffull != null"> AND DefFull = #{deffull}</if>
+       	<if test="pcexstdscore != null"> AND PC_EXSTDScore = #{pcexstdscore}</if>
+       	<if test="pcexunitscore != null"> AND PC_EXUnitScore = #{pcexunitscore}</if>
+       	<if test="exstdscore != null"> AND EXSTDScore = #{exstdscore}</if>
+       	<if test="exunitscore != null"> AND EXUnitScore = #{exunitscore}</if>
+       	<if test="ctno != null"> AND CTNO = #{ctno}</if>
+       	<if test="code != null"> AND Code = #{code}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="defunit != null"> AND DefUnit = #{defunit}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="ruleno != null"> AND RuleNo = #{ruleno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TfCardTypeRuleDetail">
+		INSERT INTO tf_CardType_Rule_Detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{ruletype,jdbcType=INTEGER},
+		#{stdscore,jdbcType=INTEGER},
+		#{unitscore,jdbcType=INTEGER},
+		#{disc,jdbcType=INTEGER},
+		#{deffull,jdbcType=INTEGER},
+		#{pcexstdscore,jdbcType=INTEGER},
+		#{pcexunitscore,jdbcType=INTEGER},
+		#{exstdscore,jdbcType=INTEGER},
+		#{exunitscore,jdbcType=INTEGER},
+		#{ctno,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{defunit,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{ruleno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tf_CardType_Rule_Detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TfCardTypeRuleDetail">
+		UPDATE tf_CardType_Rule_Detail SET
+               RuleType=#{ruletype,jdbcType=INTEGER},
+               STDScore=#{stdscore,jdbcType=INTEGER},
+               UnitScore=#{unitscore,jdbcType=INTEGER},
+               DISC=#{disc,jdbcType=INTEGER},
+               DefFull=#{deffull,jdbcType=INTEGER},
+               PC_EXSTDScore=#{pcexstdscore,jdbcType=INTEGER},
+               PC_EXUnitScore=#{pcexunitscore,jdbcType=INTEGER},
+               EXSTDScore=#{exstdscore,jdbcType=INTEGER},
+               EXUnitScore=#{exunitscore,jdbcType=INTEGER},
+               CTNO=#{ctno,jdbcType=VARCHAR},
+               Code=#{code,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               DefUnit=#{defunit,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               RuleNo=#{ruleno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TfCardTypeRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_Detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TfCardTypeRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TfCardTypeRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TfCardTypeRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_Detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TfCardTypeRuleDetail">
+		SELECT <include refid="columns"/>
+		FROM tf_CardType_Rule_Detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

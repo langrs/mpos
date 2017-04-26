@@ -1,0 +1,10 @@
+#pagination {margin:9px auto; _margin:8px auto;padding:8px;clear:both;overflow:hidden;height:100%;width:710px;}
+#pagination .zb { float:left;}
+#pagination .yb { float:right;}
+#pagination a {background:#d7ee8d;float:left;padding:0 8px;color:#333;text-decoration:none;height:22px;line-height:22px;margin-right:5px;font-size:14px;border:1px #ccc solid;}
+#pagination a:hover{background:#b3c774;text-decoration:none;color:#333;}
+#pagination .current {background:#a8cb37;float:left;padding:0 8px;color:#fff;text-decoration:none;height:22px;line-height:22px;margin-right:5px;font-size:14px;border:1px #669933 solid;font-weight:bold;}
+#pagination .dian {float:left;text-decoration:none;height:22px;line-height:22px;margin-right:5px;font-size:14px;}
+#pagination a, .pagination span {float: left; margin-right: 5px;margin-bottom: 5px;}
+#pagination .current.prev, .pagination .current.next{background:#f5f5f5;float:left;padding:0 8px;color:#999;text-decoration:none;height:22px;line-height:22px;margin-right:5px;font-size:14px;border:1px #ccc solid;}
+

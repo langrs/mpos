@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TeGenPriceInfo">
+	<resultMap id="TeGenPriceInfo" type="com.site.entity.TeGenPriceInfo">
+		<result property= "lbprice" column="LBPrice" jdbcType="NUMERIC" />
+		<result property= "leprice" column="LEPrice" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "groupno" column="GroupNO" jdbcType="VARCHAR" />
+		<result property= "type" column="Type" jdbcType="VARCHAR" />
+		<result property= "code" column="Code" jdbcType="VARCHAR" />
+		<result property= "unit" column="Unit" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "exclude" column="Exclude" jdbcType="VARCHAR" />
+		<result property= "rarea" column="Rarea" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		LBPrice,
+		LEPrice,
+		CompanyNo,
+		OrganizationNO,
+		PromNO,
+		GroupNO,
+		Type,
+		Code,
+		Unit,
+		tran_time,
+		CNFFLG,
+		Exclude,
+		Rarea,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="lbprice != null"> AND LBPrice like '%${lbprice}%' </if>
+       	<if test="leprice != null"> AND LEPrice like '%${leprice}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="promno != null"> AND PromNO like '%${promno}%' </if>
+       	<if test="groupno != null"> AND GroupNO like '%${groupno}%' </if>
+       	<if test="type != null"> AND Type like '%${type}%' </if>
+       	<if test="code != null"> AND Code like '%${code}%' </if>
+       	<if test="unit != null"> AND Unit like '%${unit}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="exclude != null"> AND Exclude like '%${exclude}%' </if>
+       	<if test="rarea != null"> AND Rarea like '%${rarea}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="lbprice != null"> AND LBPrice = #{lbprice}</if>
+       	<if test="leprice != null"> AND LEPrice = #{leprice}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="promno != null"> AND PromNO = #{promno}</if>
+       	<if test="groupno != null"> AND GroupNO = #{groupno}</if>
+       	<if test="type != null"> AND Type = #{type}</if>
+       	<if test="code != null"> AND Code = #{code}</if>
+       	<if test="unit != null"> AND Unit = #{unit}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="exclude != null"> AND Exclude = #{exclude}</if>
+       	<if test="rarea != null"> AND Rarea = #{rarea}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TeGenPriceInfo">
+		INSERT INTO te_Gen_Price_Info
+		(<include refid="columns"/>)
+		VALUES(
+		#{lbprice,jdbcType=NUMERIC},
+		#{leprice,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{promno,jdbcType=VARCHAR},
+		#{groupno,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR},
+		#{unit,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{exclude,jdbcType=VARCHAR},
+		#{rarea,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM te_Gen_Price_Info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TeGenPriceInfo">
+		UPDATE te_Gen_Price_Info SET
+               LBPrice=#{lbprice,jdbcType=NUMERIC},
+               LEPrice=#{leprice,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PromNO=#{promno,jdbcType=VARCHAR},
+               GroupNO=#{groupno,jdbcType=VARCHAR},
+               Type=#{type,jdbcType=VARCHAR},
+               Code=#{code,jdbcType=VARCHAR},
+               Unit=#{unit,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               Exclude=#{exclude,jdbcType=VARCHAR},
+               Rarea=#{rarea,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TeGenPriceInfo">
+		SELECT <include refid="columns"/>
+		FROM te_Gen_Price_Info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TeGenPriceInfo">
+		SELECT <include refid="columns"/>
+		FROM te_Gen_Price_Info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TeGenPriceInfo">
+		SELECT <include refid="columns"/>
+		FROM te_Gen_Price_Info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TeGenPriceInfo">
+		SELECT <include refid="columns"/>
+		FROM te_Gen_Price_Info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TeGenPriceInfo">
+		SELECT <include refid="columns"/>
+		FROM te_Gen_Price_Info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

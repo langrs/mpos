@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TdSalePredetail">
+	<resultMap id="TdSalePredetail" type="com.site.entity.TdSalePredetail">
+		<result property= "salepredatailid" column="Sale_Predatail_ID" jdbcType="VARCHAR" />
+		<result property= "saleid" column="Sale_ID" jdbcType="VARCHAR" />
+		<result property= "condgroupno" column="CondGroupNO" jdbcType="INTEGER" />
+		<result property= "item" column="Item" jdbcType="INTEGER" />
+		<result property= "type" column="Type" jdbcType="INTEGER" />
+		<result property= "qty" column="QTY" jdbcType="INTEGER" />
+		<result property= "quota" column="Quota" jdbcType="NUMERIC" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "saleno" column="SaleNO" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "pmtno" column="PMTNO" jdbcType="VARCHAR" />
+		<result property= "code" column="Code" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "paysernum" column="PAYSERNUM" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "exchangegroupno" column="ExchangeGroupNO" jdbcType="VARCHAR" />
+		<result property= "plugroupno" column="PLUGroupNO" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Sale_Predatail_ID,
+		Sale_ID,
+		CondGroupNO,
+		Item,
+		Type,
+		QTY,
+		Quota,
+		Shop,
+		SaleNO,
+		CompanyNo,
+		OrganizationNO,
+		PMTNO,
+		Code,
+		ReservedFileld,
+		PAYSERNUM,
+		tran_time,
+		CNFFLG,
+		ExchangeGroupNO,
+		PLUGroupNO,
+		DefTime
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="salepredatailid != null"> AND Sale_Predatail_ID like '%${salepredatailid}%' </if>
+       	<if test="saleid != null"> AND Sale_ID like '%${saleid}%' </if>
+       	<if test="condgroupno != null"> AND CondGroupNO like '%${condgroupno}%' </if>
+       	<if test="item != null"> AND Item like '%${item}%' </if>
+       	<if test="type != null"> AND Type like '%${type}%' </if>
+       	<if test="qty != null"> AND QTY like '%${qty}%' </if>
+       	<if test="quota != null"> AND Quota like '%${quota}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="saleno != null"> AND SaleNO like '%${saleno}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="pmtno != null"> AND PMTNO like '%${pmtno}%' </if>
+       	<if test="code != null"> AND Code like '%${code}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="paysernum != null"> AND PAYSERNUM like '%${paysernum}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="exchangegroupno != null"> AND ExchangeGroupNO like '%${exchangegroupno}%' </if>
+       	<if test="plugroupno != null"> AND PLUGroupNO like '%${plugroupno}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="salepredatailid != null"> AND Sale_Predatail_ID = #{salepredatailid}</if>
+       	<if test="saleid != null"> AND Sale_ID = #{saleid}</if>
+       	<if test="condgroupno != null"> AND CondGroupNO = #{condgroupno}</if>
+       	<if test="item != null"> AND Item = #{item}</if>
+       	<if test="type != null"> AND Type = #{type}</if>
+       	<if test="qty != null"> AND QTY = #{qty}</if>
+       	<if test="quota != null"> AND Quota = #{quota}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="saleno != null"> AND SaleNO = #{saleno}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="pmtno != null"> AND PMTNO = #{pmtno}</if>
+       	<if test="code != null"> AND Code = #{code}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="paysernum != null"> AND PAYSERNUM = #{paysernum}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="exchangegroupno != null"> AND ExchangeGroupNO = #{exchangegroupno}</if>
+       	<if test="plugroupno != null"> AND PLUGroupNO = #{plugroupno}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TdSalePredetail">
+		INSERT INTO td_Sale_Predetail
+		(<include refid="columns"/>)
+		VALUES(
+		#{salepredatailid,jdbcType=VARCHAR},
+		#{saleid,jdbcType=VARCHAR},
+		#{condgroupno,jdbcType=INTEGER},
+		#{item,jdbcType=INTEGER},
+		#{type,jdbcType=INTEGER},
+		#{qty,jdbcType=INTEGER},
+		#{quota,jdbcType=NUMERIC},
+		#{shop,jdbcType=VARCHAR},
+		#{saleno,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{pmtno,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{paysernum,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{exchangegroupno,jdbcType=VARCHAR},
+		#{plugroupno,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM td_Sale_Predetail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TdSalePredetail">
+		UPDATE td_Sale_Predetail SET
+               Sale_Predatail_ID=#{salepredatailid,jdbcType=VARCHAR},
+               Sale_ID=#{saleid,jdbcType=VARCHAR},
+               CondGroupNO=#{condgroupno,jdbcType=INTEGER},
+               Item=#{item,jdbcType=INTEGER},
+               Type=#{type,jdbcType=INTEGER},
+               QTY=#{qty,jdbcType=INTEGER},
+               Quota=#{quota,jdbcType=NUMERIC},
+               Shop=#{shop,jdbcType=VARCHAR},
+               SaleNO=#{saleno,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PMTNO=#{pmtno,jdbcType=VARCHAR},
+               Code=#{code,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               PAYSERNUM=#{paysernum,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               ExchangeGroupNO=#{exchangegroupno,jdbcType=VARCHAR},
+               PLUGroupNO=#{plugroupno,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TdSalePredetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Predetail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TdSalePredetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Predetail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TdSalePredetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Predetail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TdSalePredetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Predetail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TdSalePredetail">
+		SELECT <include refid="columns"/>
+		FROM td_Sale_Predetail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

@@ -1,0 +1,55 @@
+<Request>
+    <RequestContent>
+        <Parameter>
+            <Record>
+            </Record>
+        </Parameter>
+        <Document>
+        <RecordSet id="1">
+        <Master name= "rtif_t">--赠送
+        <Record>
+            <Field name="Type" value="单据类型"/>
+            <Field name="ooef001" value="门店编号"/>
+            <Field name="rtiadocno" value="单号"/>
+            <Detail name="mmaq_t">
+                         
+                <Record>
+                    <Field name="mmaq006" value="卡状态"/>  
+                              
+                    <Field name="mmaq001" value=" 卡号"/>
+                     
+                    <Field name="mmaq002" value=" 卡种编号"/>
+                              
+                    <Field name="mmaq001_1" value=" 开始卡号"/>
+                    <Field name="mmaq001_2" value="结束卡号"/>
+                               
+                    <Field name="mmaq004" value="密码"/>
+                               
+                    <Field name="mmaqua001 " value="校验码"/>
+                    <Field name="mmau009" value="储值金额"/>
+                    <Field name="mmau009_1" value="实际储值金额"/>
+                    <Field name="mmau013" value="送抵现值"/>
+                    <Field name="mmau014" value="储值成本"/>
+                    <Field name="mmaq100" value="GUID"/>
+                    T100追加栏位
+                      
+                </Record>
+                       
+            </Detail>
+            <Detail name=“gcao_q”>
+                      
+            <Record>
+                           
+                <Field name="gcao005" value="流转状态"/>
+                <Field name= gcao002 value="券种编号"/>
+                <Field name= gcbi005 value="数量"/>
+                <Field name="gcao100" value="GUID"/>
+                T100追加栏位
+                         
+            </Record>
+                  
+        </Detail>
+        <Record>
+        <Master/>
+    </RequestContent>
+</Request>

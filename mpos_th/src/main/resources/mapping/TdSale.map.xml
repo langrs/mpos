@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TdSale">
+	<resultMap id="TdSale" type="com.site.entity.TdSale">
+		<result property= "saleid" column="Sale_ID" jdbcType="VARCHAR" />
+		<result property= "pctrolleybillid" column="PC_TrolleyBill_ID" jdbcType="VARCHAR" />
+		<result property= "squadno" column="SquadNO" jdbcType="INTEGER" />
+		<result property= "malltype" column="MallType" jdbcType="INTEGER" />
+		<result property= "type" column="Type" jdbcType="INTEGER" />
+		<result property= "otype" column="OType" jdbcType="INTEGER" />
+		<result property= "pointqty" column="POINT_QTY" jdbcType="NUMERIC" />
+		<result property= "totqty" column="TOT_QTY" jdbcType="NUMERIC" />
+		<result property= "totamt" column="TOT_AMT" jdbcType="NUMERIC" />
+		<result property= "totuamt" column="TOT_UAMT" jdbcType="NUMERIC" />
+		<result property= "payamt" column="PAY_AMT" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "shop" column="Shop" jdbcType="VARCHAR" />
+		<result property= "saleno" column="SaleNO" jdbcType="VARCHAR" />
+		<result property= "vernum" column="VER_NUM" jdbcType="VARCHAR" />
+		<result property= "machine" column="Machine" jdbcType="VARCHAR" />
+		<result property= "etlno" column="ETL_NO" jdbcType="VARCHAR" />
+		<result property= "processtime" column="PROCESS_TIME" jdbcType="VARCHAR" />
+		<result property= "processstatus" column="PROCESS_STATUS" jdbcType="VARCHAR" />
+		<result property= "isoffdata" column="IsOffData" jdbcType="VARCHAR" />
+		<result property= "giftctfno" column="GIFTCTFNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "wspoint" column="WSPoint" jdbcType="VARCHAR" />
+		<result property= "pcistrolleybill" column="PC_ISTrolleyBill" jdbcType="VARCHAR" />
+		<result property= "returndate" column="ReturnDate" jdbcType="VARCHAR" />
+		<result property= "memo" column="MEMO" jdbcType="VARCHAR" />
+		<result property= "ecsflg" column="ECSFLG" jdbcType="VARCHAR" />
+		<result property= "ecsdate" column="ECSDATE" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "giftctf" column="GIFTCTF" jdbcType="VARCHAR" />
+		<result property= "bsno" column="BSNO" jdbcType="VARCHAR" />
+		<result property= "conttel" column="ContTel" jdbcType="VARCHAR" />
+		<result property= "getmode" column="GetMode" jdbcType="VARCHAR" />
+		<result property= "getshop" column="GetShop" jdbcType="VARCHAR" />
+		<result property= "gdate" column="GDate" jdbcType="VARCHAR" />
+		<result property= "gtime" column="GTime" jdbcType="VARCHAR" />
+		<result property= "shipadd" column="ShipAdd" jdbcType="VARCHAR" />
+		<result property= "stime" column="STime" jdbcType="VARCHAR" />
+		<result property= "ispractice" column="IsPractice" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "isbuffer" column="IsBuffer" jdbcType="VARCHAR" />
+		<result property= "ordershop" column="OrderShop" jdbcType="VARCHAR" />
+		<result property= "contman" column="ContMan" jdbcType="VARCHAR" />
+		<result property= "legalper" column="LegalPer" jdbcType="VARCHAR" />
+		<result property= "bdate" column="BDate" jdbcType="VARCHAR" />
+		<result property= "opno" column="OPNO" jdbcType="VARCHAR" />
+		<result property= "cardno" column="CardNO" jdbcType="VARCHAR" />
+		<result property= "ofno" column="OFNO" jdbcType="VARCHAR" />
+		<result property= "sdate" column="SDate" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Sale_ID,
+		PC_TrolleyBill_ID,
+		SquadNO,
+		MallType,
+		Type,
+		OType,
+		POINT_QTY,
+		TOT_QTY,
+		TOT_AMT,
+		TOT_UAMT,
+		PAY_AMT,
+		CompanyNo,
+		OrganizationNO,
+		Shop,
+		SaleNO,
+		VER_NUM,
+		Machine,
+		ETL_NO,
+		PROCESS_TIME,
+		PROCESS_STATUS,
+		IsOffData,
+		GIFTCTFNO,
+		tran_time,
+		ReservedFileld,
+		WSPoint,
+		PC_ISTrolleyBill,
+		ReturnDate,
+		MEMO,
+		ECSFLG,
+		ECSDATE,
+		DefTime,
+		GIFTCTF,
+		BSNO,
+		ContTel,
+		GetMode,
+		GetShop,
+		GDate,
+		GTime,
+		ShipAdd,
+		STime,
+		IsPractice,
+		CNFFLG,
+		IsBuffer,
+		OrderShop,
+		ContMan,
+		LegalPer,
+		BDate,
+		OPNO,
+		CardNO,
+		OFNO,
+		SDate
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="saleid != null"> AND Sale_ID like '%${saleid}%' </if>
+       	<if test="pctrolleybillid != null"> AND PC_TrolleyBill_ID like '%${pctrolleybillid}%' </if>
+       	<if test="squadno != null"> AND SquadNO like '%${squadno}%' </if>
+       	<if test="malltype != null"> AND MallType like '%${malltype}%' </if>
+       	<if test="type != null"> AND Type like '%${type}%' </if>
+       	<if test="otype != null"> AND OType like '%${otype}%' </if>
+       	<if test="pointqty != null"> AND POINT_QTY like '%${pointqty}%' </if>
+       	<if test="totqty != null"> AND TOT_QTY like '%${totqty}%' </if>
+       	<if test="totamt != null"> AND TOT_AMT like '%${totamt}%' </if>
+       	<if test="totuamt != null"> AND TOT_UAMT like '%${totuamt}%' </if>
+       	<if test="payamt != null"> AND PAY_AMT like '%${payamt}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="shop != null"> AND Shop like '%${shop}%' </if>
+       	<if test="saleno != null"> AND SaleNO like '%${saleno}%' </if>
+       	<if test="vernum != null"> AND VER_NUM like '%${vernum}%' </if>
+       	<if test="machine != null"> AND Machine like '%${machine}%' </if>
+       	<if test="etlno != null"> AND ETL_NO like '%${etlno}%' </if>
+       	<if test="processtime != null"> AND PROCESS_TIME like '%${processtime}%' </if>
+       	<if test="processstatus != null"> AND PROCESS_STATUS like '%${processstatus}%' </if>
+       	<if test="isoffdata != null"> AND IsOffData like '%${isoffdata}%' </if>
+       	<if test="giftctfno != null"> AND GIFTCTFNO like '%${giftctfno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="wspoint != null"> AND WSPoint like '%${wspoint}%' </if>
+       	<if test="pcistrolleybill != null"> AND PC_ISTrolleyBill like '%${pcistrolleybill}%' </if>
+       	<if test="returndate != null"> AND ReturnDate like '%${returndate}%' </if>
+       	<if test="memo != null"> AND MEMO like '%${memo}%' </if>
+       	<if test="ecsflg != null"> AND ECSFLG like '%${ecsflg}%' </if>
+       	<if test="ecsdate != null"> AND ECSDATE like '%${ecsdate}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="giftctf != null"> AND GIFTCTF like '%${giftctf}%' </if>
+       	<if test="bsno != null"> AND BSNO like '%${bsno}%' </if>
+       	<if test="conttel != null"> AND ContTel like '%${conttel}%' </if>
+       	<if test="getmode != null"> AND GetMode like '%${getmode}%' </if>
+       	<if test="getshop != null"> AND GetShop like '%${getshop}%' </if>
+       	<if test="gdate != null"> AND GDate like '%${gdate}%' </if>
+       	<if test="gtime != null"> AND GTime like '%${gtime}%' </if>
+       	<if test="shipadd != null"> AND ShipAdd like '%${shipadd}%' </if>
+       	<if test="stime != null"> AND STime like '%${stime}%' </if>
+       	<if test="ispractice != null"> AND IsPractice like '%${ispractice}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="isbuffer != null"> AND IsBuffer like '%${isbuffer}%' </if>
+       	<if test="ordershop != null"> AND OrderShop like '%${ordershop}%' </if>
+       	<if test="contman != null"> AND ContMan like '%${contman}%' </if>
+       	<if test="legalper != null"> AND LegalPer like '%${legalper}%' </if>
+       	<if test="bdate != null"> AND BDate like '%${bdate}%' </if>
+       	<if test="opno != null"> AND OPNO like '%${opno}%' </if>
+       	<if test="cardno != null"> AND CardNO like '%${cardno}%' </if>
+       	<if test="ofno != null"> AND OFNO like '%${ofno}%' </if>
+       	<if test="sdate != null"> AND SDate like '%${sdate}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="saleid != null"> AND Sale_ID = #{saleid}</if>
+       	<if test="pctrolleybillid != null"> AND PC_TrolleyBill_ID = #{pctrolleybillid}</if>
+       	<if test="squadno != null"> AND SquadNO = #{squadno}</if>
+       	<if test="malltype != null"> AND MallType = #{malltype}</if>
+       	<if test="type != null"> AND Type = #{type}</if>
+       	<if test="otype != null"> AND OType = #{otype}</if>
+       	<if test="pointqty != null"> AND POINT_QTY = #{pointqty}</if>
+       	<if test="totqty != null"> AND TOT_QTY = #{totqty}</if>
+       	<if test="totamt != null"> AND TOT_AMT = #{totamt}</if>
+       	<if test="totuamt != null"> AND TOT_UAMT = #{totuamt}</if>
+       	<if test="payamt != null"> AND PAY_AMT = #{payamt}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="shop != null"> AND Shop = #{shop}</if>
+       	<if test="saleno != null"> AND SaleNO = #{saleno}</if>
+       	<if test="vernum != null"> AND VER_NUM = #{vernum}</if>
+       	<if test="machine != null"> AND Machine = #{machine}</if>
+       	<if test="etlno != null"> AND ETL_NO = #{etlno}</if>
+       	<if test="processtime != null"> AND PROCESS_TIME = #{processtime}</if>
+       	<if test="processstatus != null"> AND PROCESS_STATUS = #{processstatus}</if>
+       	<if test="isoffdata != null"> AND IsOffData = #{isoffdata}</if>
+       	<if test="giftctfno != null"> AND GIFTCTFNO = #{giftctfno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="wspoint != null"> AND WSPoint = #{wspoint}</if>
+       	<if test="pcistrolleybill != null"> AND PC_ISTrolleyBill = #{pcistrolleybill}</if>
+       	<if test="returndate != null"> AND ReturnDate = #{returndate}</if>
+       	<if test="memo != null"> AND MEMO = #{memo}</if>
+       	<if test="ecsflg != null"> AND ECSFLG = #{ecsflg}</if>
+       	<if test="ecsdate != null"> AND ECSDATE = #{ecsdate}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="giftctf != null"> AND GIFTCTF = #{giftctf}</if>
+       	<if test="bsno != null"> AND BSNO = #{bsno}</if>
+       	<if test="conttel != null"> AND ContTel = #{conttel}</if>
+       	<if test="getmode != null"> AND GetMode = #{getmode}</if>
+       	<if test="getshop != null"> AND GetShop = #{getshop}</if>
+       	<if test="gdate != null"> AND GDate = #{gdate}</if>
+       	<if test="gtime != null"> AND GTime = #{gtime}</if>
+       	<if test="shipadd != null"> AND ShipAdd = #{shipadd}</if>
+       	<if test="stime != null"> AND STime = #{stime}</if>
+       	<if test="ispractice != null"> AND IsPractice = #{ispractice}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="isbuffer != null"> AND IsBuffer = #{isbuffer}</if>
+       	<if test="ordershop != null"> AND OrderShop = #{ordershop}</if>
+       	<if test="contman != null"> AND ContMan = #{contman}</if>
+       	<if test="legalper != null"> AND LegalPer = #{legalper}</if>
+       	<if test="bdate != null"> AND BDate = #{bdate}</if>
+       	<if test="opno != null"> AND OPNO = #{opno}</if>
+       	<if test="cardno != null"> AND CardNO = #{cardno}</if>
+       	<if test="ofno != null"> AND OFNO = #{ofno}</if>
+       	<if test="sdate != null"> AND SDate = #{sdate}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TdSale">
+		INSERT INTO td_Sale
+		(<include refid="columns"/>)
+		VALUES(
+		#{saleid,jdbcType=VARCHAR},
+		#{pctrolleybillid,jdbcType=VARCHAR},
+		#{squadno,jdbcType=INTEGER},
+		#{malltype,jdbcType=INTEGER},
+		#{type,jdbcType=INTEGER},
+		#{otype,jdbcType=INTEGER},
+		#{pointqty,jdbcType=NUMERIC},
+		#{totqty,jdbcType=NUMERIC},
+		#{totamt,jdbcType=NUMERIC},
+		#{totuamt,jdbcType=NUMERIC},
+		#{payamt,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{shop,jdbcType=VARCHAR},
+		#{saleno,jdbcType=VARCHAR},
+		#{vernum,jdbcType=VARCHAR},
+		#{machine,jdbcType=VARCHAR},
+		#{etlno,jdbcType=VARCHAR},
+		#{processtime,jdbcType=VARCHAR},
+		#{processstatus,jdbcType=VARCHAR},
+		#{isoffdata,jdbcType=VARCHAR},
+		#{giftctfno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{wspoint,jdbcType=VARCHAR},
+		#{pcistrolleybill,jdbcType=VARCHAR},
+		#{returndate,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR},
+		#{ecsflg,jdbcType=VARCHAR},
+		#{ecsdate,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{giftctf,jdbcType=VARCHAR},
+		#{bsno,jdbcType=VARCHAR},
+		#{conttel,jdbcType=VARCHAR},
+		#{getmode,jdbcType=VARCHAR},
+		#{getshop,jdbcType=VARCHAR},
+		#{gdate,jdbcType=VARCHAR},
+		#{gtime,jdbcType=VARCHAR},
+		#{shipadd,jdbcType=VARCHAR},
+		#{stime,jdbcType=VARCHAR},
+		#{ispractice,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{isbuffer,jdbcType=VARCHAR},
+		#{ordershop,jdbcType=VARCHAR},
+		#{contman,jdbcType=VARCHAR},
+		#{legalper,jdbcType=VARCHAR},
+		#{bdate,jdbcType=VARCHAR},
+		#{opno,jdbcType=VARCHAR},
+		#{cardno,jdbcType=VARCHAR},
+		#{ofno,jdbcType=VARCHAR},
+		#{sdate,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM td_Sale 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TdSale">
+		UPDATE td_Sale SET
+               Sale_ID=#{saleid,jdbcType=VARCHAR},
+               PC_TrolleyBill_ID=#{pctrolleybillid,jdbcType=VARCHAR},
+               SquadNO=#{squadno,jdbcType=INTEGER},
+               MallType=#{malltype,jdbcType=INTEGER},
+               Type=#{type,jdbcType=INTEGER},
+               OType=#{otype,jdbcType=INTEGER},
+               POINT_QTY=#{pointqty,jdbcType=NUMERIC},
+               TOT_QTY=#{totqty,jdbcType=NUMERIC},
+               TOT_AMT=#{totamt,jdbcType=NUMERIC},
+               TOT_UAMT=#{totuamt,jdbcType=NUMERIC},
+               PAY_AMT=#{payamt,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               Shop=#{shop,jdbcType=VARCHAR},
+               SaleNO=#{saleno,jdbcType=VARCHAR},
+               VER_NUM=#{vernum,jdbcType=VARCHAR},
+               Machine=#{machine,jdbcType=VARCHAR},
+               ETL_NO=#{etlno,jdbcType=VARCHAR},
+               PROCESS_TIME=#{processtime,jdbcType=VARCHAR},
+               PROCESS_STATUS=#{processstatus,jdbcType=VARCHAR},
+               IsOffData=#{isoffdata,jdbcType=VARCHAR},
+               GIFTCTFNO=#{giftctfno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               WSPoint=#{wspoint,jdbcType=VARCHAR},
+               PC_ISTrolleyBill=#{pcistrolleybill,jdbcType=VARCHAR},
+               ReturnDate=#{returndate,jdbcType=VARCHAR},
+               MEMO=#{memo,jdbcType=VARCHAR},
+               ECSFLG=#{ecsflg,jdbcType=VARCHAR},
+               ECSDATE=#{ecsdate,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               GIFTCTF=#{giftctf,jdbcType=VARCHAR},
+               BSNO=#{bsno,jdbcType=VARCHAR},
+               ContTel=#{conttel,jdbcType=VARCHAR},
+               GetMode=#{getmode,jdbcType=VARCHAR},
+               GetShop=#{getshop,jdbcType=VARCHAR},
+               GDate=#{gdate,jdbcType=VARCHAR},
+               GTime=#{gtime,jdbcType=VARCHAR},
+               ShipAdd=#{shipadd,jdbcType=VARCHAR},
+               STime=#{stime,jdbcType=VARCHAR},
+               IsPractice=#{ispractice,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               IsBuffer=#{isbuffer,jdbcType=VARCHAR},
+               OrderShop=#{ordershop,jdbcType=VARCHAR},
+               ContMan=#{contman,jdbcType=VARCHAR},
+               LegalPer=#{legalper,jdbcType=VARCHAR},
+               BDate=#{bdate,jdbcType=VARCHAR},
+               OPNO=#{opno,jdbcType=VARCHAR},
+               CardNO=#{cardno,jdbcType=VARCHAR},
+               OFNO=#{ofno,jdbcType=VARCHAR},
+               SDate=#{sdate,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TdSale">
+		SELECT <include refid="columns"/>
+		FROM td_Sale
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TdSale">
+		SELECT <include refid="columns"/>
+		FROM td_Sale   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TdSale">
+		SELECT <include refid="columns"/>
+		FROM td_Sale   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TdSale">
+		SELECT <include refid="columns"/>
+		FROM td_Sale   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TdSale">
+		SELECT <include refid="columns"/>
+		FROM td_Sale   
+		<include refid="oneWhere" />
+	</select>
+	<!-- 通过日期区间来查询销售单-->
+	<select id="saleQuery" resultMap="TdSale">
+		SELECT <include refid="columns" />
+		FROM td_Sale
+		WHERE Shop =#{shop} and Machine =#{machine} and SDate &gt;= #{startdate} and SDate &lt;=#{enddate}
+	</select>
+</mapper>	

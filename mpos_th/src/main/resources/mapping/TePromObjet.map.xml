@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TePromObjet">
+	<resultMap id="TePromObjet" type="com.site.entity.TePromObjet">
+		<result property= "lmecount" column="LMECount" jdbcType="INTEGER" />
+		<result property= "promwayamt" column="PromWayAMT" jdbcType="NUMERIC" />
+		<result property= "timesstd" column="TimesStd" jdbcType="NUMERIC" />
+		<result property= "timesdou" column="TimesDou" jdbcType="NUMERIC" />
+		<result property= "discnum" column="DiscNum" jdbcType="NUMERIC" />
+		<result property= "stdscore" column="STDScore" jdbcType="NUMERIC" />
+		<result property= "unitscore" column="UnitScore" jdbcType="NUMERIC" />
+		<result property= "presscore" column="PresScore" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "groupno" column="GroupNO" jdbcType="VARCHAR" />
+		<result property= "objecttype" column="ObjectType" jdbcType="VARCHAR" />
+		<result property= "condgroupno" column="CondGroupNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "isbonus" column="ISBonus" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		LMECount,
+		PromWayAMT,
+		TimesStd,
+		TimesDou,
+		DiscNum,
+		STDScore,
+		UnitScore,
+		PresScore,
+		CompanyNo,
+		OrganizationNO,
+		PromNO,
+		GroupNO,
+		ObjectType,
+		CondGroupNO,
+		tran_time,
+		CNFFLG,
+		ISBonus,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="lmecount != null"> AND LMECount like '%${lmecount}%' </if>
+       	<if test="promwayamt != null"> AND PromWayAMT like '%${promwayamt}%' </if>
+       	<if test="timesstd != null"> AND TimesStd like '%${timesstd}%' </if>
+       	<if test="timesdou != null"> AND TimesDou like '%${timesdou}%' </if>
+       	<if test="discnum != null"> AND DiscNum like '%${discnum}%' </if>
+       	<if test="stdscore != null"> AND STDScore like '%${stdscore}%' </if>
+       	<if test="unitscore != null"> AND UnitScore like '%${unitscore}%' </if>
+       	<if test="presscore != null"> AND PresScore like '%${presscore}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="promno != null"> AND PromNO like '%${promno}%' </if>
+       	<if test="groupno != null"> AND GroupNO like '%${groupno}%' </if>
+       	<if test="objecttype != null"> AND ObjectType like '%${objecttype}%' </if>
+       	<if test="condgroupno != null"> AND CondGroupNO like '%${condgroupno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="isbonus != null"> AND ISBonus like '%${isbonus}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="lmecount != null"> AND LMECount = #{lmecount}</if>
+       	<if test="promwayamt != null"> AND PromWayAMT = #{promwayamt}</if>
+       	<if test="timesstd != null"> AND TimesStd = #{timesstd}</if>
+       	<if test="timesdou != null"> AND TimesDou = #{timesdou}</if>
+       	<if test="discnum != null"> AND DiscNum = #{discnum}</if>
+       	<if test="stdscore != null"> AND STDScore = #{stdscore}</if>
+       	<if test="unitscore != null"> AND UnitScore = #{unitscore}</if>
+       	<if test="presscore != null"> AND PresScore = #{presscore}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="promno != null"> AND PromNO = #{promno}</if>
+       	<if test="groupno != null"> AND GroupNO = #{groupno}</if>
+       	<if test="objecttype != null"> AND ObjectType = #{objecttype}</if>
+       	<if test="condgroupno != null"> AND CondGroupNO = #{condgroupno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="isbonus != null"> AND ISBonus = #{isbonus}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TePromObjet">
+		INSERT INTO te_PromObjet
+		(<include refid="columns"/>)
+		VALUES(
+		#{lmecount,jdbcType=INTEGER},
+		#{promwayamt,jdbcType=NUMERIC},
+		#{timesstd,jdbcType=NUMERIC},
+		#{timesdou,jdbcType=NUMERIC},
+		#{discnum,jdbcType=NUMERIC},
+		#{stdscore,jdbcType=NUMERIC},
+		#{unitscore,jdbcType=NUMERIC},
+		#{presscore,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{promno,jdbcType=VARCHAR},
+		#{groupno,jdbcType=VARCHAR},
+		#{objecttype,jdbcType=VARCHAR},
+		#{condgroupno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{isbonus,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM te_PromObjet 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TePromObjet">
+		UPDATE te_PromObjet SET
+               LMECount=#{lmecount,jdbcType=INTEGER},
+               PromWayAMT=#{promwayamt,jdbcType=NUMERIC},
+               TimesStd=#{timesstd,jdbcType=NUMERIC},
+               TimesDou=#{timesdou,jdbcType=NUMERIC},
+               DiscNum=#{discnum,jdbcType=NUMERIC},
+               STDScore=#{stdscore,jdbcType=NUMERIC},
+               UnitScore=#{unitscore,jdbcType=NUMERIC},
+               PresScore=#{presscore,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PromNO=#{promno,jdbcType=VARCHAR},
+               GroupNO=#{groupno,jdbcType=VARCHAR},
+               ObjectType=#{objecttype,jdbcType=VARCHAR},
+               CondGroupNO=#{condgroupno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               ISBonus=#{isbonus,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TePromObjet">
+		SELECT <include refid="columns"/>
+		FROM te_PromObjet
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TePromObjet">
+		SELECT <include refid="columns"/>
+		FROM te_PromObjet   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TePromObjet">
+		SELECT <include refid="columns"/>
+		FROM te_PromObjet   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TePromObjet">
+		SELECT <include refid="columns"/>
+		FROM te_PromObjet   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TePromObjet">
+		SELECT <include refid="columns"/>
+		FROM te_PromObjet   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

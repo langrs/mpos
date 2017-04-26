@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <code>019</code>
+    <message>平台回覆同步結果</message>
+    <reqid>feb71164-8394-490c-9434-72742b83eea7</reqid>
+    <srvver>1.0</srvver>
+    <srvcode>000</srvcode>
+    <payload>
+        <param key="data" type="XML">
+            <Response>
+                <Execution>
+                    <Status code="0" sqlcode="0" description=""/>
+                </Execution>
+                <ResponseContent>
+                    <Parameter/>
+                    <Document>
+                        <RecordSet id="1">
+                            <Master name="mmaq_t" node_id="1">
+                                <Record>
+                                    <Field name="mmaq001" value="120000080354"/>
+                                    <Field name="mmaq002" value="09"/>
+                                    <Field name="mmaq005" value="20200429"/>
+                                    <Field name="mmaq003" value="K00000642636"/>
+                                    <Field name="mmaf008" value="褚长津"/>
+                                    <Field name="mmaf014" value="13713157541"/>
+                                    <Field name="mmaq018" value="0.0"/>
+                                    <Field name="mmaq009" value="0.0"/>
+                                    <Field name="mman038" value="Y"/>
+                                    <Field name="mman039" value="10.0"/>
+                                    <Field name="mman042" value="Y"/>
+                                    <Field name="mman043" value="Y"/>
+                                    <Field name="mmau010" value=""/>
+                                    <Field name="mmau011" value=""/>
+                                    <Field name="mmau012" value=""/>
+                                    <Field name="mmau013" value=""/>
+                                    <Field name="mmau014" value=""/>
+                                    <Field name="mmau009_1" value=""/>
+                                    <Field name="prom" value=""/>
+                                    <Field name="mmau016" value=""/>
+                                    <Field name="mmar009" value=""/>
+                                    <Field name="mmar008" value=""/>
+                                    <Field name="mmby001" value=""/>
+                                    <Field name="mmby002" value=""/>
+                                </Record>
+                            </Master>
+                        </RecordSet>
+                    </Document>
+                </ResponseContent>
+            </Response>
+        </param>
+    </payload>
+</response>

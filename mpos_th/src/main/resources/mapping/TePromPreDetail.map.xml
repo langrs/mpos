@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TePromPreDetail">
+	<resultMap id="TePromPreDetail" type="com.site.entity.TePromPreDetail">
+		<result property= "quota" column="Quota" jdbcType="NUMERIC" />
+		<result property= "lbprice" column="LBPrice" jdbcType="NUMERIC" />
+		<result property= "leprice" column="LEPrice" jdbcType="NUMERIC" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "promno" column="PromNO" jdbcType="VARCHAR" />
+		<result property= "exchangegroupno" column="ExchangeGroupNO" jdbcType="VARCHAR" />
+		<result property= "plugroupno" column="PLUGroupNO" jdbcType="VARCHAR" />
+		<result property= "type" column="Type" jdbcType="VARCHAR" />
+		<result property= "rechargetype" column="ReChargeType" jdbcType="VARCHAR" />
+		<result property= "code" column="Code" jdbcType="VARCHAR" />
+		<result property= "unit" column="Unit" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		Quota,
+		LBPrice,
+		LEPrice,
+		CompanyNo,
+		OrganizationNO,
+		PromNO,
+		ExchangeGroupNO,
+		PLUGroupNO,
+		Type,
+		ReChargeType,
+		Code,
+		Unit,
+		CNFFLG,
+		tran_time,
+		DefTime,
+		ReservedFileld
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="quota != null"> AND Quota like '%${quota}%' </if>
+       	<if test="lbprice != null"> AND LBPrice like '%${lbprice}%' </if>
+       	<if test="leprice != null"> AND LEPrice like '%${leprice}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="promno != null"> AND PromNO like '%${promno}%' </if>
+       	<if test="exchangegroupno != null"> AND ExchangeGroupNO like '%${exchangegroupno}%' </if>
+       	<if test="plugroupno != null"> AND PLUGroupNO like '%${plugroupno}%' </if>
+       	<if test="type != null"> AND Type like '%${type}%' </if>
+       	<if test="rechargetype != null"> AND ReChargeType like '%${rechargetype}%' </if>
+       	<if test="code != null"> AND Code like '%${code}%' </if>
+       	<if test="unit != null"> AND Unit like '%${unit}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="quota != null"> AND Quota = #{quota}</if>
+       	<if test="lbprice != null"> AND LBPrice = #{lbprice}</if>
+       	<if test="leprice != null"> AND LEPrice = #{leprice}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="promno != null"> AND PromNO = #{promno}</if>
+       	<if test="exchangegroupno != null"> AND ExchangeGroupNO = #{exchangegroupno}</if>
+       	<if test="plugroupno != null"> AND PLUGroupNO = #{plugroupno}</if>
+       	<if test="type != null"> AND Type = #{type}</if>
+       	<if test="rechargetype != null"> AND ReChargeType = #{rechargetype}</if>
+       	<if test="code != null"> AND Code = #{code}</if>
+       	<if test="unit != null"> AND Unit = #{unit}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TePromPreDetail">
+		INSERT INTO te_PromPre_Detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{quota,jdbcType=NUMERIC},
+		#{lbprice,jdbcType=NUMERIC},
+		#{leprice,jdbcType=NUMERIC},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{promno,jdbcType=VARCHAR},
+		#{exchangegroupno,jdbcType=VARCHAR},
+		#{plugroupno,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{rechargetype,jdbcType=VARCHAR},
+		#{code,jdbcType=VARCHAR},
+		#{unit,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM te_PromPre_Detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TePromPreDetail">
+		UPDATE te_PromPre_Detail SET
+               Quota=#{quota,jdbcType=NUMERIC},
+               LBPrice=#{lbprice,jdbcType=NUMERIC},
+               LEPrice=#{leprice,jdbcType=NUMERIC},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               PromNO=#{promno,jdbcType=VARCHAR},
+               ExchangeGroupNO=#{exchangegroupno,jdbcType=VARCHAR},
+               PLUGroupNO=#{plugroupno,jdbcType=VARCHAR},
+               Type=#{type,jdbcType=VARCHAR},
+               ReChargeType=#{rechargetype,jdbcType=VARCHAR},
+               Code=#{code,jdbcType=VARCHAR},
+               Unit=#{unit,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TePromPreDetail">
+		SELECT <include refid="columns"/>
+		FROM te_PromPre_Detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TePromPreDetail">
+		SELECT <include refid="columns"/>
+		FROM te_PromPre_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TePromPreDetail">
+		SELECT <include refid="columns"/>
+		FROM te_PromPre_Detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TePromPreDetail">
+		SELECT <include refid="columns"/>
+		FROM te_PromPre_Detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TePromPreDetail">
+		SELECT <include refid="columns"/>
+		FROM te_PromPre_Detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

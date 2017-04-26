@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TbGoods">
+	<resultMap id="TbGoods" type="com.site.entity.TbGoods">
+		<result property= "pluno" column="PLUNO" jdbcType="VARCHAR" />
+		<result property= "pluname" column="PLUName" jdbcType="VARCHAR" />
+		<result property= "spec" column="SPEC" jdbcType="VARCHAR" />
+		<result property= "fsal" column="FSAL" jdbcType="VARCHAR" />
+		<result property= "fsba" column="FSBA" jdbcType="VARCHAR" />
+		<result property= "fsod" column="FSOD" jdbcType="VARCHAR" />
+		<result property= "deftime" column="DefTime" jdbcType="VARCHAR" />
+		<result property= "reservedfileld" column="ReservedFileld" jdbcType="VARCHAR" />
+		<result property= "tiisbag" column="Ti_IsBag" jdbcType="VARCHAR" />
+		<result property= "helpno" column="HelpNO" jdbcType="VARCHAR" />
+		<result property= "rareaclass" column="RareaClass" jdbcType="VARCHAR" />
+		<result property= "rareatype" column="RareaType" jdbcType="VARCHAR" />
+		<result property= "taxcode" column="TaxCode" jdbcType="VARCHAR" />
+		<result property= "companyno" column="CompanyNo" jdbcType="VARCHAR" />
+		<result property= "organizationno" column="OrganizationNO" jdbcType="VARCHAR" />
+		<result property= "trantime" column="tran_time" jdbcType="VARCHAR" />
+		<result property= "rarea" column="Rarea" jdbcType="VARCHAR" />
+		<result property= "counterno" column="CounterNO" jdbcType="VARCHAR" />
+		<result property= "placeno" column="PlaceNo" jdbcType="VARCHAR" />
+		<result property= "pricezone" column="PriceZone" jdbcType="VARCHAR" />
+		<result property= "plutype" column="PluType" jdbcType="VARCHAR" />
+		<result property= "plufunc" column="PluFunc" jdbcType="VARCHAR" />
+		<result property= "fgroup8" column="FGroup8" jdbcType="VARCHAR" />
+		<result property= "fgroup9" column="FGroup9" jdbcType="VARCHAR" />
+		<result property= "fgroup10" column="FGroup10" jdbcType="VARCHAR" />
+		<result property= "cnfflg" column="CNFFLG" jdbcType="VARCHAR" />
+		<result property= "iscountergoods" column="ISCounterGoods" jdbcType="VARCHAR" />
+		<result property= "sunit" column="Sunit" jdbcType="VARCHAR" />
+		<result property= "fgroup2" column="FGroup2" jdbcType="VARCHAR" />
+		<result property= "fgroup3" column="FGroup3" jdbcType="VARCHAR" />
+		<result property= "fgroup4" column="FGroup4" jdbcType="VARCHAR" />
+		<result property= "fgroup5" column="FGroup5" jdbcType="VARCHAR" />
+		<result property= "fgroup6" column="FGroup6" jdbcType="VARCHAR" />
+		<result property= "fgroup7" column="FGroup7" jdbcType="VARCHAR" />
+		<result property= "isfeature" column="IsFeature" jdbcType="VARCHAR" />
+		<result property= "isopenwin" column="IsOpenWin" jdbcType="VARCHAR" />
+		<result property= "series" column="Series" jdbcType="VARCHAR" />
+		<result property= "sno" column="SNO" jdbcType="VARCHAR" />
+		<result property= "brand" column="Brand" jdbcType="VARCHAR" />
+		<result property= "fgroup1" column="FGroup1" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		PLUNO,
+		PLUName,
+		SPEC,
+		FSAL,
+		FSBA,
+		FSOD,
+		DefTime,
+		ReservedFileld,
+		Ti_IsBag,
+		HelpNO,
+		RareaClass,
+		RareaType,
+		TaxCode,
+		CompanyNo,
+		OrganizationNO,
+		tran_time,
+		Rarea,
+		CounterNO,
+		PlaceNo,
+		PriceZone,
+		PluType,
+		PluFunc,
+		FGroup8,
+		FGroup9,
+		FGroup10,
+		CNFFLG,
+		ISCounterGoods,
+		Sunit,
+		FGroup2,
+		FGroup3,
+		FGroup4,
+		FGroup5,
+		FGroup6,
+		FGroup7,
+		IsFeature,
+		IsOpenWin,
+		Series,
+		SNO,
+		Brand,
+		FGroup1
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="pluno != null"> AND PLUNO like '%${pluno}%' </if>
+       	<if test="pluname != null"> AND PLUName like '%${pluname}%' </if>
+       	<if test="spec != null"> AND SPEC like '%${spec}%' </if>
+       	<if test="fsal != null"> AND FSAL like '%${fsal}%' </if>
+       	<if test="fsba != null"> AND FSBA like '%${fsba}%' </if>
+       	<if test="fsod != null"> AND FSOD like '%${fsod}%' </if>
+       	<if test="deftime != null"> AND DefTime like '%${deftime}%' </if>
+       	<if test="reservedfileld != null"> AND ReservedFileld like '%${reservedfileld}%' </if>
+       	<if test="tiisbag != null"> AND Ti_IsBag like '%${tiisbag}%' </if>
+       	<if test="helpno != null"> AND HelpNO like '%${helpno}%' </if>
+       	<if test="rareaclass != null"> AND RareaClass like '%${rareaclass}%' </if>
+       	<if test="rareatype != null"> AND RareaType like '%${rareatype}%' </if>
+       	<if test="taxcode != null"> AND TaxCode like '%${taxcode}%' </if>
+       	<if test="companyno != null"> AND CompanyNo like '%${companyno}%' </if>
+       	<if test="organizationno != null"> AND OrganizationNO like '%${organizationno}%' </if>
+       	<if test="trantime != null"> AND tran_time like '%${trantime}%' </if>
+       	<if test="rarea != null"> AND Rarea like '%${rarea}%' </if>
+       	<if test="counterno != null"> AND CounterNO like '%${counterno}%' </if>
+       	<if test="placeno != null"> AND PlaceNo like '%${placeno}%' </if>
+       	<if test="pricezone != null"> AND PriceZone like '%${pricezone}%' </if>
+       	<if test="plutype != null"> AND PluType like '%${plutype}%' </if>
+       	<if test="plufunc != null"> AND PluFunc like '%${plufunc}%' </if>
+       	<if test="fgroup8 != null"> AND FGroup8 like '%${fgroup8}%' </if>
+       	<if test="fgroup9 != null"> AND FGroup9 like '%${fgroup9}%' </if>
+       	<if test="fgroup10 != null"> AND FGroup10 like '%${fgroup10}%' </if>
+       	<if test="cnfflg != null"> AND CNFFLG like '%${cnfflg}%' </if>
+       	<if test="iscountergoods != null"> AND ISCounterGoods like '%${iscountergoods}%' </if>
+       	<if test="sunit != null"> AND Sunit like '%${sunit}%' </if>
+       	<if test="fgroup2 != null"> AND FGroup2 like '%${fgroup2}%' </if>
+       	<if test="fgroup3 != null"> AND FGroup3 like '%${fgroup3}%' </if>
+       	<if test="fgroup4 != null"> AND FGroup4 like '%${fgroup4}%' </if>
+       	<if test="fgroup5 != null"> AND FGroup5 like '%${fgroup5}%' </if>
+       	<if test="fgroup6 != null"> AND FGroup6 like '%${fgroup6}%' </if>
+       	<if test="fgroup7 != null"> AND FGroup7 like '%${fgroup7}%' </if>
+       	<if test="isfeature != null"> AND IsFeature like '%${isfeature}%' </if>
+       	<if test="isopenwin != null"> AND IsOpenWin like '%${isopenwin}%' </if>
+       	<if test="series != null"> AND Series like '%${series}%' </if>
+       	<if test="sno != null"> AND SNO like '%${sno}%' </if>
+       	<if test="brand != null"> AND Brand like '%${brand}%' </if>
+       	<if test="fgroup1 != null"> AND FGroup1 like '%${fgroup1}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="pluno != null"> AND PLUNO = #{pluno}</if>
+       	<if test="pluname != null"> AND PLUName = #{pluname}</if>
+       	<if test="spec != null"> AND SPEC = #{spec}</if>
+       	<if test="fsal != null"> AND FSAL = #{fsal}</if>
+       	<if test="fsba != null"> AND FSBA = #{fsba}</if>
+       	<if test="fsod != null"> AND FSOD = #{fsod}</if>
+       	<if test="deftime != null"> AND DefTime = #{deftime}</if>
+       	<if test="reservedfileld != null"> AND ReservedFileld = #{reservedfileld}</if>
+       	<if test="tiisbag != null"> AND Ti_IsBag = #{tiisbag}</if>
+       	<if test="helpno != null"> AND HelpNO = #{helpno}</if>
+       	<if test="rareaclass != null"> AND RareaClass = #{rareaclass}</if>
+       	<if test="rareatype != null"> AND RareaType = #{rareatype}</if>
+       	<if test="taxcode != null"> AND TaxCode = #{taxcode}</if>
+       	<if test="companyno != null"> AND CompanyNo = #{companyno}</if>
+       	<if test="organizationno != null"> AND OrganizationNO = #{organizationno}</if>
+       	<if test="trantime != null"> AND tran_time = #{trantime}</if>
+       	<if test="rarea != null"> AND Rarea = #{rarea}</if>
+       	<if test="counterno != null"> AND CounterNO = #{counterno}</if>
+       	<if test="placeno != null"> AND PlaceNo = #{placeno}</if>
+       	<if test="pricezone != null"> AND PriceZone = #{pricezone}</if>
+       	<if test="plutype != null"> AND PluType = #{plutype}</if>
+       	<if test="plufunc != null"> AND PluFunc = #{plufunc}</if>
+       	<if test="fgroup8 != null"> AND FGroup8 = #{fgroup8}</if>
+       	<if test="fgroup9 != null"> AND FGroup9 = #{fgroup9}</if>
+       	<if test="fgroup10 != null"> AND FGroup10 = #{fgroup10}</if>
+       	<if test="cnfflg != null"> AND CNFFLG = #{cnfflg}</if>
+       	<if test="iscountergoods != null"> AND ISCounterGoods = #{iscountergoods}</if>
+       	<if test="sunit != null"> AND Sunit = #{sunit}</if>
+       	<if test="fgroup2 != null"> AND FGroup2 = #{fgroup2}</if>
+       	<if test="fgroup3 != null"> AND FGroup3 = #{fgroup3}</if>
+       	<if test="fgroup4 != null"> AND FGroup4 = #{fgroup4}</if>
+       	<if test="fgroup5 != null"> AND FGroup5 = #{fgroup5}</if>
+       	<if test="fgroup6 != null"> AND FGroup6 = #{fgroup6}</if>
+       	<if test="fgroup7 != null"> AND FGroup7 = #{fgroup7}</if>
+       	<if test="isfeature != null"> AND IsFeature = #{isfeature}</if>
+       	<if test="isopenwin != null"> AND IsOpenWin = #{isopenwin}</if>
+       	<if test="series != null"> AND Series = #{series}</if>
+       	<if test="sno != null"> AND SNO = #{sno}</if>
+       	<if test="brand != null"> AND Brand = #{brand}</if>
+       	<if test="fgroup1 != null"> AND FGroup1 = #{fgroup1}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TbGoods">
+		INSERT INTO tb_Goods
+		(<include refid="columns"/>)
+		VALUES(
+		#{pluno,jdbcType=VARCHAR},
+		#{pluname,jdbcType=VARCHAR},
+		#{spec,jdbcType=VARCHAR},
+		#{fsal,jdbcType=VARCHAR},
+		#{fsba,jdbcType=VARCHAR},
+		#{fsod,jdbcType=VARCHAR},
+		#{deftime,jdbcType=VARCHAR},
+		#{reservedfileld,jdbcType=VARCHAR},
+		#{tiisbag,jdbcType=VARCHAR},
+		#{helpno,jdbcType=VARCHAR},
+		#{rareaclass,jdbcType=VARCHAR},
+		#{rareatype,jdbcType=VARCHAR},
+		#{taxcode,jdbcType=VARCHAR},
+		#{companyno,jdbcType=VARCHAR},
+		#{organizationno,jdbcType=VARCHAR},
+		#{trantime,jdbcType=VARCHAR},
+		#{rarea,jdbcType=VARCHAR},
+		#{counterno,jdbcType=VARCHAR},
+		#{placeno,jdbcType=VARCHAR},
+		#{pricezone,jdbcType=VARCHAR},
+		#{plutype,jdbcType=VARCHAR},
+		#{plufunc,jdbcType=VARCHAR},
+		#{fgroup8,jdbcType=VARCHAR},
+		#{fgroup9,jdbcType=VARCHAR},
+		#{fgroup10,jdbcType=VARCHAR},
+		#{cnfflg,jdbcType=VARCHAR},
+		#{iscountergoods,jdbcType=VARCHAR},
+		#{sunit,jdbcType=VARCHAR},
+		#{fgroup2,jdbcType=VARCHAR},
+		#{fgroup3,jdbcType=VARCHAR},
+		#{fgroup4,jdbcType=VARCHAR},
+		#{fgroup5,jdbcType=VARCHAR},
+		#{fgroup6,jdbcType=VARCHAR},
+		#{fgroup7,jdbcType=VARCHAR},
+		#{isfeature,jdbcType=VARCHAR},
+		#{isopenwin,jdbcType=VARCHAR},
+		#{series,jdbcType=VARCHAR},
+		#{sno,jdbcType=VARCHAR},
+		#{brand,jdbcType=VARCHAR},
+		#{fgroup1,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM tb_Goods 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TbGoods">
+		UPDATE tb_Goods SET
+               PLUNO=#{pluno,jdbcType=VARCHAR},
+               PLUName=#{pluname,jdbcType=VARCHAR},
+               SPEC=#{spec,jdbcType=VARCHAR},
+               FSAL=#{fsal,jdbcType=VARCHAR},
+               FSBA=#{fsba,jdbcType=VARCHAR},
+               FSOD=#{fsod,jdbcType=VARCHAR},
+               DefTime=#{deftime,jdbcType=VARCHAR},
+               ReservedFileld=#{reservedfileld,jdbcType=VARCHAR},
+               Ti_IsBag=#{tiisbag,jdbcType=VARCHAR},
+               HelpNO=#{helpno,jdbcType=VARCHAR},
+               RareaClass=#{rareaclass,jdbcType=VARCHAR},
+               RareaType=#{rareatype,jdbcType=VARCHAR},
+               TaxCode=#{taxcode,jdbcType=VARCHAR},
+               CompanyNo=#{companyno,jdbcType=VARCHAR},
+               OrganizationNO=#{organizationno,jdbcType=VARCHAR},
+               tran_time=#{trantime,jdbcType=VARCHAR},
+               Rarea=#{rarea,jdbcType=VARCHAR},
+               CounterNO=#{counterno,jdbcType=VARCHAR},
+               PlaceNo=#{placeno,jdbcType=VARCHAR},
+               PriceZone=#{pricezone,jdbcType=VARCHAR},
+               PluType=#{plutype,jdbcType=VARCHAR},
+               PluFunc=#{plufunc,jdbcType=VARCHAR},
+               FGroup8=#{fgroup8,jdbcType=VARCHAR},
+               FGroup9=#{fgroup9,jdbcType=VARCHAR},
+               FGroup10=#{fgroup10,jdbcType=VARCHAR},
+               CNFFLG=#{cnfflg,jdbcType=VARCHAR},
+               ISCounterGoods=#{iscountergoods,jdbcType=VARCHAR},
+               Sunit=#{sunit,jdbcType=VARCHAR},
+               FGroup2=#{fgroup2,jdbcType=VARCHAR},
+               FGroup3=#{fgroup3,jdbcType=VARCHAR},
+               FGroup4=#{fgroup4,jdbcType=VARCHAR},
+               FGroup5=#{fgroup5,jdbcType=VARCHAR},
+               FGroup6=#{fgroup6,jdbcType=VARCHAR},
+               FGroup7=#{fgroup7,jdbcType=VARCHAR},
+               IsFeature=#{isfeature,jdbcType=VARCHAR},
+               IsOpenWin=#{isopenwin,jdbcType=VARCHAR},
+               Series=#{series,jdbcType=VARCHAR},
+               SNO=#{sno,jdbcType=VARCHAR},
+               Brand=#{brand,jdbcType=VARCHAR},
+               FGroup1=#{fgroup1,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TbGoods">
+		SELECT <include refid="columns"/>
+		FROM tb_Goods
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TbGoods">
+		SELECT <include refid="columns"/>
+		FROM tb_Goods   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TbGoods">
+		SELECT <include refid="columns"/>
+		FROM tb_Goods   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TbGoods">
+		SELECT <include refid="columns"/>
+		FROM tb_Goods   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TbGoods">
+		SELECT <include refid="columns"/>
+		FROM tb_Goods   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	
