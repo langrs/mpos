@@ -78,20 +78,20 @@ public class GiftProcess extends WsUtil {
                 f10.addAttribute("value", list.get(i).get("mmaqua001"));
                 //储值金额
                 Element f5 = Record2E.addElement("Field");
-                f5.addAttribute("name","mmau009");
-                f5.addAttribute("value",list.get(i).get("mmau009"));
+                f5.addAttribute("name", "mmau009");
+                f5.addAttribute("value", list.get(i).get("mmau009"));
                 //实际储值金额
                 Element f6 = Record2E.addElement("Field");
-                f6.addAttribute("name","mmau009_1");
-                f6.addAttribute("value",list.get(i).get("mmau009_1"));
+                f6.addAttribute("name", "mmau009_1");
+                f6.addAttribute("value", list.get(i).get("mmau009_1"));
                 //送抵现值
                 Element f7 = Record2E.addElement("Field");
-                f7.addAttribute("name","mmau013");
-                f7.addAttribute("value",list.get(i).get("mmau013"));
+                f7.addAttribute("name", "mmau013");
+                f7.addAttribute("value", list.get(i).get("mmau013"));
                 //储值成本
                 Element f8 = Record2E.addElement("Field");
-                f8.addAttribute("name","mmau014");
-                f8.addAttribute("value",list.get(i).get("mmau014"));
+                f8.addAttribute("name", "mmau014");
+                f8.addAttribute("value", list.get(i).get("mmau014"));
                 //UUDI
                 Element f9 = Record2E.addElement("Field");
                 f9.addAttribute("name", "mmaq100");
@@ -128,9 +128,28 @@ public class GiftProcess extends WsUtil {
     }
 
     public void extraResponseContent(JSONObject jsonObject, ResultMap resultMap) {
-        JSONArray json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
-                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONArray("Record");
-        List<GiftProcessCard> giftProcessCards = (List<GiftProcessCard>) JSONArray.toCollection(json, GiftProcessCard.class);
+        JSONObject json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
+                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONObject("Record");
+        //尝试看看是否为数组,因为可能返回的只是一个结果,比如赠送卡或者赠送券,那么用getJSONArray就只能抛出异常了
+        JSONArray jsonArray = json.optJSONArray("Detail");
+        if(jsonArray != null){
+//            List<DetailResult> detailResults = (List<DetailResult>) JSONArray.toCollection(jsonArray, DetailResult.class);
+
+        }else{
+            JSONObject json1 = json.getJSONObject("Detail");
+
+            //转换成对象
+            try {
+                DetailResult detailResults = (DetailResult) JSONObject.toBean(json1, DetailResult.class);
+            }catch (Exception e){
+                e.getStackTrace();
+            }
+            String ak47;
+
+        }
+//        JSONArray json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
+//                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONArray("Record");
+//        List<GiftProcessCard> giftProcessCards = (List<GiftProcessCard>) JSONArray.toCollection(json, GiftProcessCard.class);
 //        if(giftProcessCards != null){
 //            List<CardResult> cardResults = new ArrayList<CardResult>();
 //            for(GiftProcessCard giftProcessCard:giftProcessCards){
