@@ -84,7 +84,7 @@ public class Main {
         //券种
         couponMap.put("gcao002",ctno);
         //数量
-        couponMap.put("gcbi005","1");
+        couponMap.put("gcbi005","2");
         //uuid
         couponMap.put("gcao100",UUID.randomUUID().toString());
         couponList.add(couponMap);

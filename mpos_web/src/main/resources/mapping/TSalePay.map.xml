@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSalePay">
+	<resultMap id="TSalePay" type="com.site.entity.TSalePay">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="saleId" column="sale_id" 
+				jdbcType="VARCHAR" />
+			<result property="saleNo" column="sale_no" 
+				jdbcType="VARCHAR" />
+			<result property="rowNo" column="row_no" 
+				jdbcType="NUMERIC" />
+			<result property="saleDate" column="sale_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="paymodeId" column="paymode_id" 
+				jdbcType="VARCHAR" />
+			<result property="excessAmt" column="excess_amt" 
+				jdbcType="NUMERIC" />
+			<result property="payAmt" column="pay_amt" 
+				jdbcType="NUMERIC" />
+			<result property="changeAmt" column="change_amt" 
+				jdbcType="NUMERIC" />
+			<result property="billNo" column="bill_no" 
+				jdbcType="VARCHAR" />
+			<result property="collectBank" column="collect_bank" 
+				jdbcType="VARCHAR" />
+			<result property="issueBank" column="issue_bank" 
+				jdbcType="VARCHAR" />
+			<result property="skType" column="sk_type" 
+				jdbcType="VARCHAR" />
+			<result property="currencyId" column="currency_id" 
+				jdbcType="VARCHAR" />
+			<result property="exchangeRate" column="exchange_rate" 
+				jdbcType="NUMERIC" />
+			<result property="cashRate" column="cash_rate" 
+				jdbcType="NUMERIC" />
+			<result property="cardIssue" column="card_issue" 
+				jdbcType="VARCHAR" />
+			<result property="upFlag" column="up_flag" 
+				jdbcType="VARCHAR" />
+			<result property="upDate" column="up_date" 
+				jdbcType="TIMESTAMP" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		sale_id,
+		sale_no,
+		row_no,
+		sale_date,
+		shop_id,
+		paymode_id,
+		excess_amt,
+		pay_amt,
+		change_amt,
+		bill_no,
+		collect_bank,
+		issue_bank,
+		sk_type,
+		currency_id,
+		exchange_rate,
+		cash_rate,
+		card_issue,
+		up_flag,
+		up_date
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="saleId != null"> AND sale_id like '%${saleId}%' </if>
+       <if test="saleNo != null"> AND sale_no like '%${saleNo}%' </if>
+                   <if test="rowNo != null"> AND row_no =#{rowNo} </if>
+                   <if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="paymodeId != null"> AND paymode_id like '%${paymodeId}%' </if>
+                   <if test="excessAmt != null"> AND excess_amt =#{excessAmt} </if>
+                   <if test="payAmt != null"> AND pay_amt =#{payAmt} </if>
+                   <if test="changeAmt != null"> AND change_amt =#{changeAmt} </if>
+       <if test="billNo != null"> AND bill_no like '%${billNo}%' </if>
+       <if test="collectBank != null"> AND collect_bank like '%${collectBank}%' </if>
+       <if test="issueBank != null"> AND issue_bank like '%${issueBank}%' </if>
+       <if test="skType != null"> AND sk_type like '%${skType}%' </if>
+       <if test="currencyId != null"> AND currency_id like '%${currencyId}%' </if>
+                   <if test="exchangeRate != null"> AND exchange_rate =#{exchangeRate} </if>
+                   <if test="cashRate != null"> AND cash_rate =#{cashRate} </if>
+       <if test="cardIssue != null"> AND card_issue like '%${cardIssue}%' </if>
+       <if test="upFlag != null"> AND up_flag like '%${upFlag}%' </if>
+                   <if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="saleId != null"> AND sale_id =#{saleId} </if>
+			<if test="saleNo != null"> AND sale_no =#{saleNo} </if>
+			<if test="rowNo != null"> AND row_no =#{rowNo} </if>
+			<if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="paymodeId != null"> AND paymode_id =#{paymodeId} </if>
+			<if test="excessAmt != null"> AND excess_amt =#{excessAmt} </if>
+			<if test="payAmt != null"> AND pay_amt =#{payAmt} </if>
+			<if test="changeAmt != null"> AND change_amt =#{changeAmt} </if>
+			<if test="billNo != null"> AND bill_no =#{billNo} </if>
+			<if test="collectBank != null"> AND collect_bank =#{collectBank} </if>
+			<if test="issueBank != null"> AND issue_bank =#{issueBank} </if>
+			<if test="skType != null"> AND sk_type =#{skType} </if>
+			<if test="currencyId != null"> AND currency_id =#{currencyId} </if>
+			<if test="exchangeRate != null"> AND exchange_rate =#{exchangeRate} </if>
+			<if test="cashRate != null"> AND cash_rate =#{cashRate} </if>
+			<if test="cardIssue != null"> AND card_issue =#{cardIssue} </if>
+			<if test="upFlag != null"> AND up_flag =#{upFlag} </if>
+			<if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TSalePay">
+		INSERT INTO t_sale_pay
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{saleId,jdbcType=VARCHAR},#{saleNo,jdbcType=VARCHAR},#{rowNo,jdbcType=NUMERIC},#{saleDate,jdbcType=TIMESTAMP},#{shopId,jdbcType=VARCHAR},#{paymodeId,jdbcType=VARCHAR},#{excessAmt,jdbcType=NUMERIC},#{payAmt,jdbcType=NUMERIC},#{changeAmt,jdbcType=NUMERIC},#{billNo,jdbcType=VARCHAR},#{collectBank,jdbcType=VARCHAR},#{issueBank,jdbcType=VARCHAR},#{skType,jdbcType=VARCHAR},#{currencyId,jdbcType=VARCHAR},#{exchangeRate,jdbcType=NUMERIC},#{cashRate,jdbcType=NUMERIC},#{cardIssue,jdbcType=VARCHAR},#{upFlag,jdbcType=VARCHAR},#{upDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_sale_pay 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSalePay">
+		UPDATE t_sale_pay SET
+                     sale_id=#{saleId,jdbcType=VARCHAR},
+                     sale_no=#{saleNo,jdbcType=VARCHAR},
+                     row_no=#{rowNo,jdbcType=NUMERIC},
+                     sale_date=#{saleDate,jdbcType=TIMESTAMP},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     paymode_id=#{paymodeId,jdbcType=VARCHAR},
+                     excess_amt=#{excessAmt,jdbcType=NUMERIC},
+                     pay_amt=#{payAmt,jdbcType=NUMERIC},
+                     change_amt=#{changeAmt,jdbcType=NUMERIC},
+                     bill_no=#{billNo,jdbcType=VARCHAR},
+                     collect_bank=#{collectBank,jdbcType=VARCHAR},
+                     issue_bank=#{issueBank,jdbcType=VARCHAR},
+                     sk_type=#{skType,jdbcType=VARCHAR},
+                     currency_id=#{currencyId,jdbcType=VARCHAR},
+                     exchange_rate=#{exchangeRate,jdbcType=NUMERIC},
+                     cash_rate=#{cashRate,jdbcType=NUMERIC},
+                     card_issue=#{cardIssue,jdbcType=VARCHAR},
+                     up_flag=#{upFlag,jdbcType=VARCHAR},
+                     up_date=#{upDate,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TSalePay">
+		SELECT <include refid="columns"/>
+		FROM t_sale_pay
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSalePay">
+		SELECT <include refid="columns"/>
+		FROM t_sale_pay   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSalePay">
+		SELECT <include refid="columns"/>
+		FROM t_sale_pay   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSalePay">
+		SELECT <include refid="columns"/>
+		FROM t_sale_pay   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSalePay">
+		SELECT <include refid="columns"/>
+		FROM t_sale_pay   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

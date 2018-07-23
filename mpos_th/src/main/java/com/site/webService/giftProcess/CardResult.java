@@ -17,11 +17,11 @@ public class CardResult {
     @ApiModelProperty(value = "密码")
     protected String passwd;
     @ApiModelProperty(value = "实际异动金额")
-    protected Double amt;
+    protected String amt;
     @ApiModelProperty(value = "折扣金额")
-    protected Double discamt;
+    protected String discamt;
     @ApiModelProperty(value = "加值金额")
-    protected Double addval;
+    protected String addval;
 
     public String getType() {
         return type;
@@ -55,27 +55,27 @@ public class CardResult {
         this.passwd = passwd;
     }
 
-    public Double getAmt() {
+    public String getAmt() {
         return amt;
     }
 
-    public void setAmt(Double amt) {
+    public void setAmt(String amt) {
         this.amt = amt;
     }
 
-    public Double getDiscamt() {
+    public String getDiscamt() {
         return discamt;
     }
 
-    public void setDiscamt(Double discamt) {
+    public void setDiscamt(String discamt) {
         this.discamt = discamt;
     }
 
-    public Double getAddval() {
+    public String getAddval() {
         return addval;
     }
 
-    public void setAddval(Double addval) {
+    public void setAddval(String addval) {
         this.addval = addval;
     }
 }

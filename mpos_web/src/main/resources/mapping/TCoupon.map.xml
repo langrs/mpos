@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCoupon">
+	<resultMap id="TCoupon" type="com.site.entity.TCoupon">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="couponNo" column="coupon_no" 
+				jdbcType="VARCHAR" />
+			<result property="issueType" column="issue_type" 
+				jdbcType="VARCHAR" />
+			<result property="issueNo" column="issue_no" 
+				jdbcType="VARCHAR" />
+			<result property="issueTime" column="issue_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="issueMan" column="issue_man" 
+				jdbcType="VARCHAR" />
+			<result property="issueOrg" column="issue_org" 
+				jdbcType="VARCHAR" />
+			<result property="state" column="state" 
+				jdbcType="VARCHAR" />
+			<result property="checkNo" column="check_no" 
+				jdbcType="VARCHAR" />
+			<result property="checkOrg" column="check_org" 
+				jdbcType="VARCHAR" />
+			<result property="checkType" column="check_type" 
+				jdbcType="VARCHAR" />
+			<result property="couponType" column="coupon_type" 
+				jdbcType="VARCHAR" />
+			<result property="startDate" column="start_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="endDate" column="end_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		coupon_no,
+		issue_type,
+		issue_no,
+		issue_time,
+		issue_man,
+		issue_org,
+		state,
+		check_no,
+		check_org,
+		check_type,
+		coupon_type,
+		start_date,
+		end_date,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="couponNo != null"> AND coupon_no like '%${couponNo}%' </if>
+       <if test="issueType != null"> AND issue_type like '%${issueType}%' </if>
+       <if test="issueNo != null"> AND issue_no like '%${issueNo}%' </if>
+                   <if test="issueTime != null"> AND issue_time =#{issueTime} </if>
+       <if test="issueMan != null"> AND issue_man like '%${issueMan}%' </if>
+       <if test="issueOrg != null"> AND issue_org like '%${issueOrg}%' </if>
+       <if test="state != null"> AND state like '%${state}%' </if>
+       <if test="checkNo != null"> AND check_no like '%${checkNo}%' </if>
+       <if test="checkOrg != null"> AND check_org like '%${checkOrg}%' </if>
+       <if test="checkType != null"> AND check_type like '%${checkType}%' </if>
+       <if test="couponType != null"> AND coupon_type like '%${couponType}%' </if>
+                   <if test="startDate != null"> AND start_date =#{startDate} </if>
+                   <if test="endDate != null"> AND end_date =#{endDate} </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="couponNo != null"> AND coupon_no =#{couponNo} </if>
+			<if test="issueType != null"> AND issue_type =#{issueType} </if>
+			<if test="issueNo != null"> AND issue_no =#{issueNo} </if>
+			<if test="issueTime != null"> AND issue_time =#{issueTime} </if>
+			<if test="issueMan != null"> AND issue_man =#{issueMan} </if>
+			<if test="issueOrg != null"> AND issue_org =#{issueOrg} </if>
+			<if test="state != null"> AND state =#{state} </if>
+			<if test="checkNo != null"> AND check_no =#{checkNo} </if>
+			<if test="checkOrg != null"> AND check_org =#{checkOrg} </if>
+			<if test="checkType != null"> AND check_type =#{checkType} </if>
+			<if test="couponType != null"> AND coupon_type =#{couponType} </if>
+			<if test="startDate != null"> AND start_date =#{startDate} </if>
+			<if test="endDate != null"> AND end_date =#{endDate} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TCoupon">
+		INSERT INTO t_coupon
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{couponNo,jdbcType=VARCHAR},#{issueType,jdbcType=VARCHAR},#{issueNo,jdbcType=VARCHAR},#{issueTime,jdbcType=TIMESTAMP},#{issueMan,jdbcType=VARCHAR},#{issueOrg,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{checkNo,jdbcType=VARCHAR},#{checkOrg,jdbcType=VARCHAR},#{checkType,jdbcType=VARCHAR},#{couponType,jdbcType=VARCHAR},#{startDate,jdbcType=TIMESTAMP},#{endDate,jdbcType=TIMESTAMP},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_coupon 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCoupon">
+		UPDATE t_coupon SET
+                     coupon_no=#{couponNo,jdbcType=VARCHAR},
+                     issue_type=#{issueType,jdbcType=VARCHAR},
+                     issue_no=#{issueNo,jdbcType=VARCHAR},
+                     issue_time=#{issueTime,jdbcType=TIMESTAMP},
+                     issue_man=#{issueMan,jdbcType=VARCHAR},
+                     issue_org=#{issueOrg,jdbcType=VARCHAR},
+                     state=#{state,jdbcType=VARCHAR},
+                     check_no=#{checkNo,jdbcType=VARCHAR},
+                     check_org=#{checkOrg,jdbcType=VARCHAR},
+                     check_type=#{checkType,jdbcType=VARCHAR},
+                     coupon_type=#{couponType,jdbcType=VARCHAR},
+                     start_date=#{startDate,jdbcType=TIMESTAMP},
+                     end_date=#{endDate,jdbcType=TIMESTAMP},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TCoupon">
+		SELECT <include refid="columns"/>
+		FROM t_coupon
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCoupon">
+		SELECT <include refid="columns"/>
+		FROM t_coupon   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCoupon">
+		SELECT <include refid="columns"/>
+		FROM t_coupon   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCoupon">
+		SELECT <include refid="columns"/>
+		FROM t_coupon   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCoupon">
+		SELECT <include refid="columns"/>
+		FROM t_coupon   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -50,7 +50,7 @@ public class TdSalePay implements Serializable
 	protected String icbillid;
 	@ApiModelProperty(value = "录入金额:等于pay")
 	protected Double inputpay;
-	@ApiModelProperty(value = "兑换比率")
+	@ApiModelProperty(value = "兑换比率/可以记录券的溢收金额")
 	protected Double extra;
 	@ApiModelProperty(value = "支付金额")
 	protected Double pay;

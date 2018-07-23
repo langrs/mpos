@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPosStampInfo">
+	<resultMap id="TPosStampInfo" type="com.site.entity.TPosStampInfo">
+		<result property= "stampNo" column="stamp_no" jdbcType="VARCHAR" />
+		<result property= "StampTypeNo" column="StampType_no" jdbcType="VARCHAR" />
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "stampAmt" column="stamp_amt" jdbcType="NUMERIC" />
+		<result property= "stampStatus" column="stamp_status" jdbcType="VARCHAR" />
+		<result property= "stampStartDate" column="stamp_start_date" jdbcType="TIMESTAMP" />
+		<result property= "stampEndDate" column="stamp_end_date" jdbcType="TIMESTAMP" />
+		<result property= "stampIssueType" column="stamp_issue_type" jdbcType="VARCHAR" />
+		<result property= "stampIssueDate" column="stamp_issue_date" jdbcType="TIMESTAMP" />
+		<result property= "stampIssueMan" column="stamp_issue_man" jdbcType="VARCHAR" />
+		<result property= "stampIssueSheet" column="stamp_issue_sheet" jdbcType="VARCHAR" />
+		<result property= "stampUseSheet" column="stamp_use_sheet" jdbcType="VARCHAR" />
+		<result property= "stampUseDate" column="stamp_use_date" jdbcType="TIMESTAMP" />
+		<result property= "stampMemo" column="stamp_memo" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		stamp_no,
+		StampType_no,
+		vip_no,
+		stamp_amt,
+		stamp_status,
+		stamp_start_date,
+		stamp_end_date,
+		stamp_issue_type,
+		stamp_issue_date,
+		stamp_issue_man,
+		stamp_issue_sheet,
+		stamp_use_sheet,
+		stamp_use_date,
+		stamp_memo,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		update_flow,
+		update_time,
+		update_branch,
+		branch_no,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="stampNo != null"> AND stamp_no like '%${stampNo}%' </if>
+       	<if test="StampTypeNo != null"> AND StampType_no like '%${StampTypeNo}%' </if>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="stampAmt != null"> AND stamp_amt like '%${stampAmt}%' </if>
+       	<if test="stampStatus != null"> AND stamp_status like '%${stampStatus}%' </if>
+       	<if test="stampStartDate != null"> AND stamp_start_date = #{stampStartDate}</if>
+       	<if test="stampEndDate != null"> AND stamp_end_date = #{stampEndDate}</if>
+       	<if test="stampIssueType != null"> AND stamp_issue_type like '%${stampIssueType}%' </if>
+       	<if test="stampIssueDate != null"> AND stamp_issue_date = #{stampIssueDate}</if>
+       	<if test="stampIssueMan != null"> AND stamp_issue_man like '%${stampIssueMan}%' </if>
+       	<if test="stampIssueSheet != null"> AND stamp_issue_sheet like '%${stampIssueSheet}%' </if>
+       	<if test="stampUseSheet != null"> AND stamp_use_sheet like '%${stampUseSheet}%' </if>
+       	<if test="stampUseDate != null"> AND stamp_use_date = #{stampUseDate}</if>
+       	<if test="stampMemo != null"> AND stamp_memo like '%${stampMemo}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="stampNo != null"> AND stamp_no = #{stampNo}</if>
+       	<if test="StampTypeNo != null"> AND StampType_no = #{StampTypeNo}</if>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="stampAmt != null"> AND stamp_amt = #{stampAmt}</if>
+       	<if test="stampStatus != null"> AND stamp_status = #{stampStatus}</if>
+       	<if test="stampStartDate != null"> AND stamp_start_date = #{stampStartDate}</if>
+       	<if test="stampEndDate != null"> AND stamp_end_date = #{stampEndDate}</if>
+       	<if test="stampIssueType != null"> AND stamp_issue_type = #{stampIssueType}</if>
+       	<if test="stampIssueDate != null"> AND stamp_issue_date = #{stampIssueDate}</if>
+       	<if test="stampIssueMan != null"> AND stamp_issue_man = #{stampIssueMan}</if>
+       	<if test="stampIssueSheet != null"> AND stamp_issue_sheet = #{stampIssueSheet}</if>
+       	<if test="stampUseSheet != null"> AND stamp_use_sheet = #{stampUseSheet}</if>
+       	<if test="stampUseDate != null"> AND stamp_use_date = #{stampUseDate}</if>
+       	<if test="stampMemo != null"> AND stamp_memo = #{stampMemo}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPosStampInfo">
+		INSERT INTO t_pos_stamp_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{stampNo,jdbcType=VARCHAR},
+		#{StampTypeNo,jdbcType=VARCHAR},
+		#{vipNo,jdbcType=VARCHAR},
+		#{stampAmt,jdbcType=NUMERIC},
+		#{stampStatus,jdbcType=VARCHAR},
+		#{stampStartDate,jdbcType=TIMESTAMP},
+		#{stampEndDate,jdbcType=TIMESTAMP},
+		#{stampIssueType,jdbcType=VARCHAR},
+		#{stampIssueDate,jdbcType=TIMESTAMP},
+		#{stampIssueMan,jdbcType=VARCHAR},
+		#{stampIssueSheet,jdbcType=VARCHAR},
+		#{stampUseSheet,jdbcType=VARCHAR},
+		#{stampUseDate,jdbcType=TIMESTAMP},
+		#{stampMemo,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos_stamp_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPosStampInfo">
+		UPDATE t_pos_stamp_info SET
+               stamp_no=#{stampNo,jdbcType=VARCHAR},
+               StampType_no=#{StampTypeNo,jdbcType=VARCHAR},
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               stamp_amt=#{stampAmt,jdbcType=NUMERIC},
+               stamp_status=#{stampStatus,jdbcType=VARCHAR},
+               stamp_start_date=#{stampStartDate,jdbcType=TIMESTAMP},
+               stamp_end_date=#{stampEndDate,jdbcType=TIMESTAMP},
+               stamp_issue_type=#{stampIssueType,jdbcType=VARCHAR},
+               stamp_issue_date=#{stampIssueDate,jdbcType=TIMESTAMP},
+               stamp_issue_man=#{stampIssueMan,jdbcType=VARCHAR},
+               stamp_issue_sheet=#{stampIssueSheet,jdbcType=VARCHAR},
+               stamp_use_sheet=#{stampUseSheet,jdbcType=VARCHAR},
+               stamp_use_date=#{stampUseDate,jdbcType=TIMESTAMP},
+               stamp_memo=#{stampMemo,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPosStampInfo">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamp_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPosStampInfo">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamp_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPosStampInfo">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamp_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPosStampInfo">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamp_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPosStampInfo">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamp_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

@@ -17,6 +17,7 @@
 		<property name="configLocation" value="classpath:conf/ehcache.xml" />
 	</bean>
 
+
 	<!-- 数据源 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

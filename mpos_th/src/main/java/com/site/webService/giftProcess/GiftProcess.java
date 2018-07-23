@@ -1,15 +1,12 @@
 package com.site.webService.giftProcess;
 
 import com.site.entity.ResultMap;
-import com.site.entity.respon.Member;
-import com.site.webService.SingleCouponGet.SingleCouponGetField;
 import com.site.webService.WsUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.dom.DOMElement;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -127,56 +124,82 @@ public class GiftProcess extends WsUtil {
         return RequestE.asXML();
     }
 
-    public void extraResponseContent(JSONObject jsonObject, ResultMap resultMap) {
-        JSONObject json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
-                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONObject("Record");
-        //尝试看看是否为数组,因为可能返回的只是一个结果,比如赠送卡或者赠送券,那么用getJSONArray就只能抛出异常了
-        JSONArray jsonArray = json.optJSONArray("Detail");
-        if(jsonArray != null){
-//            List<DetailResult> detailResults = (List<DetailResult>) JSONArray.toCollection(jsonArray, DetailResult.class);
+    public void extraResponseContent(String content, ResultMap resultMap) {
+        Document document = null;
+        List<CardResult> cardResults = null;
+        List<CouponResult> couponResults = null;
+        try {
+            document = DocumentHelper.parseText(content);
+            Element root = document.getRootElement();
 
-        }else{
-            JSONObject json1 = json.getJSONObject("Detail");
+            List<Element> elements = root.element("ResponseContent").element("Document").element("RecordSet").
+                    element("Master").element("Record").elements();
+            //循环Detail
+            for (Element detailE : elements) {
+                List<Element> element1s = detailE.elements();
+                //循环Record
+                for (Element recordE:element1s) {
+                    List<Element> fields = recordE.elements();
+                    String name = detailE.attributeValue("name");
 
-            //转换成对象
-            try {
-                DetailResult detailResults = (DetailResult) JSONObject.toBean(json1, DetailResult.class);
-            }catch (Exception e){
-                e.getStackTrace();
+                    if(name.equals("mmaq_t")){//储值卡
+                        CardResult cardResult = new CardResult();
+                        for (Element filedE:fields){
+                            String fieldname = filedE.attributeValue("name");
+                            String fieldvalue = filedE.attributeValue("value");
+                            if(fieldname.equals("mmaq006")){
+                                //卡状态
+                                cardResult.setType(fieldvalue);
+                            }else if(fieldname.equals("mmaq001")){
+                                //卡号
+                                cardResult.setCardno(fieldvalue);
+                            }else if(fieldname.equals("mmaq043")){
+                                //发行方式
+                                cardResult.setIssue(fieldvalue);
+                            }else if(fieldname.equals("mmaq004")){
+                                //密码
+                                cardResult.setPasswd(fieldvalue);
+                            }else if(fieldname.equals("mmau009")){
+                                //异动金额
+                                cardResult.setAmt(fieldvalue);
+                            }else if(fieldname.equals("mmau011")){
+                            }else if(fieldname.equals("mmau012")){
+
+                            }
+                            cardResults.add(cardResult);
+                        }
+                    }else if(name.equals("gcao_q")) {//券处理
+                        CouponResult couponResult = new CouponResult();
+                        for (Element filedE : fields) {
+                            String fieldname = filedE.attributeValue("name");
+                            String fieldvalue = filedE.attributeValue("value");
+                            if (fieldname.equals("gcao005")) {
+                                //流转状态
+                                couponResult.setType(fieldvalue);
+                            }else if(fieldname.equals("gcao006")){
+                                //发行方式
+                                couponResult.setIssue(fieldvalue);
+                            }else if(fieldname.equals("gcao002")){
+                                //券种编号
+                                couponResult.setCtno(fieldvalue);
+                            }else if(fieldname.equals("oocql004")){
+                                //面额
+                                couponResult.setAmt(fieldvalue);
+                            }else if(fieldname.equals("gcao001")){
+                                //券编号
+                                couponResult.setCouponno(fieldvalue);
+                            }
+                            couponResults.add(couponResult);
+                        }
+                    }
+
+                }
             }
-            String ak47;
-
+        }catch (Exception e){
+            e.getStackTrace();
         }
-//        JSONArray json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
-//                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONArray("Record");
-//        List<GiftProcessCard> giftProcessCards = (List<GiftProcessCard>) JSONArray.toCollection(json, GiftProcessCard.class);
-//        if(giftProcessCards != null){
-//            List<CardResult> cardResults = new ArrayList<CardResult>();
-//            for(GiftProcessCard giftProcessCard:giftProcessCards){
-//                String name = singleCouponGetField.getName();
-//                String value = singleCouponGetField.getValue();
-//                //卡号
-//                if(name.equals("mmaq001")){member.setCardno(value);}
-//                //卡种
-//                if(name.equals("mmaq002")){member.setCtno(value);}
-//                //有效期
-//                if(name.equals("mmaq005")){member.setValidity(value);}
-//                //会员编号
-//                if(name.equals("mmaq003")){member.setMemberno(value);}
-//                //会员姓名
-//                if(name.equals("mmaf008")){member.setMembername(value);}
-//                //会员手机
-//                if(name.equals("mmaf014")){member.setMobile(value);}
-//                //会员积分
-//                if(name.equals("mmaq018")){member.setYpoint(Double.parseDouble(value));}
-//                //余额
-//                if(name.equals("mmaq009")){member.setCardvalue(Double.parseDouble(value));}
-//            }
-//            resultMap.setStatus("0");
-//            resultMap.setData(member);
-//            return;
-//        }
-        resultMap.setStatus("999");
-        resultMap.setErrorMsg("解析返回值出错");
+
+
+
     }
 }

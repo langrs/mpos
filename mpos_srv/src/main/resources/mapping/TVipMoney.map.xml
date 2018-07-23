@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipMoney">
+	<resultMap id="TVipMoney" type="com.site.entity.TVipMoney">
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "moneyType" column="money_type" jdbcType="VARCHAR" />
+		<result property= "vipSort" column="vip_sort" jdbcType="NUMERIC" />
+		<result property= "valueAmt" column="value_amt" jdbcType="NUMERIC" />
+		<result property= "useAmt" column="use_amt" jdbcType="NUMERIC" />
+		<result property= "ctrlValid" column="ctrl_valid" jdbcType="VARCHAR" />
+		<result property= "validSdate" column="valid_sdate" jdbcType="TIMESTAMP" />
+		<result property= "validEdate" column="valid_edate" jdbcType="TIMESTAMP" />
+		<result property= "fromBranch" column="from_branch" jdbcType="VARCHAR" />
+		<result property= "voucherNo" column="voucher_no" jdbcType="VARCHAR" />
+		<result property= "memo" column="memo" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		vip_no,
+		branch_no,
+		money_type,
+		vip_sort,
+		value_amt,
+		use_amt,
+		ctrl_valid,
+		valid_sdate,
+		valid_edate,
+		from_branch,
+		voucher_no,
+		memo,
+		create_user,
+		create_date,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="moneyType != null"> AND money_type like '%${moneyType}%' </if>
+       	<if test="vipSort != null"> AND vip_sort like '%${vipSort}%' </if>
+       	<if test="valueAmt != null"> AND value_amt like '%${valueAmt}%' </if>
+       	<if test="useAmt != null"> AND use_amt like '%${useAmt}%' </if>
+       	<if test="ctrlValid != null"> AND ctrl_valid like '%${ctrlValid}%' </if>
+       	<if test="validSdate != null"> AND valid_sdate = #{validSdate}</if>
+       	<if test="validEdate != null"> AND valid_edate = #{validEdate}</if>
+       	<if test="fromBranch != null"> AND from_branch like '%${fromBranch}%' </if>
+       	<if test="voucherNo != null"> AND voucher_no like '%${voucherNo}%' </if>
+       	<if test="memo != null"> AND memo like '%${memo}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="moneyType != null"> AND money_type = #{moneyType}</if>
+       	<if test="vipSort != null"> AND vip_sort = #{vipSort}</if>
+       	<if test="valueAmt != null"> AND value_amt = #{valueAmt}</if>
+       	<if test="useAmt != null"> AND use_amt = #{useAmt}</if>
+       	<if test="ctrlValid != null"> AND ctrl_valid = #{ctrlValid}</if>
+       	<if test="validSdate != null"> AND valid_sdate = #{validSdate}</if>
+       	<if test="validEdate != null"> AND valid_edate = #{validEdate}</if>
+       	<if test="fromBranch != null"> AND from_branch = #{fromBranch}</if>
+       	<if test="voucherNo != null"> AND voucher_no = #{voucherNo}</if>
+       	<if test="memo != null"> AND memo = #{memo}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipMoney">
+		INSERT INTO t_vip_money
+		(<include refid="columns"/>)
+		VALUES(
+		#{vipNo,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{moneyType,jdbcType=VARCHAR},
+		#{vipSort,jdbcType=NUMERIC},
+		#{valueAmt,jdbcType=NUMERIC},
+		#{useAmt,jdbcType=NUMERIC},
+		#{ctrlValid,jdbcType=VARCHAR},
+		#{validSdate,jdbcType=TIMESTAMP},
+		#{validEdate,jdbcType=TIMESTAMP},
+		#{fromBranch,jdbcType=VARCHAR},
+		#{voucherNo,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_money 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipMoney">
+		UPDATE t_vip_money SET
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               money_type=#{moneyType,jdbcType=VARCHAR},
+               vip_sort=#{vipSort,jdbcType=NUMERIC},
+               value_amt=#{valueAmt,jdbcType=NUMERIC},
+               use_amt=#{useAmt,jdbcType=NUMERIC},
+               ctrl_valid=#{ctrlValid,jdbcType=VARCHAR},
+               valid_sdate=#{validSdate,jdbcType=TIMESTAMP},
+               valid_edate=#{validEdate,jdbcType=TIMESTAMP},
+               from_branch=#{fromBranch,jdbcType=VARCHAR},
+               voucher_no=#{voucherNo,jdbcType=VARCHAR},
+               memo=#{memo,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipMoney">
+		SELECT <include refid="columns"/>
+		FROM t_vip_money
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipMoney">
+		SELECT <include refid="columns"/>
+		FROM t_vip_money   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipMoney">
+		SELECT <include refid="columns"/>
+		FROM t_vip_money   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipMoney">
+		SELECT <include refid="columns"/>
+		FROM t_vip_money   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipMoney">
+		SELECT <include refid="columns"/>
+		FROM t_vip_money   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

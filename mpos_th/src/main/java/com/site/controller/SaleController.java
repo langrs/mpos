@@ -127,12 +127,12 @@ public class SaleController {
             promInfo.setMembergrade(tfMember.getMembergrade());
         }
         //准备计算的规则
-        promService.readyRule(promInfo);
         //计算预结算金额
+//        promService.readyRule(promInfo);
         //1.1先计算一般促销
-        for (PromPlu promplu:promInfo.getPromPlus()) {
-
-        }
+//        for (PromPlu promplu:promInfo.getPromPlus()) {
+//
+//        }
         //预设数值
         preSaleResult.setStatus("0");
         preSaleResult.setErrmsg("");

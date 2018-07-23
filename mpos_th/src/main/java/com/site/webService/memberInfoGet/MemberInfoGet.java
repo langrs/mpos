@@ -2,7 +2,6 @@ package com.site.webService.memberInfoGet;
 
 import com.site.entity.ResultMap;
 import com.site.webService.WsUtil;
-import net.sf.json.JSONObject;
 import org.dom4j.Element;
 import org.dom4j.dom.DOMElement;
 
@@ -31,7 +30,7 @@ public class MemberInfoGet extends WsUtil {
         return RequestE.asXML();
     }
 
-    public void extraResponseContent(JSONObject jsonObject, ResultMap resultMap) {
+    public void extraResponseContent(String content, ResultMap resultMap) {
 
     }
 }

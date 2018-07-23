@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TItemClass">
+	<resultMap id="TItemClass" type="com.site.entity.TItemClass">
+		<result property= "itemClass" column="item_class" jdbcType="VARCHAR" />
+		<result property= "className" column="class_name" jdbcType="VARCHAR" />
+		<result property= "classData" column="class_data" jdbcType="VARCHAR" />
+		<result property= "priceType" column="price_type" jdbcType="VARCHAR" />
+		<result property= "salePriceRate" column="sale_price_rate" jdbcType="NUMERIC" />
+		<result property= "pfPriceRate" column="pf_price_rate" jdbcType="NUMERIC" />
+		<result property= "vipPriceRate" column="vip_price_rate" jdbcType="NUMERIC" />
+		<result property= "edibleFlag" column="edible_flag" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "createMan" column="create_man" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyMan" column="modify_man" jdbcType="VARCHAR" />
+		<result property= "limitMaxQty" column="limit_max_qty" jdbcType="NUMERIC" />
+		<result property= "limitMinQty" column="limit_min_qty" jdbcType="NUMERIC" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		item_class,
+		class_name,
+		class_data,
+		price_type,
+		sale_price_rate,
+		pf_price_rate,
+		vip_price_rate,
+		edible_flag,
+		IsSysFlag,
+		update_flow,
+		update_time,
+		update_branch,
+		create_date,
+		create_man,
+		modify_date,
+		modify_man,
+		limit_max_qty,
+		limit_min_qty,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="itemClass != null"> AND item_class like '%${itemClass}%' </if>
+       	<if test="className != null"> AND class_name like '%${className}%' </if>
+       	<if test="classData != null"> AND class_data like '%${classData}%' </if>
+       	<if test="priceType != null"> AND price_type like '%${priceType}%' </if>
+       	<if test="salePriceRate != null"> AND sale_price_rate like '%${salePriceRate}%' </if>
+       	<if test="pfPriceRate != null"> AND pf_price_rate like '%${pfPriceRate}%' </if>
+       	<if test="vipPriceRate != null"> AND vip_price_rate like '%${vipPriceRate}%' </if>
+       	<if test="edibleFlag != null"> AND edible_flag like '%${edibleFlag}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man like '%${createMan}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man like '%${modifyMan}%' </if>
+       	<if test="limitMaxQty != null"> AND limit_max_qty like '%${limitMaxQty}%' </if>
+       	<if test="limitMinQty != null"> AND limit_min_qty like '%${limitMinQty}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="itemClass != null"> AND item_class = #{itemClass}</if>
+       	<if test="className != null"> AND class_name = #{className}</if>
+       	<if test="classData != null"> AND class_data = #{classData}</if>
+       	<if test="priceType != null"> AND price_type = #{priceType}</if>
+       	<if test="salePriceRate != null"> AND sale_price_rate = #{salePriceRate}</if>
+       	<if test="pfPriceRate != null"> AND pf_price_rate = #{pfPriceRate}</if>
+       	<if test="vipPriceRate != null"> AND vip_price_rate = #{vipPriceRate}</if>
+       	<if test="edibleFlag != null"> AND edible_flag = #{edibleFlag}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man = #{createMan}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man = #{modifyMan}</if>
+       	<if test="limitMaxQty != null"> AND limit_max_qty = #{limitMaxQty}</if>
+       	<if test="limitMinQty != null"> AND limit_min_qty = #{limitMinQty}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TItemClass">
+		INSERT INTO t_item_class
+		(<include refid="columns"/>)
+		VALUES(
+		#{itemClass,jdbcType=VARCHAR},
+		#{className,jdbcType=VARCHAR},
+		#{classData,jdbcType=VARCHAR},
+		#{priceType,jdbcType=VARCHAR},
+		#{salePriceRate,jdbcType=NUMERIC},
+		#{pfPriceRate,jdbcType=NUMERIC},
+		#{vipPriceRate,jdbcType=NUMERIC},
+		#{edibleFlag,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{createMan,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{modifyMan,jdbcType=VARCHAR},
+		#{limitMaxQty,jdbcType=NUMERIC},
+		#{limitMinQty,jdbcType=NUMERIC},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_item_class 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TItemClass">
+		UPDATE t_item_class SET
+               item_class=#{itemClass,jdbcType=VARCHAR},
+               class_name=#{className,jdbcType=VARCHAR},
+               class_data=#{classData,jdbcType=VARCHAR},
+               price_type=#{priceType,jdbcType=VARCHAR},
+               sale_price_rate=#{salePriceRate,jdbcType=NUMERIC},
+               pf_price_rate=#{pfPriceRate,jdbcType=NUMERIC},
+               vip_price_rate=#{vipPriceRate,jdbcType=NUMERIC},
+               edible_flag=#{edibleFlag,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               create_man=#{createMan,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               modify_man=#{modifyMan,jdbcType=VARCHAR},
+               limit_max_qty=#{limitMaxQty,jdbcType=NUMERIC},
+               limit_min_qty=#{limitMinQty,jdbcType=NUMERIC},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TItemClass">
+		SELECT <include refid="columns"/>
+		FROM t_item_class
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TItemClass">
+		SELECT <include refid="columns"/>
+		FROM t_item_class   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TItemClass">
+		SELECT <include refid="columns"/>
+		FROM t_item_class   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TItemClass">
+		SELECT <include refid="columns"/>
+		FROM t_item_class   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TItemClass">
+		SELECT <include refid="columns"/>
+		FROM t_item_class   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

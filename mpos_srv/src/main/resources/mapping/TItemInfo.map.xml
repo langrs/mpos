@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TItemInfo">
+	<resultMap id="TItemInfo" type="com.site.entity.TItemInfo">
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "itemSubno" column="item_subno" jdbcType="VARCHAR" />
+		<result property= "itemBarcode" column="item_barcode" jdbcType="VARCHAR" />
+		<result property= "itemName" column="item_name" jdbcType="VARCHAR" />
+		<result property= "itemClass" column="item_class" jdbcType="VARCHAR" />
+		<result property= "itemProperty" column="item_property" jdbcType="VARCHAR" />
+		<result property= "itemBrand" column="item_brand" jdbcType="VARCHAR" />
+		<result property= "itemSize" column="item_size" jdbcType="VARCHAR" />
+		<result property= "itemUnitNo" column="item_unit_no" jdbcType="VARCHAR" />
+		<result property= "itemInPrice" column="item_in_price" jdbcType="NUMERIC" />
+		<result property= "itemSalePrice" column="item_sale_price" jdbcType="NUMERIC" />
+		<result property= "itemPfPrice" column="item_pf_price" jdbcType="NUMERIC" />
+		<result property= "itemVipPrice" column="item_vip_price" jdbcType="NUMERIC" />
+		<result property= "itemDistPrice" column="item_dist_price" jdbcType="NUMERIC" />
+		<result property= "itemArea" column="item_area" jdbcType="VARCHAR" />
+		<result property= "itemGrade" column="item_grade" jdbcType="VARCHAR" />
+		<result property= "itemSupNo" column="item_sup_no" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "itemCombine" column="item_combine" jdbcType="VARCHAR" />
+		<result property= "itemSaleMode" column="item_SaleMode" jdbcType="VARCHAR" />
+		<result property= "itemFlag" column="item_flag" jdbcType="VARCHAR" />
+		<result property= "haveStock" column="have_stock" jdbcType="VARCHAR" />
+		<result property= "ManageType" column="Manage_type" jdbcType="VARCHAR" />
+		<result property= "ManageLyRate" column="Manage_ly_rate" jdbcType="NUMERIC" />
+		<result property= "pyCode" column="py_code" jdbcType="VARCHAR" />
+		<result property= "itemValidDay" column="item_valid_day" jdbcType="NUMERIC" />
+		<result property= "itemValidTipday" column="item_valid_tipday" jdbcType="NUMERIC" />
+		<result property= "posLowerPrice" column="pos_lower_price" jdbcType="NUMERIC" />
+		<result property= "posDiscount" column="pos_discount" jdbcType="NUMERIC" />
+		<result property= "changePrice" column="change_price" jdbcType="VARCHAR" />
+		<result property= "allowDiscount" column="allow_discount" jdbcType="VARCHAR" />
+		<result property= "inTaxRate" column="in_tax_rate" jdbcType="NUMERIC" />
+		<result property= "outTaxRate" column="out_tax_rate" jdbcType="NUMERIC" />
+		<result property= "itemSaleRate" column="item_sale_rate" jdbcType="NUMERIC" />
+		<result property= "itemPfRate" column="item_pf_rate" jdbcType="NUMERIC" />
+		<result property= "integralRate" column="integral_rate" jdbcType="NUMERIC" />
+		<result property= "costType" column="cost_type" jdbcType="VARCHAR" />
+		<result property= "displayFlag" column="display_flag" jdbcType="VARCHAR" />
+		<result property= "internalFlag" column="internal_flag" jdbcType="VARCHAR" />
+		<result property= "itemMemo" column="item_memo" jdbcType="VARCHAR" />
+		<result property= "itemBytxt1" column="item_bytxt1" jdbcType="VARCHAR" />
+		<result property= "itemBytxt2" column="item_bytxt2" jdbcType="VARCHAR" />
+		<result property= "itemBytxt3" column="item_bytxt3" jdbcType="VARCHAR" />
+		<result property= "itemBynum1" column="item_bynum1" jdbcType="NUMERIC" />
+		<result property= "itemBynum2" column="item_bynum2" jdbcType="NUMERIC" />
+		<result property= "itemBynum3" column="item_bynum3" jdbcType="NUMERIC" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "lockUser" column="lock_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "itemSaleRatetype" column="item_sale_ratetype" jdbcType="VARCHAR" />
+		<result property= "itemPfRatetype" column="item_pf_ratetype" jdbcType="VARCHAR" />
+		<result property= "itemDateUnit" column="item_date_unit" jdbcType="VARCHAR" />
+		<result property= "showboxNo" column="showbox_no" jdbcType="VARCHAR" />
+		<result property= "itemInRatetype" column="item_in_ratetype" jdbcType="VARCHAR" />
+		<result property= "itemInRate" column="item_in_rate" jdbcType="NUMERIC" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "itemIsGood" column="item_IsGood" jdbcType="VARCHAR" />
+		<result property= "itemAbc" column="item_abc" jdbcType="VARCHAR" />
+		<result property= "itemPrintLabel" column="item_print_label" jdbcType="VARCHAR" />
+		<result property= "itemQaCert" column="item_qa_cert" jdbcType="VARCHAR" />
+		<result property= "itemQsCert" column="item_qs_cert" jdbcType="VARCHAR" />
+		<result property= "itemInletCert" column="item_inlet_cert" jdbcType="VARCHAR" />
+		<result property= "itemQiRep" column="item_qi_rep" jdbcType="VARCHAR" />
+		<result property= "haveSaleman" column="have_saleman" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "itemDistQty" column="item_dist_qty" jdbcType="NUMERIC" />
+		<result property= "itemDistLimit" column="item_dist_limit" jdbcType="VARCHAR" />
+		<result property= "itemDistDouble" column="item_dist_double" jdbcType="VARCHAR" />
+		<result property= "itemPzwh" column="item_pzwh" jdbcType="VARCHAR" />
+		<result property= "itemFactory" column="item_factory" jdbcType="VARCHAR" />
+		<result property= "itemSysMemo1" column="item_sys_memo1" jdbcType="VARCHAR" />
+		<result property= "haveSalememo" column="have_salememo" jdbcType="VARCHAR" />
+		<result property= "buyDays" column="buy_days" jdbcType="VARCHAR" />
+		<result property= "posLimitQty" column="pos_limit_qty" jdbcType="NUMERIC" />
+		<result property= "itemYpFlag" column="item_yp_flag" jdbcType="VARCHAR" />
+		<result property= "eshopIntegral" column="eshop_Integral" jdbcType="NUMERIC" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "itemJj" column="item_jj" jdbcType="VARCHAR" />
+		<result property= "itemKs" column="item_ks" jdbcType="VARCHAR" />
+		<result property= "itemIswx" column="item_iswx" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		item_no,
+		item_subno,
+		item_barcode,
+		item_name,
+		item_class,
+		item_property,
+		item_brand,
+		item_size,
+		item_unit_no,
+		item_in_price,
+		item_sale_price,
+		item_pf_price,
+		item_vip_price,
+		item_dist_price,
+		item_area,
+		item_grade,
+		item_sup_no,
+		counter_no,
+		item_combine,
+		item_SaleMode,
+		item_flag,
+		have_stock,
+		Manage_type,
+		Manage_ly_rate,
+		py_code,
+		item_valid_day,
+		item_valid_tipday,
+		pos_lower_price,
+		pos_discount,
+		change_price,
+		allow_discount,
+		in_tax_rate,
+		out_tax_rate,
+		item_sale_rate,
+		item_pf_rate,
+		integral_rate,
+		cost_type,
+		display_flag,
+		internal_flag,
+		item_memo,
+		item_bytxt1,
+		item_bytxt2,
+		item_bytxt3,
+		item_bynum1,
+		item_bynum2,
+		item_bynum3,
+		IsSysFlag,
+		lock_user,
+		create_date,
+		create_user,
+		modify_date,
+		modify_user,
+		update_flow,
+		item_sale_ratetype,
+		item_pf_ratetype,
+		item_date_unit,
+		showbox_no,
+		item_in_ratetype,
+		item_in_rate,
+		branch_no,
+		item_IsGood,
+		item_abc,
+		item_print_label,
+		item_qa_cert,
+		item_qs_cert,
+		item_inlet_cert,
+		item_qi_rep,
+		have_saleman,
+		update_time,
+		update_branch,
+		item_dist_qty,
+		item_dist_limit,
+		item_dist_double,
+		item_pzwh,
+		item_factory,
+		item_sys_memo1,
+		have_salememo,
+		buy_days,
+		pos_limit_qty,
+		item_yp_flag,
+		eshop_Integral,
+		trans_upflag,
+		item_jj,
+		item_ks,
+		item_iswx
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="itemSubno != null"> AND item_subno like '%${itemSubno}%' </if>
+       	<if test="itemBarcode != null"> AND item_barcode like '%${itemBarcode}%' </if>
+       	<if test="itemName != null"> AND item_name like '%${itemName}%' </if>
+       	<if test="itemClass != null"> AND item_class like '%${itemClass}%' </if>
+       	<if test="itemProperty != null"> AND item_property like '%${itemProperty}%' </if>
+       	<if test="itemBrand != null"> AND item_brand like '%${itemBrand}%' </if>
+       	<if test="itemSize != null"> AND item_size like '%${itemSize}%' </if>
+       	<if test="itemUnitNo != null"> AND item_unit_no like '%${itemUnitNo}%' </if>
+       	<if test="itemInPrice != null"> AND item_in_price like '%${itemInPrice}%' </if>
+       	<if test="itemSalePrice != null"> AND item_sale_price like '%${itemSalePrice}%' </if>
+       	<if test="itemPfPrice != null"> AND item_pf_price like '%${itemPfPrice}%' </if>
+       	<if test="itemVipPrice != null"> AND item_vip_price like '%${itemVipPrice}%' </if>
+       	<if test="itemDistPrice != null"> AND item_dist_price like '%${itemDistPrice}%' </if>
+       	<if test="itemArea != null"> AND item_area like '%${itemArea}%' </if>
+       	<if test="itemGrade != null"> AND item_grade like '%${itemGrade}%' </if>
+       	<if test="itemSupNo != null"> AND item_sup_no like '%${itemSupNo}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="itemCombine != null"> AND item_combine like '%${itemCombine}%' </if>
+       	<if test="itemSaleMode != null"> AND item_SaleMode like '%${itemSaleMode}%' </if>
+       	<if test="itemFlag != null"> AND item_flag like '%${itemFlag}%' </if>
+       	<if test="haveStock != null"> AND have_stock like '%${haveStock}%' </if>
+       	<if test="ManageType != null"> AND Manage_type like '%${ManageType}%' </if>
+       	<if test="ManageLyRate != null"> AND Manage_ly_rate like '%${ManageLyRate}%' </if>
+       	<if test="pyCode != null"> AND py_code like '%${pyCode}%' </if>
+       	<if test="itemValidDay != null"> AND item_valid_day like '%${itemValidDay}%' </if>
+       	<if test="itemValidTipday != null"> AND item_valid_tipday like '%${itemValidTipday}%' </if>
+       	<if test="posLowerPrice != null"> AND pos_lower_price like '%${posLowerPrice}%' </if>
+       	<if test="posDiscount != null"> AND pos_discount like '%${posDiscount}%' </if>
+       	<if test="changePrice != null"> AND change_price like '%${changePrice}%' </if>
+       	<if test="allowDiscount != null"> AND allow_discount like '%${allowDiscount}%' </if>
+       	<if test="inTaxRate != null"> AND in_tax_rate like '%${inTaxRate}%' </if>
+       	<if test="outTaxRate != null"> AND out_tax_rate like '%${outTaxRate}%' </if>
+       	<if test="itemSaleRate != null"> AND item_sale_rate like '%${itemSaleRate}%' </if>
+       	<if test="itemPfRate != null"> AND item_pf_rate like '%${itemPfRate}%' </if>
+       	<if test="integralRate != null"> AND integral_rate like '%${integralRate}%' </if>
+       	<if test="costType != null"> AND cost_type like '%${costType}%' </if>
+       	<if test="displayFlag != null"> AND display_flag like '%${displayFlag}%' </if>
+       	<if test="internalFlag != null"> AND internal_flag like '%${internalFlag}%' </if>
+       	<if test="itemMemo != null"> AND item_memo like '%${itemMemo}%' </if>
+       	<if test="itemBytxt1 != null"> AND item_bytxt1 like '%${itemBytxt1}%' </if>
+       	<if test="itemBytxt2 != null"> AND item_bytxt2 like '%${itemBytxt2}%' </if>
+       	<if test="itemBytxt3 != null"> AND item_bytxt3 like '%${itemBytxt3}%' </if>
+       	<if test="itemBynum1 != null"> AND item_bynum1 like '%${itemBynum1}%' </if>
+       	<if test="itemBynum2 != null"> AND item_bynum2 like '%${itemBynum2}%' </if>
+       	<if test="itemBynum3 != null"> AND item_bynum3 like '%${itemBynum3}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="lockUser != null"> AND lock_user like '%${lockUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="itemSaleRatetype != null"> AND item_sale_ratetype like '%${itemSaleRatetype}%' </if>
+       	<if test="itemPfRatetype != null"> AND item_pf_ratetype like '%${itemPfRatetype}%' </if>
+       	<if test="itemDateUnit != null"> AND item_date_unit like '%${itemDateUnit}%' </if>
+       	<if test="showboxNo != null"> AND showbox_no like '%${showboxNo}%' </if>
+       	<if test="itemInRatetype != null"> AND item_in_ratetype like '%${itemInRatetype}%' </if>
+       	<if test="itemInRate != null"> AND item_in_rate like '%${itemInRate}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="itemIsGood != null"> AND item_IsGood like '%${itemIsGood}%' </if>
+       	<if test="itemAbc != null"> AND item_abc like '%${itemAbc}%' </if>
+       	<if test="itemPrintLabel != null"> AND item_print_label like '%${itemPrintLabel}%' </if>
+       	<if test="itemQaCert != null"> AND item_qa_cert like '%${itemQaCert}%' </if>
+       	<if test="itemQsCert != null"> AND item_qs_cert like '%${itemQsCert}%' </if>
+       	<if test="itemInletCert != null"> AND item_inlet_cert like '%${itemInletCert}%' </if>
+       	<if test="itemQiRep != null"> AND item_qi_rep like '%${itemQiRep}%' </if>
+       	<if test="haveSaleman != null"> AND have_saleman like '%${haveSaleman}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="itemDistQty != null"> AND item_dist_qty like '%${itemDistQty}%' </if>
+       	<if test="itemDistLimit != null"> AND item_dist_limit like '%${itemDistLimit}%' </if>
+       	<if test="itemDistDouble != null"> AND item_dist_double like '%${itemDistDouble}%' </if>
+       	<if test="itemPzwh != null"> AND item_pzwh like '%${itemPzwh}%' </if>
+       	<if test="itemFactory != null"> AND item_factory like '%${itemFactory}%' </if>
+       	<if test="itemSysMemo1 != null"> AND item_sys_memo1 like '%${itemSysMemo1}%' </if>
+       	<if test="haveSalememo != null"> AND have_salememo like '%${haveSalememo}%' </if>
+       	<if test="buyDays != null"> AND buy_days like '%${buyDays}%' </if>
+       	<if test="posLimitQty != null"> AND pos_limit_qty like '%${posLimitQty}%' </if>
+       	<if test="itemYpFlag != null"> AND item_yp_flag like '%${itemYpFlag}%' </if>
+       	<if test="eshopIntegral != null"> AND eshop_Integral like '%${eshopIntegral}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="itemJj != null"> AND item_jj like '%${itemJj}%' </if>
+       	<if test="itemKs != null"> AND item_ks like '%${itemKs}%' </if>
+       	<if test="itemIswx != null"> AND item_iswx like '%${itemIswx}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="itemSubno != null"> AND item_subno = #{itemSubno}</if>
+       	<if test="itemBarcode != null"> AND item_barcode = #{itemBarcode}</if>
+       	<if test="itemName != null"> AND item_name = #{itemName}</if>
+       	<if test="itemClass != null"> AND item_class = #{itemClass}</if>
+       	<if test="itemProperty != null"> AND item_property = #{itemProperty}</if>
+       	<if test="itemBrand != null"> AND item_brand = #{itemBrand}</if>
+       	<if test="itemSize != null"> AND item_size = #{itemSize}</if>
+       	<if test="itemUnitNo != null"> AND item_unit_no = #{itemUnitNo}</if>
+       	<if test="itemInPrice != null"> AND item_in_price = #{itemInPrice}</if>
+       	<if test="itemSalePrice != null"> AND item_sale_price = #{itemSalePrice}</if>
+       	<if test="itemPfPrice != null"> AND item_pf_price = #{itemPfPrice}</if>
+       	<if test="itemVipPrice != null"> AND item_vip_price = #{itemVipPrice}</if>
+       	<if test="itemDistPrice != null"> AND item_dist_price = #{itemDistPrice}</if>
+       	<if test="itemArea != null"> AND item_area = #{itemArea}</if>
+       	<if test="itemGrade != null"> AND item_grade = #{itemGrade}</if>
+       	<if test="itemSupNo != null"> AND item_sup_no = #{itemSupNo}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="itemCombine != null"> AND item_combine = #{itemCombine}</if>
+       	<if test="itemSaleMode != null"> AND item_SaleMode = #{itemSaleMode}</if>
+       	<if test="itemFlag != null"> AND item_flag = #{itemFlag}</if>
+       	<if test="haveStock != null"> AND have_stock = #{haveStock}</if>
+       	<if test="ManageType != null"> AND Manage_type = #{ManageType}</if>
+       	<if test="ManageLyRate != null"> AND Manage_ly_rate = #{ManageLyRate}</if>
+       	<if test="pyCode != null"> AND py_code = #{pyCode}</if>
+       	<if test="itemValidDay != null"> AND item_valid_day = #{itemValidDay}</if>
+       	<if test="itemValidTipday != null"> AND item_valid_tipday = #{itemValidTipday}</if>
+       	<if test="posLowerPrice != null"> AND pos_lower_price = #{posLowerPrice}</if>
+       	<if test="posDiscount != null"> AND pos_discount = #{posDiscount}</if>
+       	<if test="changePrice != null"> AND change_price = #{changePrice}</if>
+       	<if test="allowDiscount != null"> AND allow_discount = #{allowDiscount}</if>
+       	<if test="inTaxRate != null"> AND in_tax_rate = #{inTaxRate}</if>
+       	<if test="outTaxRate != null"> AND out_tax_rate = #{outTaxRate}</if>
+       	<if test="itemSaleRate != null"> AND item_sale_rate = #{itemSaleRate}</if>
+       	<if test="itemPfRate != null"> AND item_pf_rate = #{itemPfRate}</if>
+       	<if test="integralRate != null"> AND integral_rate = #{integralRate}</if>
+       	<if test="costType != null"> AND cost_type = #{costType}</if>
+       	<if test="displayFlag != null"> AND display_flag = #{displayFlag}</if>
+       	<if test="internalFlag != null"> AND internal_flag = #{internalFlag}</if>
+       	<if test="itemMemo != null"> AND item_memo = #{itemMemo}</if>
+       	<if test="itemBytxt1 != null"> AND item_bytxt1 = #{itemBytxt1}</if>
+       	<if test="itemBytxt2 != null"> AND item_bytxt2 = #{itemBytxt2}</if>
+       	<if test="itemBytxt3 != null"> AND item_bytxt3 = #{itemBytxt3}</if>
+       	<if test="itemBynum1 != null"> AND item_bynum1 = #{itemBynum1}</if>
+       	<if test="itemBynum2 != null"> AND item_bynum2 = #{itemBynum2}</if>
+       	<if test="itemBynum3 != null"> AND item_bynum3 = #{itemBynum3}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="lockUser != null"> AND lock_user = #{lockUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="itemSaleRatetype != null"> AND item_sale_ratetype = #{itemSaleRatetype}</if>
+       	<if test="itemPfRatetype != null"> AND item_pf_ratetype = #{itemPfRatetype}</if>
+       	<if test="itemDateUnit != null"> AND item_date_unit = #{itemDateUnit}</if>
+       	<if test="showboxNo != null"> AND showbox_no = #{showboxNo}</if>
+       	<if test="itemInRatetype != null"> AND item_in_ratetype = #{itemInRatetype}</if>
+       	<if test="itemInRate != null"> AND item_in_rate = #{itemInRate}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="itemIsGood != null"> AND item_IsGood = #{itemIsGood}</if>
+       	<if test="itemAbc != null"> AND item_abc = #{itemAbc}</if>
+       	<if test="itemPrintLabel != null"> AND item_print_label = #{itemPrintLabel}</if>
+       	<if test="itemQaCert != null"> AND item_qa_cert = #{itemQaCert}</if>
+       	<if test="itemQsCert != null"> AND item_qs_cert = #{itemQsCert}</if>
+       	<if test="itemInletCert != null"> AND item_inlet_cert = #{itemInletCert}</if>
+       	<if test="itemQiRep != null"> AND item_qi_rep = #{itemQiRep}</if>
+       	<if test="haveSaleman != null"> AND have_saleman = #{haveSaleman}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="itemDistQty != null"> AND item_dist_qty = #{itemDistQty}</if>
+       	<if test="itemDistLimit != null"> AND item_dist_limit = #{itemDistLimit}</if>
+       	<if test="itemDistDouble != null"> AND item_dist_double = #{itemDistDouble}</if>
+       	<if test="itemPzwh != null"> AND item_pzwh = #{itemPzwh}</if>
+       	<if test="itemFactory != null"> AND item_factory = #{itemFactory}</if>
+       	<if test="itemSysMemo1 != null"> AND item_sys_memo1 = #{itemSysMemo1}</if>
+       	<if test="haveSalememo != null"> AND have_salememo = #{haveSalememo}</if>
+       	<if test="buyDays != null"> AND buy_days = #{buyDays}</if>
+       	<if test="posLimitQty != null"> AND pos_limit_qty = #{posLimitQty}</if>
+       	<if test="itemYpFlag != null"> AND item_yp_flag = #{itemYpFlag}</if>
+       	<if test="eshopIntegral != null"> AND eshop_Integral = #{eshopIntegral}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="itemJj != null"> AND item_jj = #{itemJj}</if>
+       	<if test="itemKs != null"> AND item_ks = #{itemKs}</if>
+       	<if test="itemIswx != null"> AND item_iswx = #{itemIswx}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TItemInfo">
+		INSERT INTO t_item_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{itemNo,jdbcType=VARCHAR},
+		#{itemSubno,jdbcType=VARCHAR},
+		#{itemBarcode,jdbcType=VARCHAR},
+		#{itemName,jdbcType=VARCHAR},
+		#{itemClass,jdbcType=VARCHAR},
+		#{itemProperty,jdbcType=VARCHAR},
+		#{itemBrand,jdbcType=VARCHAR},
+		#{itemSize,jdbcType=VARCHAR},
+		#{itemUnitNo,jdbcType=VARCHAR},
+		#{itemInPrice,jdbcType=NUMERIC},
+		#{itemSalePrice,jdbcType=NUMERIC},
+		#{itemPfPrice,jdbcType=NUMERIC},
+		#{itemVipPrice,jdbcType=NUMERIC},
+		#{itemDistPrice,jdbcType=NUMERIC},
+		#{itemArea,jdbcType=VARCHAR},
+		#{itemGrade,jdbcType=VARCHAR},
+		#{itemSupNo,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{itemCombine,jdbcType=VARCHAR},
+		#{itemSaleMode,jdbcType=VARCHAR},
+		#{itemFlag,jdbcType=VARCHAR},
+		#{haveStock,jdbcType=VARCHAR},
+		#{ManageType,jdbcType=VARCHAR},
+		#{ManageLyRate,jdbcType=NUMERIC},
+		#{pyCode,jdbcType=VARCHAR},
+		#{itemValidDay,jdbcType=NUMERIC},
+		#{itemValidTipday,jdbcType=NUMERIC},
+		#{posLowerPrice,jdbcType=NUMERIC},
+		#{posDiscount,jdbcType=NUMERIC},
+		#{changePrice,jdbcType=VARCHAR},
+		#{allowDiscount,jdbcType=VARCHAR},
+		#{inTaxRate,jdbcType=NUMERIC},
+		#{outTaxRate,jdbcType=NUMERIC},
+		#{itemSaleRate,jdbcType=NUMERIC},
+		#{itemPfRate,jdbcType=NUMERIC},
+		#{integralRate,jdbcType=NUMERIC},
+		#{costType,jdbcType=VARCHAR},
+		#{displayFlag,jdbcType=VARCHAR},
+		#{internalFlag,jdbcType=VARCHAR},
+		#{itemMemo,jdbcType=VARCHAR},
+		#{itemBytxt1,jdbcType=VARCHAR},
+		#{itemBytxt2,jdbcType=VARCHAR},
+		#{itemBytxt3,jdbcType=VARCHAR},
+		#{itemBynum1,jdbcType=NUMERIC},
+		#{itemBynum2,jdbcType=NUMERIC},
+		#{itemBynum3,jdbcType=NUMERIC},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{lockUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{createUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{itemSaleRatetype,jdbcType=VARCHAR},
+		#{itemPfRatetype,jdbcType=VARCHAR},
+		#{itemDateUnit,jdbcType=VARCHAR},
+		#{showboxNo,jdbcType=VARCHAR},
+		#{itemInRatetype,jdbcType=VARCHAR},
+		#{itemInRate,jdbcType=NUMERIC},
+		#{branchNo,jdbcType=VARCHAR},
+		#{itemIsGood,jdbcType=VARCHAR},
+		#{itemAbc,jdbcType=VARCHAR},
+		#{itemPrintLabel,jdbcType=VARCHAR},
+		#{itemQaCert,jdbcType=VARCHAR},
+		#{itemQsCert,jdbcType=VARCHAR},
+		#{itemInletCert,jdbcType=VARCHAR},
+		#{itemQiRep,jdbcType=VARCHAR},
+		#{haveSaleman,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{itemDistQty,jdbcType=NUMERIC},
+		#{itemDistLimit,jdbcType=VARCHAR},
+		#{itemDistDouble,jdbcType=VARCHAR},
+		#{itemPzwh,jdbcType=VARCHAR},
+		#{itemFactory,jdbcType=VARCHAR},
+		#{itemSysMemo1,jdbcType=VARCHAR},
+		#{haveSalememo,jdbcType=VARCHAR},
+		#{buyDays,jdbcType=VARCHAR},
+		#{posLimitQty,jdbcType=NUMERIC},
+		#{itemYpFlag,jdbcType=VARCHAR},
+		#{eshopIntegral,jdbcType=NUMERIC},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{itemJj,jdbcType=VARCHAR},
+		#{itemKs,jdbcType=VARCHAR},
+		#{itemIswx,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_item_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TItemInfo">
+		UPDATE t_item_info SET
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               item_subno=#{itemSubno,jdbcType=VARCHAR},
+               item_barcode=#{itemBarcode,jdbcType=VARCHAR},
+               item_name=#{itemName,jdbcType=VARCHAR},
+               item_class=#{itemClass,jdbcType=VARCHAR},
+               item_property=#{itemProperty,jdbcType=VARCHAR},
+               item_brand=#{itemBrand,jdbcType=VARCHAR},
+               item_size=#{itemSize,jdbcType=VARCHAR},
+               item_unit_no=#{itemUnitNo,jdbcType=VARCHAR},
+               item_in_price=#{itemInPrice,jdbcType=NUMERIC},
+               item_sale_price=#{itemSalePrice,jdbcType=NUMERIC},
+               item_pf_price=#{itemPfPrice,jdbcType=NUMERIC},
+               item_vip_price=#{itemVipPrice,jdbcType=NUMERIC},
+               item_dist_price=#{itemDistPrice,jdbcType=NUMERIC},
+               item_area=#{itemArea,jdbcType=VARCHAR},
+               item_grade=#{itemGrade,jdbcType=VARCHAR},
+               item_sup_no=#{itemSupNo,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               item_combine=#{itemCombine,jdbcType=VARCHAR},
+               item_SaleMode=#{itemSaleMode,jdbcType=VARCHAR},
+               item_flag=#{itemFlag,jdbcType=VARCHAR},
+               have_stock=#{haveStock,jdbcType=VARCHAR},
+               Manage_type=#{ManageType,jdbcType=VARCHAR},
+               Manage_ly_rate=#{ManageLyRate,jdbcType=NUMERIC},
+               py_code=#{pyCode,jdbcType=VARCHAR},
+               item_valid_day=#{itemValidDay,jdbcType=NUMERIC},
+               item_valid_tipday=#{itemValidTipday,jdbcType=NUMERIC},
+               pos_lower_price=#{posLowerPrice,jdbcType=NUMERIC},
+               pos_discount=#{posDiscount,jdbcType=NUMERIC},
+               change_price=#{changePrice,jdbcType=VARCHAR},
+               allow_discount=#{allowDiscount,jdbcType=VARCHAR},
+               in_tax_rate=#{inTaxRate,jdbcType=NUMERIC},
+               out_tax_rate=#{outTaxRate,jdbcType=NUMERIC},
+               item_sale_rate=#{itemSaleRate,jdbcType=NUMERIC},
+               item_pf_rate=#{itemPfRate,jdbcType=NUMERIC},
+               integral_rate=#{integralRate,jdbcType=NUMERIC},
+               cost_type=#{costType,jdbcType=VARCHAR},
+               display_flag=#{displayFlag,jdbcType=VARCHAR},
+               internal_flag=#{internalFlag,jdbcType=VARCHAR},
+               item_memo=#{itemMemo,jdbcType=VARCHAR},
+               item_bytxt1=#{itemBytxt1,jdbcType=VARCHAR},
+               item_bytxt2=#{itemBytxt2,jdbcType=VARCHAR},
+               item_bytxt3=#{itemBytxt3,jdbcType=VARCHAR},
+               item_bynum1=#{itemBynum1,jdbcType=NUMERIC},
+               item_bynum2=#{itemBynum2,jdbcType=NUMERIC},
+               item_bynum3=#{itemBynum3,jdbcType=NUMERIC},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               lock_user=#{lockUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               item_sale_ratetype=#{itemSaleRatetype,jdbcType=VARCHAR},
+               item_pf_ratetype=#{itemPfRatetype,jdbcType=VARCHAR},
+               item_date_unit=#{itemDateUnit,jdbcType=VARCHAR},
+               showbox_no=#{showboxNo,jdbcType=VARCHAR},
+               item_in_ratetype=#{itemInRatetype,jdbcType=VARCHAR},
+               item_in_rate=#{itemInRate,jdbcType=NUMERIC},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               item_IsGood=#{itemIsGood,jdbcType=VARCHAR},
+               item_abc=#{itemAbc,jdbcType=VARCHAR},
+               item_print_label=#{itemPrintLabel,jdbcType=VARCHAR},
+               item_qa_cert=#{itemQaCert,jdbcType=VARCHAR},
+               item_qs_cert=#{itemQsCert,jdbcType=VARCHAR},
+               item_inlet_cert=#{itemInletCert,jdbcType=VARCHAR},
+               item_qi_rep=#{itemQiRep,jdbcType=VARCHAR},
+               have_saleman=#{haveSaleman,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               item_dist_qty=#{itemDistQty,jdbcType=NUMERIC},
+               item_dist_limit=#{itemDistLimit,jdbcType=VARCHAR},
+               item_dist_double=#{itemDistDouble,jdbcType=VARCHAR},
+               item_pzwh=#{itemPzwh,jdbcType=VARCHAR},
+               item_factory=#{itemFactory,jdbcType=VARCHAR},
+               item_sys_memo1=#{itemSysMemo1,jdbcType=VARCHAR},
+               have_salememo=#{haveSalememo,jdbcType=VARCHAR},
+               buy_days=#{buyDays,jdbcType=VARCHAR},
+               pos_limit_qty=#{posLimitQty,jdbcType=NUMERIC},
+               item_yp_flag=#{itemYpFlag,jdbcType=VARCHAR},
+               eshop_Integral=#{eshopIntegral,jdbcType=NUMERIC},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               item_jj=#{itemJj,jdbcType=VARCHAR},
+               item_ks=#{itemKs,jdbcType=VARCHAR},
+               item_iswx=#{itemIswx,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TItemInfo">
+		SELECT <include refid="columns"/>
+		FROM t_item_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TItemInfo">
+		SELECT <include refid="columns"/>
+		FROM t_item_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TItemInfo">
+		SELECT <include refid="columns"/>
+		FROM t_item_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TItemInfo">
+		SELECT <include refid="columns"/>
+		FROM t_item_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TItemInfo">
+		SELECT <include refid="columns"/>
+		FROM t_item_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

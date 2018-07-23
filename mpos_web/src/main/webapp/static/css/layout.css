@@ -1,0 +1,212 @@
+body {
+	font-family: Microsoft YaHei, Lucida Sans Unicode, Arial, Verdana,
+		SansSerif, "宋体";
+}
+#wrapper {
+	background: #933;
+	padding-top: 60px;
+}
+.footer{ height:48px;
+	color:#666; 
+	line-height:48px; 
+	text-align:center;
+	border-top: 5px solid #933;
+}
+
+.o-main-container {
+	background-color: #fff;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.o-r-content {
+	padding-right: 20px;
+}
+#leftbar {
+	background-color: #F7EBEA;
+	padding-bottom: 10px;
+	border-right: solid 2px #E3D8D7;
+	min-height: 700px;
+}
+#leftbar>.nav {
+	width: 100%;
+}
+#leftbar>.nav>li {
+	text-align: center;
+}
+#leftbar>.nav>.active {
+	background-color: #fff;
+	border-right: none;
+}
+#leftbar>.nav>.active>i {
+	color: #B12028;
+}
+#leftbar>.nav>li>a:hover,#leftbar>.nav>li>a:focus {
+	text-decoration: none;
+	background-color: #EAC8C5;
+}
+#leftbar>.nav>li>a {
+	color: #828287;
+	padding: 5px;
+}
+#leftbar>.nav>li.active>a {
+	color: #B12028;
+}
+#leftbar>.nav>li>a>small {
+	color: #666;
+	padding: 0px 10px;
+	margin-top: 5px;
+}
+#leftbar>.nav>li.active>a:hover,#leftbar>.nav>li.active>a:focus {
+	background-color: transparent;
+}
+
+
+#leftbar>.module-menu>li{
+	text-align: left;padding-left: 10px;
+}
+#leftbar>.module-menu>li>a{
+	color: #B22822;
+}
+#leftbar>.module-menu>li.active {
+	background-color: #fff;
+}
+
+#leftbar>.module-menu>li>a:hover,#leftbar>.module-menu>li>a:focus {
+	background-color: #F7EBEA;
+}
+
+.module-menu .submenu{
+	list-style: none;
+	-webkit-padding-start:0;
+}
+.submenu>li>a>small {
+	color: #666;
+	line-height: 18px;
+	padding-left: 20px;
+}
+.submenu>li>a {
+	display: block;
+}
+.submenu>li>a:hover,.submenu>li>a:focus {
+	text-decoration: none;
+	background-color: #EAC8C5;
+}
+
+.o-l-action{
+	padding: 5px 10px;
+	height: 40px;
+}
+.o-l-action .btn{
+	margin: 0 3px;
+}
+.o-l-page .pagination{
+	margin-top: 0;
+}
+.o-l-page .input-goto{
+	width: 40px;
+	display: inline;
+	margin: 0 3px;
+}
+.o-query-builder{
+	padding: 0 0 5px 0;
+}
+.o-l-chevron-down{
+	text-align: center;
+	display: block;
+	width: 100%;
+	border-top: 1px solid #ccc;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.o-l-chevron-down a.btn{
+	height: 15px;
+	font-size: 4px;
+	padding: 0 15px;
+	border-top: none;
+	margin-top: -13px;
+}
+.o-l-table>tbody>tr{
+	cursor: pointer;
+}
+.o-l-table .o-l-tab-ckb{
+	cursor: auto;
+}
+.o-a-button{
+	margin-top: -6px;
+}
+.o-v-action>.btn{
+	margin: 0 2px;
+}
+.o-v-action>.btn-success ,.o-v-action>.btn-primary, .o-v-action>.btn-danger {
+	color: white;
+}
+
+.tabs-right > .nav-tabs{
+  border-bottom: 0;
+}
+
+.tabs-right > .nav-tabs > li {
+  float: none;
+}
+.tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+.tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
+}
+.tabs-right > .nav-tabs > li > a {
+  margin-left: -1px;
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+}
+
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover {
+  border-color: #ddd #ddd #ddd transparent;
+  *border-left-color: #ffffff;
+}
+
+.tab-content{
+	overflow: auto;
+}
+
+
+
+.ztree li span.button.org_ico_open{margin-right:2px; background: url(../images/icon/company.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.org_ico_close{margin-right:2px; background: url(../images/icon/company.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.org_ico_docu{margin-right:2px; background: url(../images/icon/company.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.dim_ico_open{margin-right:2px; background: url(../images/icon/dim.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.dim_ico_close{margin-right:2px; background: url(../images/icon/dim.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.dim_ico_docu{margin-right:2px; background: url(../images/icon/dim.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.structure_ico_open{margin-right:2px; background: url(../images/icon/group.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.structure_ico_close{margin-right:2px; background: url(../images/icon/group.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.structure_ico_docu{margin-right:2px; background: url(../images/icon/group.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .o-r-content {
+	padding-left: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .o-r-content {
+	padding-left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .o-r-content {
+	padding-left: 0;
+  }
+}

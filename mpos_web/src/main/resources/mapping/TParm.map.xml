@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TParm">
+	<resultMap id="TParm" type="com.site.entity.TParm">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="parmNo" column="parm_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="parmVal" column="parm_val" 
+				jdbcType="VARCHAR" />
+			<result property="isSys" column="is_sys" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		parm_no,
+		name,
+		parm_val,
+		is_sys,
+		shop_id,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="parmNo != null"> AND parm_no like '%${parmNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="parmVal != null"> AND parm_val like '%${parmVal}%' </if>
+       <if test="isSys != null"> AND is_sys like '%${isSys}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="parmNo != null"> AND parm_no =#{parmNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="parmVal != null"> AND parm_val =#{parmVal} </if>
+			<if test="isSys != null"> AND is_sys =#{isSys} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TParm">
+		INSERT INTO t_parm
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{parmNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{parmVal,jdbcType=VARCHAR},#{isSys,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_parm 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TParm">
+		UPDATE t_parm SET
+                     parm_no=#{parmNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     parm_val=#{parmVal,jdbcType=VARCHAR},
+                     is_sys=#{isSys,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TParm">
+		SELECT <include refid="columns"/>
+		FROM t_parm
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TParm">
+		SELECT <include refid="columns"/>
+		FROM t_parm   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TParm">
+		SELECT <include refid="columns"/>
+		FROM t_parm   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TParm">
+		SELECT <include refid="columns"/>
+		FROM t_parm   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TParm">
+		SELECT <include refid="columns"/>
+		FROM t_parm   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

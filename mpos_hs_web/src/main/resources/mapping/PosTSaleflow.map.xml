@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.PosTSaleflow">
+	<resultMap id="PosTSaleflow" type="com.site.entity.PosTSaleflow">
+		<result property= "flowId" column="flow_id" jdbcType="NUMERIC" />
+		<result property= "flowNo" column="flow_no" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "sourcePrice" column="source_price" jdbcType="NUMERIC" />
+		<result property= "salePrice" column="sale_price" jdbcType="NUMERIC" />
+		<result property= "saleQnty" column="sale_qnty" jdbcType="NUMERIC" />
+		<result property= "saleMoney" column="sale_money" jdbcType="NUMERIC" />
+		<result property= "sellWay" column="sell_way" jdbcType="VARCHAR" />
+		<result property= "operId" column="oper_id" jdbcType="VARCHAR" />
+		<result property= "saleMan" column="sale_man" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "operDate" column="oper_date" jdbcType="TIMESTAMP" />
+		<result property= "remoteFlag" column="remote_flag" jdbcType="VARCHAR" />
+		<result property= "promtype" column="promtype" jdbcType="VARCHAR" />
+		<result property= "presentflag" column="presentflag" jdbcType="VARCHAR" />
+		<result property= "cashflag" column="cashflag" jdbcType="VARCHAR" />
+		<result property= "discount" column="discount" jdbcType="NUMERIC" />
+		<result property= "discounttype" column="discounttype" jdbcType="VARCHAR" />
+		<result property= "flowNoRet" column="flow_no_ret" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		flow_id,
+		flow_no,
+		branch_no,
+		item_no,
+		source_price,
+		sale_price,
+		sale_qnty,
+		sale_money,
+		sell_way,
+		oper_id,
+		sale_man,
+		counter_no,
+		oper_date,
+		remote_flag,
+		promtype,
+		presentflag,
+		cashflag,
+		discount,
+		discounttype,
+		flow_no_ret
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="flowId != null"> AND flow_id like '%${flowId}%' </if>
+       	<if test="flowNo != null"> AND flow_no like '%${flowNo}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="sourcePrice != null"> AND source_price like '%${sourcePrice}%' </if>
+       	<if test="salePrice != null"> AND sale_price like '%${salePrice}%' </if>
+       	<if test="saleQnty != null"> AND sale_qnty like '%${saleQnty}%' </if>
+       	<if test="saleMoney != null"> AND sale_money like '%${saleMoney}%' </if>
+       	<if test="sellWay != null"> AND sell_way like '%${sellWay}%' </if>
+       	<if test="operId != null"> AND oper_id like '%${operId}%' </if>
+       	<if test="saleMan != null"> AND sale_man like '%${saleMan}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="remoteFlag != null"> AND remote_flag like '%${remoteFlag}%' </if>
+       	<if test="promtype != null"> AND promtype like '%${promtype}%' </if>
+       	<if test="presentflag != null"> AND presentflag like '%${presentflag}%' </if>
+       	<if test="cashflag != null"> AND cashflag like '%${cashflag}%' </if>
+       	<if test="discount != null"> AND discount like '%${discount}%' </if>
+       	<if test="discounttype != null"> AND discounttype like '%${discounttype}%' </if>
+       	<if test="flowNoRet != null"> AND flow_no_ret like '%${flowNoRet}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="flowId != null"> AND flow_id = #{flowId}</if>
+       	<if test="flowNo != null"> AND flow_no = #{flowNo}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="sourcePrice != null"> AND source_price = #{sourcePrice}</if>
+       	<if test="salePrice != null"> AND sale_price = #{salePrice}</if>
+       	<if test="saleQnty != null"> AND sale_qnty = #{saleQnty}</if>
+       	<if test="saleMoney != null"> AND sale_money = #{saleMoney}</if>
+       	<if test="sellWay != null"> AND sell_way = #{sellWay}</if>
+       	<if test="operId != null"> AND oper_id = #{operId}</if>
+       	<if test="saleMan != null"> AND sale_man = #{saleMan}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="remoteFlag != null"> AND remote_flag = #{remoteFlag}</if>
+       	<if test="promtype != null"> AND promtype = #{promtype}</if>
+       	<if test="presentflag != null"> AND presentflag = #{presentflag}</if>
+       	<if test="cashflag != null"> AND cashflag = #{cashflag}</if>
+       	<if test="discount != null"> AND discount = #{discount}</if>
+       	<if test="discounttype != null"> AND discounttype = #{discounttype}</if>
+       	<if test="flowNoRet != null"> AND flow_no_ret = #{flowNoRet}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.PosTSaleflow">
+		INSERT INTO pos_t_saleflow
+		(<include refid="columns"/>)
+		VALUES(
+		#{flowId,jdbcType=NUMERIC},
+		#{flowNo,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{itemNo,jdbcType=VARCHAR},
+		#{sourcePrice,jdbcType=NUMERIC},
+		#{salePrice,jdbcType=NUMERIC},
+		#{saleQnty,jdbcType=NUMERIC},
+		#{saleMoney,jdbcType=NUMERIC},
+		#{sellWay,jdbcType=VARCHAR},
+		#{operId,jdbcType=VARCHAR},
+		#{saleMan,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{operDate,jdbcType=TIMESTAMP},
+		#{remoteFlag,jdbcType=VARCHAR},
+		#{promtype,jdbcType=VARCHAR},
+		#{presentflag,jdbcType=VARCHAR},
+		#{cashflag,jdbcType=VARCHAR},
+		#{discount,jdbcType=NUMERIC},
+		#{discounttype,jdbcType=VARCHAR},
+		#{flowNoRet,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM pos_t_saleflow 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.PosTSaleflow">
+		UPDATE pos_t_saleflow SET
+               flow_id=#{flowId,jdbcType=NUMERIC},
+               flow_no=#{flowNo,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               source_price=#{sourcePrice,jdbcType=NUMERIC},
+               sale_price=#{salePrice,jdbcType=NUMERIC},
+               sale_qnty=#{saleQnty,jdbcType=NUMERIC},
+               sale_money=#{saleMoney,jdbcType=NUMERIC},
+               sell_way=#{sellWay,jdbcType=VARCHAR},
+               oper_id=#{operId,jdbcType=VARCHAR},
+               sale_man=#{saleMan,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               oper_date=#{operDate,jdbcType=TIMESTAMP},
+               remote_flag=#{remoteFlag,jdbcType=VARCHAR},
+               promtype=#{promtype,jdbcType=VARCHAR},
+               presentflag=#{presentflag,jdbcType=VARCHAR},
+               cashflag=#{cashflag,jdbcType=VARCHAR},
+               discount=#{discount,jdbcType=NUMERIC},
+               discounttype=#{discounttype,jdbcType=VARCHAR},
+               flow_no_ret=#{flowNoRet,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="PosTSaleflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_saleflow
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="PosTSaleflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_saleflow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="PosTSaleflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_saleflow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="PosTSaleflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_saleflow   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="PosTSaleflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_saleflow   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

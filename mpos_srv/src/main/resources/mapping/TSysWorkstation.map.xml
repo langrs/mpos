@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSysWorkstation">
+	<resultMap id="TSysWorkstation" type="com.site.entity.TSysWorkstation">
+		<result property= "jh" column="jh" jdbcType="VARCHAR" />
+		<result property= "loginPos" column="login_pos" jdbcType="VARCHAR" />
+		<result property= "loginHt" column="login_ht" jdbcType="VARCHAR" />
+		<result property= "isBlls" column="is_blls" jdbcType="VARCHAR" />
+		<result property= "computer" column="computer" jdbcType="VARCHAR" />
+		<result property= "other" column="other" jdbcType="VARCHAR" />
+		<result property= "computerMac" column="computer_mac" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "isInit" column="is_init" jdbcType="VARCHAR" />
+		<result property= "initDate" column="init_date" jdbcType="TIMESTAMP" />
+		<result property= "regCode" column="reg_code" jdbcType="VARCHAR" />
+		<result property= "isLogout" column="is_logout" jdbcType="VARCHAR" />
+		<result property= "logoutDate" column="logout_date" jdbcType="TIMESTAMP" />
+		<result property= "keyNo" column="key_no" jdbcType="VARCHAR" />
+		<result property= "snNo" column="sn_no" jdbcType="VARCHAR" />
+		<result property= "isRaid" column="is_raid" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "type" column="type" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		jh,
+		login_pos,
+		login_ht,
+		is_blls,
+		computer,
+		other,
+		computer_mac,
+		branch_no,
+		is_init,
+		init_date,
+		reg_code,
+		is_logout,
+		logout_date,
+		key_no,
+		sn_no,
+		is_raid,
+		counter_no,
+		type
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="jh != null"> AND jh like '%${jh}%' </if>
+       	<if test="loginPos != null"> AND login_pos like '%${loginPos}%' </if>
+       	<if test="loginHt != null"> AND login_ht like '%${loginHt}%' </if>
+       	<if test="isBlls != null"> AND is_blls like '%${isBlls}%' </if>
+       	<if test="computer != null"> AND computer like '%${computer}%' </if>
+       	<if test="other != null"> AND other like '%${other}%' </if>
+       	<if test="computerMac != null"> AND computer_mac like '%${computerMac}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="isInit != null"> AND is_init like '%${isInit}%' </if>
+       	<if test="initDate != null"> AND init_date = #{initDate}</if>
+       	<if test="regCode != null"> AND reg_code like '%${regCode}%' </if>
+       	<if test="isLogout != null"> AND is_logout like '%${isLogout}%' </if>
+       	<if test="logoutDate != null"> AND logout_date = #{logoutDate}</if>
+       	<if test="keyNo != null"> AND key_no like '%${keyNo}%' </if>
+       	<if test="snNo != null"> AND sn_no like '%${snNo}%' </if>
+       	<if test="isRaid != null"> AND is_raid like '%${isRaid}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="type != null"> AND type like '%${type}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="jh != null"> AND jh = #{jh}</if>
+       	<if test="loginPos != null"> AND login_pos = #{loginPos}</if>
+       	<if test="loginHt != null"> AND login_ht = #{loginHt}</if>
+       	<if test="isBlls != null"> AND is_blls = #{isBlls}</if>
+       	<if test="computer != null"> AND computer = #{computer}</if>
+       	<if test="other != null"> AND other = #{other}</if>
+       	<if test="computerMac != null"> AND computer_mac = #{computerMac}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="isInit != null"> AND is_init = #{isInit}</if>
+       	<if test="initDate != null"> AND init_date = #{initDate}</if>
+       	<if test="regCode != null"> AND reg_code = #{regCode}</if>
+       	<if test="isLogout != null"> AND is_logout = #{isLogout}</if>
+       	<if test="logoutDate != null"> AND logout_date = #{logoutDate}</if>
+       	<if test="keyNo != null"> AND key_no = #{keyNo}</if>
+       	<if test="snNo != null"> AND sn_no = #{snNo}</if>
+       	<if test="isRaid != null"> AND is_raid = #{isRaid}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="type != null"> AND type = #{type}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TSysWorkstation">
+		INSERT INTO t_sys_workstation
+		(<include refid="columns"/>)
+		VALUES(
+		#{jh,jdbcType=VARCHAR},
+		#{loginPos,jdbcType=VARCHAR},
+		#{loginHt,jdbcType=VARCHAR},
+		#{isBlls,jdbcType=VARCHAR},
+		#{computer,jdbcType=VARCHAR},
+		#{other,jdbcType=VARCHAR},
+		#{computerMac,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{isInit,jdbcType=VARCHAR},
+		#{initDate,jdbcType=TIMESTAMP},
+		#{regCode,jdbcType=VARCHAR},
+		#{isLogout,jdbcType=VARCHAR},
+		#{logoutDate,jdbcType=TIMESTAMP},
+		#{keyNo,jdbcType=VARCHAR},
+		#{snNo,jdbcType=VARCHAR},
+		#{isRaid,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_sys_workstation 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSysWorkstation">
+		UPDATE t_sys_workstation SET
+               jh=#{jh,jdbcType=VARCHAR},
+               login_pos=#{loginPos,jdbcType=VARCHAR},
+               login_ht=#{loginHt,jdbcType=VARCHAR},
+               is_blls=#{isBlls,jdbcType=VARCHAR},
+               computer=#{computer,jdbcType=VARCHAR},
+               other=#{other,jdbcType=VARCHAR},
+               computer_mac=#{computerMac,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               is_init=#{isInit,jdbcType=VARCHAR},
+               init_date=#{initDate,jdbcType=TIMESTAMP},
+               reg_code=#{regCode,jdbcType=VARCHAR},
+               is_logout=#{isLogout,jdbcType=VARCHAR},
+               logout_date=#{logoutDate,jdbcType=TIMESTAMP},
+               key_no=#{keyNo,jdbcType=VARCHAR},
+               sn_no=#{snNo,jdbcType=VARCHAR},
+               is_raid=#{isRaid,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               type=#{type,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TSysWorkstation">
+		SELECT <include refid="columns"/>
+		FROM t_sys_workstation
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSysWorkstation">
+		SELECT <include refid="columns"/>
+		FROM t_sys_workstation   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSysWorkstation">
+		SELECT <include refid="columns"/>
+		FROM t_sys_workstation   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSysWorkstation">
+		SELECT <include refid="columns"/>
+		FROM t_sys_workstation   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSysWorkstation">
+		SELECT <include refid="columns"/>
+		FROM t_sys_workstation   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

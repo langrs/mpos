@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.AuthRes">
+	<resultMap id="AuthRes" type="com.site.entity.AuthRes">
+		<id property="id" column="id_" jdbcType="NUMERIC" />
+		<result property="path" column="path_" jdbcType="VARCHAR" />
+		<result property="key" column="key_" jdbcType="VARCHAR" />
+		<result property="name" column="name_" jdbcType="VARCHAR" />
+		<result property="navId" column="nav_id_" jdbcType="NUMERIC" />
+		<association property="navIdObj" column="nav_id_"
+			select="com.site.entity.Nav.get"></association>
+	</resultMap>
+	<sql id="whereId">
+		id_=#{id}
+	</sql>
+	<sql id="columns">
+		id_,
+		path_,
+		key_,
+		name_,
+		nav_id_
+	</sql>
+	<sql id="dynamicWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="path != null"> AND path_ like '%${path}%' </if>
+			<if test="key != null"> AND key_ like '%${key}%' </if>
+			<if test="name != null"> AND name_ like '%${name}%' </if>
+			<if test="navId != null"> AND nav_id_ =#{navId} </if>
+		</where>
+	</sql>
+
+
+	<sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="path != null"> AND path_ =#{path} </if>
+			<if test="key != null"> AND key_ =#{key} </if>
+			<if test="name != null"> AND name_ =#{name} </if>
+			<if test="navId != null"> AND nav_id_ =#{navId} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.AuthRes">
+		INSERT INTO auth_res
+		(
+		<include refid="columns" />
+		)
+		VALUES
+		(#{id,jdbcType=NUMERIC},#{path,jdbcType=VARCHAR},#{key,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{navId,jdbcType=NUMERIC})
+	</insert>
+
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM auth_res
+		WHERE
+		<include refid="whereId" />
+	</delete>
+	<update id="update" parameterType="com.site.entity.AuthRes">
+		UPDATE auth_res SET
+		path_=#{path,jdbcType=VARCHAR},
+		key_=#{key,jdbcType=VARCHAR},
+		name_=#{name,jdbcType=VARCHAR},
+		nav_id_=#{navId,jdbcType=NUMERIC}
+		WHERE
+		<include refid="whereId" />
+
+	</update>
+
+	<select id="get" parameterType="java.lang.Long" resultMap="AuthRes">
+		SELECT
+		<include refid="columns" />
+		FROM auth_res
+		WHERE
+		<include refid="whereId" />
+	</select>
+
+	<select id="query" resultMap="AuthRes">
+		SELECT
+		<include refid="columns" />
+		FROM auth_res
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="AuthRes">
+		SELECT
+		<include refid="columns" />
+		FROM auth_res
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="AuthRes">
+		SELECT
+		<include refid="columns" />
+		FROM auth_res
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="getList" resultMap="AuthRes">
+		SELECT
+		<include refid="columns" />
+		FROM auth_res
+		<include refid="oneWhere" />
+	</select>
+</mapper>

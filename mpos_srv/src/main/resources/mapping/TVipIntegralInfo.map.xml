@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipIntegralInfo">
+	<resultMap id="TVipIntegralInfo" type="com.site.entity.TVipIntegralInfo">
+		<result property= "integralNo" column="integral_no" jdbcType="VARCHAR" />
+		<result property= "integralName" column="integral_name" jdbcType="VARCHAR" />
+		<result property= "integralType" column="integral_type" jdbcType="VARCHAR" />
+		<result property= "oneSaleAmt" column="one_sale_amt" jdbcType="NUMERIC" />
+		<result property= "integralBirthdayRate" column="integral_birthday_rate" jdbcType="NUMERIC" />
+		<result property= "roundType" column="round_type" jdbcType="VARCHAR" />
+		<result property= "integralMemo" column="integral_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "oneIntegral" column="one_integral" jdbcType="NUMERIC" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "integralBirthdayRange" column="integral_birthday_range" jdbcType="VARCHAR" />
+		<result property= "IntegralOnlyRealpay" column="Integral_Only_Realpay" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		integral_no,
+		integral_name,
+		integral_type,
+		one_sale_amt,
+		integral_birthday_rate,
+		round_type,
+		integral_memo,
+		IsSysFlag,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		one_integral,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag,
+		integral_birthday_range,
+		Integral_Only_Realpay
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="integralNo != null"> AND integral_no like '%${integralNo}%' </if>
+       	<if test="integralName != null"> AND integral_name like '%${integralName}%' </if>
+       	<if test="integralType != null"> AND integral_type like '%${integralType}%' </if>
+       	<if test="oneSaleAmt != null"> AND one_sale_amt like '%${oneSaleAmt}%' </if>
+       	<if test="integralBirthdayRate != null"> AND integral_birthday_rate like '%${integralBirthdayRate}%' </if>
+       	<if test="roundType != null"> AND round_type like '%${roundType}%' </if>
+       	<if test="integralMemo != null"> AND integral_memo like '%${integralMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="oneIntegral != null"> AND one_integral like '%${oneIntegral}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="integralBirthdayRange != null"> AND integral_birthday_range like '%${integralBirthdayRange}%' </if>
+       	<if test="IntegralOnlyRealpay != null"> AND Integral_Only_Realpay like '%${IntegralOnlyRealpay}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="integralNo != null"> AND integral_no = #{integralNo}</if>
+       	<if test="integralName != null"> AND integral_name = #{integralName}</if>
+       	<if test="integralType != null"> AND integral_type = #{integralType}</if>
+       	<if test="oneSaleAmt != null"> AND one_sale_amt = #{oneSaleAmt}</if>
+       	<if test="integralBirthdayRate != null"> AND integral_birthday_rate = #{integralBirthdayRate}</if>
+       	<if test="roundType != null"> AND round_type = #{roundType}</if>
+       	<if test="integralMemo != null"> AND integral_memo = #{integralMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="oneIntegral != null"> AND one_integral = #{oneIntegral}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="integralBirthdayRange != null"> AND integral_birthday_range = #{integralBirthdayRange}</if>
+       	<if test="IntegralOnlyRealpay != null"> AND Integral_Only_Realpay = #{IntegralOnlyRealpay}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipIntegralInfo">
+		INSERT INTO t_vip_integral_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{integralNo,jdbcType=VARCHAR},
+		#{integralName,jdbcType=VARCHAR},
+		#{integralType,jdbcType=VARCHAR},
+		#{oneSaleAmt,jdbcType=NUMERIC},
+		#{integralBirthdayRate,jdbcType=NUMERIC},
+		#{roundType,jdbcType=VARCHAR},
+		#{integralMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{oneIntegral,jdbcType=NUMERIC},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{integralBirthdayRange,jdbcType=VARCHAR},
+		#{IntegralOnlyRealpay,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_integral_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipIntegralInfo">
+		UPDATE t_vip_integral_info SET
+               integral_no=#{integralNo,jdbcType=VARCHAR},
+               integral_name=#{integralName,jdbcType=VARCHAR},
+               integral_type=#{integralType,jdbcType=VARCHAR},
+               one_sale_amt=#{oneSaleAmt,jdbcType=NUMERIC},
+               integral_birthday_rate=#{integralBirthdayRate,jdbcType=NUMERIC},
+               round_type=#{roundType,jdbcType=VARCHAR},
+               integral_memo=#{integralMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               one_integral=#{oneIntegral,jdbcType=NUMERIC},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               integral_birthday_range=#{integralBirthdayRange,jdbcType=VARCHAR},
+               Integral_Only_Realpay=#{IntegralOnlyRealpay,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipIntegralInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipIntegralInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipIntegralInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipIntegralInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipIntegralInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

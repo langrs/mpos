@@ -15,7 +15,7 @@ public class CouponResult {
     @ApiModelProperty(value = "券种编号")
     protected String ctno;
     @ApiModelProperty(value ="面值")
-    protected Double amt;
+    protected String amt;
     @ApiModelProperty(value = "券号")
     protected String couponno;
 
@@ -43,11 +43,11 @@ public class CouponResult {
         this.ctno = ctno;
     }
 
-    public Double getAmt() {
+    public String getAmt() {
         return amt;
     }
 
-    public void setAmt(Double amt) {
+    public void setAmt(String amt) {
         this.amt = amt;
     }
 

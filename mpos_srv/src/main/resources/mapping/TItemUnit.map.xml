@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TItemUnit">
+	<resultMap id="TItemUnit" type="com.site.entity.TItemUnit">
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "unitType" column="unit_type" jdbcType="VARCHAR" />
+		<result property= "itemPack" column="item_pack" jdbcType="NUMERIC" />
+		<result property= "itemSize" column="item_size" jdbcType="VARCHAR" />
+		<result property= "itemUnitNo" column="item_unit_no" jdbcType="VARCHAR" />
+		<result property= "itemBarcode" column="item_barcode" jdbcType="VARCHAR" />
+		<result property= "itemInPrice" column="item_in_price" jdbcType="NUMERIC" />
+		<result property= "itemSalePrice" column="item_sale_price" jdbcType="NUMERIC" />
+		<result property= "itemVipPrice" column="item_vip_price" jdbcType="NUMERIC" />
+		<result property= "itemPfPrice" column="item_pf_price" jdbcType="NUMERIC" />
+		<result property= "itemDistPrice" column="item_dist_price" jdbcType="NUMERIC" />
+		<result property= "isCg" column="is_cg" jdbcType="VARCHAR" />
+		<result property= "isPf" column="is_pf" jdbcType="VARCHAR" />
+		<result property= "isStop" column="is_stop" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "itemZ1Price" column="item_z1_price" jdbcType="NUMERIC" />
+		<result property= "itemZ2Price" column="item_z2_price" jdbcType="NUMERIC" />
+		<result property= "itemZ3Price" column="item_z3_price" jdbcType="NUMERIC" />
+		<result property= "itemZ4Price" column="item_z4_price" jdbcType="NUMERIC" />
+		<result property= "itemZ5Price" column="item_z5_price" jdbcType="NUMERIC" />
+		<result property= "itemZ6Price" column="item_z6_price" jdbcType="NUMERIC" />
+		<result property= "itemZ7Price" column="item_z7_price" jdbcType="NUMERIC" />
+		<result property= "itemZ8Price" column="item_z8_price" jdbcType="NUMERIC" />
+		<result property= "itemZ9Price" column="item_z9_price" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "isDist" column="is_dist" jdbcType="VARCHAR" />
+		<result property= "isIntegral" column="is_integral" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		item_no,
+		unit_type,
+		item_pack,
+		item_size,
+		item_unit_no,
+		item_barcode,
+		item_in_price,
+		item_sale_price,
+		item_vip_price,
+		item_pf_price,
+		item_dist_price,
+		is_cg,
+		is_pf,
+		is_stop,
+		update_flow,
+		item_z1_price,
+		item_z2_price,
+		item_z3_price,
+		item_z4_price,
+		item_z5_price,
+		item_z6_price,
+		item_z7_price,
+		item_z8_price,
+		item_z9_price,
+		update_time,
+		update_branch,
+		is_dist,
+		is_integral,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="unitType != null"> AND unit_type like '%${unitType}%' </if>
+       	<if test="itemPack != null"> AND item_pack like '%${itemPack}%' </if>
+       	<if test="itemSize != null"> AND item_size like '%${itemSize}%' </if>
+       	<if test="itemUnitNo != null"> AND item_unit_no like '%${itemUnitNo}%' </if>
+       	<if test="itemBarcode != null"> AND item_barcode like '%${itemBarcode}%' </if>
+       	<if test="itemInPrice != null"> AND item_in_price like '%${itemInPrice}%' </if>
+       	<if test="itemSalePrice != null"> AND item_sale_price like '%${itemSalePrice}%' </if>
+       	<if test="itemVipPrice != null"> AND item_vip_price like '%${itemVipPrice}%' </if>
+       	<if test="itemPfPrice != null"> AND item_pf_price like '%${itemPfPrice}%' </if>
+       	<if test="itemDistPrice != null"> AND item_dist_price like '%${itemDistPrice}%' </if>
+       	<if test="isCg != null"> AND is_cg like '%${isCg}%' </if>
+       	<if test="isPf != null"> AND is_pf like '%${isPf}%' </if>
+       	<if test="isStop != null"> AND is_stop like '%${isStop}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="itemZ1Price != null"> AND item_z1_price like '%${itemZ1Price}%' </if>
+       	<if test="itemZ2Price != null"> AND item_z2_price like '%${itemZ2Price}%' </if>
+       	<if test="itemZ3Price != null"> AND item_z3_price like '%${itemZ3Price}%' </if>
+       	<if test="itemZ4Price != null"> AND item_z4_price like '%${itemZ4Price}%' </if>
+       	<if test="itemZ5Price != null"> AND item_z5_price like '%${itemZ5Price}%' </if>
+       	<if test="itemZ6Price != null"> AND item_z6_price like '%${itemZ6Price}%' </if>
+       	<if test="itemZ7Price != null"> AND item_z7_price like '%${itemZ7Price}%' </if>
+       	<if test="itemZ8Price != null"> AND item_z8_price like '%${itemZ8Price}%' </if>
+       	<if test="itemZ9Price != null"> AND item_z9_price like '%${itemZ9Price}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="isDist != null"> AND is_dist like '%${isDist}%' </if>
+       	<if test="isIntegral != null"> AND is_integral like '%${isIntegral}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="unitType != null"> AND unit_type = #{unitType}</if>
+       	<if test="itemPack != null"> AND item_pack = #{itemPack}</if>
+       	<if test="itemSize != null"> AND item_size = #{itemSize}</if>
+       	<if test="itemUnitNo != null"> AND item_unit_no = #{itemUnitNo}</if>
+       	<if test="itemBarcode != null"> AND item_barcode = #{itemBarcode}</if>
+       	<if test="itemInPrice != null"> AND item_in_price = #{itemInPrice}</if>
+       	<if test="itemSalePrice != null"> AND item_sale_price = #{itemSalePrice}</if>
+       	<if test="itemVipPrice != null"> AND item_vip_price = #{itemVipPrice}</if>
+       	<if test="itemPfPrice != null"> AND item_pf_price = #{itemPfPrice}</if>
+       	<if test="itemDistPrice != null"> AND item_dist_price = #{itemDistPrice}</if>
+       	<if test="isCg != null"> AND is_cg = #{isCg}</if>
+       	<if test="isPf != null"> AND is_pf = #{isPf}</if>
+       	<if test="isStop != null"> AND is_stop = #{isStop}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="itemZ1Price != null"> AND item_z1_price = #{itemZ1Price}</if>
+       	<if test="itemZ2Price != null"> AND item_z2_price = #{itemZ2Price}</if>
+       	<if test="itemZ3Price != null"> AND item_z3_price = #{itemZ3Price}</if>
+       	<if test="itemZ4Price != null"> AND item_z4_price = #{itemZ4Price}</if>
+       	<if test="itemZ5Price != null"> AND item_z5_price = #{itemZ5Price}</if>
+       	<if test="itemZ6Price != null"> AND item_z6_price = #{itemZ6Price}</if>
+       	<if test="itemZ7Price != null"> AND item_z7_price = #{itemZ7Price}</if>
+       	<if test="itemZ8Price != null"> AND item_z8_price = #{itemZ8Price}</if>
+       	<if test="itemZ9Price != null"> AND item_z9_price = #{itemZ9Price}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="isDist != null"> AND is_dist = #{isDist}</if>
+       	<if test="isIntegral != null"> AND is_integral = #{isIntegral}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TItemUnit">
+		INSERT INTO t_item_unit
+		(<include refid="columns"/>)
+		VALUES(
+		#{itemNo,jdbcType=VARCHAR},
+		#{unitType,jdbcType=VARCHAR},
+		#{itemPack,jdbcType=NUMERIC},
+		#{itemSize,jdbcType=VARCHAR},
+		#{itemUnitNo,jdbcType=VARCHAR},
+		#{itemBarcode,jdbcType=VARCHAR},
+		#{itemInPrice,jdbcType=NUMERIC},
+		#{itemSalePrice,jdbcType=NUMERIC},
+		#{itemVipPrice,jdbcType=NUMERIC},
+		#{itemPfPrice,jdbcType=NUMERIC},
+		#{itemDistPrice,jdbcType=NUMERIC},
+		#{isCg,jdbcType=VARCHAR},
+		#{isPf,jdbcType=VARCHAR},
+		#{isStop,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{itemZ1Price,jdbcType=NUMERIC},
+		#{itemZ2Price,jdbcType=NUMERIC},
+		#{itemZ3Price,jdbcType=NUMERIC},
+		#{itemZ4Price,jdbcType=NUMERIC},
+		#{itemZ5Price,jdbcType=NUMERIC},
+		#{itemZ6Price,jdbcType=NUMERIC},
+		#{itemZ7Price,jdbcType=NUMERIC},
+		#{itemZ8Price,jdbcType=NUMERIC},
+		#{itemZ9Price,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{isDist,jdbcType=VARCHAR},
+		#{isIntegral,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_item_unit 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TItemUnit">
+		UPDATE t_item_unit SET
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               unit_type=#{unitType,jdbcType=VARCHAR},
+               item_pack=#{itemPack,jdbcType=NUMERIC},
+               item_size=#{itemSize,jdbcType=VARCHAR},
+               item_unit_no=#{itemUnitNo,jdbcType=VARCHAR},
+               item_barcode=#{itemBarcode,jdbcType=VARCHAR},
+               item_in_price=#{itemInPrice,jdbcType=NUMERIC},
+               item_sale_price=#{itemSalePrice,jdbcType=NUMERIC},
+               item_vip_price=#{itemVipPrice,jdbcType=NUMERIC},
+               item_pf_price=#{itemPfPrice,jdbcType=NUMERIC},
+               item_dist_price=#{itemDistPrice,jdbcType=NUMERIC},
+               is_cg=#{isCg,jdbcType=VARCHAR},
+               is_pf=#{isPf,jdbcType=VARCHAR},
+               is_stop=#{isStop,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               item_z1_price=#{itemZ1Price,jdbcType=NUMERIC},
+               item_z2_price=#{itemZ2Price,jdbcType=NUMERIC},
+               item_z3_price=#{itemZ3Price,jdbcType=NUMERIC},
+               item_z4_price=#{itemZ4Price,jdbcType=NUMERIC},
+               item_z5_price=#{itemZ5Price,jdbcType=NUMERIC},
+               item_z6_price=#{itemZ6Price,jdbcType=NUMERIC},
+               item_z7_price=#{itemZ7Price,jdbcType=NUMERIC},
+               item_z8_price=#{itemZ8Price,jdbcType=NUMERIC},
+               item_z9_price=#{itemZ9Price,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               is_dist=#{isDist,jdbcType=VARCHAR},
+               is_integral=#{isIntegral,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TItemUnit">
+		SELECT <include refid="columns"/>
+		FROM t_item_unit
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TItemUnit">
+		SELECT <include refid="columns"/>
+		FROM t_item_unit   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TItemUnit">
+		SELECT <include refid="columns"/>
+		FROM t_item_unit   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TItemUnit">
+		SELECT <include refid="columns"/>
+		FROM t_item_unit   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TItemUnit">
+		SELECT <include refid="columns"/>
+		FROM t_item_unit   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

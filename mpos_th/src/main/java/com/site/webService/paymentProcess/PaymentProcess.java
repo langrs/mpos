@@ -2,7 +2,6 @@ package com.site.webService.paymentProcess;
 
 import com.site.entity.ResultMap;
 import com.site.webService.WsUtil;
-import net.sf.json.JSONObject;
 import org.dom4j.Element;
 import org.dom4j.dom.DOMElement;
 
@@ -134,7 +133,8 @@ public class PaymentProcess extends WsUtil {
     }
 
     //不做返回值的判断,只是判断code即可
-    public void extraResponseContent(JSONObject jsonObject, ResultMap resultMap) {
+    public void extraResponseContent(String content, ResultMap resultMap) {
+
         resultMap.setStatus("0");
         return;
     }

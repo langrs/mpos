@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TShop">
+	<resultMap id="TShop" type="com.site.entity.TShop">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="companyId" column="company_id" 
+				jdbcType="VARCHAR" />
+			<result property="shopNo" column="shop_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="regionId" column="region_id" 
+				jdbcType="VARCHAR" />
+			<result property="descr" column="descr" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+					<association property="companyIdObj" column="company_id" select="com.site.entity.TCompany.get"></association>
+					<association property="regionIdObj" column="region_id" select="com.site.entity.TRegion.get"></association>
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		company_id,
+		shop_no,
+		name,
+		region_id,
+		descr,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="companyId != null"> AND company_id like '%${companyId}%' </if>
+       <if test="shopNo != null"> AND shop_no like '%${shopNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="regionId != null"> AND region_id like '%${regionId}%' </if>
+       <if test="descr != null"> AND descr like '%${descr}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="companyId != null"> AND company_id =#{companyId} </if>
+			<if test="shopNo != null"> AND shop_no =#{shopNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="regionId != null"> AND region_id =#{regionId} </if>
+			<if test="descr != null"> AND descr =#{descr} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TShop">
+		INSERT INTO t_shop
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR},#{shopNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{regionId,jdbcType=VARCHAR},#{descr,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_shop 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TShop">
+		UPDATE t_shop SET
+                     company_id=#{companyId,jdbcType=VARCHAR},
+                     shop_no=#{shopNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     region_id=#{regionId,jdbcType=VARCHAR},
+                     descr=#{descr,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TShop">
+		SELECT <include refid="columns"/>
+		FROM t_shop
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TShop">
+		SELECT <include refid="columns"/>
+		FROM t_shop   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TShop">
+		SELECT <include refid="columns"/>
+		FROM t_shop   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TShop">
+		SELECT <include refid="columns"/>
+		FROM t_shop   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TShop">
+		SELECT <include refid="columns"/>
+		FROM t_shop   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

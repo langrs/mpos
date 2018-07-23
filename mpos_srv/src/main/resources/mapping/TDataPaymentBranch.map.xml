@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TDataPaymentBranch">
+	<resultMap id="TDataPaymentBranch" type="com.site.entity.TDataPaymentBranch">
+		<result property= "paymentNo" column="payment_no" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "visaNo" column="visa_no" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		payment_no,
+		branch_no,
+		visa_no,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="paymentNo != null"> AND payment_no like '%${paymentNo}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="visaNo != null"> AND visa_no like '%${visaNo}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="paymentNo != null"> AND payment_no = #{paymentNo}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="visaNo != null"> AND visa_no = #{visaNo}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TDataPaymentBranch">
+		INSERT INTO t_data_payment_branch
+		(<include refid="columns"/>)
+		VALUES(
+		#{paymentNo,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{visaNo,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_data_payment_branch 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TDataPaymentBranch">
+		UPDATE t_data_payment_branch SET
+               payment_no=#{paymentNo,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               visa_no=#{visaNo,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TDataPaymentBranch">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment_branch
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TDataPaymentBranch">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment_branch   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TDataPaymentBranch">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment_branch   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TDataPaymentBranch">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment_branch   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TDataPaymentBranch">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment_branch   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

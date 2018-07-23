@@ -105,43 +105,52 @@ public abstract class WsUtil {
     //判断返回的参数是否属于有效或返回正确,因为这个部分的判断有共性,所以抽离出来
     public ResultMap extraResponse(String xmlStr){
         ResultMap<String> resultMap = new ResultMap<String>();
-        //将xml返回串解析为jison串
-        String jsonStr = XmlUtil.xml2json(xmlStr);
-        //判断返回的头文件中的srvcode是否为000
-        try {
-            JSONObject json_obj = JSONObject.fromObject(jsonStr);
-            JSONObject response_json = json_obj.getJSONObject("response");
-            //分解出来srvcode
-            String srvcode = response_json.getString("srvcode");
-            if (srvcode == null || !srvcode.equals("000") || srvcode.equals("")){
-                resultMap.setStatus("999");
-                resultMap.setErrorMsg("返回异常");
-                return resultMap;
-            }
-            //分解出来CDATA中包含的xml
-            String xmlExtra = response_json.getJSONObject("payload").getJSONObject("param").get("content").toString();
-            //重新把分解出来的xml又转换为json串
-            String str = XmlUtil.xml2json(xmlExtra);
-            //重新解析json串,
-            JSONObject json_body = JSONObject.fromObject(str);
-            //分解出code
-            JSONObject json_Status = json_body.getJSONObject("Response").getJSONObject("Execution").getJSONObject("Status");
-            String code = json_Status.getString("code");
-            if(code != null && !code.equals("0")){
-                resultMap.setStatus(code);
-                resultMap.setErrorMsg(json_Status.getString("description"));
-                return resultMap;
-            }
-            //调用实体部分解析
-            extraResponseContent(json_body,resultMap);
-        }catch(Exception e){
 
+        //xml串转换为Document
+        Document document = null;
+        try{
+           document = DocumentHelper.parseText(xmlStr);
+        }catch (Exception e){
+            e.getStackTrace();
+            resultMap.setData("999");
+            resultMap.setErrorMsg("返回数据格式生成解析xml文档出错");
+            return resultMap;
         }
-
+        Element root = document.getRootElement();
+        //判断srvcode是否为000
+        Element srvcodeE = root.element("srvcode");
+        if(srvcodeE == null || !srvcodeE.getText().equals("000")){
+            resultMap.setData("999");
+            resultMap.setErrorMsg("返回异常");
+            return resultMap;
+        }
+        //获取返回的实体内容
+        String content = root.element("payload").element("param").getText();
+//        System.out.println("打印返回的实体:");
+//        System.out.println(ResultBoty);
+        try {
+            document = DocumentHelper.parseText(content);
+        }catch (Exception e){
+            e.getStackTrace();
+            resultMap.setData("999");
+            resultMap.setErrorMsg("返回数据格式生成解析xml文档出错");
+            return resultMap;
+        }
+        //解析返回值的code
+        root = document.getRootElement();
+        Element element = root.element("Execution");
+        String code = element.element("Status").attributeValue("code");
+        if(code == null ||!code.equals("0")){
+            resultMap.setStatus(code);
+            resultMap.setErrorMsg(element.element("Status").attributeValue("description"));
+            return resultMap;
+        }
+        //调用子类的处理函数
+        extraResponseContent(content,resultMap);
         return resultMap;
     }
     //生成请求参数的实体部分
     public abstract String makeBody();
     //解析webservice的返回参数,内容部分
-    public abstract void extraResponseContent(JSONObject jsonObject, ResultMap resultMap);
+    public abstract void extraResponseContent(String content, ResultMap resultMap);
 }

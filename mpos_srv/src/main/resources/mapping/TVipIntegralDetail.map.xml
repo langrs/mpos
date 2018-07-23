@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipIntegralDetail">
+	<resultMap id="TVipIntegralDetail" type="com.site.entity.TVipIntegralDetail">
+		<result property= "integralNo" column="integral_no" jdbcType="VARCHAR" />
+		<result property= "integralSn" column="integral_sn" jdbcType="VARCHAR" />
+		<result property= "paymentNo" column="payment_no" jdbcType="VARCHAR" />
+		<result property= "itemClass" column="item_class" jdbcType="VARCHAR" />
+		<result property= "sectAmt" column="sect_amt" jdbcType="NUMERIC" />
+		<result property= "integralAmt" column="integral_amt" jdbcType="NUMERIC" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "itemProperty" column="item_property" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		integral_no,
+		integral_sn,
+		payment_no,
+		item_class,
+		sect_amt,
+		integral_amt,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag,
+		item_property
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="integralNo != null"> AND integral_no like '%${integralNo}%' </if>
+       	<if test="integralSn != null"> AND integral_sn like '%${integralSn}%' </if>
+       	<if test="paymentNo != null"> AND payment_no like '%${paymentNo}%' </if>
+       	<if test="itemClass != null"> AND item_class like '%${itemClass}%' </if>
+       	<if test="sectAmt != null"> AND sect_amt like '%${sectAmt}%' </if>
+       	<if test="integralAmt != null"> AND integral_amt like '%${integralAmt}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="itemProperty != null"> AND item_property like '%${itemProperty}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="integralNo != null"> AND integral_no = #{integralNo}</if>
+       	<if test="integralSn != null"> AND integral_sn = #{integralSn}</if>
+       	<if test="paymentNo != null"> AND payment_no = #{paymentNo}</if>
+       	<if test="itemClass != null"> AND item_class = #{itemClass}</if>
+       	<if test="sectAmt != null"> AND sect_amt = #{sectAmt}</if>
+       	<if test="integralAmt != null"> AND integral_amt = #{integralAmt}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="itemProperty != null"> AND item_property = #{itemProperty}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipIntegralDetail">
+		INSERT INTO t_vip_integral_detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{integralNo,jdbcType=VARCHAR},
+		#{integralSn,jdbcType=VARCHAR},
+		#{paymentNo,jdbcType=VARCHAR},
+		#{itemClass,jdbcType=VARCHAR},
+		#{sectAmt,jdbcType=NUMERIC},
+		#{integralAmt,jdbcType=NUMERIC},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{itemProperty,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_integral_detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipIntegralDetail">
+		UPDATE t_vip_integral_detail SET
+               integral_no=#{integralNo,jdbcType=VARCHAR},
+               integral_sn=#{integralSn,jdbcType=VARCHAR},
+               payment_no=#{paymentNo,jdbcType=VARCHAR},
+               item_class=#{itemClass,jdbcType=VARCHAR},
+               sect_amt=#{sectAmt,jdbcType=NUMERIC},
+               integral_amt=#{integralAmt,jdbcType=NUMERIC},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               item_property=#{itemProperty,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipIntegralDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipIntegralDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipIntegralDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipIntegralDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipIntegralDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_integral_detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

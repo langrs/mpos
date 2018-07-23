@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSysUser">
+	<resultMap id="TSysUser" type="com.site.entity.TSysUser">
+		<result property= "userId" column="user_id" jdbcType="VARCHAR" />
+		<result property= "operType" column="oper_type" jdbcType="VARCHAR" />
+		<result property= "userName" column="user_name" jdbcType="VARCHAR" />
+		<result property= "userPw" column="user_pw" jdbcType="VARCHAR" />
+		<result property= "userStatus" column="user_status" jdbcType="VARCHAR" />
+		<result property= "cashierGrant" column="cashier_grant" jdbcType="VARCHAR" />
+		<result property= "minZk" column="min_zk" jdbcType="NUMERIC" />
+		<result property= "maxGd" column="max_gd" jdbcType="NUMERIC" />
+		<result property= "maxFree" column="max_free" jdbcType="NUMERIC" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "userLoginPos" column="user_LoginPos" jdbcType="VARCHAR" />
+		<result property= "userLoginHT" column="user_LoginHT" jdbcType="VARCHAR" />
+		<result property= "userEmpNo" column="user_emp_no" jdbcType="VARCHAR" />
+		<result property= "userCard" column="user_card" jdbcType="VARCHAR" />
+		<result property= "grantPayment" column="grant_payment" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "userLoginWEB" column="user_LoginWEB" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "wxOpenid" column="wx_openid" jdbcType="VARCHAR" />
+		<result property= "wxGrant" column="wx_grant" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		user_id,
+		oper_type,
+		user_name,
+		user_pw,
+		user_status,
+		cashier_grant,
+		min_zk,
+		max_gd,
+		max_free,
+		update_flow,
+		user_LoginPos,
+		user_LoginHT,
+		user_emp_no,
+		user_card,
+		grant_payment,
+		branch_no,
+		user_LoginWEB,
+		update_time,
+		update_branch,
+		trans_upflag,
+		wx_openid,
+		wx_grant,
+		counter_no
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="userId != null"> AND user_id like '%${userId}%' </if>
+       	<if test="operType != null"> AND oper_type like '%${operType}%' </if>
+       	<if test="userName != null"> AND user_name like '%${userName}%' </if>
+       	<if test="userPw != null"> AND user_pw like '%${userPw}%' </if>
+       	<if test="userStatus != null"> AND user_status like '%${userStatus}%' </if>
+       	<if test="cashierGrant != null"> AND cashier_grant like '%${cashierGrant}%' </if>
+       	<if test="minZk != null"> AND min_zk like '%${minZk}%' </if>
+       	<if test="maxGd != null"> AND max_gd like '%${maxGd}%' </if>
+       	<if test="maxFree != null"> AND max_free like '%${maxFree}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="userLoginPos != null"> AND user_LoginPos like '%${userLoginPos}%' </if>
+       	<if test="userLoginHT != null"> AND user_LoginHT like '%${userLoginHT}%' </if>
+       	<if test="userEmpNo != null"> AND user_emp_no like '%${userEmpNo}%' </if>
+       	<if test="userCard != null"> AND user_card like '%${userCard}%' </if>
+       	<if test="grantPayment != null"> AND grant_payment like '%${grantPayment}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="userLoginWEB != null"> AND user_LoginWEB like '%${userLoginWEB}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="wxOpenid != null"> AND wx_openid like '%${wxOpenid}%' </if>
+       	<if test="wxGrant != null"> AND wx_grant like '%${wxGrant}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="userId != null"> AND user_id = #{userId}</if>
+       	<if test="operType != null"> AND oper_type = #{operType}</if>
+       	<if test="userName != null"> AND user_name = #{userName}</if>
+       	<if test="userPw != null"> AND user_pw = #{userPw}</if>
+       	<if test="userStatus != null"> AND user_status = #{userStatus}</if>
+       	<if test="cashierGrant != null"> AND cashier_grant = #{cashierGrant}</if>
+       	<if test="minZk != null"> AND min_zk = #{minZk}</if>
+       	<if test="maxGd != null"> AND max_gd = #{maxGd}</if>
+       	<if test="maxFree != null"> AND max_free = #{maxFree}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="userLoginPos != null"> AND user_LoginPos = #{userLoginPos}</if>
+       	<if test="userLoginHT != null"> AND user_LoginHT = #{userLoginHT}</if>
+       	<if test="userEmpNo != null"> AND user_emp_no = #{userEmpNo}</if>
+       	<if test="userCard != null"> AND user_card = #{userCard}</if>
+       	<if test="grantPayment != null"> AND grant_payment = #{grantPayment}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="userLoginWEB != null"> AND user_LoginWEB = #{userLoginWEB}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="wxOpenid != null"> AND wx_openid = #{wxOpenid}</if>
+       	<if test="wxGrant != null"> AND wx_grant = #{wxGrant}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TSysUser">
+		INSERT INTO t_sys_user
+		(<include refid="columns"/>)
+		VALUES(
+		#{userId,jdbcType=VARCHAR},
+		#{operType,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{userPw,jdbcType=VARCHAR},
+		#{userStatus,jdbcType=VARCHAR},
+		#{cashierGrant,jdbcType=VARCHAR},
+		#{minZk,jdbcType=NUMERIC},
+		#{maxGd,jdbcType=NUMERIC},
+		#{maxFree,jdbcType=NUMERIC},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{userLoginPos,jdbcType=VARCHAR},
+		#{userLoginHT,jdbcType=VARCHAR},
+		#{userEmpNo,jdbcType=VARCHAR},
+		#{userCard,jdbcType=VARCHAR},
+		#{grantPayment,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{userLoginWEB,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{wxOpenid,jdbcType=VARCHAR},
+		#{wxGrant,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_sys_user 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSysUser">
+		UPDATE t_sys_user SET
+               user_id=#{userId,jdbcType=VARCHAR},
+               oper_type=#{operType,jdbcType=VARCHAR},
+               user_name=#{userName,jdbcType=VARCHAR},
+               user_pw=#{userPw,jdbcType=VARCHAR},
+               user_status=#{userStatus,jdbcType=VARCHAR},
+               cashier_grant=#{cashierGrant,jdbcType=VARCHAR},
+               min_zk=#{minZk,jdbcType=NUMERIC},
+               max_gd=#{maxGd,jdbcType=NUMERIC},
+               max_free=#{maxFree,jdbcType=NUMERIC},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               user_LoginPos=#{userLoginPos,jdbcType=VARCHAR},
+               user_LoginHT=#{userLoginHT,jdbcType=VARCHAR},
+               user_emp_no=#{userEmpNo,jdbcType=VARCHAR},
+               user_card=#{userCard,jdbcType=VARCHAR},
+               grant_payment=#{grantPayment,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               user_LoginWEB=#{userLoginWEB,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               wx_openid=#{wxOpenid,jdbcType=VARCHAR},
+               wx_grant=#{wxGrant,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TSysUser">
+		SELECT <include refid="columns"/>
+		FROM t_sys_user
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSysUser">
+		SELECT <include refid="columns"/>
+		FROM t_sys_user   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSysUser">
+		SELECT <include refid="columns"/>
+		FROM t_sys_user   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSysUser">
+		SELECT <include refid="columns"/>
+		FROM t_sys_user   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSysUser">
+		SELECT <include refid="columns"/>
+		FROM t_sys_user   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

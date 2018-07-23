@@ -1,0 +1,114 @@
+body,label,input,button,select,textarea,.uneditable-input,.navbar-search .search-query
+	{
+	font-family: Microsoft YaHei, Lucida Sans Unicode, Arial, Verdana,
+		SansSerif, "宋体";
+	font-size: 13px;
+}
+
+a {
+	color: #08c;
+}
+
+#wrapper {
+	padding-top: 60px;
+}
+
+.o-nav-header {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.o-nav-header>.navbar-header>.navbar-brand {
+	padding-bottom: 10px;
+}
+
+.o-nav-header .nav-avatar {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.panel-title span.title {
+	font-size: 14px;
+	color: #08c;
+	margin: 0 8px;
+	font-weight: bold;
+}
+
+#menu .glyphicon {
+	color: #666;
+	font-size: 12px;
+}
+
+#leftFrame {
+	padding: 0 0 0 10px;
+}
+
+#rightFrame {
+	padding: 0;
+	position: relative;
+}
+
+.o-sidenav>li>a {
+	padding: 3px 1px 5px 1px;
+}
+
+/* footer */
+#footer {
+	height: 48px;
+	color: #666;
+	line-height: 48px;
+	text-align: center;
+	margin-top: 10px !important;
+	border-top: solid 1px #08c;
+}
+
+#openClose {
+	width: 8px;
+	cursor: pointer;
+	height: 600px;
+	background-color: gray;
+	position: absolute;
+	left: 4px;
+	top: 0;
+}
+
+#openClose,#openClose.close {
+	background: #fdfdfd url("../images/openclose.png") no-repeat -29px
+		center;
+}
+
+#openClose.close {
+	background-position: 1px center;
+}
+
+.panel>.panel-heading>.panel-title>.btn-group,.panel>.panel-heading>.panel-title>.btn
+	{
+	margin-top: -6px;
+}
+/* jbox */
+.jbox-button-panel {
+	box-sizing: content-box;
+	-moz-box-sizing: content-box; /* Firefox */
+	-webkit-box-sizing: content-box; /* Safari */
+}
+
+.o-list-pagination {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.o-list-pagination .info input {
+	border: 0;
+	color: #999;
+	width: 30px;
+	padding: 0;
+	margin: -3px 0 0 0;
+	text-align: center
+}
+
+.o-list-pagination .info a {
+	border: 0;
+	margin-left: 1px;
+	background-color: #F5F5F5;
+}
+

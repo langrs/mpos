@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPos">
+	<resultMap id="TPos" type="com.site.entity.TPos">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="posNo" column="pos_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="bank" column="bank" 
+				jdbcType="VARCHAR" />
+			<result property="mac" column="mac" 
+				jdbcType="VARCHAR" />
+			<result property="ipAddr" column="ip_addr" 
+				jdbcType="VARCHAR" />
+			<result property="serverAddr" column="server_addr" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="posType" column="pos_type" 
+				jdbcType="VARCHAR" />
+			<result property="posAttr" column="pos_attr" 
+				jdbcType="VARCHAR" />
+			<result property="state" column="state" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+					<association property="shopIdObj" column="shop_id" select="com.site.entity.TShop.get"></association>
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		pos_no,
+		name,
+		bank,
+		mac,
+		ip_addr,
+		server_addr,
+		shop_id,
+		pos_type,
+		pos_attr,
+		state,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="posNo != null"> AND pos_no like '%${posNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="bank != null"> AND bank like '%${bank}%' </if>
+       <if test="mac != null"> AND mac like '%${mac}%' </if>
+       <if test="ipAddr != null"> AND ip_addr like '%${ipAddr}%' </if>
+       <if test="serverAddr != null"> AND server_addr like '%${serverAddr}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="posType != null"> AND pos_type like '%${posType}%' </if>
+       <if test="posAttr != null"> AND pos_attr like '%${posAttr}%' </if>
+       <if test="state != null"> AND state like '%${state}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="posNo != null"> AND pos_no =#{posNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="bank != null"> AND bank =#{bank} </if>
+			<if test="mac != null"> AND mac =#{mac} </if>
+			<if test="ipAddr != null"> AND ip_addr =#{ipAddr} </if>
+			<if test="serverAddr != null"> AND server_addr =#{serverAddr} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="posType != null"> AND pos_type =#{posType} </if>
+			<if test="posAttr != null"> AND pos_attr =#{posAttr} </if>
+			<if test="state != null"> AND state =#{state} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TPos">
+		INSERT INTO t_pos
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{posNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{bank,jdbcType=VARCHAR},#{mac,jdbcType=VARCHAR},#{ipAddr,jdbcType=VARCHAR},#{serverAddr,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{posType,jdbcType=VARCHAR},#{posAttr,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPos">
+		UPDATE t_pos SET
+                     pos_no=#{posNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     bank=#{bank,jdbcType=VARCHAR},
+                     mac=#{mac,jdbcType=VARCHAR},
+                     ip_addr=#{ipAddr,jdbcType=VARCHAR},
+                     server_addr=#{serverAddr,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     pos_type=#{posType,jdbcType=VARCHAR},
+                     pos_attr=#{posAttr,jdbcType=VARCHAR},
+                     state=#{state,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TPos">
+		SELECT <include refid="columns"/>
+		FROM t_pos
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPos">
+		SELECT <include refid="columns"/>
+		FROM t_pos   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPos">
+		SELECT <include refid="columns"/>
+		FROM t_pos   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPos">
+		SELECT <include refid="columns"/>
+		FROM t_pos   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPos">
+		SELECT <include refid="columns"/>
+		FROM t_pos   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCzcardInfo">
+	<resultMap id="TCzcardInfo" type="com.site.entity.TCzcardInfo">
+		<result property= "ckcode" column="ckcode" jdbcType="VARCHAR" />
+		<result property= "mkcode" column="mkcode" jdbcType="VARCHAR" />
+		<result property= "cardtype" column="cardtype" jdbcType="VARCHAR" />
+		<result property= "cardstatus" column="cardstatus" jdbcType="VARCHAR" />
+		<result property= "startdate" column="startdate" jdbcType="TIMESTAMP" />
+		<result property= "validDate" column="valid_date" jdbcType="TIMESTAMP" />
+		<result property= "cardvalue" column="cardvalue" jdbcType="NUMERIC" />
+		<result property= "cardvalueTotal" column="cardvalue_total" jdbcType="NUMERIC" />
+		<result property= "cardvalueXf" column="cardvalue_xf" jdbcType="NUMERIC" />
+		<result property= "cardvalueQl" column="cardvalue_ql" jdbcType="NUMERIC" />
+		<result property= "cardvalueTz" column="cardvalue_tz" jdbcType="NUMERIC" />
+		<result property= "cardvalueXfLast" column="cardvalue_xf_last" jdbcType="NUMERIC" />
+		<result property= "cardvalueXfLastdate" column="cardvalue_xf_lastdate" jdbcType="TIMESTAMP" />
+		<result property= "xfcs" column="xfcs" jdbcType="VARCHAR" />
+		<result property= "promtype" column="promtype" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	ckcode=#{ckcode}
+	</sql>
+	
+	<sql id="columns">
+		ckcode,
+		mkcode,
+		cardtype,
+		cardstatus,
+		startdate,
+		valid_date,
+		cardvalue,
+		cardvalue_total,
+		cardvalue_xf,
+		cardvalue_ql,
+		cardvalue_tz,
+		cardvalue_xf_last,
+		cardvalue_xf_lastdate,
+		xfcs,
+		promtype
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="ckcode != null"> AND ckcode like '%${ckcode}%' </if>
+       	<if test="mkcode != null"> AND mkcode like '%${mkcode}%' </if>
+       	<if test="cardtype != null"> AND cardtype like '%${cardtype}%' </if>
+       	<if test="cardstatus != null"> AND cardstatus like '%${cardstatus}%' </if>
+       	<if test="startdate != null"> AND startdate = #{startdate}</if>
+       	<if test="validDate != null"> AND valid_date = #{validDate}</if>
+       	<if test="cardvalue != null"> AND cardvalue like '%${cardvalue}%' </if>
+       	<if test="cardvalueTotal != null"> AND cardvalue_total like '%${cardvalueTotal}%' </if>
+       	<if test="cardvalueXf != null"> AND cardvalue_xf like '%${cardvalueXf}%' </if>
+       	<if test="cardvalueQl != null"> AND cardvalue_ql like '%${cardvalueQl}%' </if>
+       	<if test="cardvalueTz != null"> AND cardvalue_tz like '%${cardvalueTz}%' </if>
+       	<if test="cardvalueXfLast != null"> AND cardvalue_xf_last like '%${cardvalueXfLast}%' </if>
+       	<if test="cardvalueXfLastdate != null"> AND cardvalue_xf_lastdate = #{cardvalueXfLastdate}</if>
+       	<if test="xfcs != null"> AND xfcs like '%${xfcs}%' </if>
+       	<if test="promtype != null"> AND promtype like '%${promtype}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="ckcode != null"> AND ckcode = #{ckcode}</if>
+       	<if test="mkcode != null"> AND mkcode = #{mkcode}</if>
+       	<if test="cardtype != null"> AND cardtype = #{cardtype}</if>
+       	<if test="cardstatus != null"> AND cardstatus = #{cardstatus}</if>
+       	<if test="startdate != null"> AND startdate = #{startdate}</if>
+       	<if test="validDate != null"> AND valid_date = #{validDate}</if>
+       	<if test="cardvalue != null"> AND cardvalue = #{cardvalue}</if>
+       	<if test="cardvalueTotal != null"> AND cardvalue_total = #{cardvalueTotal}</if>
+       	<if test="cardvalueXf != null"> AND cardvalue_xf = #{cardvalueXf}</if>
+       	<if test="cardvalueQl != null"> AND cardvalue_ql = #{cardvalueQl}</if>
+       	<if test="cardvalueTz != null"> AND cardvalue_tz = #{cardvalueTz}</if>
+       	<if test="cardvalueXfLast != null"> AND cardvalue_xf_last = #{cardvalueXfLast}</if>
+       	<if test="cardvalueXfLastdate != null"> AND cardvalue_xf_lastdate = #{cardvalueXfLastdate}</if>
+       	<if test="xfcs != null"> AND xfcs = #{xfcs}</if>
+       	<if test="promtype != null"> AND promtype = #{promtype}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TCzcardInfo">
+		INSERT INTO t_czcard_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{ckcode,jdbcType=VARCHAR},
+		#{mkcode,jdbcType=VARCHAR},
+		#{cardtype,jdbcType=VARCHAR},
+		#{cardstatus,jdbcType=VARCHAR},
+		#{startdate,jdbcType=TIMESTAMP},
+		#{validDate,jdbcType=TIMESTAMP},
+		#{cardvalue,jdbcType=NUMERIC},
+		#{cardvalueTotal,jdbcType=NUMERIC},
+		#{cardvalueXf,jdbcType=NUMERIC},
+		#{cardvalueQl,jdbcType=NUMERIC},
+		#{cardvalueTz,jdbcType=NUMERIC},
+		#{cardvalueXfLast,jdbcType=NUMERIC},
+		#{cardvalueXfLastdate,jdbcType=TIMESTAMP},
+		#{xfcs,jdbcType=VARCHAR},
+		#{promtype,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_czcard_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCzcardInfo">
+		UPDATE t_czcard_info SET
+               ckcode=#{ckcode,jdbcType=VARCHAR},
+               mkcode=#{mkcode,jdbcType=VARCHAR},
+               cardtype=#{cardtype,jdbcType=VARCHAR},
+               cardstatus=#{cardstatus,jdbcType=VARCHAR},
+               startdate=#{startdate,jdbcType=TIMESTAMP},
+               valid_date=#{validDate,jdbcType=TIMESTAMP},
+               cardvalue=#{cardvalue,jdbcType=NUMERIC},
+               cardvalue_total=#{cardvalueTotal,jdbcType=NUMERIC},
+               cardvalue_xf=#{cardvalueXf,jdbcType=NUMERIC},
+               cardvalue_ql=#{cardvalueQl,jdbcType=NUMERIC},
+               cardvalue_tz=#{cardvalueTz,jdbcType=NUMERIC},
+               cardvalue_xf_last=#{cardvalueXfLast,jdbcType=NUMERIC},
+               cardvalue_xf_lastdate=#{cardvalueXfLastdate,jdbcType=TIMESTAMP},
+               xfcs=#{xfcs,jdbcType=VARCHAR},
+               promtype=#{promtype,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TCzcardInfo">
+		SELECT <include refid="columns"/>
+		FROM t_czcard_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCzcardInfo">
+		SELECT <include refid="columns"/>
+		FROM t_czcard_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCzcardInfo">
+		SELECT <include refid="columns"/>
+		FROM t_czcard_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCzcardInfo">
+		SELECT <include refid="columns"/>
+		FROM t_czcard_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCzcardInfo">
+		SELECT <include refid="columns"/>
+		FROM t_czcard_info   
+		<include refid="oneWhere" />
+	</select>
+	<update id="updateValue" parameterType="com.site.entity.TCzcardInfo">
+		UPDATE t_czcard_info
+		SET cardvalue = #{cardvalue,jdbcType=NUMERIC},
+			cardvalue_xf =  #{cardvalue_xf,jdbcType=NUMERIC},
+			cardvalue_xf_last = #{cardvalue_xf_last,jdbcType=NUMERIC},
+			cardvalue_xf_lastdate = #{cardvalue_xf_lastdate,jdbcType=TIMESTAMP},
+			xfcs = #{xfcs,jdbcType=NUMERIC}
+		WHERE ckcode = #{ckcode,jdbcType=VARCHAR}
+	</update>
+</mapper>	

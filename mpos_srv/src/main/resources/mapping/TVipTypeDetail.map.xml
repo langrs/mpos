@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipTypeDetail">
+	<resultMap id="TVipTypeDetail" type="com.site.entity.TVipTypeDetail">
+		<result property= "viptypeNo" column="viptype_no" jdbcType="VARCHAR" />
+		<result property= "itemSn" column="item_sn" jdbcType="VARCHAR" />
+		<result property= "itemRange" column="item_range" jdbcType="VARCHAR" />
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "unitType" column="unit_type" jdbcType="VARCHAR" />
+		<result property= "barcode" column="barcode" jdbcType="VARCHAR" />
+		<result property= "nowUnit" column="now_unit" jdbcType="VARCHAR" />
+		<result property= "nowPack" column="now_pack" jdbcType="NUMERIC" />
+		<result property= "mxMemo" column="mx_memo" jdbcType="VARCHAR" />
+		<result property= "mxBytxt1" column="mx_bytxt1" jdbcType="VARCHAR" />
+		<result property= "mxBytxt2" column="mx_bytxt2" jdbcType="VARCHAR" />
+		<result property= "mxBytxt3" column="mx_bytxt3" jdbcType="VARCHAR" />
+		<result property= "mxBynum1" column="mx_bynum1" jdbcType="NUMERIC" />
+		<result property= "mxBynum2" column="mx_bynum2" jdbcType="NUMERIC" />
+		<result property= "mxBynum3" column="mx_bynum3" jdbcType="NUMERIC" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		viptype_no,
+		item_sn,
+		item_range,
+		item_no,
+		unit_type,
+		barcode,
+		now_unit,
+		now_pack,
+		mx_memo,
+		mx_bytxt1,
+		mx_bytxt2,
+		mx_bytxt3,
+		mx_bynum1,
+		mx_bynum2,
+		mx_bynum3,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no like '%${viptypeNo}%' </if>
+       	<if test="itemSn != null"> AND item_sn like '%${itemSn}%' </if>
+       	<if test="itemRange != null"> AND item_range like '%${itemRange}%' </if>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="unitType != null"> AND unit_type like '%${unitType}%' </if>
+       	<if test="barcode != null"> AND barcode like '%${barcode}%' </if>
+       	<if test="nowUnit != null"> AND now_unit like '%${nowUnit}%' </if>
+       	<if test="nowPack != null"> AND now_pack like '%${nowPack}%' </if>
+       	<if test="mxMemo != null"> AND mx_memo like '%${mxMemo}%' </if>
+       	<if test="mxBytxt1 != null"> AND mx_bytxt1 like '%${mxBytxt1}%' </if>
+       	<if test="mxBytxt2 != null"> AND mx_bytxt2 like '%${mxBytxt2}%' </if>
+       	<if test="mxBytxt3 != null"> AND mx_bytxt3 like '%${mxBytxt3}%' </if>
+       	<if test="mxBynum1 != null"> AND mx_bynum1 like '%${mxBynum1}%' </if>
+       	<if test="mxBynum2 != null"> AND mx_bynum2 like '%${mxBynum2}%' </if>
+       	<if test="mxBynum3 != null"> AND mx_bynum3 like '%${mxBynum3}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no = #{viptypeNo}</if>
+       	<if test="itemSn != null"> AND item_sn = #{itemSn}</if>
+       	<if test="itemRange != null"> AND item_range = #{itemRange}</if>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="unitType != null"> AND unit_type = #{unitType}</if>
+       	<if test="barcode != null"> AND barcode = #{barcode}</if>
+       	<if test="nowUnit != null"> AND now_unit = #{nowUnit}</if>
+       	<if test="nowPack != null"> AND now_pack = #{nowPack}</if>
+       	<if test="mxMemo != null"> AND mx_memo = #{mxMemo}</if>
+       	<if test="mxBytxt1 != null"> AND mx_bytxt1 = #{mxBytxt1}</if>
+       	<if test="mxBytxt2 != null"> AND mx_bytxt2 = #{mxBytxt2}</if>
+       	<if test="mxBytxt3 != null"> AND mx_bytxt3 = #{mxBytxt3}</if>
+       	<if test="mxBynum1 != null"> AND mx_bynum1 = #{mxBynum1}</if>
+       	<if test="mxBynum2 != null"> AND mx_bynum2 = #{mxBynum2}</if>
+       	<if test="mxBynum3 != null"> AND mx_bynum3 = #{mxBynum3}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipTypeDetail">
+		INSERT INTO t_vip_type_detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{viptypeNo,jdbcType=VARCHAR},
+		#{itemSn,jdbcType=VARCHAR},
+		#{itemRange,jdbcType=VARCHAR},
+		#{itemNo,jdbcType=VARCHAR},
+		#{unitType,jdbcType=VARCHAR},
+		#{barcode,jdbcType=VARCHAR},
+		#{nowUnit,jdbcType=VARCHAR},
+		#{nowPack,jdbcType=NUMERIC},
+		#{mxMemo,jdbcType=VARCHAR},
+		#{mxBytxt1,jdbcType=VARCHAR},
+		#{mxBytxt2,jdbcType=VARCHAR},
+		#{mxBytxt3,jdbcType=VARCHAR},
+		#{mxBynum1,jdbcType=NUMERIC},
+		#{mxBynum2,jdbcType=NUMERIC},
+		#{mxBynum3,jdbcType=NUMERIC},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_type_detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipTypeDetail">
+		UPDATE t_vip_type_detail SET
+               viptype_no=#{viptypeNo,jdbcType=VARCHAR},
+               item_sn=#{itemSn,jdbcType=VARCHAR},
+               item_range=#{itemRange,jdbcType=VARCHAR},
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               unit_type=#{unitType,jdbcType=VARCHAR},
+               barcode=#{barcode,jdbcType=VARCHAR},
+               now_unit=#{nowUnit,jdbcType=VARCHAR},
+               now_pack=#{nowPack,jdbcType=NUMERIC},
+               mx_memo=#{mxMemo,jdbcType=VARCHAR},
+               mx_bytxt1=#{mxBytxt1,jdbcType=VARCHAR},
+               mx_bytxt2=#{mxBytxt2,jdbcType=VARCHAR},
+               mx_bytxt3=#{mxBytxt3,jdbcType=VARCHAR},
+               mx_bynum1=#{mxBynum1,jdbcType=NUMERIC},
+               mx_bynum2=#{mxBynum2,jdbcType=NUMERIC},
+               mx_bynum3=#{mxBynum3,jdbcType=NUMERIC},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipTypeDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipTypeDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipTypeDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipTypeDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipTypeDetail">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

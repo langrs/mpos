@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPayview">
+	<resultMap id="TPayview" type="com.site.entity.TPayview">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="parentId" column="parent_id" 
+				jdbcType="VARCHAR" />
+			<result property="payviewNo" column="payview_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="paymodeId" column="paymode_id" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+					<association property="paymodeIdObj" column="paymode_id" select="com.site.entity.TPaymode.get"></association>
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		parent_id,
+		payview_no,
+		name,
+		paymode_id,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="parentId != null"> AND parent_id like '%${parentId}%' </if>
+       <if test="payviewNo != null"> AND payview_no like '%${payviewNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="paymodeId != null"> AND paymode_id like '%${paymodeId}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="parentId != null"> AND parent_id =#{parentId} </if>
+			<if test="payviewNo != null"> AND payview_no =#{payviewNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="paymodeId != null"> AND paymode_id =#{paymodeId} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TPayview">
+		INSERT INTO t_payview
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{parentId,jdbcType=VARCHAR},#{payviewNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{paymodeId,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_payview 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPayview">
+		UPDATE t_payview SET
+                     parent_id=#{parentId,jdbcType=VARCHAR},
+                     payview_no=#{payviewNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     paymode_id=#{paymodeId,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TPayview">
+		SELECT <include refid="columns"/>
+		FROM t_payview
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPayview">
+		SELECT <include refid="columns"/>
+		FROM t_payview   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPayview">
+		SELECT <include refid="columns"/>
+		FROM t_payview   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPayview">
+		SELECT <include refid="columns"/>
+		FROM t_payview   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPayview">
+		SELECT <include refid="columns"/>
+		FROM t_payview   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

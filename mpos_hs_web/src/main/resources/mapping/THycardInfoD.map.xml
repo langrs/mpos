@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.THycardInfoD">
+	<resultMap id="THycardInfoD" type="com.site.entity.THycardInfoD">
+		<result property= "opdate" column="opdate" jdbcType="TIMESTAMP" />
+		<result property= "opdatechar" column="opdatechar" jdbcType="VARCHAR" />
+		<result property= "ckcode" column="ckcode" jdbcType="VARCHAR" />
+		<result property= "mkcode" column="mkcode" jdbcType="VARCHAR" />
+		<result property= "cardtype" column="cardtype" jdbcType="VARCHAR" />
+		<result property= "optype" column="optype" jdbcType="VARCHAR" />
+		<result property= "billno" column="billno" jdbcType="VARCHAR" />
+		<result property= "saleamount" column="saleamount" jdbcType="NUMERIC" />
+		<result property= "jf" column="jf" jdbcType="NUMERIC" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		opdate,
+		opdatechar,
+		ckcode,
+		mkcode,
+		cardtype,
+		optype,
+		billno,
+		saleamount,
+		jf
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="opdate != null"> AND opdate = #{opdate}</if>
+       	<if test="opdatechar != null"> AND opdatechar like '%${opdatechar}%' </if>
+       	<if test="ckcode != null"> AND ckcode like '%${ckcode}%' </if>
+       	<if test="mkcode != null"> AND mkcode like '%${mkcode}%' </if>
+       	<if test="cardtype != null"> AND cardtype like '%${cardtype}%' </if>
+       	<if test="optype != null"> AND optype like '%${optype}%' </if>
+       	<if test="billno != null"> AND billno like '%${billno}%' </if>
+       	<if test="saleamount != null"> AND saleamount like '%${saleamount}%' </if>
+       	<if test="jf != null"> AND jf like '%${jf}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="opdate != null"> AND opdate = #{opdate}</if>
+       	<if test="opdatechar != null"> AND opdatechar = #{opdatechar}</if>
+       	<if test="ckcode != null"> AND ckcode = #{ckcode}</if>
+       	<if test="mkcode != null"> AND mkcode = #{mkcode}</if>
+       	<if test="cardtype != null"> AND cardtype = #{cardtype}</if>
+       	<if test="optype != null"> AND optype = #{optype}</if>
+       	<if test="billno != null"> AND billno = #{billno}</if>
+       	<if test="saleamount != null"> AND saleamount = #{saleamount}</if>
+       	<if test="jf != null"> AND jf = #{jf}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.THycardInfoD">
+		INSERT INTO t_hycard_info_d
+		(<include refid="columns"/>)
+		VALUES(
+		#{opdate,jdbcType=TIMESTAMP},
+		#{opdatechar,jdbcType=VARCHAR},
+		#{ckcode,jdbcType=VARCHAR},
+		#{mkcode,jdbcType=VARCHAR},
+		#{cardtype,jdbcType=VARCHAR},
+		#{optype,jdbcType=VARCHAR},
+		#{billno,jdbcType=VARCHAR},
+		#{saleamount,jdbcType=NUMERIC},
+		#{jf,jdbcType=NUMERIC}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_hycard_info_d 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.THycardInfoD">
+		UPDATE t_hycard_info_d SET
+               opdate=#{opdate,jdbcType=TIMESTAMP},
+               opdatechar=#{opdatechar,jdbcType=VARCHAR},
+               ckcode=#{ckcode,jdbcType=VARCHAR},
+               mkcode=#{mkcode,jdbcType=VARCHAR},
+               cardtype=#{cardtype,jdbcType=VARCHAR},
+               optype=#{optype,jdbcType=VARCHAR},
+               billno=#{billno,jdbcType=VARCHAR},
+               saleamount=#{saleamount,jdbcType=NUMERIC},
+               jf=#{jf,jdbcType=NUMERIC}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="THycardInfoD">
+		SELECT <include refid="columns"/>
+		FROM t_hycard_info_d
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="THycardInfoD">
+		SELECT <include refid="columns"/>
+		FROM t_hycard_info_d   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="THycardInfoD">
+		SELECT <include refid="columns"/>
+		FROM t_hycard_info_d   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="THycardInfoD">
+		SELECT <include refid="columns"/>
+		FROM t_hycard_info_d   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="THycardInfoD">
+		SELECT <include refid="columns"/>
+		FROM t_hycard_info_d   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

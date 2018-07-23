@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TRegion">
+	<resultMap id="TRegion" type="com.site.entity.TRegion">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="regionNo" column="region_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		region_no,
+		name,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="regionNo != null"> AND region_no like '%${regionNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="regionNo != null"> AND region_no =#{regionNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TRegion">
+		INSERT INTO t_region
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{regionNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_region 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TRegion">
+		UPDATE t_region SET
+                     region_no=#{regionNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TRegion">
+		SELECT <include refid="columns"/>
+		FROM t_region
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TRegion">
+		SELECT <include refid="columns"/>
+		FROM t_region   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TRegion">
+		SELECT <include refid="columns"/>
+		FROM t_region   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TRegion">
+		SELECT <include refid="columns"/>
+		FROM t_region   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TRegion">
+		SELECT <include refid="columns"/>
+		FROM t_region   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

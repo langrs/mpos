@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipDiscountInfo">
+	<resultMap id="TVipDiscountInfo" type="com.site.entity.TVipDiscountInfo">
+		<result property= "discountNo" column="discount_no" jdbcType="VARCHAR" />
+		<result property= "discountName" column="discount_name" jdbcType="VARCHAR" />
+		<result property= "discountIsSame" column="discount_IsSame" jdbcType="VARCHAR" />
+		<result property= "discountType" column="discount_type" jdbcType="VARCHAR" />
+		<result property= "discountRate" column="discount_rate" jdbcType="NUMERIC" />
+		<result property= "discountMemo" column="discount_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		discount_no,
+		discount_name,
+		discount_IsSame,
+		discount_type,
+		discount_rate,
+		discount_memo,
+		IsSysFlag,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="discountNo != null"> AND discount_no like '%${discountNo}%' </if>
+       	<if test="discountName != null"> AND discount_name like '%${discountName}%' </if>
+       	<if test="discountIsSame != null"> AND discount_IsSame like '%${discountIsSame}%' </if>
+       	<if test="discountType != null"> AND discount_type like '%${discountType}%' </if>
+       	<if test="discountRate != null"> AND discount_rate like '%${discountRate}%' </if>
+       	<if test="discountMemo != null"> AND discount_memo like '%${discountMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="discountNo != null"> AND discount_no = #{discountNo}</if>
+       	<if test="discountName != null"> AND discount_name = #{discountName}</if>
+       	<if test="discountIsSame != null"> AND discount_IsSame = #{discountIsSame}</if>
+       	<if test="discountType != null"> AND discount_type = #{discountType}</if>
+       	<if test="discountRate != null"> AND discount_rate = #{discountRate}</if>
+       	<if test="discountMemo != null"> AND discount_memo = #{discountMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipDiscountInfo">
+		INSERT INTO t_vip_discount_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{discountNo,jdbcType=VARCHAR},
+		#{discountName,jdbcType=VARCHAR},
+		#{discountIsSame,jdbcType=VARCHAR},
+		#{discountType,jdbcType=VARCHAR},
+		#{discountRate,jdbcType=NUMERIC},
+		#{discountMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_discount_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipDiscountInfo">
+		UPDATE t_vip_discount_info SET
+               discount_no=#{discountNo,jdbcType=VARCHAR},
+               discount_name=#{discountName,jdbcType=VARCHAR},
+               discount_IsSame=#{discountIsSame,jdbcType=VARCHAR},
+               discount_type=#{discountType,jdbcType=VARCHAR},
+               discount_rate=#{discountRate,jdbcType=NUMERIC},
+               discount_memo=#{discountMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipDiscountInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_discount_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipDiscountInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_discount_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipDiscountInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_discount_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipDiscountInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_discount_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipDiscountInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_discount_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

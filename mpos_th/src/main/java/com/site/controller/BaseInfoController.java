@@ -3,6 +3,10 @@ package com.site.controller;
 import com.site.dao.*;
 import com.site.entity.*;
 import com.site.entity.respon.*;
+import com.site.webService.SingleCouponGet.SingleCouponGet;
+import com.site.webService.WsUtil;
+import com.site.webService.XmlUtil;
+import com.site.webService.singleCardGet.SingleCardGet;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -14,10 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.xml.namespace.QName;
+import javax.xml.transform.Result;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -260,12 +263,35 @@ public class BaseInfoController {
     @RequestMapping(value = "cardQuery",method = RequestMethod.GET)
     @ResponseBody
     public CardQueryResult cardQuery(@ApiParam(value="分店",required= true,defaultValue = "1002") @RequestParam String shop,
-            @ApiParam(value = "查询类型",required = true,defaultValue = "3") @RequestParam(required = true) String  type,
-            @ApiParam(value = "卡号(通过磁道信息分解等号后面部分的为密码,等号前面部分为卡号)",required = false,defaultValue = "") @RequestParam(required = false) String  cardno,
-            @ApiParam(value = "卡密码（类型=3、4时才会使用;通过磁道信息分解等号后面的为密码,等号前面部分为卡号）",required = false,defaultValue = "") @RequestParam(required = false) String  cardpasswd,
-                                   @ApiParam(value="需要充值的金额（类型=2时才会使用）",required = false) @RequestParam(required = false) Double amt){
-        CardQueryResult cardQueryResult = new CardQueryResult();
+            @ApiParam(value = "查询类型(1.充值前余额查询，2充值时取得充值金额，3.储值卡付款时余额查询,4.退卡查询，5.积分查询，6.积分抵现查询)",required = true,defaultValue = "1") @RequestParam(required = true) String  type,
+            @ApiParam(value = "卡号(通过磁道信息分解等号后面部分的为密码,等号前面部分为卡号)",required = false,defaultValue = "120000080354") @RequestParam(required = false) String  cardno,
+            @ApiParam(value = "卡密码（类型=3、4时才会使用;通过磁道信息分解等号后面的为密码,等号前面部分为卡号）",required = false,defaultValue = "0314712") @RequestParam(required = false) String  cardpasswd,
+                                   @ApiParam(value="需要充值的金额（类型=2时才会使用）",required = false,defaultValue = "0") @RequestParam(required = false) Double amt){
 
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("shop", shop);
+        map.put("func", "SingleCardGet");
+        map.put("code", cardno);
+        map.put("passwd", cardpasswd);
+        map.put("type", type);
+        if (amt == null) {
+            amt = 0d;
+        }
+        map.put("amt", amt);
+        WsUtil wsUtil = new SingleCardGet();
+        wsUtil.setMap(map);
+        //调用接口
+        ResultMap<CardQueryResult> resultMap = (ResultMap<CardQueryResult>) XmlUtil.callWebservice(wsUtil);
+        CardQueryResult cardQueryResult = resultMap.getData();
+        if(cardQueryResult == null){
+            cardQueryResult =  new CardQueryResult();
+        }
+        if(resultMap.getStatus().equals("0")){
+            cardQueryResult.setStatus("0");
+        }else{
+            cardQueryResult.setStatus(resultMap.getStatus());
+            cardQueryResult.setErrmsg(resultMap.getErrorMsg());
+        }
         return cardQueryResult;
     }
     ////////////////////////////////////////////////////////////////
@@ -273,20 +299,40 @@ public class BaseInfoController {
             produces = "application/json; charset=utf-8",response = CouponQueryResult.class)
     @RequestMapping(value = "couponQuery",method = RequestMethod.GET)
     @ResponseBody
-    public CouponQueryResult couponQuery(@ApiParam(value = "券号",required = true) @RequestParam String  couponno,
-                                         @ApiParam(value="分店",required = true) @RequestParam String shop,
-                                         @ApiParam(value = "查询类型--1销售前查询2销退前查询",required = true) @RequestParam String type){
-        CouponQueryResult couponQueryResult =new CouponQueryResult();
+    public CouponQueryResult couponQuery(@ApiParam(value = "券号",required = true,defaultValue = "90000211") @RequestParam String  couponno,
+                                         @ApiParam(value="分店",required = true,defaultValue = "1002") @RequestParam String shop,
+                                         @ApiParam(value = "查询类型--1销售前查询2销退前查询",required = true,defaultValue = "1") @RequestParam String type){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("func", "SingleCouponGet");
+        map.put("shop", shop);
+        map.put("type", type);
+        map.put("couponno", couponno);
+        WsUtil wsUtil = new SingleCouponGet();
+        wsUtil.setMap(map);
+        ResultMap<CouponQueryResult> resultMap = (ResultMap<CouponQueryResult>) XmlUtil.callWebservice(wsUtil);
+        CouponQueryResult couponQueryResult = resultMap.getData();
+        if(couponQueryResult == null){
+            couponQueryResult = new CouponQueryResult();
+        }
+        if(resultMap.getStatus().equals("0")){
+            couponQueryResult.setStatus("0");
+        }else{
+            couponQueryResult.setStatus(resultMap.getStatus());
+            couponQueryResult.setErrmsg(resultMap.getErrorMsg());
+        }
         return couponQueryResult;
     }
     ////////////////////////////////////////////////////////////////
     @ApiOperation(value = "获取当前时间",notes = "同步正确的时间",httpMethod = "GET",
             produces = "application/json; charset=utf-8",
-            response = String.class)
+            response = DateResult.class)
     @RequestMapping(value = "getDate",method = RequestMethod.GET)
     @ResponseBody
-    public String getDate(){
-        return new SimpleDateFormat("yyyyMMdd hh:mm:ss").format(new Date());
+    public DateResult getDate(){
+//        System.out.println(new SimpleDateFormat("yyyyMMdd hh:mm:ss").format(new Date()));
+        DateResult dateResult = new DateResult();
+        dateResult.setDateResult(new SimpleDateFormat("yyyyMMdd hh:mm:ss").format(new Date()));
+        return dateResult;
     }
     ////////////////////////////////////////////////////////////////
     //这里的密码需要根据md5来加密

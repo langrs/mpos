@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.RoleUser">
+	<resultMap id="RoleUser" type="com.site.entity.RoleUser">
+		<id property="id" column="id_" jdbcType="NUMERIC" />
+		<result property="userid" column="userId_" jdbcType="NUMERIC" />
+		<result property="roleId" column="role_id_" jdbcType="NUMERIC" />
+		<association property="useridObj" column="userId_"
+			select="com.site.entity.User.get"></association>
+
+	</resultMap>
+	<sql id="whereId">
+		id_=#{id}
+	</sql>
+	<sql id="columns">
+		id_,
+		userId_,
+		role_id_
+	</sql>
+	<sql id="dynamicWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="userid != null"> AND userId_ =#{userid} </if>
+			<if test="roleId != null"> AND role_id_ =#{roleId} </if>
+		</where>
+	</sql>
+
+
+	<sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="userid != null"> AND userId_ =#{userid} </if>
+			<if test="roleId != null"> AND role_id_ =#{roleId} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.RoleUser">
+		INSERT INTO role_user_
+		(
+		<include refid="columns" />
+		)
+		VALUES
+		(#{id,jdbcType=NUMERIC},#{userid,jdbcType=NUMERIC},#{roleId,jdbcType=NUMERIC})
+	</insert>
+
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM role_user_
+		WHERE
+		<include refid="whereId" />
+	</delete>
+	<update id="update" parameterType="com.site.entity.RoleUser">
+		UPDATE role_user_ SET
+		userId_=#{userid,jdbcType=NUMERIC},
+		role_id_=#{roleId,jdbcType=NUMERIC}
+		WHERE
+		<include refid="whereId" />
+
+	</update>
+
+	<select id="get" parameterType="java.lang.Long" resultMap="RoleUser">
+		SELECT
+		<include refid="columns" />
+		FROM role_user_
+		WHERE
+		<include refid="whereId" />
+	</select>
+
+	<select id="query" resultMap="RoleUser">
+		SELECT
+		<include refid="columns" />
+		FROM role_user_
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="RoleUser">
+		SELECT
+		<include refid="columns" />
+		FROM role_user_
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="RoleUser">
+		SELECT
+		<include refid="columns" />
+		FROM role_user_
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="getList" resultMap="RoleUser">
+		SELECT
+		<include refid="columns" />
+		FROM role_user_
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPosSaleDetail">
+	<resultMap id="TPosSaleDetail" type="com.site.entity.TPosSaleDetail">
+		<result property= "sheetNo" column="sheet_no" jdbcType="VARCHAR" />
+		<result property= "sheetSort" column="sheet_sort" jdbcType="VARCHAR" />
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "saleBarcode" column="sale_barcode" jdbcType="VARCHAR" />
+		<result property= "itemUnit" column="item_unit" jdbcType="VARCHAR" />
+		<result property= "unitType" column="unit_type" jdbcType="VARCHAR" />
+		<result property= "unitPack" column="unit_pack" jdbcType="NUMERIC" />
+		<result property= "orgPrice" column="org_price" jdbcType="NUMERIC" />
+		<result property= "realPrice" column="real_price" jdbcType="NUMERIC" />
+		<result property= "saleQty" column="sale_qty" jdbcType="NUMERIC" />
+		<result property= "saleSign" column="sale_sign" jdbcType="VARCHAR" />
+		<result property= "saleAmt" column="sale_amt" jdbcType="NUMERIC" />
+		<result property= "saleMan" column="sale_man" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "manageType" column="manage_type" jdbcType="VARCHAR" />
+		<result property= "specialType" column="special_type" jdbcType="VARCHAR" />
+		<result property= "specialNo" column="special_no" jdbcType="VARCHAR" />
+		<result property= "itemIspack" column="item_ispack" jdbcType="VARCHAR" />
+		<result property= "jsQty" column="js_qty" jdbcType="NUMERIC" />
+		<result property= "saleMemo" column="sale_memo" jdbcType="VARCHAR" />
+		<result property= "saleBytxt1" column="sale_bytxt1" jdbcType="VARCHAR" />
+		<result property= "saleBytxt2" column="sale_bytxt2" jdbcType="VARCHAR" />
+		<result property= "saleBytxt3" column="sale_bytxt3" jdbcType="VARCHAR" />
+		<result property= "saleBynum1" column="sale_bynum1" jdbcType="NUMERIC" />
+		<result property= "saleBynum2" column="sale_bynum2" jdbcType="NUMERIC" />
+		<result property= "saleBynum3" column="sale_bynum3" jdbcType="NUMERIC" />
+		<result property= "allzkForeRealPrice" column="allzk_fore_real_price" jdbcType="NUMERIC" />
+		<result property= "allzkForeSpecialType" column="allzk_fore_special_type" jdbcType="VARCHAR" />
+		<result property= "ManageLyRate" column="Manage_ly_rate" jdbcType="NUMERIC" />
+		<result property= "lySupNo" column="ly_sup_no" jdbcType="VARCHAR" />
+		<result property= "insideTaxAmt" column="inside_tax_amt" jdbcType="NUMERIC" />
+		<result property= "isPackage" column="is_package" jdbcType="VARCHAR" />
+		<result property= "limitBranch" column="limit_branch" jdbcType="VARCHAR" />
+		<result property= "limitTimes" column="limit_times" jdbcType="VARCHAR" />
+		<result property= "limitDate" column="limit_date" jdbcType="VARCHAR" />
+		<result property= "validBegin" column="valid_begin" jdbcType="TIMESTAMP" />
+		<result property= "validEnd" column="valid_end" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		sheet_no,
+		sheet_sort,
+		item_no,
+		sale_barcode,
+		item_unit,
+		unit_type,
+		unit_pack,
+		org_price,
+		real_price,
+		sale_qty,
+		sale_sign,
+		sale_amt,
+		sale_man,
+		counter_no,
+		manage_type,
+		special_type,
+		special_no,
+		item_ispack,
+		js_qty,
+		sale_memo,
+		sale_bytxt1,
+		sale_bytxt2,
+		sale_bytxt3,
+		sale_bynum1,
+		sale_bynum2,
+		sale_bynum3,
+		allzk_fore_real_price,
+		allzk_fore_special_type,
+		Manage_ly_rate,
+		ly_sup_no,
+		inside_tax_amt,
+		is_package,
+		limit_branch,
+		limit_times,
+		limit_date,
+		valid_begin,
+		valid_end
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no like '%${sheetNo}%' </if>
+       	<if test="sheetSort != null"> AND sheet_sort like '%${sheetSort}%' </if>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="saleBarcode != null"> AND sale_barcode like '%${saleBarcode}%' </if>
+       	<if test="itemUnit != null"> AND item_unit like '%${itemUnit}%' </if>
+       	<if test="unitType != null"> AND unit_type like '%${unitType}%' </if>
+       	<if test="unitPack != null"> AND unit_pack like '%${unitPack}%' </if>
+       	<if test="orgPrice != null"> AND org_price like '%${orgPrice}%' </if>
+       	<if test="realPrice != null"> AND real_price like '%${realPrice}%' </if>
+       	<if test="saleQty != null"> AND sale_qty like '%${saleQty}%' </if>
+       	<if test="saleSign != null"> AND sale_sign like '%${saleSign}%' </if>
+       	<if test="saleAmt != null"> AND sale_amt like '%${saleAmt}%' </if>
+       	<if test="saleMan != null"> AND sale_man like '%${saleMan}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="manageType != null"> AND manage_type like '%${manageType}%' </if>
+       	<if test="specialType != null"> AND special_type like '%${specialType}%' </if>
+       	<if test="specialNo != null"> AND special_no like '%${specialNo}%' </if>
+       	<if test="itemIspack != null"> AND item_ispack like '%${itemIspack}%' </if>
+       	<if test="jsQty != null"> AND js_qty like '%${jsQty}%' </if>
+       	<if test="saleMemo != null"> AND sale_memo like '%${saleMemo}%' </if>
+       	<if test="saleBytxt1 != null"> AND sale_bytxt1 like '%${saleBytxt1}%' </if>
+       	<if test="saleBytxt2 != null"> AND sale_bytxt2 like '%${saleBytxt2}%' </if>
+       	<if test="saleBytxt3 != null"> AND sale_bytxt3 like '%${saleBytxt3}%' </if>
+       	<if test="saleBynum1 != null"> AND sale_bynum1 like '%${saleBynum1}%' </if>
+       	<if test="saleBynum2 != null"> AND sale_bynum2 like '%${saleBynum2}%' </if>
+       	<if test="saleBynum3 != null"> AND sale_bynum3 like '%${saleBynum3}%' </if>
+       	<if test="allzkForeRealPrice != null"> AND allzk_fore_real_price like '%${allzkForeRealPrice}%' </if>
+       	<if test="allzkForeSpecialType != null"> AND allzk_fore_special_type like '%${allzkForeSpecialType}%' </if>
+       	<if test="ManageLyRate != null"> AND Manage_ly_rate like '%${ManageLyRate}%' </if>
+       	<if test="lySupNo != null"> AND ly_sup_no like '%${lySupNo}%' </if>
+       	<if test="insideTaxAmt != null"> AND inside_tax_amt like '%${insideTaxAmt}%' </if>
+       	<if test="isPackage != null"> AND is_package like '%${isPackage}%' </if>
+       	<if test="limitBranch != null"> AND limit_branch like '%${limitBranch}%' </if>
+       	<if test="limitTimes != null"> AND limit_times like '%${limitTimes}%' </if>
+       	<if test="limitDate != null"> AND limit_date like '%${limitDate}%' </if>
+       	<if test="validBegin != null"> AND valid_begin = #{validBegin}</if>
+       	<if test="validEnd != null"> AND valid_end = #{validEnd}</if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no = #{sheetNo}</if>
+       	<if test="sheetSort != null"> AND sheet_sort = #{sheetSort}</if>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="saleBarcode != null"> AND sale_barcode = #{saleBarcode}</if>
+       	<if test="itemUnit != null"> AND item_unit = #{itemUnit}</if>
+       	<if test="unitType != null"> AND unit_type = #{unitType}</if>
+       	<if test="unitPack != null"> AND unit_pack = #{unitPack}</if>
+       	<if test="orgPrice != null"> AND org_price = #{orgPrice}</if>
+       	<if test="realPrice != null"> AND real_price = #{realPrice}</if>
+       	<if test="saleQty != null"> AND sale_qty = #{saleQty}</if>
+       	<if test="saleSign != null"> AND sale_sign = #{saleSign}</if>
+       	<if test="saleAmt != null"> AND sale_amt = #{saleAmt}</if>
+       	<if test="saleMan != null"> AND sale_man = #{saleMan}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="manageType != null"> AND manage_type = #{manageType}</if>
+       	<if test="specialType != null"> AND special_type = #{specialType}</if>
+       	<if test="specialNo != null"> AND special_no = #{specialNo}</if>
+       	<if test="itemIspack != null"> AND item_ispack = #{itemIspack}</if>
+       	<if test="jsQty != null"> AND js_qty = #{jsQty}</if>
+       	<if test="saleMemo != null"> AND sale_memo = #{saleMemo}</if>
+       	<if test="saleBytxt1 != null"> AND sale_bytxt1 = #{saleBytxt1}</if>
+       	<if test="saleBytxt2 != null"> AND sale_bytxt2 = #{saleBytxt2}</if>
+       	<if test="saleBytxt3 != null"> AND sale_bytxt3 = #{saleBytxt3}</if>
+       	<if test="saleBynum1 != null"> AND sale_bynum1 = #{saleBynum1}</if>
+       	<if test="saleBynum2 != null"> AND sale_bynum2 = #{saleBynum2}</if>
+       	<if test="saleBynum3 != null"> AND sale_bynum3 = #{saleBynum3}</if>
+       	<if test="allzkForeRealPrice != null"> AND allzk_fore_real_price = #{allzkForeRealPrice}</if>
+       	<if test="allzkForeSpecialType != null"> AND allzk_fore_special_type = #{allzkForeSpecialType}</if>
+       	<if test="ManageLyRate != null"> AND Manage_ly_rate = #{ManageLyRate}</if>
+       	<if test="lySupNo != null"> AND ly_sup_no = #{lySupNo}</if>
+       	<if test="insideTaxAmt != null"> AND inside_tax_amt = #{insideTaxAmt}</if>
+       	<if test="isPackage != null"> AND is_package = #{isPackage}</if>
+       	<if test="limitBranch != null"> AND limit_branch = #{limitBranch}</if>
+       	<if test="limitTimes != null"> AND limit_times = #{limitTimes}</if>
+       	<if test="limitDate != null"> AND limit_date = #{limitDate}</if>
+       	<if test="validBegin != null"> AND valid_begin = #{validBegin}</if>
+       	<if test="validEnd != null"> AND valid_end = #{validEnd}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPosSaleDetail">
+		INSERT INTO t_pos_sale_detail
+		(<include refid="columns"/>)
+		VALUES(
+		#{sheetNo,jdbcType=VARCHAR},
+		#{sheetSort,jdbcType=VARCHAR},
+		#{itemNo,jdbcType=VARCHAR},
+		#{saleBarcode,jdbcType=VARCHAR},
+		#{itemUnit,jdbcType=VARCHAR},
+		#{unitType,jdbcType=VARCHAR},
+		#{unitPack,jdbcType=NUMERIC},
+		#{orgPrice,jdbcType=NUMERIC},
+		#{realPrice,jdbcType=NUMERIC},
+		#{saleQty,jdbcType=NUMERIC},
+		#{saleSign,jdbcType=VARCHAR},
+		#{saleAmt,jdbcType=NUMERIC},
+		#{saleMan,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{manageType,jdbcType=VARCHAR},
+		#{specialType,jdbcType=VARCHAR},
+		#{specialNo,jdbcType=VARCHAR},
+		#{itemIspack,jdbcType=VARCHAR},
+		#{jsQty,jdbcType=NUMERIC},
+		#{saleMemo,jdbcType=VARCHAR},
+		#{saleBytxt1,jdbcType=VARCHAR},
+		#{saleBytxt2,jdbcType=VARCHAR},
+		#{saleBytxt3,jdbcType=VARCHAR},
+		#{saleBynum1,jdbcType=NUMERIC},
+		#{saleBynum2,jdbcType=NUMERIC},
+		#{saleBynum3,jdbcType=NUMERIC},
+		#{allzkForeRealPrice,jdbcType=NUMERIC},
+		#{allzkForeSpecialType,jdbcType=VARCHAR},
+		#{ManageLyRate,jdbcType=NUMERIC},
+		#{lySupNo,jdbcType=VARCHAR},
+		#{insideTaxAmt,jdbcType=NUMERIC},
+		#{isPackage,jdbcType=VARCHAR},
+		#{limitBranch,jdbcType=VARCHAR},
+		#{limitTimes,jdbcType=VARCHAR},
+		#{limitDate,jdbcType=VARCHAR},
+		#{validBegin,jdbcType=TIMESTAMP},
+		#{validEnd,jdbcType=TIMESTAMP}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos_sale_detail 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPosSaleDetail">
+		UPDATE t_pos_sale_detail SET
+               sheet_no=#{sheetNo,jdbcType=VARCHAR},
+               sheet_sort=#{sheetSort,jdbcType=VARCHAR},
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               sale_barcode=#{saleBarcode,jdbcType=VARCHAR},
+               item_unit=#{itemUnit,jdbcType=VARCHAR},
+               unit_type=#{unitType,jdbcType=VARCHAR},
+               unit_pack=#{unitPack,jdbcType=NUMERIC},
+               org_price=#{orgPrice,jdbcType=NUMERIC},
+               real_price=#{realPrice,jdbcType=NUMERIC},
+               sale_qty=#{saleQty,jdbcType=NUMERIC},
+               sale_sign=#{saleSign,jdbcType=VARCHAR},
+               sale_amt=#{saleAmt,jdbcType=NUMERIC},
+               sale_man=#{saleMan,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               manage_type=#{manageType,jdbcType=VARCHAR},
+               special_type=#{specialType,jdbcType=VARCHAR},
+               special_no=#{specialNo,jdbcType=VARCHAR},
+               item_ispack=#{itemIspack,jdbcType=VARCHAR},
+               js_qty=#{jsQty,jdbcType=NUMERIC},
+               sale_memo=#{saleMemo,jdbcType=VARCHAR},
+               sale_bytxt1=#{saleBytxt1,jdbcType=VARCHAR},
+               sale_bytxt2=#{saleBytxt2,jdbcType=VARCHAR},
+               sale_bytxt3=#{saleBytxt3,jdbcType=VARCHAR},
+               sale_bynum1=#{saleBynum1,jdbcType=NUMERIC},
+               sale_bynum2=#{saleBynum2,jdbcType=NUMERIC},
+               sale_bynum3=#{saleBynum3,jdbcType=NUMERIC},
+               allzk_fore_real_price=#{allzkForeRealPrice,jdbcType=NUMERIC},
+               allzk_fore_special_type=#{allzkForeSpecialType,jdbcType=VARCHAR},
+               Manage_ly_rate=#{ManageLyRate,jdbcType=NUMERIC},
+               ly_sup_no=#{lySupNo,jdbcType=VARCHAR},
+               inside_tax_amt=#{insideTaxAmt,jdbcType=NUMERIC},
+               is_package=#{isPackage,jdbcType=VARCHAR},
+               limit_branch=#{limitBranch,jdbcType=VARCHAR},
+               limit_times=#{limitTimes,jdbcType=VARCHAR},
+               limit_date=#{limitDate,jdbcType=VARCHAR},
+               valid_begin=#{validBegin,jdbcType=TIMESTAMP},
+               valid_end=#{validEnd,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPosSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_detail
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPosSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPosSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_detail   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPosSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_detail   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPosSaleDetail">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_detail   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

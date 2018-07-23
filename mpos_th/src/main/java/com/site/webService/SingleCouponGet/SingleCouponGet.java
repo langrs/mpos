@@ -2,9 +2,12 @@ package com.site.webService.SingleCouponGet;
 
 import com.site.entity.ResultMap;
 import com.site.entity.respon.CouponQueryResult;
+import com.site.entity.respon.Member;
 import com.site.webService.WsUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.dom.DOMElement;
 
@@ -38,34 +41,38 @@ public class SingleCouponGet extends WsUtil {
         return RequestE.asXML();
     }
     //内容部分
-    public void extraResponseContent(JSONObject jsonObject, ResultMap resultMap) {
-        JSONArray json = jsonObject.getJSONObject("Response").getJSONObject("ResponseContent").
-                getJSONObject("Document").getJSONObject("RecordSet").getJSONObject("Master").getJSONObject("Record").getJSONArray("Field");
-        List<SingleCouponGetField> singleCouponGetFields = (List<SingleCouponGetField>) JSONArray.toCollection(json, SingleCouponGetField.class);
-        if(singleCouponGetFields != null){
+    public void extraResponseContent(String content, ResultMap resultMap) {
+        Document document = null;
+        try {
+            document = DocumentHelper.parseText(content);
+            Element root = document.getRootElement();
             CouponQueryResult couponQueryResult = new CouponQueryResult();
-            for(SingleCouponGetField singleCouponGetField:singleCouponGetFields){
-                String name = singleCouponGetField.getName();
-                String value = singleCouponGetField.getValue();
+            List<Element> elements = root.element("ResponseContent").element("Document").element("RecordSet").
+                    element("Master").element("Record").elements();
+            //循环Field
+            for (Element filedE : elements) {
+                String fieldname = filedE.attributeValue("name");
+                String fieldvalue = filedE.attributeValue("value");
                 //券种
-                if(name.equals("gcao002")){couponQueryResult.setGiftctf(value);}
+                if(fieldname.equals("gcao002")){couponQueryResult.setGiftctf(fieldvalue);}
                 //券号
-                if(name.equals("gcao001")){couponQueryResult.setCouponno(value);}
+                if(fieldname.equals("gcao001")){couponQueryResult.setCouponno(fieldvalue);}
                 //券名称
-                if(name.equals("gcao003")){couponQueryResult.setCouponname(value);}
+                if(fieldname.equals("gcao003")){couponQueryResult.setCouponname(fieldvalue);}
                 //券金额
-                if(name.equals("gcao004")){couponQueryResult.setAmt(Double.parseDouble(value));}
+                if(fieldname.equals("gcao004")){couponQueryResult.setAmt(Double.parseDouble(fieldvalue));}
                 //生效日期
-                if(name.equals("gcao008")){couponQueryResult.setStartdate(value);}
+                if(fieldname.equals("gcao008")){couponQueryResult.setStartdate(fieldvalue);}
                 //失效日期
-                if(name.equals("gcao009")){couponQueryResult.setEnddate(value);}
+                if(fieldname.equals("gcao009")){couponQueryResult.setEnddate(fieldvalue);}
             }
             resultMap.setStatus("0");
             resultMap.setData(couponQueryResult);
-            return;
-        }
-        resultMap.setStatus("999");
-        resultMap.setErrorMsg("解析返回值出错");
 
+        } catch (Exception e) {
+            e.getStackTrace();
+            resultMap.setStatus("999");
+            resultMap.setErrorMsg("解析错误");
+        }
     }
 }

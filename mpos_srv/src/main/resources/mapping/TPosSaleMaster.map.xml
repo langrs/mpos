@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPosSaleMaster">
+	<resultMap id="TPosSaleMaster" type="com.site.entity.TPosSaleMaster">
+		<result property= "sheetNo" column="sheet_no" jdbcType="VARCHAR" />
+		<result property= "operDate" column="oper_date" jdbcType="TIMESTAMP" />
+		<result property= "saleTime" column="sale_time" jdbcType="TIMESTAMP" />
+		<result property= "posType" column="pos_type" jdbcType="VARCHAR" />
+		<result property= "posStatus" column="pos_status" jdbcType="VARCHAR" />
+		<result property= "dealNo" column="deal_no" jdbcType="VARCHAR" />
+		<result property= "dealClass" column="deal_class" jdbcType="VARCHAR" />
+		<result property= "userId" column="user_id" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "jh" column="jh" jdbcType="VARCHAR" />
+		<result property= "localNo" column="local_no" jdbcType="VARCHAR" />
+		<result property= "workNo" column="work_no" jdbcType="VARCHAR" />
+		<result property= "voucherNo" column="voucher_no" jdbcType="VARCHAR" />
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "posOrgAmt" column="pos_org_amt" jdbcType="NUMERIC" />
+		<result property= "posTotalAmt" column="pos_total_amt" jdbcType="NUMERIC" />
+		<result property= "posIntegral" column="pos_integral" jdbcType="NUMERIC" />
+		<result property= "custName" column="cust_name" jdbcType="VARCHAR" />
+		<result property= "custMan" column="cust_man" jdbcType="VARCHAR" />
+		<result property= "custAddress" column="cust_address" jdbcType="VARCHAR" />
+		<result property= "custTel" column="cust_tel" jdbcType="VARCHAR" />
+		<result property= "custRequest" column="cust_request" jdbcType="VARCHAR" />
+		<result property= "posOrderTime" column="pos_order_time" jdbcType="TIMESTAMP" />
+		<result property= "posSendTime" column="pos_send_time" jdbcType="TIMESTAMP" />
+		<result property= "dealOrder" column="deal_order" jdbcType="VARCHAR" />
+		<result property= "posMemo" column="pos_memo" jdbcType="VARCHAR" />
+		<result property= "posBytxt1" column="pos_bytxt1" jdbcType="VARCHAR" />
+		<result property= "posBytxt2" column="pos_bytxt2" jdbcType="VARCHAR" />
+		<result property= "posBytxt3" column="pos_bytxt3" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "fuTimes" column="fu_times" jdbcType="VARCHAR" />
+		<result property= "posOrderIsSend" column="pos_order_IsSend" jdbcType="VARCHAR" />
+		<result property= "posOrderStatus" column="pos_order_status" jdbcType="VARCHAR" />
+		<result property= "posOrderSender" column="pos_order_sender" jdbcType="VARCHAR" />
+		<result property= "custNo" column="cust_no" jdbcType="VARCHAR" />
+		<result property= "tourGrp" column="tour_grp" jdbcType="VARCHAR" />
+		<result property= "tourNo" column="tour_no" jdbcType="VARCHAR" />
+		<result property= "guideNo" column="guide_no" jdbcType="VARCHAR" />
+		<result property= "custSex" column="cust_sex" jdbcType="VARCHAR" />
+		<result property= "custId" column="cust_id" jdbcType="VARCHAR" />
+		<result property= "custAge" column="cust_age" jdbcType="VARCHAR" />
+		<result property= "cfFrom" column="cf_from" jdbcType="VARCHAR" />
+		<result property= "cfYs" column="cf_ys" jdbcType="VARCHAR" />
+		<result property= "cfPyr" column="cf_pyr" jdbcType="VARCHAR" />
+		<result property= "cfFyr" column="cf_fyr" jdbcType="VARCHAR" />
+		<result property= "cfZd" column="cf_zd" jdbcType="VARCHAR" />
+		<result property= "cfNo" column="cf_no" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		sheet_no,
+		oper_date,
+		sale_time,
+		pos_type,
+		pos_status,
+		deal_no,
+		deal_class,
+		user_id,
+		branch_no,
+		counter_no,
+		jh,
+		local_no,
+		work_no,
+		voucher_no,
+		vip_no,
+		pos_org_amt,
+		pos_total_amt,
+		pos_integral,
+		cust_name,
+		cust_man,
+		cust_address,
+		cust_tel,
+		cust_request,
+		pos_order_time,
+		pos_send_time,
+		deal_order,
+		pos_memo,
+		pos_bytxt1,
+		pos_bytxt2,
+		pos_bytxt3,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag,
+		fu_times,
+		pos_order_IsSend,
+		pos_order_status,
+		pos_order_sender,
+		cust_no,
+		tour_grp,
+		tour_no,
+		guide_no,
+		cust_sex,
+		cust_id,
+		cust_age,
+		cf_from,
+		cf_ys,
+		cf_pyr,
+		cf_fyr,
+		cf_zd,
+		cf_no
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no like '%${sheetNo}%' </if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="saleTime != null"> AND sale_time = #{saleTime}</if>
+       	<if test="posType != null"> AND pos_type like '%${posType}%' </if>
+       	<if test="posStatus != null"> AND pos_status like '%${posStatus}%' </if>
+       	<if test="dealNo != null"> AND deal_no like '%${dealNo}%' </if>
+       	<if test="dealClass != null"> AND deal_class like '%${dealClass}%' </if>
+       	<if test="userId != null"> AND user_id like '%${userId}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="jh != null"> AND jh like '%${jh}%' </if>
+       	<if test="localNo != null"> AND local_no like '%${localNo}%' </if>
+       	<if test="workNo != null"> AND work_no like '%${workNo}%' </if>
+       	<if test="voucherNo != null"> AND voucher_no like '%${voucherNo}%' </if>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="posOrgAmt != null"> AND pos_org_amt like '%${posOrgAmt}%' </if>
+       	<if test="posTotalAmt != null"> AND pos_total_amt like '%${posTotalAmt}%' </if>
+       	<if test="posIntegral != null"> AND pos_integral like '%${posIntegral}%' </if>
+       	<if test="custName != null"> AND cust_name like '%${custName}%' </if>
+       	<if test="custMan != null"> AND cust_man like '%${custMan}%' </if>
+       	<if test="custAddress != null"> AND cust_address like '%${custAddress}%' </if>
+       	<if test="custTel != null"> AND cust_tel like '%${custTel}%' </if>
+       	<if test="custRequest != null"> AND cust_request like '%${custRequest}%' </if>
+       	<if test="posOrderTime != null"> AND pos_order_time = #{posOrderTime}</if>
+       	<if test="posSendTime != null"> AND pos_send_time = #{posSendTime}</if>
+       	<if test="dealOrder != null"> AND deal_order like '%${dealOrder}%' </if>
+       	<if test="posMemo != null"> AND pos_memo like '%${posMemo}%' </if>
+       	<if test="posBytxt1 != null"> AND pos_bytxt1 like '%${posBytxt1}%' </if>
+       	<if test="posBytxt2 != null"> AND pos_bytxt2 like '%${posBytxt2}%' </if>
+       	<if test="posBytxt3 != null"> AND pos_bytxt3 like '%${posBytxt3}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="fuTimes != null"> AND fu_times like '%${fuTimes}%' </if>
+       	<if test="posOrderIsSend != null"> AND pos_order_IsSend like '%${posOrderIsSend}%' </if>
+       	<if test="posOrderStatus != null"> AND pos_order_status like '%${posOrderStatus}%' </if>
+       	<if test="posOrderSender != null"> AND pos_order_sender like '%${posOrderSender}%' </if>
+       	<if test="custNo != null"> AND cust_no like '%${custNo}%' </if>
+       	<if test="tourGrp != null"> AND tour_grp like '%${tourGrp}%' </if>
+       	<if test="tourNo != null"> AND tour_no like '%${tourNo}%' </if>
+       	<if test="guideNo != null"> AND guide_no like '%${guideNo}%' </if>
+       	<if test="custSex != null"> AND cust_sex like '%${custSex}%' </if>
+       	<if test="custId != null"> AND cust_id like '%${custId}%' </if>
+       	<if test="custAge != null"> AND cust_age like '%${custAge}%' </if>
+       	<if test="cfFrom != null"> AND cf_from like '%${cfFrom}%' </if>
+       	<if test="cfYs != null"> AND cf_ys like '%${cfYs}%' </if>
+       	<if test="cfPyr != null"> AND cf_pyr like '%${cfPyr}%' </if>
+       	<if test="cfFyr != null"> AND cf_fyr like '%${cfFyr}%' </if>
+       	<if test="cfZd != null"> AND cf_zd like '%${cfZd}%' </if>
+       	<if test="cfNo != null"> AND cf_no like '%${cfNo}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no = #{sheetNo}</if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="saleTime != null"> AND sale_time = #{saleTime}</if>
+       	<if test="posType != null"> AND pos_type = #{posType}</if>
+       	<if test="posStatus != null"> AND pos_status = #{posStatus}</if>
+       	<if test="dealNo != null"> AND deal_no = #{dealNo}</if>
+       	<if test="dealClass != null"> AND deal_class = #{dealClass}</if>
+       	<if test="userId != null"> AND user_id = #{userId}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="jh != null"> AND jh = #{jh}</if>
+       	<if test="localNo != null"> AND local_no = #{localNo}</if>
+       	<if test="workNo != null"> AND work_no = #{workNo}</if>
+       	<if test="voucherNo != null"> AND voucher_no = #{voucherNo}</if>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="posOrgAmt != null"> AND pos_org_amt = #{posOrgAmt}</if>
+       	<if test="posTotalAmt != null"> AND pos_total_amt = #{posTotalAmt}</if>
+       	<if test="posIntegral != null"> AND pos_integral = #{posIntegral}</if>
+       	<if test="custName != null"> AND cust_name = #{custName}</if>
+       	<if test="custMan != null"> AND cust_man = #{custMan}</if>
+       	<if test="custAddress != null"> AND cust_address = #{custAddress}</if>
+       	<if test="custTel != null"> AND cust_tel = #{custTel}</if>
+       	<if test="custRequest != null"> AND cust_request = #{custRequest}</if>
+       	<if test="posOrderTime != null"> AND pos_order_time = #{posOrderTime}</if>
+       	<if test="posSendTime != null"> AND pos_send_time = #{posSendTime}</if>
+       	<if test="dealOrder != null"> AND deal_order = #{dealOrder}</if>
+       	<if test="posMemo != null"> AND pos_memo = #{posMemo}</if>
+       	<if test="posBytxt1 != null"> AND pos_bytxt1 = #{posBytxt1}</if>
+       	<if test="posBytxt2 != null"> AND pos_bytxt2 = #{posBytxt2}</if>
+       	<if test="posBytxt3 != null"> AND pos_bytxt3 = #{posBytxt3}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="fuTimes != null"> AND fu_times = #{fuTimes}</if>
+       	<if test="posOrderIsSend != null"> AND pos_order_IsSend = #{posOrderIsSend}</if>
+       	<if test="posOrderStatus != null"> AND pos_order_status = #{posOrderStatus}</if>
+       	<if test="posOrderSender != null"> AND pos_order_sender = #{posOrderSender}</if>
+       	<if test="custNo != null"> AND cust_no = #{custNo}</if>
+       	<if test="tourGrp != null"> AND tour_grp = #{tourGrp}</if>
+       	<if test="tourNo != null"> AND tour_no = #{tourNo}</if>
+       	<if test="guideNo != null"> AND guide_no = #{guideNo}</if>
+       	<if test="custSex != null"> AND cust_sex = #{custSex}</if>
+       	<if test="custId != null"> AND cust_id = #{custId}</if>
+       	<if test="custAge != null"> AND cust_age = #{custAge}</if>
+       	<if test="cfFrom != null"> AND cf_from = #{cfFrom}</if>
+       	<if test="cfYs != null"> AND cf_ys = #{cfYs}</if>
+       	<if test="cfPyr != null"> AND cf_pyr = #{cfPyr}</if>
+       	<if test="cfFyr != null"> AND cf_fyr = #{cfFyr}</if>
+       	<if test="cfZd != null"> AND cf_zd = #{cfZd}</if>
+       	<if test="cfNo != null"> AND cf_no = #{cfNo}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPosSaleMaster">
+		INSERT INTO t_pos_sale_master
+		(<include refid="columns"/>)
+		VALUES(
+		#{sheetNo,jdbcType=VARCHAR},
+		#{operDate,jdbcType=TIMESTAMP},
+		#{saleTime,jdbcType=TIMESTAMP},
+		#{posType,jdbcType=VARCHAR},
+		#{posStatus,jdbcType=VARCHAR},
+		#{dealNo,jdbcType=VARCHAR},
+		#{dealClass,jdbcType=VARCHAR},
+		#{userId,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{jh,jdbcType=VARCHAR},
+		#{localNo,jdbcType=VARCHAR},
+		#{workNo,jdbcType=VARCHAR},
+		#{voucherNo,jdbcType=VARCHAR},
+		#{vipNo,jdbcType=VARCHAR},
+		#{posOrgAmt,jdbcType=NUMERIC},
+		#{posTotalAmt,jdbcType=NUMERIC},
+		#{posIntegral,jdbcType=NUMERIC},
+		#{custName,jdbcType=VARCHAR},
+		#{custMan,jdbcType=VARCHAR},
+		#{custAddress,jdbcType=VARCHAR},
+		#{custTel,jdbcType=VARCHAR},
+		#{custRequest,jdbcType=VARCHAR},
+		#{posOrderTime,jdbcType=TIMESTAMP},
+		#{posSendTime,jdbcType=TIMESTAMP},
+		#{dealOrder,jdbcType=VARCHAR},
+		#{posMemo,jdbcType=VARCHAR},
+		#{posBytxt1,jdbcType=VARCHAR},
+		#{posBytxt2,jdbcType=VARCHAR},
+		#{posBytxt3,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{fuTimes,jdbcType=VARCHAR},
+		#{posOrderIsSend,jdbcType=VARCHAR},
+		#{posOrderStatus,jdbcType=VARCHAR},
+		#{posOrderSender,jdbcType=VARCHAR},
+		#{custNo,jdbcType=VARCHAR},
+		#{tourGrp,jdbcType=VARCHAR},
+		#{tourNo,jdbcType=VARCHAR},
+		#{guideNo,jdbcType=VARCHAR},
+		#{custSex,jdbcType=VARCHAR},
+		#{custId,jdbcType=VARCHAR},
+		#{custAge,jdbcType=VARCHAR},
+		#{cfFrom,jdbcType=VARCHAR},
+		#{cfYs,jdbcType=VARCHAR},
+		#{cfPyr,jdbcType=VARCHAR},
+		#{cfFyr,jdbcType=VARCHAR},
+		#{cfZd,jdbcType=VARCHAR},
+		#{cfNo,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos_sale_master 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPosSaleMaster">
+		UPDATE t_pos_sale_master SET
+               sheet_no=#{sheetNo,jdbcType=VARCHAR},
+               oper_date=#{operDate,jdbcType=TIMESTAMP},
+               sale_time=#{saleTime,jdbcType=TIMESTAMP},
+               pos_type=#{posType,jdbcType=VARCHAR},
+               pos_status=#{posStatus,jdbcType=VARCHAR},
+               deal_no=#{dealNo,jdbcType=VARCHAR},
+               deal_class=#{dealClass,jdbcType=VARCHAR},
+               user_id=#{userId,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               jh=#{jh,jdbcType=VARCHAR},
+               local_no=#{localNo,jdbcType=VARCHAR},
+               work_no=#{workNo,jdbcType=VARCHAR},
+               voucher_no=#{voucherNo,jdbcType=VARCHAR},
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               pos_org_amt=#{posOrgAmt,jdbcType=NUMERIC},
+               pos_total_amt=#{posTotalAmt,jdbcType=NUMERIC},
+               pos_integral=#{posIntegral,jdbcType=NUMERIC},
+               cust_name=#{custName,jdbcType=VARCHAR},
+               cust_man=#{custMan,jdbcType=VARCHAR},
+               cust_address=#{custAddress,jdbcType=VARCHAR},
+               cust_tel=#{custTel,jdbcType=VARCHAR},
+               cust_request=#{custRequest,jdbcType=VARCHAR},
+               pos_order_time=#{posOrderTime,jdbcType=TIMESTAMP},
+               pos_send_time=#{posSendTime,jdbcType=TIMESTAMP},
+               deal_order=#{dealOrder,jdbcType=VARCHAR},
+               pos_memo=#{posMemo,jdbcType=VARCHAR},
+               pos_bytxt1=#{posBytxt1,jdbcType=VARCHAR},
+               pos_bytxt2=#{posBytxt2,jdbcType=VARCHAR},
+               pos_bytxt3=#{posBytxt3,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               fu_times=#{fuTimes,jdbcType=VARCHAR},
+               pos_order_IsSend=#{posOrderIsSend,jdbcType=VARCHAR},
+               pos_order_status=#{posOrderStatus,jdbcType=VARCHAR},
+               pos_order_sender=#{posOrderSender,jdbcType=VARCHAR},
+               cust_no=#{custNo,jdbcType=VARCHAR},
+               tour_grp=#{tourGrp,jdbcType=VARCHAR},
+               tour_no=#{tourNo,jdbcType=VARCHAR},
+               guide_no=#{guideNo,jdbcType=VARCHAR},
+               cust_sex=#{custSex,jdbcType=VARCHAR},
+               cust_id=#{custId,jdbcType=VARCHAR},
+               cust_age=#{custAge,jdbcType=VARCHAR},
+               cf_from=#{cfFrom,jdbcType=VARCHAR},
+               cf_ys=#{cfYs,jdbcType=VARCHAR},
+               cf_pyr=#{cfPyr,jdbcType=VARCHAR},
+               cf_fyr=#{cfFyr,jdbcType=VARCHAR},
+               cf_zd=#{cfZd,jdbcType=VARCHAR},
+               cf_no=#{cfNo,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPosSaleMaster">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_master
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPosSaleMaster">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_master   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPosSaleMaster">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_master   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPosSaleMaster">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_master   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPosSaleMaster">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_master   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

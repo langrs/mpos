@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TBranchInfo">
+	<resultMap id="TBranchInfo" type="com.site.entity.TBranchInfo">
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "branchName" column="branch_name" jdbcType="VARCHAR" />
+		<result property= "branchMan" column="branch_man" jdbcType="VARCHAR" />
+		<result property= "branchAddress" column="branch_address" jdbcType="VARCHAR" />
+		<result property= "branchZip" column="branch_zip" jdbcType="VARCHAR" />
+		<result property= "branchEmail" column="branch_email" jdbcType="VARCHAR" />
+		<result property= "branchTel" column="branch_tel" jdbcType="VARCHAR" />
+		<result property= "branchFax" column="branch_fax" jdbcType="VARCHAR" />
+		<result property= "branchMemo" column="branch_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "StoreType" column="Store_type" jdbcType="VARCHAR" />
+		<result property= "isInit" column="is_init" jdbcType="VARCHAR" />
+		<result property= "initDate" column="init_date" jdbcType="TIMESTAMP" />
+		<result property= "isLogout" column="is_logout" jdbcType="VARCHAR" />
+		<result property= "logoutDate" column="logout_date" jdbcType="TIMESTAMP" />
+		<result property= "serverIsConnect" column="server_IsConnect" jdbcType="VARCHAR" />
+		<result property= "serverDomain" column="server_domain" jdbcType="VARCHAR" />
+		<result property= "serverPort" column="server_port" jdbcType="VARCHAR" />
+		<result property= "serverPwd" column="server_pwd" jdbcType="VARCHAR" />
+		<result property= "IsShareSave" column="IsShare_save" jdbcType="VARCHAR" />
+		<result property= "IsShareIntegral" column="IsShare_integral" jdbcType="VARCHAR" />
+		<result property= "IsShareRet" column="IsShare_ret" jdbcType="VARCHAR" />
+		<result property= "IsShareGive" column="IsShare_give" jdbcType="VARCHAR" />
+		<result property= "IsShareZero" column="IsShare_zero" jdbcType="VARCHAR" />
+		<result property= "branchClass" column="branch_class" jdbcType="VARCHAR" />
+		<result property= "priceType" column="price_type" jdbcType="VARCHAR" />
+		<result property= "IsShareLimit" column="IsShare_limit" jdbcType="VARCHAR" />
+		<result property= "branchPwd" column="branch_pwd" jdbcType="VARCHAR" />
+		<result property= "serverUser" column="server_user" jdbcType="VARCHAR" />
+		<result property= "priceMode" column="price_mode" jdbcType="VARCHAR" />
+		<result property= "zbSupSettle" column="zb_sup_settle" jdbcType="VARCHAR" />
+		<result property= "zbCustSettle" column="zb_cust_settle" jdbcType="VARCHAR" />
+		<result property= "zbPd" column="zb_pd" jdbcType="VARCHAR" />
+		<result property= "IsNewItem" column="IsNew_item" jdbcType="VARCHAR" />
+		<result property= "IsNewSup" column="IsNew_sup" jdbcType="VARCHAR" />
+		<result property= "IsNewCust" column="IsNew_cust" jdbcType="VARCHAR" />
+		<result property= "dbGuid" column="db_guid" jdbcType="VARCHAR" />
+		<result property= "branchDb" column="branch_db" jdbcType="VARCHAR" />
+		<result property= "parentBranch" column="parent_branch" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "createMan" column="create_man" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyMan" column="modify_man" jdbcType="VARCHAR" />
+		<result property= "distDiscount" column="dist_discount" jdbcType="NUMERIC" />
+		<result property= "salePriceType" column="sale_price_type" jdbcType="VARCHAR" />
+		<result property= "vipPriceType" column="vip_price_type" jdbcType="VARCHAR" />
+		<result property= "pfPriceType" column="pf_price_type" jdbcType="VARCHAR" />
+		<result property= "branchManage" column="branch_manage" jdbcType="VARCHAR" />
+		<result property= "IsEditItem" column="IsEdit_item" jdbcType="VARCHAR" />
+		<result property= "IsShareStamp" column="IsShare_stamp" jdbcType="VARCHAR" />
+		<result property= "IsOtherStock" column="Is_OtherStock" jdbcType="VARCHAR" />
+		<result property= "IsEditVip" column="IsEdit_vip" jdbcType="VARCHAR" />
+		<result property= "visaNo" column="visa_no" jdbcType="VARCHAR" />
+		<result property= "IsSeeInPrice" column="IsSee_in_price" jdbcType="VARCHAR" />
+		<result property= "dbPriceType" column="db_price_type" jdbcType="VARCHAR" />
+		<result property= "dbPriceMode" column="db_price_mode" jdbcType="VARCHAR" />
+		<result property= "serverReg" column="server_reg" jdbcType="VARCHAR" />
+		<result property= "isDealCash" column="is_deal_cash" jdbcType="VARCHAR" />
+		<result property= "vipShareType" column="vip_share_type" jdbcType="VARCHAR" />
+		<result property= "storeMode" column="store_mode" jdbcType="VARCHAR" />
+		<result property= "storeSheng" column="store_sheng" jdbcType="VARCHAR" />
+		<result property= "storeShi" column="store_shi" jdbcType="VARCHAR" />
+		<result property= "storeXian" column="store_xian" jdbcType="VARCHAR" />
+		<result property= "storeGrantNo" column="store_grant_no" jdbcType="VARCHAR" />
+		<result property= "pyCode" column="py_code" jdbcType="VARCHAR" />
+		<result property= "pdAllow" column="pd_allow" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "transVipFlow" column="trans_vip_flow" jdbcType="VARCHAR" />
+		<result property= "vipClassEdit" column="vip_class_edit" jdbcType="VARCHAR" />
+		<result property= "branchIswx" column="branch_iswx" jdbcType="VARCHAR" />
+		<result property= "psSqApp" column="ps_sq_app" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		branch_no,
+		branch_name,
+		branch_man,
+		branch_address,
+		branch_zip,
+		branch_email,
+		branch_tel,
+		branch_fax,
+		branch_memo,
+		IsSysFlag,
+		update_flow,
+		Store_type,
+		is_init,
+		init_date,
+		is_logout,
+		logout_date,
+		server_IsConnect,
+		server_domain,
+		server_port,
+		server_pwd,
+		IsShare_save,
+		IsShare_integral,
+		IsShare_ret,
+		IsShare_give,
+		IsShare_zero,
+		branch_class,
+		price_type,
+		IsShare_limit,
+		branch_pwd,
+		server_user,
+		price_mode,
+		zb_sup_settle,
+		zb_cust_settle,
+		zb_pd,
+		IsNew_item,
+		IsNew_sup,
+		IsNew_cust,
+		db_guid,
+		branch_db,
+		parent_branch,
+		update_time,
+		update_branch,
+		create_date,
+		create_man,
+		modify_date,
+		modify_man,
+		dist_discount,
+		sale_price_type,
+		vip_price_type,
+		pf_price_type,
+		branch_manage,
+		IsEdit_item,
+		IsShare_stamp,
+		Is_OtherStock,
+		IsEdit_vip,
+		visa_no,
+		IsSee_in_price,
+		db_price_type,
+		db_price_mode,
+		server_reg,
+		is_deal_cash,
+		vip_share_type,
+		store_mode,
+		store_sheng,
+		store_shi,
+		store_xian,
+		store_grant_no,
+		py_code,
+		pd_allow,
+		trans_upflag,
+		trans_vip_flow,
+		vip_class_edit,
+		branch_iswx,
+		ps_sq_app
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="branchName != null"> AND branch_name like '%${branchName}%' </if>
+       	<if test="branchMan != null"> AND branch_man like '%${branchMan}%' </if>
+       	<if test="branchAddress != null"> AND branch_address like '%${branchAddress}%' </if>
+       	<if test="branchZip != null"> AND branch_zip like '%${branchZip}%' </if>
+       	<if test="branchEmail != null"> AND branch_email like '%${branchEmail}%' </if>
+       	<if test="branchTel != null"> AND branch_tel like '%${branchTel}%' </if>
+       	<if test="branchFax != null"> AND branch_fax like '%${branchFax}%' </if>
+       	<if test="branchMemo != null"> AND branch_memo like '%${branchMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="StoreType != null"> AND Store_type like '%${StoreType}%' </if>
+       	<if test="isInit != null"> AND is_init like '%${isInit}%' </if>
+       	<if test="initDate != null"> AND init_date = #{initDate}</if>
+       	<if test="isLogout != null"> AND is_logout like '%${isLogout}%' </if>
+       	<if test="logoutDate != null"> AND logout_date = #{logoutDate}</if>
+       	<if test="serverIsConnect != null"> AND server_IsConnect like '%${serverIsConnect}%' </if>
+       	<if test="serverDomain != null"> AND server_domain like '%${serverDomain}%' </if>
+       	<if test="serverPort != null"> AND server_port like '%${serverPort}%' </if>
+       	<if test="serverPwd != null"> AND server_pwd like '%${serverPwd}%' </if>
+       	<if test="IsShareSave != null"> AND IsShare_save like '%${IsShareSave}%' </if>
+       	<if test="IsShareIntegral != null"> AND IsShare_integral like '%${IsShareIntegral}%' </if>
+       	<if test="IsShareRet != null"> AND IsShare_ret like '%${IsShareRet}%' </if>
+       	<if test="IsShareGive != null"> AND IsShare_give like '%${IsShareGive}%' </if>
+       	<if test="IsShareZero != null"> AND IsShare_zero like '%${IsShareZero}%' </if>
+       	<if test="branchClass != null"> AND branch_class like '%${branchClass}%' </if>
+       	<if test="priceType != null"> AND price_type like '%${priceType}%' </if>
+       	<if test="IsShareLimit != null"> AND IsShare_limit like '%${IsShareLimit}%' </if>
+       	<if test="branchPwd != null"> AND branch_pwd like '%${branchPwd}%' </if>
+       	<if test="serverUser != null"> AND server_user like '%${serverUser}%' </if>
+       	<if test="priceMode != null"> AND price_mode like '%${priceMode}%' </if>
+       	<if test="zbSupSettle != null"> AND zb_sup_settle like '%${zbSupSettle}%' </if>
+       	<if test="zbCustSettle != null"> AND zb_cust_settle like '%${zbCustSettle}%' </if>
+       	<if test="zbPd != null"> AND zb_pd like '%${zbPd}%' </if>
+       	<if test="IsNewItem != null"> AND IsNew_item like '%${IsNewItem}%' </if>
+       	<if test="IsNewSup != null"> AND IsNew_sup like '%${IsNewSup}%' </if>
+       	<if test="IsNewCust != null"> AND IsNew_cust like '%${IsNewCust}%' </if>
+       	<if test="dbGuid != null"> AND db_guid like '%${dbGuid}%' </if>
+       	<if test="branchDb != null"> AND branch_db like '%${branchDb}%' </if>
+       	<if test="parentBranch != null"> AND parent_branch like '%${parentBranch}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man like '%${createMan}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man like '%${modifyMan}%' </if>
+       	<if test="distDiscount != null"> AND dist_discount like '%${distDiscount}%' </if>
+       	<if test="salePriceType != null"> AND sale_price_type like '%${salePriceType}%' </if>
+       	<if test="vipPriceType != null"> AND vip_price_type like '%${vipPriceType}%' </if>
+       	<if test="pfPriceType != null"> AND pf_price_type like '%${pfPriceType}%' </if>
+       	<if test="branchManage != null"> AND branch_manage like '%${branchManage}%' </if>
+       	<if test="IsEditItem != null"> AND IsEdit_item like '%${IsEditItem}%' </if>
+       	<if test="IsShareStamp != null"> AND IsShare_stamp like '%${IsShareStamp}%' </if>
+       	<if test="IsOtherStock != null"> AND Is_OtherStock like '%${IsOtherStock}%' </if>
+       	<if test="IsEditVip != null"> AND IsEdit_vip like '%${IsEditVip}%' </if>
+       	<if test="visaNo != null"> AND visa_no like '%${visaNo}%' </if>
+       	<if test="IsSeeInPrice != null"> AND IsSee_in_price like '%${IsSeeInPrice}%' </if>
+       	<if test="dbPriceType != null"> AND db_price_type like '%${dbPriceType}%' </if>
+       	<if test="dbPriceMode != null"> AND db_price_mode like '%${dbPriceMode}%' </if>
+       	<if test="serverReg != null"> AND server_reg like '%${serverReg}%' </if>
+       	<if test="isDealCash != null"> AND is_deal_cash like '%${isDealCash}%' </if>
+       	<if test="vipShareType != null"> AND vip_share_type like '%${vipShareType}%' </if>
+       	<if test="storeMode != null"> AND store_mode like '%${storeMode}%' </if>
+       	<if test="storeSheng != null"> AND store_sheng like '%${storeSheng}%' </if>
+       	<if test="storeShi != null"> AND store_shi like '%${storeShi}%' </if>
+       	<if test="storeXian != null"> AND store_xian like '%${storeXian}%' </if>
+       	<if test="storeGrantNo != null"> AND store_grant_no like '%${storeGrantNo}%' </if>
+       	<if test="pyCode != null"> AND py_code like '%${pyCode}%' </if>
+       	<if test="pdAllow != null"> AND pd_allow like '%${pdAllow}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="transVipFlow != null"> AND trans_vip_flow like '%${transVipFlow}%' </if>
+       	<if test="vipClassEdit != null"> AND vip_class_edit like '%${vipClassEdit}%' </if>
+       	<if test="branchIswx != null"> AND branch_iswx like '%${branchIswx}%' </if>
+       	<if test="psSqApp != null"> AND ps_sq_app like '%${psSqApp}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="branchName != null"> AND branch_name = #{branchName}</if>
+       	<if test="branchMan != null"> AND branch_man = #{branchMan}</if>
+       	<if test="branchAddress != null"> AND branch_address = #{branchAddress}</if>
+       	<if test="branchZip != null"> AND branch_zip = #{branchZip}</if>
+       	<if test="branchEmail != null"> AND branch_email = #{branchEmail}</if>
+       	<if test="branchTel != null"> AND branch_tel = #{branchTel}</if>
+       	<if test="branchFax != null"> AND branch_fax = #{branchFax}</if>
+       	<if test="branchMemo != null"> AND branch_memo = #{branchMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="StoreType != null"> AND Store_type = #{StoreType}</if>
+       	<if test="isInit != null"> AND is_init = #{isInit}</if>
+       	<if test="initDate != null"> AND init_date = #{initDate}</if>
+       	<if test="isLogout != null"> AND is_logout = #{isLogout}</if>
+       	<if test="logoutDate != null"> AND logout_date = #{logoutDate}</if>
+       	<if test="serverIsConnect != null"> AND server_IsConnect = #{serverIsConnect}</if>
+       	<if test="serverDomain != null"> AND server_domain = #{serverDomain}</if>
+       	<if test="serverPort != null"> AND server_port = #{serverPort}</if>
+       	<if test="serverPwd != null"> AND server_pwd = #{serverPwd}</if>
+       	<if test="IsShareSave != null"> AND IsShare_save = #{IsShareSave}</if>
+       	<if test="IsShareIntegral != null"> AND IsShare_integral = #{IsShareIntegral}</if>
+       	<if test="IsShareRet != null"> AND IsShare_ret = #{IsShareRet}</if>
+       	<if test="IsShareGive != null"> AND IsShare_give = #{IsShareGive}</if>
+       	<if test="IsShareZero != null"> AND IsShare_zero = #{IsShareZero}</if>
+       	<if test="branchClass != null"> AND branch_class = #{branchClass}</if>
+       	<if test="priceType != null"> AND price_type = #{priceType}</if>
+       	<if test="IsShareLimit != null"> AND IsShare_limit = #{IsShareLimit}</if>
+       	<if test="branchPwd != null"> AND branch_pwd = #{branchPwd}</if>
+       	<if test="serverUser != null"> AND server_user = #{serverUser}</if>
+       	<if test="priceMode != null"> AND price_mode = #{priceMode}</if>
+       	<if test="zbSupSettle != null"> AND zb_sup_settle = #{zbSupSettle}</if>
+       	<if test="zbCustSettle != null"> AND zb_cust_settle = #{zbCustSettle}</if>
+       	<if test="zbPd != null"> AND zb_pd = #{zbPd}</if>
+       	<if test="IsNewItem != null"> AND IsNew_item = #{IsNewItem}</if>
+       	<if test="IsNewSup != null"> AND IsNew_sup = #{IsNewSup}</if>
+       	<if test="IsNewCust != null"> AND IsNew_cust = #{IsNewCust}</if>
+       	<if test="dbGuid != null"> AND db_guid = #{dbGuid}</if>
+       	<if test="branchDb != null"> AND branch_db = #{branchDb}</if>
+       	<if test="parentBranch != null"> AND parent_branch = #{parentBranch}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man = #{createMan}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man = #{modifyMan}</if>
+       	<if test="distDiscount != null"> AND dist_discount = #{distDiscount}</if>
+       	<if test="salePriceType != null"> AND sale_price_type = #{salePriceType}</if>
+       	<if test="vipPriceType != null"> AND vip_price_type = #{vipPriceType}</if>
+       	<if test="pfPriceType != null"> AND pf_price_type = #{pfPriceType}</if>
+       	<if test="branchManage != null"> AND branch_manage = #{branchManage}</if>
+       	<if test="IsEditItem != null"> AND IsEdit_item = #{IsEditItem}</if>
+       	<if test="IsShareStamp != null"> AND IsShare_stamp = #{IsShareStamp}</if>
+       	<if test="IsOtherStock != null"> AND Is_OtherStock = #{IsOtherStock}</if>
+       	<if test="IsEditVip != null"> AND IsEdit_vip = #{IsEditVip}</if>
+       	<if test="visaNo != null"> AND visa_no = #{visaNo}</if>
+       	<if test="IsSeeInPrice != null"> AND IsSee_in_price = #{IsSeeInPrice}</if>
+       	<if test="dbPriceType != null"> AND db_price_type = #{dbPriceType}</if>
+       	<if test="dbPriceMode != null"> AND db_price_mode = #{dbPriceMode}</if>
+       	<if test="serverReg != null"> AND server_reg = #{serverReg}</if>
+       	<if test="isDealCash != null"> AND is_deal_cash = #{isDealCash}</if>
+       	<if test="vipShareType != null"> AND vip_share_type = #{vipShareType}</if>
+       	<if test="storeMode != null"> AND store_mode = #{storeMode}</if>
+       	<if test="storeSheng != null"> AND store_sheng = #{storeSheng}</if>
+       	<if test="storeShi != null"> AND store_shi = #{storeShi}</if>
+       	<if test="storeXian != null"> AND store_xian = #{storeXian}</if>
+       	<if test="storeGrantNo != null"> AND store_grant_no = #{storeGrantNo}</if>
+       	<if test="pyCode != null"> AND py_code = #{pyCode}</if>
+       	<if test="pdAllow != null"> AND pd_allow = #{pdAllow}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="transVipFlow != null"> AND trans_vip_flow = #{transVipFlow}</if>
+       	<if test="vipClassEdit != null"> AND vip_class_edit = #{vipClassEdit}</if>
+       	<if test="branchIswx != null"> AND branch_iswx = #{branchIswx}</if>
+       	<if test="psSqApp != null"> AND ps_sq_app = #{psSqApp}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TBranchInfo">
+		INSERT INTO t_branch_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{branchNo,jdbcType=VARCHAR},
+		#{branchName,jdbcType=VARCHAR},
+		#{branchMan,jdbcType=VARCHAR},
+		#{branchAddress,jdbcType=VARCHAR},
+		#{branchZip,jdbcType=VARCHAR},
+		#{branchEmail,jdbcType=VARCHAR},
+		#{branchTel,jdbcType=VARCHAR},
+		#{branchFax,jdbcType=VARCHAR},
+		#{branchMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{StoreType,jdbcType=VARCHAR},
+		#{isInit,jdbcType=VARCHAR},
+		#{initDate,jdbcType=TIMESTAMP},
+		#{isLogout,jdbcType=VARCHAR},
+		#{logoutDate,jdbcType=TIMESTAMP},
+		#{serverIsConnect,jdbcType=VARCHAR},
+		#{serverDomain,jdbcType=VARCHAR},
+		#{serverPort,jdbcType=VARCHAR},
+		#{serverPwd,jdbcType=VARCHAR},
+		#{IsShareSave,jdbcType=VARCHAR},
+		#{IsShareIntegral,jdbcType=VARCHAR},
+		#{IsShareRet,jdbcType=VARCHAR},
+		#{IsShareGive,jdbcType=VARCHAR},
+		#{IsShareZero,jdbcType=VARCHAR},
+		#{branchClass,jdbcType=VARCHAR},
+		#{priceType,jdbcType=VARCHAR},
+		#{IsShareLimit,jdbcType=VARCHAR},
+		#{branchPwd,jdbcType=VARCHAR},
+		#{serverUser,jdbcType=VARCHAR},
+		#{priceMode,jdbcType=VARCHAR},
+		#{zbSupSettle,jdbcType=VARCHAR},
+		#{zbCustSettle,jdbcType=VARCHAR},
+		#{zbPd,jdbcType=VARCHAR},
+		#{IsNewItem,jdbcType=VARCHAR},
+		#{IsNewSup,jdbcType=VARCHAR},
+		#{IsNewCust,jdbcType=VARCHAR},
+		#{dbGuid,jdbcType=VARCHAR},
+		#{branchDb,jdbcType=VARCHAR},
+		#{parentBranch,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{createMan,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{modifyMan,jdbcType=VARCHAR},
+		#{distDiscount,jdbcType=NUMERIC},
+		#{salePriceType,jdbcType=VARCHAR},
+		#{vipPriceType,jdbcType=VARCHAR},
+		#{pfPriceType,jdbcType=VARCHAR},
+		#{branchManage,jdbcType=VARCHAR},
+		#{IsEditItem,jdbcType=VARCHAR},
+		#{IsShareStamp,jdbcType=VARCHAR},
+		#{IsOtherStock,jdbcType=VARCHAR},
+		#{IsEditVip,jdbcType=VARCHAR},
+		#{visaNo,jdbcType=VARCHAR},
+		#{IsSeeInPrice,jdbcType=VARCHAR},
+		#{dbPriceType,jdbcType=VARCHAR},
+		#{dbPriceMode,jdbcType=VARCHAR},
+		#{serverReg,jdbcType=VARCHAR},
+		#{isDealCash,jdbcType=VARCHAR},
+		#{vipShareType,jdbcType=VARCHAR},
+		#{storeMode,jdbcType=VARCHAR},
+		#{storeSheng,jdbcType=VARCHAR},
+		#{storeShi,jdbcType=VARCHAR},
+		#{storeXian,jdbcType=VARCHAR},
+		#{storeGrantNo,jdbcType=VARCHAR},
+		#{pyCode,jdbcType=VARCHAR},
+		#{pdAllow,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{transVipFlow,jdbcType=VARCHAR},
+		#{vipClassEdit,jdbcType=VARCHAR},
+		#{branchIswx,jdbcType=VARCHAR},
+		#{psSqApp,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_branch_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TBranchInfo">
+		UPDATE t_branch_info SET
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               branch_name=#{branchName,jdbcType=VARCHAR},
+               branch_man=#{branchMan,jdbcType=VARCHAR},
+               branch_address=#{branchAddress,jdbcType=VARCHAR},
+               branch_zip=#{branchZip,jdbcType=VARCHAR},
+               branch_email=#{branchEmail,jdbcType=VARCHAR},
+               branch_tel=#{branchTel,jdbcType=VARCHAR},
+               branch_fax=#{branchFax,jdbcType=VARCHAR},
+               branch_memo=#{branchMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               Store_type=#{StoreType,jdbcType=VARCHAR},
+               is_init=#{isInit,jdbcType=VARCHAR},
+               init_date=#{initDate,jdbcType=TIMESTAMP},
+               is_logout=#{isLogout,jdbcType=VARCHAR},
+               logout_date=#{logoutDate,jdbcType=TIMESTAMP},
+               server_IsConnect=#{serverIsConnect,jdbcType=VARCHAR},
+               server_domain=#{serverDomain,jdbcType=VARCHAR},
+               server_port=#{serverPort,jdbcType=VARCHAR},
+               server_pwd=#{serverPwd,jdbcType=VARCHAR},
+               IsShare_save=#{IsShareSave,jdbcType=VARCHAR},
+               IsShare_integral=#{IsShareIntegral,jdbcType=VARCHAR},
+               IsShare_ret=#{IsShareRet,jdbcType=VARCHAR},
+               IsShare_give=#{IsShareGive,jdbcType=VARCHAR},
+               IsShare_zero=#{IsShareZero,jdbcType=VARCHAR},
+               branch_class=#{branchClass,jdbcType=VARCHAR},
+               price_type=#{priceType,jdbcType=VARCHAR},
+               IsShare_limit=#{IsShareLimit,jdbcType=VARCHAR},
+               branch_pwd=#{branchPwd,jdbcType=VARCHAR},
+               server_user=#{serverUser,jdbcType=VARCHAR},
+               price_mode=#{priceMode,jdbcType=VARCHAR},
+               zb_sup_settle=#{zbSupSettle,jdbcType=VARCHAR},
+               zb_cust_settle=#{zbCustSettle,jdbcType=VARCHAR},
+               zb_pd=#{zbPd,jdbcType=VARCHAR},
+               IsNew_item=#{IsNewItem,jdbcType=VARCHAR},
+               IsNew_sup=#{IsNewSup,jdbcType=VARCHAR},
+               IsNew_cust=#{IsNewCust,jdbcType=VARCHAR},
+               db_guid=#{dbGuid,jdbcType=VARCHAR},
+               branch_db=#{branchDb,jdbcType=VARCHAR},
+               parent_branch=#{parentBranch,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               create_man=#{createMan,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               modify_man=#{modifyMan,jdbcType=VARCHAR},
+               dist_discount=#{distDiscount,jdbcType=NUMERIC},
+               sale_price_type=#{salePriceType,jdbcType=VARCHAR},
+               vip_price_type=#{vipPriceType,jdbcType=VARCHAR},
+               pf_price_type=#{pfPriceType,jdbcType=VARCHAR},
+               branch_manage=#{branchManage,jdbcType=VARCHAR},
+               IsEdit_item=#{IsEditItem,jdbcType=VARCHAR},
+               IsShare_stamp=#{IsShareStamp,jdbcType=VARCHAR},
+               Is_OtherStock=#{IsOtherStock,jdbcType=VARCHAR},
+               IsEdit_vip=#{IsEditVip,jdbcType=VARCHAR},
+               visa_no=#{visaNo,jdbcType=VARCHAR},
+               IsSee_in_price=#{IsSeeInPrice,jdbcType=VARCHAR},
+               db_price_type=#{dbPriceType,jdbcType=VARCHAR},
+               db_price_mode=#{dbPriceMode,jdbcType=VARCHAR},
+               server_reg=#{serverReg,jdbcType=VARCHAR},
+               is_deal_cash=#{isDealCash,jdbcType=VARCHAR},
+               vip_share_type=#{vipShareType,jdbcType=VARCHAR},
+               store_mode=#{storeMode,jdbcType=VARCHAR},
+               store_sheng=#{storeSheng,jdbcType=VARCHAR},
+               store_shi=#{storeShi,jdbcType=VARCHAR},
+               store_xian=#{storeXian,jdbcType=VARCHAR},
+               store_grant_no=#{storeGrantNo,jdbcType=VARCHAR},
+               py_code=#{pyCode,jdbcType=VARCHAR},
+               pd_allow=#{pdAllow,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               trans_vip_flow=#{transVipFlow,jdbcType=VARCHAR},
+               vip_class_edit=#{vipClassEdit,jdbcType=VARCHAR},
+               branch_iswx=#{branchIswx,jdbcType=VARCHAR},
+               ps_sq_app=#{psSqApp,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TBranchInfo">
+		SELECT <include refid="columns"/>
+		FROM t_branch_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TBranchInfo">
+		SELECT <include refid="columns"/>
+		FROM t_branch_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TBranchInfo">
+		SELECT <include refid="columns"/>
+		FROM t_branch_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TBranchInfo">
+		SELECT <include refid="columns"/>
+		FROM t_branch_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TBranchInfo">
+		SELECT <include refid="columns"/>
+		FROM t_branch_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

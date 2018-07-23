@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TDataPayment">
+	<resultMap id="TDataPayment" type="com.site.entity.TDataPayment">
+		<result property= "paymentNo" column="payment_no" jdbcType="VARCHAR" />
+		<result property= "paymentName" column="payment_name" jdbcType="VARCHAR" />
+		<result property= "paymentIsPos" column="payment_IsPos" jdbcType="VARCHAR" />
+		<result property= "paymentIsHt" column="payment_IsHt" jdbcType="VARCHAR" />
+		<result property= "paymentIsZero" column="payment_IsZero" jdbcType="VARCHAR" />
+		<result property= "paymentIsMore" column="payment_IsMore" jdbcType="VARCHAR" />
+		<result property= "paymentIsCash" column="payment_IsCash" jdbcType="VARCHAR" />
+		<result property= "coinNo" column="coin_no" jdbcType="VARCHAR" />
+		<result property= "visaNo" column="visa_no" jdbcType="VARCHAR" />
+		<result property= "posShortcutSys" column="pos_shortcut_sys" jdbcType="VARCHAR" />
+		<result property= "posShortcutUser" column="pos_shortcut_User" jdbcType="VARCHAR" />
+		<result property= "paymentMemo" column="payment_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "paymentIsSn" column="payment_IsSn" jdbcType="VARCHAR" />
+		<result property= "paymentIsMemo" column="payment_IsMemo" jdbcType="VARCHAR" />
+		<result property= "paymentIsTax" column="payment_IsTax" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "touchIndex" column="touch_index" jdbcType="VARCHAR" />
+		<result property= "chargeRate" column="charge_rate" jdbcType="NUMERIC" />
+		<result property= "chargeMaxAmt" column="charge_max_amt" jdbcType="NUMERIC" />
+		<result property= "paymentIsReal" column="payment_IsReal" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		payment_no,
+		payment_name,
+		payment_IsPos,
+		payment_IsHt,
+		payment_IsZero,
+		payment_IsMore,
+		payment_IsCash,
+		coin_no,
+		visa_no,
+		pos_shortcut_sys,
+		pos_shortcut_User,
+		payment_memo,
+		IsSysFlag,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		update_flow,
+		payment_IsSn,
+		payment_IsMemo,
+		payment_IsTax,
+		update_time,
+		update_branch,
+		touch_index,
+		charge_rate,
+		charge_max_amt,
+		payment_IsReal,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="paymentNo != null"> AND payment_no like '%${paymentNo}%' </if>
+       	<if test="paymentName != null"> AND payment_name like '%${paymentName}%' </if>
+       	<if test="paymentIsPos != null"> AND payment_IsPos like '%${paymentIsPos}%' </if>
+       	<if test="paymentIsHt != null"> AND payment_IsHt like '%${paymentIsHt}%' </if>
+       	<if test="paymentIsZero != null"> AND payment_IsZero like '%${paymentIsZero}%' </if>
+       	<if test="paymentIsMore != null"> AND payment_IsMore like '%${paymentIsMore}%' </if>
+       	<if test="paymentIsCash != null"> AND payment_IsCash like '%${paymentIsCash}%' </if>
+       	<if test="coinNo != null"> AND coin_no like '%${coinNo}%' </if>
+       	<if test="visaNo != null"> AND visa_no like '%${visaNo}%' </if>
+       	<if test="posShortcutSys != null"> AND pos_shortcut_sys like '%${posShortcutSys}%' </if>
+       	<if test="posShortcutUser != null"> AND pos_shortcut_User like '%${posShortcutUser}%' </if>
+       	<if test="paymentMemo != null"> AND payment_memo like '%${paymentMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="paymentIsSn != null"> AND payment_IsSn like '%${paymentIsSn}%' </if>
+       	<if test="paymentIsMemo != null"> AND payment_IsMemo like '%${paymentIsMemo}%' </if>
+       	<if test="paymentIsTax != null"> AND payment_IsTax like '%${paymentIsTax}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="touchIndex != null"> AND touch_index like '%${touchIndex}%' </if>
+       	<if test="chargeRate != null"> AND charge_rate like '%${chargeRate}%' </if>
+       	<if test="chargeMaxAmt != null"> AND charge_max_amt like '%${chargeMaxAmt}%' </if>
+       	<if test="paymentIsReal != null"> AND payment_IsReal like '%${paymentIsReal}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="paymentNo != null"> AND payment_no = #{paymentNo}</if>
+       	<if test="paymentName != null"> AND payment_name = #{paymentName}</if>
+       	<if test="paymentIsPos != null"> AND payment_IsPos = #{paymentIsPos}</if>
+       	<if test="paymentIsHt != null"> AND payment_IsHt = #{paymentIsHt}</if>
+       	<if test="paymentIsZero != null"> AND payment_IsZero = #{paymentIsZero}</if>
+       	<if test="paymentIsMore != null"> AND payment_IsMore = #{paymentIsMore}</if>
+       	<if test="paymentIsCash != null"> AND payment_IsCash = #{paymentIsCash}</if>
+       	<if test="coinNo != null"> AND coin_no = #{coinNo}</if>
+       	<if test="visaNo != null"> AND visa_no = #{visaNo}</if>
+       	<if test="posShortcutSys != null"> AND pos_shortcut_sys = #{posShortcutSys}</if>
+       	<if test="posShortcutUser != null"> AND pos_shortcut_User = #{posShortcutUser}</if>
+       	<if test="paymentMemo != null"> AND payment_memo = #{paymentMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="paymentIsSn != null"> AND payment_IsSn = #{paymentIsSn}</if>
+       	<if test="paymentIsMemo != null"> AND payment_IsMemo = #{paymentIsMemo}</if>
+       	<if test="paymentIsTax != null"> AND payment_IsTax = #{paymentIsTax}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="touchIndex != null"> AND touch_index = #{touchIndex}</if>
+       	<if test="chargeRate != null"> AND charge_rate = #{chargeRate}</if>
+       	<if test="chargeMaxAmt != null"> AND charge_max_amt = #{chargeMaxAmt}</if>
+       	<if test="paymentIsReal != null"> AND payment_IsReal = #{paymentIsReal}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TDataPayment">
+		INSERT INTO t_data_payment
+		(<include refid="columns"/>)
+		VALUES(
+		#{paymentNo,jdbcType=VARCHAR},
+		#{paymentName,jdbcType=VARCHAR},
+		#{paymentIsPos,jdbcType=VARCHAR},
+		#{paymentIsHt,jdbcType=VARCHAR},
+		#{paymentIsZero,jdbcType=VARCHAR},
+		#{paymentIsMore,jdbcType=VARCHAR},
+		#{paymentIsCash,jdbcType=VARCHAR},
+		#{coinNo,jdbcType=VARCHAR},
+		#{visaNo,jdbcType=VARCHAR},
+		#{posShortcutSys,jdbcType=VARCHAR},
+		#{posShortcutUser,jdbcType=VARCHAR},
+		#{paymentMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{paymentIsSn,jdbcType=VARCHAR},
+		#{paymentIsMemo,jdbcType=VARCHAR},
+		#{paymentIsTax,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{touchIndex,jdbcType=VARCHAR},
+		#{chargeRate,jdbcType=NUMERIC},
+		#{chargeMaxAmt,jdbcType=NUMERIC},
+		#{paymentIsReal,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_data_payment 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TDataPayment">
+		UPDATE t_data_payment SET
+               payment_no=#{paymentNo,jdbcType=VARCHAR},
+               payment_name=#{paymentName,jdbcType=VARCHAR},
+               payment_IsPos=#{paymentIsPos,jdbcType=VARCHAR},
+               payment_IsHt=#{paymentIsHt,jdbcType=VARCHAR},
+               payment_IsZero=#{paymentIsZero,jdbcType=VARCHAR},
+               payment_IsMore=#{paymentIsMore,jdbcType=VARCHAR},
+               payment_IsCash=#{paymentIsCash,jdbcType=VARCHAR},
+               coin_no=#{coinNo,jdbcType=VARCHAR},
+               visa_no=#{visaNo,jdbcType=VARCHAR},
+               pos_shortcut_sys=#{posShortcutSys,jdbcType=VARCHAR},
+               pos_shortcut_User=#{posShortcutUser,jdbcType=VARCHAR},
+               payment_memo=#{paymentMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               payment_IsSn=#{paymentIsSn,jdbcType=VARCHAR},
+               payment_IsMemo=#{paymentIsMemo,jdbcType=VARCHAR},
+               payment_IsTax=#{paymentIsTax,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               touch_index=#{touchIndex,jdbcType=VARCHAR},
+               charge_rate=#{chargeRate,jdbcType=NUMERIC},
+               charge_max_amt=#{chargeMaxAmt,jdbcType=NUMERIC},
+               payment_IsReal=#{paymentIsReal,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TDataPayment">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TDataPayment">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TDataPayment">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TDataPayment">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TDataPayment">
+		SELECT <include refid="columns"/>
+		FROM t_data_payment   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

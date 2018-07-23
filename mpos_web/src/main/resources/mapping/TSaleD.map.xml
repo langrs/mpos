@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSaleD">
+	<resultMap id="TSaleD" type="com.site.entity.TSaleD">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="saleId" column="sale_id" 
+				jdbcType="VARCHAR" />
+			<result property="saleNo" column="sale_no" 
+				jdbcType="VARCHAR" />
+			<result property="saleDate" column="sale_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="rowNo" column="row_no" 
+				jdbcType="NUMERIC" />
+			<result property="companyId" column="company_id" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="storeId" column="store_id" 
+				jdbcType="VARCHAR" />
+			<result property="itemId" column="item_id" 
+				jdbcType="VARCHAR" />
+			<result property="itemNo" column="item_no" 
+				jdbcType="VARCHAR" />
+			<result property="saleNum" column="sale_num" 
+				jdbcType="NUMERIC" />
+			<result property="salePrice" column="sale_price" 
+				jdbcType="NUMERIC" />
+			<result property="salePriceReal" column="sale_price_real" 
+				jdbcType="NUMERIC" />
+			<result property="promTypeId" column="prom_type_id"
+					jdbcType="VARCHAR" />
+			<result property="taxRate" column="tax_rate"
+				jdbcType="NUMERIC" />
+			<result property="taxAmt" column="tax_amt" 
+				jdbcType="NUMERIC" />
+			<result property="itemDisc" column="item_disc" 
+				jdbcType="NUMERIC" />
+			<result property="itemDiscAmt" column="item_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="billDist" column="bill_dist" 
+				jdbcType="NUMERIC" />
+			<result property="billDiscAmt" column="bill_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="vipDisc" column="vip_disc" 
+				jdbcType="NUMERIC" />
+			<result property="vipDiscAmt" column="vip_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="promDisc" column="prom_disc" 
+				jdbcType="NUMERIC" />
+			<result property="promDiscAmt" column="prom_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="otherDisc" column="other_disc" 
+				jdbcType="NUMERIC" />
+			<result property="otherDiscAmt" column="other_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="reduceAmt" column="reduce_amt" 
+				jdbcType="NUMERIC" />
+			<result property="vipPriceAmt" column="vip_price_amt" 
+				jdbcType="NUMERIC" />
+			<result property="allDistAmt" column="all_dist_amt" 
+				jdbcType="NUMERIC" />
+			<result property="itemSaleAmt" column="item_sale_amt" 
+				jdbcType="NUMERIC" />
+			<result property="points" column="points" 
+				jdbcType="NUMERIC" />
+			<result property="retFlag" column="ret_flag" 
+				jdbcType="VARCHAR" />
+			<result property="retAmt" column="ret_amt" 
+				jdbcType="NUMERIC" />
+			<result property="upFlag" column="up_flag" 
+				jdbcType="VARCHAR" />
+			<result property="upDate" column="up_date" 
+				jdbcType="TIMESTAMP" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		sale_id,
+		sale_no,
+		sale_date,
+		row_no,
+		company_id,
+		shop_id,
+		store_id,
+		item_id,
+		item_no,
+		sale_num,
+		sale_price,
+		sale_price_real,
+		prom_type_id,
+		tax_rate,
+		tax_amt,
+		item_disc,
+		item_disc_amt,
+		bill_dist,
+		bill_disc_amt,
+		vip_disc,
+		vip_disc_amt,
+		prom_disc,
+		prom_disc_amt,
+		other_disc,
+		other_disc_amt,
+		reduce_amt,
+		vip_price_amt,
+		all_dist_amt,
+		item_sale_amt,
+		points,
+		ret_flag,
+		ret_amt,
+		up_flag,
+		up_date
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="saleId != null"> AND sale_id like '%${saleId}%' </if>
+       <if test="saleNo != null"> AND sale_no like '%${saleNo}%' </if>
+                   <if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+                   <if test="rowNo != null"> AND row_no =#{rowNo} </if>
+       <if test="companyId != null"> AND company_id like '%${companyId}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="storeId != null"> AND store_id like '%${storeId}%' </if>
+       <if test="itemId != null"> AND item_id like '%${itemId}%' </if>
+       <if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+                   <if test="saleNum != null"> AND sale_num =#{saleNum} </if>
+                   <if test="salePrice != null"> AND sale_price =#{salePrice} </if>
+                   <if test="salePriceReal != null"> AND sale_price_real =#{salePriceReal} </if>
+			       <if test="promTypeId != null"> AND prom_type_id =#{promTypeId} </if>
+                   <if test="taxRate != null"> AND tax_rate =#{taxRate} </if>
+                   <if test="taxAmt != null"> AND tax_amt =#{taxAmt} </if>
+                   <if test="itemDisc != null"> AND item_disc =#{itemDisc} </if>
+                   <if test="itemDiscAmt != null"> AND item_disc_amt =#{itemDiscAmt} </if>
+                   <if test="billDist != null"> AND bill_dist =#{billDist} </if>
+                   <if test="billDiscAmt != null"> AND bill_disc_amt =#{billDiscAmt} </if>
+                   <if test="vipDisc != null"> AND vip_disc =#{vipDisc} </if>
+                   <if test="vipDiscAmt != null"> AND vip_disc_amt =#{vipDiscAmt} </if>
+                   <if test="promDisc != null"> AND prom_disc =#{promDisc} </if>
+                   <if test="promDiscAmt != null"> AND prom_disc_amt =#{promDiscAmt} </if>
+                   <if test="otherDisc != null"> AND other_disc =#{otherDisc} </if>
+                   <if test="otherDiscAmt != null"> AND other_disc_amt =#{otherDiscAmt} </if>
+                   <if test="reduceAmt != null"> AND reduce_amt =#{reduceAmt} </if>
+                   <if test="vipPriceAmt != null"> AND vip_price_amt =#{vipPriceAmt} </if>
+                   <if test="allDistAmt != null"> AND all_dist_amt =#{allDistAmt} </if>
+                   <if test="itemSaleAmt != null"> AND item_sale_amt =#{itemSaleAmt} </if>
+                   <if test="points != null"> AND points =#{points} </if>
+       <if test="retFlag != null"> AND ret_flag like '%${retFlag}%' </if>
+                   <if test="retAmt != null"> AND ret_amt =#{retAmt} </if>
+       <if test="upFlag != null"> AND up_flag like '%${upFlag}%' </if>
+                   <if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="saleId != null"> AND sale_id =#{saleId} </if>
+			<if test="saleNo != null"> AND sale_no =#{saleNo} </if>
+			<if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+			<if test="rowNo != null"> AND row_no =#{rowNo} </if>
+			<if test="companyId != null"> AND company_id =#{companyId} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="storeId != null"> AND store_id =#{storeId} </if>
+			<if test="itemId != null"> AND item_id =#{itemId} </if>
+			<if test="itemNo != null"> AND item_no =#{itemNo} </if>
+			<if test="saleNum != null"> AND sale_num =#{saleNum} </if>
+			<if test="salePrice != null"> AND sale_price =#{salePrice} </if>
+			<if test="salePriceReal != null"> AND sale_price_real =#{salePriceReal} </if>
+			<if test="promTypeId != null"> AND prom_type_id =#{promTypeId} </if>
+			<if test="taxRate != null"> AND tax_rate =#{taxRate} </if>
+			<if test="taxAmt != null"> AND tax_amt =#{taxAmt} </if>
+			<if test="itemDisc != null"> AND item_disc =#{itemDisc} </if>
+			<if test="itemDiscAmt != null"> AND item_disc_amt =#{itemDiscAmt} </if>
+			<if test="billDist != null"> AND bill_dist =#{billDist} </if>
+			<if test="billDiscAmt != null"> AND bill_disc_amt =#{billDiscAmt} </if>
+			<if test="vipDisc != null"> AND vip_disc =#{vipDisc} </if>
+			<if test="vipDiscAmt != null"> AND vip_disc_amt =#{vipDiscAmt} </if>
+			<if test="promDisc != null"> AND prom_disc =#{promDisc} </if>
+			<if test="promDiscAmt != null"> AND prom_disc_amt =#{promDiscAmt} </if>
+			<if test="otherDisc != null"> AND other_disc =#{otherDisc} </if>
+			<if test="otherDiscAmt != null"> AND other_disc_amt =#{otherDiscAmt} </if>
+			<if test="reduceAmt != null"> AND reduce_amt =#{reduceAmt} </if>
+			<if test="vipPriceAmt != null"> AND vip_price_amt =#{vipPriceAmt} </if>
+			<if test="allDistAmt != null"> AND all_dist_amt =#{allDistAmt} </if>
+			<if test="itemSaleAmt != null"> AND item_sale_amt =#{itemSaleAmt} </if>
+			<if test="points != null"> AND points =#{points} </if>
+			<if test="retFlag != null"> AND ret_flag =#{retFlag} </if>
+			<if test="retAmt != null"> AND ret_amt =#{retAmt} </if>
+			<if test="upFlag != null"> AND up_flag =#{upFlag} </if>
+			<if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TSaleD">
+		INSERT INTO t_sale_d
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{saleId,jdbcType=VARCHAR},#{saleNo,jdbcType=VARCHAR},#{saleDate,jdbcType=TIMESTAMP},#{rowNo,jdbcType=NUMERIC},#{companyId,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{storeId,jdbcType=VARCHAR},#{itemId,jdbcType=VARCHAR},#{itemNo,jdbcType=VARCHAR},#{saleNum,jdbcType=NUMERIC},#{salePrice,jdbcType=NUMERIC},#{salePriceReal,jdbcType=NUMERIC},#{promTypeId,jdbcType=VARCHAR},#{taxRate,jdbcType=NUMERIC},#{taxAmt,jdbcType=NUMERIC},#{itemDisc,jdbcType=NUMERIC},#{itemDiscAmt,jdbcType=NUMERIC},#{billDist,jdbcType=NUMERIC},#{billDiscAmt,jdbcType=NUMERIC},#{vipDisc,jdbcType=NUMERIC},#{vipDiscAmt,jdbcType=NUMERIC},#{promDisc,jdbcType=NUMERIC},#{promDiscAmt,jdbcType=NUMERIC},#{otherDisc,jdbcType=NUMERIC},#{otherDiscAmt,jdbcType=NUMERIC},#{reduceAmt,jdbcType=NUMERIC},#{vipPriceAmt,jdbcType=NUMERIC},#{allDistAmt,jdbcType=NUMERIC},#{itemSaleAmt,jdbcType=NUMERIC},#{points,jdbcType=NUMERIC},#{retFlag,jdbcType=VARCHAR},#{retAmt,jdbcType=NUMERIC},#{upFlag,jdbcType=VARCHAR},#{upDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_sale_d 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSaleD">
+		UPDATE t_sale_d SET
+                     sale_id=#{saleId,jdbcType=VARCHAR},
+                     sale_no=#{saleNo,jdbcType=VARCHAR},
+                     sale_date=#{saleDate,jdbcType=TIMESTAMP},
+                     row_no=#{rowNo,jdbcType=NUMERIC},
+                     company_id=#{companyId,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     store_id=#{storeId,jdbcType=VARCHAR},
+                     item_id=#{itemId,jdbcType=VARCHAR},
+                     item_no=#{itemNo,jdbcType=VARCHAR},
+                     sale_num=#{saleNum,jdbcType=NUMERIC},
+                     sale_price=#{salePrice,jdbcType=NUMERIC},
+                     sale_price_real=#{salePriceReal,jdbcType=NUMERIC},
+					 prom_type_id=#{promTypeId,jdbcType=VARCHAR},
+                     tax_rate=#{taxRate,jdbcType=NUMERIC},
+                     tax_amt=#{taxAmt,jdbcType=NUMERIC},
+                     item_disc=#{itemDisc,jdbcType=NUMERIC},
+                     item_disc_amt=#{itemDiscAmt,jdbcType=NUMERIC},
+                     bill_dist=#{billDist,jdbcType=NUMERIC},
+                     bill_disc_amt=#{billDiscAmt,jdbcType=NUMERIC},
+                     vip_disc=#{vipDisc,jdbcType=NUMERIC},
+                     vip_disc_amt=#{vipDiscAmt,jdbcType=NUMERIC},
+                     prom_disc=#{promDisc,jdbcType=NUMERIC},
+                     prom_disc_amt=#{promDiscAmt,jdbcType=NUMERIC},
+                     other_disc=#{otherDisc,jdbcType=NUMERIC},
+                     other_disc_amt=#{otherDiscAmt,jdbcType=NUMERIC},
+                     reduce_amt=#{reduceAmt,jdbcType=NUMERIC},
+                     vip_price_amt=#{vipPriceAmt,jdbcType=NUMERIC},
+                     all_dist_amt=#{allDistAmt,jdbcType=NUMERIC},
+                     item_sale_amt=#{itemSaleAmt,jdbcType=NUMERIC},
+                     points=#{points,jdbcType=NUMERIC},
+                     ret_flag=#{retFlag,jdbcType=VARCHAR},
+                     ret_amt=#{retAmt,jdbcType=NUMERIC},
+                     up_flag=#{upFlag,jdbcType=VARCHAR},
+                     up_date=#{upDate,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TSaleD">
+		SELECT <include refid="columns"/>
+		FROM t_sale_d
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSaleD">
+		SELECT <include refid="columns"/>
+		FROM t_sale_d   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSaleD">
+		SELECT <include refid="columns"/>
+		FROM t_sale_d   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSaleD">
+		SELECT <include refid="columns"/>
+		FROM t_sale_d   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSaleD">
+		SELECT <include refid="columns"/>
+		FROM t_sale_d   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -1,55 +1,45 @@
-<Request>
-    <RequestContent>
-        <Parameter>
-            <Record>
-            </Record>
-        </Parameter>
-        <Document>
-        <RecordSet id="1">
-        <Master name= "rtif_t">--赠送
-        <Record>
-            <Field name="Type" value="单据类型"/>
-            <Field name="ooef001" value="门店编号"/>
-            <Field name="rtiadocno" value="单号"/>
-            <Detail name="mmaq_t">
-                         
-                <Record>
-                    <Field name="mmaq006" value="卡状态"/>  
-                              
-                    <Field name="mmaq001" value=" 卡号"/>
-                     
-                    <Field name="mmaq002" value=" 卡种编号"/>
-                              
-                    <Field name="mmaq001_1" value=" 开始卡号"/>
-                    <Field name="mmaq001_2" value="结束卡号"/>
-                               
-                    <Field name="mmaq004" value="密码"/>
-                               
-                    <Field name="mmaqua001 " value="校验码"/>
-                    <Field name="mmau009" value="储值金额"/>
-                    <Field name="mmau009_1" value="实际储值金额"/>
-                    <Field name="mmau013" value="送抵现值"/>
-                    <Field name="mmau014" value="储值成本"/>
-                    <Field name="mmaq100" value="GUID"/>
-                    T100追加栏位
-                      
-                </Record>
-                       
-            </Detail>
-            <Detail name=“gcao_q”>
-                      
-            <Record>
-                           
-                <Field name="gcao005" value="流转状态"/>
-                <Field name= gcao002 value="券种编号"/>
-                <Field name= gcbi005 value="数量"/>
-                <Field name="gcao100" value="GUID"/>
-                T100追加栏位
-                         
-            </Record>
-                  
-        </Detail>
-        <Record>
-        <Master/>
-    </RequestContent>
-</Request>
+<response>
+    <code>019</code>
+    <message>平台返回同步结果</message>
+    <reqid>981c4c4f-cfc9-4ea3-98ca-38724e8eccaa</reqid>
+    <srvver>1.0</srvver>
+    <srvcode>000</srvcode>
+    <payload>
+        <param key="data" type="XML">
+
+
+            <Response>
+                <Execution>
+                    <Status code="0" sqlcode="0" description=""/>
+                </Execution>
+                <ResponseContent>
+                    <Parameter/>
+                    <Document>
+                        <RecordSet id="1">
+                            <Master name="rtif_t" node_id="1">
+                                <Record>
+                                    <Detail name="gcao_q" node_id="1_1">
+                                        <Record>
+                                            <Field name="gcao005" value="4"/>
+                                            <Field name="gcao002" value="2017041901"/>
+                                            <Field name="oocql004" value="100元"/>
+                                            <Field name="gcao001" value="90000260"/>
+                                            <Field name="gcao100" value="a9cf3753-693c-4d0f-a6c8-24f3a41ffaed"/>
+                                        </Record>
+                                        <Record>
+                                            <Field name="gcao005" value="4"/>
+                                            <Field name="gcao002" value="2017041901"/>
+                                            <Field name="oocql004" value="100元"/>
+                                            <Field name="gcao001" value="90000260"/>
+                                            <Field name="gcao100" value="a9cf3753-693c-4d0f-a6c8-24f3a41ffaed"/>
+                                        </Record>
+                                    </Detail>
+                                </Record>
+                            </Master>
+                        </RecordSet>
+                    </Document>
+                </ResponseContent>
+            </Response>
+        </param>
+    </payload>
+</response>

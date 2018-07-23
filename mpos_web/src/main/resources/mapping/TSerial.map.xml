@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSerial">
+	<resultMap id="TSerial" type="com.site.entity.TSerial">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="serialType" column="serial_type" 
+				jdbcType="VARCHAR" />
+			<result property="serialLength" column="serial_length" 
+				jdbcType="NUMERIC" />
+			<result property="serialLong" column="serial_long" 
+				jdbcType="NUMERIC" />
+			<result property="isOrg" column="is_org" 
+				jdbcType="VARCHAR" />
+			<result property="dateFormate" column="date_formate" 
+				jdbcType="VARCHAR" />
+			<result property="serialNum" column="serial_num" 
+				jdbcType="NUMERIC" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		name,
+		serial_type,
+		serial_length,
+		serial_long,
+		is_org,
+		date_formate,
+		serial_num,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="serialType != null"> AND serial_type like '%${serialType}%' </if>
+                   <if test="serialLength != null"> AND serial_length =#{serialLength} </if>
+                   <if test="serialLong != null"> AND serial_long =#{serialLong} </if>
+       <if test="isOrg != null"> AND is_org like '%${isOrg}%' </if>
+       <if test="dateFormate != null"> AND date_formate like '%${dateFormate}%' </if>
+                   <if test="serialNum != null"> AND serial_num =#{serialNum} </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="serialType != null"> AND serial_type =#{serialType} </if>
+			<if test="serialLength != null"> AND serial_length =#{serialLength} </if>
+			<if test="serialLong != null"> AND serial_long =#{serialLong} </if>
+			<if test="isOrg != null"> AND is_org =#{isOrg} </if>
+			<if test="dateFormate != null"> AND date_formate =#{dateFormate} </if>
+			<if test="serialNum != null"> AND serial_num =#{serialNum} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TSerial">
+		INSERT INTO t_serial
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{serialType,jdbcType=VARCHAR},#{serialLength,jdbcType=NUMERIC},#{serialLong,jdbcType=NUMERIC},#{isOrg,jdbcType=VARCHAR},#{dateFormate,jdbcType=VARCHAR},#{serialNum,jdbcType=NUMERIC},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_serial 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSerial">
+		UPDATE t_serial SET
+                     name=#{name,jdbcType=VARCHAR},
+                     serial_type=#{serialType,jdbcType=VARCHAR},
+                     serial_length=#{serialLength,jdbcType=NUMERIC},
+                     serial_long=#{serialLong,jdbcType=NUMERIC},
+                     is_org=#{isOrg,jdbcType=VARCHAR},
+                     date_formate=#{dateFormate,jdbcType=VARCHAR},
+                     serial_num=#{serialNum,jdbcType=NUMERIC},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TSerial">
+		SELECT <include refid="columns"/>
+		FROM t_serial
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSerial">
+		SELECT <include refid="columns"/>
+		FROM t_serial   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSerial">
+		SELECT <include refid="columns"/>
+		FROM t_serial   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSerial">
+		SELECT <include refid="columns"/>
+		FROM t_serial   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSerial">
+		SELECT <include refid="columns"/>
+		FROM t_serial   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

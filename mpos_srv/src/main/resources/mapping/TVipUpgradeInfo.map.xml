@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipUpgradeInfo">
+	<resultMap id="TVipUpgradeInfo" type="com.site.entity.TVipUpgradeInfo">
+		<result property= "viptypeNo" column="viptype_no" jdbcType="VARCHAR" />
+		<result property= "tViptypeNo" column="t_viptype_no" jdbcType="VARCHAR" />
+		<result property= "upgradeIntegral" column="upgrade_integral" jdbcType="NUMERIC" />
+		<result property= "upgradeSpareAmt" column="upgrade_spare_amt" jdbcType="NUMERIC" />
+		<result property= "upgradeSaleAmt" column="upgrade_sale_amt" jdbcType="NUMERIC" />
+		<result property= "upgradeSubIntegral" column="upgrade_sub_integral" jdbcType="NUMERIC" />
+		<result property= "upgradeMemo" column="upgrade_memo" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "createMan" column="create_man" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyMan" column="modify_man" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		viptype_no,
+		t_viptype_no,
+		upgrade_integral,
+		upgrade_spare_amt,
+		upgrade_sale_amt,
+		upgrade_sub_integral,
+		upgrade_memo,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag,
+		create_date,
+		create_man,
+		modify_date,
+		modify_man
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no like '%${viptypeNo}%' </if>
+       	<if test="tViptypeNo != null"> AND t_viptype_no like '%${tViptypeNo}%' </if>
+       	<if test="upgradeIntegral != null"> AND upgrade_integral like '%${upgradeIntegral}%' </if>
+       	<if test="upgradeSpareAmt != null"> AND upgrade_spare_amt like '%${upgradeSpareAmt}%' </if>
+       	<if test="upgradeSaleAmt != null"> AND upgrade_sale_amt like '%${upgradeSaleAmt}%' </if>
+       	<if test="upgradeSubIntegral != null"> AND upgrade_sub_integral like '%${upgradeSubIntegral}%' </if>
+       	<if test="upgradeMemo != null"> AND upgrade_memo like '%${upgradeMemo}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man like '%${createMan}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man like '%${modifyMan}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no = #{viptypeNo}</if>
+       	<if test="tViptypeNo != null"> AND t_viptype_no = #{tViptypeNo}</if>
+       	<if test="upgradeIntegral != null"> AND upgrade_integral = #{upgradeIntegral}</if>
+       	<if test="upgradeSpareAmt != null"> AND upgrade_spare_amt = #{upgradeSpareAmt}</if>
+       	<if test="upgradeSaleAmt != null"> AND upgrade_sale_amt = #{upgradeSaleAmt}</if>
+       	<if test="upgradeSubIntegral != null"> AND upgrade_sub_integral = #{upgradeSubIntegral}</if>
+       	<if test="upgradeMemo != null"> AND upgrade_memo = #{upgradeMemo}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man = #{createMan}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man = #{modifyMan}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipUpgradeInfo">
+		INSERT INTO t_vip_upgrade_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{viptypeNo,jdbcType=VARCHAR},
+		#{tViptypeNo,jdbcType=VARCHAR},
+		#{upgradeIntegral,jdbcType=NUMERIC},
+		#{upgradeSpareAmt,jdbcType=NUMERIC},
+		#{upgradeSaleAmt,jdbcType=NUMERIC},
+		#{upgradeSubIntegral,jdbcType=NUMERIC},
+		#{upgradeMemo,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{createMan,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{modifyMan,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_upgrade_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipUpgradeInfo">
+		UPDATE t_vip_upgrade_info SET
+               viptype_no=#{viptypeNo,jdbcType=VARCHAR},
+               t_viptype_no=#{tViptypeNo,jdbcType=VARCHAR},
+               upgrade_integral=#{upgradeIntegral,jdbcType=NUMERIC},
+               upgrade_spare_amt=#{upgradeSpareAmt,jdbcType=NUMERIC},
+               upgrade_sale_amt=#{upgradeSaleAmt,jdbcType=NUMERIC},
+               upgrade_sub_integral=#{upgradeSubIntegral,jdbcType=NUMERIC},
+               upgrade_memo=#{upgradeMemo,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               create_man=#{createMan,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               modify_man=#{modifyMan,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipUpgradeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_upgrade_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipUpgradeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_upgrade_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipUpgradeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_upgrade_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipUpgradeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_upgrade_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipUpgradeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_upgrade_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

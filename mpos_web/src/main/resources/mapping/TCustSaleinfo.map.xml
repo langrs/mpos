@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCustSaleinfo">
+	<resultMap id="TCustSaleinfo" type="com.site.entity.TCustSaleinfo">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="custId" column="cust_id" 
+				jdbcType="VARCHAR" />
+			<result property="saleId" column="sale_id" 
+				jdbcType="VARCHAR" />
+			<result property="saleNo" column="sale_no" 
+				jdbcType="VARCHAR" />
+			<result property="ebillType" column="ebill_type" 
+				jdbcType="VARCHAR" />
+			<result property="sendDate" column="send_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="saleDate" column="sale_date" 
+				jdbcType="TIMESTAMP" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		shop_id,
+		cust_id,
+		sale_id,
+		sale_no,
+		ebill_type,
+		send_date,
+		sale_date
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="custId != null"> AND cust_id like '%${custId}%' </if>
+       <if test="saleId != null"> AND sale_id like '%${saleId}%' </if>
+       <if test="saleNo != null"> AND sale_no like '%${saleNo}%' </if>
+       <if test="ebillType != null"> AND ebill_type like '%${ebillType}%' </if>
+                   <if test="sendDate != null"> AND send_date =#{sendDate} </if>
+                   <if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="custId != null"> AND cust_id =#{custId} </if>
+			<if test="saleId != null"> AND sale_id =#{saleId} </if>
+			<if test="saleNo != null"> AND sale_no =#{saleNo} </if>
+			<if test="ebillType != null"> AND ebill_type =#{ebillType} </if>
+			<if test="sendDate != null"> AND send_date =#{sendDate} </if>
+			<if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TCustSaleinfo">
+		INSERT INTO t_cust_saleinfo
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{custId,jdbcType=VARCHAR},#{saleId,jdbcType=VARCHAR},#{saleNo,jdbcType=VARCHAR},#{ebillType,jdbcType=VARCHAR},#{sendDate,jdbcType=TIMESTAMP},#{saleDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_cust_saleinfo 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCustSaleinfo">
+		UPDATE t_cust_saleinfo SET
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     cust_id=#{custId,jdbcType=VARCHAR},
+                     sale_id=#{saleId,jdbcType=VARCHAR},
+                     sale_no=#{saleNo,jdbcType=VARCHAR},
+                     ebill_type=#{ebillType,jdbcType=VARCHAR},
+                     send_date=#{sendDate,jdbcType=TIMESTAMP},
+                     sale_date=#{saleDate,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TCustSaleinfo">
+		SELECT <include refid="columns"/>
+		FROM t_cust_saleinfo
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCustSaleinfo">
+		SELECT <include refid="columns"/>
+		FROM t_cust_saleinfo   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCustSaleinfo">
+		SELECT <include refid="columns"/>
+		FROM t_cust_saleinfo   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCustSaleinfo">
+		SELECT <include refid="columns"/>
+		FROM t_cust_saleinfo   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCustSaleinfo">
+		SELECT <include refid="columns"/>
+		FROM t_cust_saleinfo   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

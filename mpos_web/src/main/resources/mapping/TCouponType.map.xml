@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCouponType">
+	<resultMap id="TCouponType" type="com.site.entity.TCouponType">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="typeNo" column="type_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="value" column="value" 
+				jdbcType="NUMERIC" />
+			<result property="isChange" column="is_change" 
+				jdbcType="VARCHAR" />
+			<result property="validNum" column="valid_num" 
+				jdbcType="NUMERIC" />
+			<result property="validUnit" column="valid_unit" 
+				jdbcType="VARCHAR" />
+			<result property="limitAmount" column="limit_amount" 
+				jdbcType="NUMERIC" />
+			<result property="limitNum" column="limit_num" 
+				jdbcType="NUMERIC" />
+			<result property="isProm" column="is_prom" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+					<association property="shopIdObj" column="shop_id" select="com.site.entity.TShop.get"></association>
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		shop_id,
+		type_no,
+		name,
+		value,
+		is_change,
+		valid_num,
+		valid_unit,
+		limit_amount,
+		limit_num,
+		is_prom,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="typeNo != null"> AND type_no like '%${typeNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+                   <if test="value != null"> AND value =#{value} </if>
+       <if test="isChange != null"> AND is_change like '%${isChange}%' </if>
+                   <if test="validNum != null"> AND valid_num =#{validNum} </if>
+       <if test="validUnit != null"> AND valid_unit like '%${validUnit}%' </if>
+                   <if test="limitAmount != null"> AND limit_amount =#{limitAmount} </if>
+                   <if test="limitNum != null"> AND limit_num =#{limitNum} </if>
+       <if test="isProm != null"> AND is_prom like '%${isProm}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="typeNo != null"> AND type_no =#{typeNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="value != null"> AND value =#{value} </if>
+			<if test="isChange != null"> AND is_change =#{isChange} </if>
+			<if test="validNum != null"> AND valid_num =#{validNum} </if>
+			<if test="validUnit != null"> AND valid_unit =#{validUnit} </if>
+			<if test="limitAmount != null"> AND limit_amount =#{limitAmount} </if>
+			<if test="limitNum != null"> AND limit_num =#{limitNum} </if>
+			<if test="isProm != null"> AND is_prom =#{isProm} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TCouponType">
+		INSERT INTO t_coupon_type
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{typeNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{value,jdbcType=NUMERIC},#{isChange,jdbcType=VARCHAR},#{validNum,jdbcType=NUMERIC},#{validUnit,jdbcType=VARCHAR},#{limitAmount,jdbcType=NUMERIC},#{limitNum,jdbcType=NUMERIC},#{isProm,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_coupon_type 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCouponType">
+		UPDATE t_coupon_type SET
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     type_no=#{typeNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     value=#{value,jdbcType=NUMERIC},
+                     is_change=#{isChange,jdbcType=VARCHAR},
+                     valid_num=#{validNum,jdbcType=NUMERIC},
+                     valid_unit=#{validUnit,jdbcType=VARCHAR},
+                     limit_amount=#{limitAmount,jdbcType=NUMERIC},
+                     limit_num=#{limitNum,jdbcType=NUMERIC},
+                     is_prom=#{isProm,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TCouponType">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_type
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCouponType">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_type   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCouponType">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_type   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCouponType">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_type   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCouponType">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_type   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

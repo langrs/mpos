@@ -102,18 +102,18 @@ public class PromService {
                     queryMap.put("code",promPlu.getFgroup5());
                 }else if(ruleway.equals("H")){
                     queryMap.put("code",promPlu.getFgroup6());
-                }else if(ruleway.equals("I")){
-                    queryMap.put("code",promPlu.getFgroup7());
                 }else if(ruleway.equals("J")){
                     queryMap.put("code",promPlu.getFgroup8());
+                }else if(ruleway.equals("I")){
+                    queryMap.put("code",promPlu.getFgroup7());
                 }else if(ruleway.equals("K")){//商品属性9
                     queryMap.put("code",promPlu.getFgroup9());
                 }else if(ruleway.equals("5")){ //商品品类
                     queryMap.put("code",promPlu.getSno());
-                }else if(ruleway.equals("8")){//商品品牌
-                    queryMap.put("code",promPlu.getBrand());
                 }else if(ruleway.equals("4")){ //商品编号
                     queryMap.put("code",promPlu.getPluno());
+                }else if(ruleway.equals("8")){//商品品牌
+                    queryMap.put("code",promPlu.getBrand());
                 }
                 queryMap.put("ruleno", getCardRuleResult.getRuleno());
                 queryMap.put("cnfflg", "Y");
@@ -159,14 +159,14 @@ public class PromService {
                     queryMap.put("code",promPlu.getFgroup7());
                 }else if(ruleway.equals("J")){
                     queryMap.put("code",promPlu.getFgroup8());
+                }else if(ruleway.equals("4")){ //商品编号
+                    queryMap.put("code",promPlu.getPluno());
                 }else if(ruleway.equals("K")){//商品属性9
                     queryMap.put("code",promPlu.getFgroup9());
                 }else if(ruleway.equals("5")){ //商品品类
                     queryMap.put("code",promPlu.getSno());
                 }else if(ruleway.equals("8")){//商品品牌
                     queryMap.put("code",promPlu.getBrand());
-                }else if(ruleway.equals("4")){ //商品编号
-                    queryMap.put("code",promPlu.getPluno());
                 }
                 queryMap.put("ruleno", getCardRuleResult.getRuleno());
                 queryMap.put("cnfflg", "Y");

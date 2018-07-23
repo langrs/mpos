@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TGiftcouponGoods">
+    <resultMap id="TGiftcouponGoods" type="com.site.entity.TGiftcouponGoods">
+        <result property= "giftcouponno" column="giftcouponno" jdbcType="VARCHAR" />
+        <result property= "shopno" column="shopno" jdbcType="VARCHAR" />
+        <result property= "salecode" column="salecode" jdbcType="VARCHAR" />
+        <result property= "saleno" column="saleno" jdbcType="VARCHAR" />
+        <result property= "giftsum" column="giftsum" jdbcType="NUMERIC" />
+        <result property= "billstate" column="billstate" jdbcType="VARCHAR" />
+        <result property= "giftflag" column="giftflag" jdbcType="VARCHAR" />
+        <result property= "validity" column="validity" jdbcType="TIMESTAMP" />
+        <result property= "gifttype" column="gifttype" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="whereId">
+        salecode=#{salecode}
+    </sql>
+
+    <sql id="columns">
+        giftcouponno,
+        shopno,
+        salecode,
+        saleno,
+        giftsum,
+        billstate,
+        giftflag,
+        validity,
+        gifttype
+    </sql>
+
+    <sql id="dynamicWhere">
+        <where>
+            <if test="giftcouponno != null"> AND giftcouponno like '%${giftcouponno}%' </if>
+            <if test="shopno != null"> AND shopno like '%${shopno}%' </if>
+            <if test="salecode != null"> AND salecode like '%${salecode}%' </if>
+            <if test="saleno != null"> AND saleno like '%${saleno}%' </if>
+            <if test="giftsum != null"> AND giftsum like '%${giftsum}%' </if>
+            <if test="billstate != null"> AND billstate like '%${billstate}%' </if>
+            <if test="giftflag != null"> AND giftflag like '%${giftflag}%' </if>
+            <if test="validity != null"> AND validity = #{validity}</if>
+            <if test="gifttype != null"> AND gifttype like '%${gifttype}%' </if>
+        </where>
+    </sql>
+
+    <sql id="oneWhere">
+        <where>
+            <if test="giftcouponno != null"> AND giftcouponno = #{giftcouponno}</if>
+            <if test="shopno != null"> AND shopno = #{shopno}</if>
+            <if test="salecode != null"> AND salecode = #{salecode}</if>
+            <if test="saleno != null"> AND saleno = #{saleno}</if>
+            <if test="giftsum != null"> AND giftsum = #{giftsum}</if>
+            <if test="billstate != null"> AND billstate = #{billstate}</if>
+            <if test="giftflag != null"> AND giftflag = #{giftflag}</if>
+            <if test="validity != null"> AND validity = #{validity}</if>
+            <if test="gifttype != null"> AND gifttype = #{gifttype}</if>
+        </where>
+    </sql>
+
+    <insert id="create" parameterType="com.site.entity.TGiftcouponGoods">
+    INSERT INTO t_giftcoupon_goods
+    (<include refid="columns"/>)
+    VALUES(
+    #{giftcouponno,jdbcType=VARCHAR},
+    #{shopno,jdbcType=VARCHAR},
+    #{salecode,jdbcType=VARCHAR},
+    #{saleno,jdbcType=VARCHAR},
+    #{giftsum,jdbcType=NUMERIC},
+    #{billstate,jdbcType=VARCHAR},
+    #{giftflag,jdbcType=VARCHAR},
+    #{validity,jdbcType=TIMESTAMP},
+    #{gifttype,jdbcType=VARCHAR}
+    )
+</insert>
+
+    <delete id="remove" parameterType="java.lang.Long">
+        DELETE FROM t_giftcoupon_goods
+        WHERE
+        <include refid="whereId"/>
+    </delete>
+    <update id="update" parameterType="com.site.entity.TGiftcouponGoods">
+        UPDATE t_giftcoupon_goods SET
+        giftcouponno=#{giftcouponno,jdbcType=VARCHAR},
+        shopno=#{shopno,jdbcType=VARCHAR},
+        salecode=#{salecode,jdbcType=VARCHAR},
+        saleno=#{saleno,jdbcType=VARCHAR},
+        giftsum=#{giftsum,jdbcType=NUMERIC},
+        billstate=#{billstate,jdbcType=VARCHAR},
+        giftflag=#{giftflag,jdbcType=VARCHAR},
+        validity=#{validity,jdbcType=TIMESTAMP},
+        gifttype=#{gifttype,jdbcType=VARCHAR}
+        WHERE
+        <include refid="whereId"/>
+    </update>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="TGiftcouponGoods">
+        SELECT <include refid="columns"/>
+        FROM t_giftcoupon_goods
+        WHERE
+        <include refid="whereId"/>
+    </select>
+
+    <select id="query" resultMap="TGiftcouponGoods">
+        SELECT <include refid="columns"/>
+        FROM t_giftcoupon_goods
+        <include refid="dynamicWhere" />
+    </select>
+    <select id="search" resultMap="TGiftcouponGoods">
+        SELECT <include refid="columns"/>
+        FROM t_giftcoupon_goods
+        <include refid="dynamicWhere" />
+    </select>
+    <select id="getOne" resultMap="TGiftcouponGoods">
+        SELECT <include refid="columns"/>
+        FROM t_giftcoupon_goods
+        <include refid="oneWhere" />
+    </select>
+
+    <select id="getList" resultMap="TGiftcouponGoods">
+        SELECT <include refid="columns"/>
+        FROM t_giftcoupon_goods
+        <include refid="oneWhere" />
+    </select>
+</mapper>

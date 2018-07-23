@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipInfo">
+	<resultMap id="TVipInfo" type="com.site.entity.TVipInfo">
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "vipDispno" column="vip_dispno" jdbcType="VARCHAR" />
+		<result property= "viptypeNo" column="viptype_no" jdbcType="VARCHAR" />
+		<result property= "vipAttributeNo" column="vip_attribute_no" jdbcType="VARCHAR" />
+		<result property= "cardNo" column="card_no" jdbcType="VARCHAR" />
+		<result property= "cardType" column="card_type" jdbcType="VARCHAR" />
+		<result property= "vipName" column="vip_name" jdbcType="VARCHAR" />
+		<result property= "vipPycode" column="vip_pycode" jdbcType="VARCHAR" />
+		<result property= "vipSex" column="vip_sex" jdbcType="VARCHAR" />
+		<result property= "vipAddress" column="vip_address" jdbcType="VARCHAR" />
+		<result property= "vipZip" column="vip_zip" jdbcType="VARCHAR" />
+		<result property= "vipTel" column="vip_tel" jdbcType="VARCHAR" />
+		<result property= "vipMobil1" column="vip_mobil1" jdbcType="VARCHAR" />
+		<result property= "vipMobil2" column="vip_mobil2" jdbcType="VARCHAR" />
+		<result property= "vipFax" column="vip_fax" jdbcType="VARCHAR" />
+		<result property= "vipID" column="vip_ID" jdbcType="VARCHAR" />
+		<result property= "vipEmail" column="vip_email" jdbcType="VARCHAR" />
+		<result property= "vipBirthFlag" column="vip_birth_flag" jdbcType="VARCHAR" />
+		<result property= "vipInDate" column="vip_in_date" jdbcType="TIMESTAMP" />
+		<result property= "vipPwd" column="vip_pwd" jdbcType="VARCHAR" />
+		<result property= "vipStatus" column="vip_status" jdbcType="VARCHAR" />
+		<result property= "ctrlValid" column="ctrl_valid" jdbcType="VARCHAR" />
+		<result property= "vipStartDate" column="vip_start_date" jdbcType="TIMESTAMP" />
+		<result property= "vipEndDate" column="vip_end_date" jdbcType="TIMESTAMP" />
+		<result property= "initTotalAmt" column="init_total_amt" jdbcType="NUMERIC" />
+		<result property= "initIntegral" column="init_integral" jdbcType="NUMERIC" />
+		<result property= "vipCreditAmt" column="vip_credit_amt" jdbcType="NUMERIC" />
+		<result property= "vipIsUpgrade" column="vip_IsUpgrade" jdbcType="VARCHAR" />
+		<result property= "introVipNo" column="intro_vip_no" jdbcType="VARCHAR" />
+		<result property= "vipAdviserMan" column="vip_adviser_man" jdbcType="VARCHAR" />
+		<result property= "vipMemo" column="vip_memo" jdbcType="VARCHAR" />
+		<result property= "vipLikeMemo" column="vip_like_memo" jdbcType="VARCHAR" />
+		<result property= "vipDislikeMemo" column="vip_dislike_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "vipCreateMan" column="vip_create_man" jdbcType="VARCHAR" />
+		<result property= "vipCreateDate" column="vip_create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "vipBytxt1" column="vip_bytxt1" jdbcType="VARCHAR" />
+		<result property= "vipBytxt2" column="vip_bytxt2" jdbcType="VARCHAR" />
+		<result property= "vipBytxt3" column="vip_bytxt3" jdbcType="VARCHAR" />
+		<result property= "vipBynum1" column="vip_bynum1" jdbcType="NUMERIC" />
+		<result property= "vipBynum2" column="vip_bynum2" jdbcType="NUMERIC" />
+		<result property= "vipBynum3" column="vip_bynum3" jdbcType="NUMERIC" />
+		<result property= "lockUser" column="lock_user" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "vipHavePwd" column="vip_have_pwd" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "initBalanceAmt" column="init_balance_amt" jdbcType="NUMERIC" />
+		<result property= "vipQq" column="vip_qq" jdbcType="VARCHAR" />
+		<result property= "vipBirthYear" column="vip_birth_year" jdbcType="VARCHAR" />
+		<result property= "vipBirthMonth" column="vip_birth_month" jdbcType="VARCHAR" />
+		<result property= "vipBirthDay" column="vip_birth_day" jdbcType="VARCHAR" />
+		<result property= "vipIsLimit" column="vip_IsLimit" jdbcType="VARCHAR" />
+		<result property= "baby1Name" column="baby1_name" jdbcType="VARCHAR" />
+		<result property= "baby1BirthFlag" column="baby1_birth_flag" jdbcType="VARCHAR" />
+		<result property= "baby1BirthYear" column="baby1_birth_year" jdbcType="VARCHAR" />
+		<result property= "baby1BirthMonth" column="baby1_birth_month" jdbcType="VARCHAR" />
+		<result property= "baby1BirthDay" column="baby1_birth_day" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "recomVipNo" column="recom_vip_no" jdbcType="VARCHAR" />
+		<result property= "vipNotSms" column="vip_not_sms" jdbcType="VARCHAR" />
+		<result property= "baoxianYxDate" column="baoxian_yx_date" jdbcType="TIMESTAMP" />
+		<result property= "nianjianYxDate" column="nianjian_yx_date" jdbcType="TIMESTAMP" />
+		<result property= "vipWebPwd" column="vip_web_pwd" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "wxOpenid" column="wx_openid" jdbcType="VARCHAR" />
+		<result property= "vipQRcode" column="vip_QRcode" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		vip_no,
+		vip_dispno,
+		viptype_no,
+		vip_attribute_no,
+		card_no,
+		card_type,
+		vip_name,
+		vip_pycode,
+		vip_sex,
+		vip_address,
+		vip_zip,
+		vip_tel,
+		vip_mobil1,
+		vip_mobil2,
+		vip_fax,
+		vip_ID,
+		vip_email,
+		vip_birth_flag,
+		vip_in_date,
+		vip_pwd,
+		vip_status,
+		ctrl_valid,
+		vip_start_date,
+		vip_end_date,
+		init_total_amt,
+		init_integral,
+		vip_credit_amt,
+		vip_IsUpgrade,
+		intro_vip_no,
+		vip_adviser_man,
+		vip_memo,
+		vip_like_memo,
+		vip_dislike_memo,
+		IsSysFlag,
+		create_user,
+		create_date,
+		vip_create_man,
+		vip_create_date,
+		modify_user,
+		modify_date,
+		vip_bytxt1,
+		vip_bytxt2,
+		vip_bytxt3,
+		vip_bynum1,
+		vip_bynum2,
+		vip_bynum3,
+		lock_user,
+		branch_no,
+		vip_have_pwd,
+		update_flow,
+		init_balance_amt,
+		vip_qq,
+		vip_birth_year,
+		vip_birth_month,
+		vip_birth_day,
+		vip_IsLimit,
+		baby1_name,
+		baby1_birth_flag,
+		baby1_birth_year,
+		baby1_birth_month,
+		baby1_birth_day,
+		update_time,
+		update_branch,
+		recom_vip_no,
+		vip_not_sms,
+		baoxian_yx_date,
+		nianjian_yx_date,
+		vip_web_pwd,
+		trans_upflag,
+		wx_openid,
+		vip_QRcode
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="vipDispno != null"> AND vip_dispno like '%${vipDispno}%' </if>
+       	<if test="viptypeNo != null"> AND viptype_no like '%${viptypeNo}%' </if>
+       	<if test="vipAttributeNo != null"> AND vip_attribute_no like '%${vipAttributeNo}%' </if>
+       	<if test="cardNo != null"> AND card_no like '%${cardNo}%' </if>
+       	<if test="cardType != null"> AND card_type like '%${cardType}%' </if>
+       	<if test="vipName != null"> AND vip_name like '%${vipName}%' </if>
+       	<if test="vipPycode != null"> AND vip_pycode like '%${vipPycode}%' </if>
+       	<if test="vipSex != null"> AND vip_sex like '%${vipSex}%' </if>
+       	<if test="vipAddress != null"> AND vip_address like '%${vipAddress}%' </if>
+       	<if test="vipZip != null"> AND vip_zip like '%${vipZip}%' </if>
+       	<if test="vipTel != null"> AND vip_tel like '%${vipTel}%' </if>
+       	<if test="vipMobil1 != null"> AND vip_mobil1 like '%${vipMobil1}%' </if>
+       	<if test="vipMobil2 != null"> AND vip_mobil2 like '%${vipMobil2}%' </if>
+       	<if test="vipFax != null"> AND vip_fax like '%${vipFax}%' </if>
+       	<if test="vipID != null"> AND vip_ID like '%${vipID}%' </if>
+       	<if test="vipEmail != null"> AND vip_email like '%${vipEmail}%' </if>
+       	<if test="vipBirthFlag != null"> AND vip_birth_flag like '%${vipBirthFlag}%' </if>
+       	<if test="vipInDate != null"> AND vip_in_date = #{vipInDate}</if>
+       	<if test="vipPwd != null"> AND vip_pwd like '%${vipPwd}%' </if>
+       	<if test="vipStatus != null"> AND vip_status like '%${vipStatus}%' </if>
+       	<if test="ctrlValid != null"> AND ctrl_valid like '%${ctrlValid}%' </if>
+       	<if test="vipStartDate != null"> AND vip_start_date = #{vipStartDate}</if>
+       	<if test="vipEndDate != null"> AND vip_end_date = #{vipEndDate}</if>
+       	<if test="initTotalAmt != null"> AND init_total_amt like '%${initTotalAmt}%' </if>
+       	<if test="initIntegral != null"> AND init_integral like '%${initIntegral}%' </if>
+       	<if test="vipCreditAmt != null"> AND vip_credit_amt like '%${vipCreditAmt}%' </if>
+       	<if test="vipIsUpgrade != null"> AND vip_IsUpgrade like '%${vipIsUpgrade}%' </if>
+       	<if test="introVipNo != null"> AND intro_vip_no like '%${introVipNo}%' </if>
+       	<if test="vipAdviserMan != null"> AND vip_adviser_man like '%${vipAdviserMan}%' </if>
+       	<if test="vipMemo != null"> AND vip_memo like '%${vipMemo}%' </if>
+       	<if test="vipLikeMemo != null"> AND vip_like_memo like '%${vipLikeMemo}%' </if>
+       	<if test="vipDislikeMemo != null"> AND vip_dislike_memo like '%${vipDislikeMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="vipCreateMan != null"> AND vip_create_man like '%${vipCreateMan}%' </if>
+       	<if test="vipCreateDate != null"> AND vip_create_date = #{vipCreateDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="vipBytxt1 != null"> AND vip_bytxt1 like '%${vipBytxt1}%' </if>
+       	<if test="vipBytxt2 != null"> AND vip_bytxt2 like '%${vipBytxt2}%' </if>
+       	<if test="vipBytxt3 != null"> AND vip_bytxt3 like '%${vipBytxt3}%' </if>
+       	<if test="vipBynum1 != null"> AND vip_bynum1 like '%${vipBynum1}%' </if>
+       	<if test="vipBynum2 != null"> AND vip_bynum2 like '%${vipBynum2}%' </if>
+       	<if test="vipBynum3 != null"> AND vip_bynum3 like '%${vipBynum3}%' </if>
+       	<if test="lockUser != null"> AND lock_user like '%${lockUser}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="vipHavePwd != null"> AND vip_have_pwd like '%${vipHavePwd}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="initBalanceAmt != null"> AND init_balance_amt like '%${initBalanceAmt}%' </if>
+       	<if test="vipQq != null"> AND vip_qq like '%${vipQq}%' </if>
+       	<if test="vipBirthYear != null"> AND vip_birth_year like '%${vipBirthYear}%' </if>
+       	<if test="vipBirthMonth != null"> AND vip_birth_month like '%${vipBirthMonth}%' </if>
+       	<if test="vipBirthDay != null"> AND vip_birth_day like '%${vipBirthDay}%' </if>
+       	<if test="vipIsLimit != null"> AND vip_IsLimit like '%${vipIsLimit}%' </if>
+       	<if test="baby1Name != null"> AND baby1_name like '%${baby1Name}%' </if>
+       	<if test="baby1BirthFlag != null"> AND baby1_birth_flag like '%${baby1BirthFlag}%' </if>
+       	<if test="baby1BirthYear != null"> AND baby1_birth_year like '%${baby1BirthYear}%' </if>
+       	<if test="baby1BirthMonth != null"> AND baby1_birth_month like '%${baby1BirthMonth}%' </if>
+       	<if test="baby1BirthDay != null"> AND baby1_birth_day like '%${baby1BirthDay}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="recomVipNo != null"> AND recom_vip_no like '%${recomVipNo}%' </if>
+       	<if test="vipNotSms != null"> AND vip_not_sms like '%${vipNotSms}%' </if>
+       	<if test="baoxianYxDate != null"> AND baoxian_yx_date = #{baoxianYxDate}</if>
+       	<if test="nianjianYxDate != null"> AND nianjian_yx_date = #{nianjianYxDate}</if>
+       	<if test="vipWebPwd != null"> AND vip_web_pwd like '%${vipWebPwd}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="wxOpenid != null"> AND wx_openid like '%${wxOpenid}%' </if>
+       	<if test="vipQRcode != null"> AND vip_QRcode like '%${vipQRcode}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="vipDispno != null"> AND vip_dispno = #{vipDispno}</if>
+       	<if test="viptypeNo != null"> AND viptype_no = #{viptypeNo}</if>
+       	<if test="vipAttributeNo != null"> AND vip_attribute_no = #{vipAttributeNo}</if>
+       	<if test="cardNo != null"> AND card_no = #{cardNo}</if>
+       	<if test="cardType != null"> AND card_type = #{cardType}</if>
+       	<if test="vipName != null"> AND vip_name = #{vipName}</if>
+       	<if test="vipPycode != null"> AND vip_pycode = #{vipPycode}</if>
+       	<if test="vipSex != null"> AND vip_sex = #{vipSex}</if>
+       	<if test="vipAddress != null"> AND vip_address = #{vipAddress}</if>
+       	<if test="vipZip != null"> AND vip_zip = #{vipZip}</if>
+       	<if test="vipTel != null"> AND vip_tel = #{vipTel}</if>
+       	<if test="vipMobil1 != null"> AND vip_mobil1 = #{vipMobil1}</if>
+       	<if test="vipMobil2 != null"> AND vip_mobil2 = #{vipMobil2}</if>
+       	<if test="vipFax != null"> AND vip_fax = #{vipFax}</if>
+       	<if test="vipID != null"> AND vip_ID = #{vipID}</if>
+       	<if test="vipEmail != null"> AND vip_email = #{vipEmail}</if>
+       	<if test="vipBirthFlag != null"> AND vip_birth_flag = #{vipBirthFlag}</if>
+       	<if test="vipInDate != null"> AND vip_in_date = #{vipInDate}</if>
+       	<if test="vipPwd != null"> AND vip_pwd = #{vipPwd}</if>
+       	<if test="vipStatus != null"> AND vip_status = #{vipStatus}</if>
+       	<if test="ctrlValid != null"> AND ctrl_valid = #{ctrlValid}</if>
+       	<if test="vipStartDate != null"> AND vip_start_date = #{vipStartDate}</if>
+       	<if test="vipEndDate != null"> AND vip_end_date = #{vipEndDate}</if>
+       	<if test="initTotalAmt != null"> AND init_total_amt = #{initTotalAmt}</if>
+       	<if test="initIntegral != null"> AND init_integral = #{initIntegral}</if>
+       	<if test="vipCreditAmt != null"> AND vip_credit_amt = #{vipCreditAmt}</if>
+       	<if test="vipIsUpgrade != null"> AND vip_IsUpgrade = #{vipIsUpgrade}</if>
+       	<if test="introVipNo != null"> AND intro_vip_no = #{introVipNo}</if>
+       	<if test="vipAdviserMan != null"> AND vip_adviser_man = #{vipAdviserMan}</if>
+       	<if test="vipMemo != null"> AND vip_memo = #{vipMemo}</if>
+       	<if test="vipLikeMemo != null"> AND vip_like_memo = #{vipLikeMemo}</if>
+       	<if test="vipDislikeMemo != null"> AND vip_dislike_memo = #{vipDislikeMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="vipCreateMan != null"> AND vip_create_man = #{vipCreateMan}</if>
+       	<if test="vipCreateDate != null"> AND vip_create_date = #{vipCreateDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="vipBytxt1 != null"> AND vip_bytxt1 = #{vipBytxt1}</if>
+       	<if test="vipBytxt2 != null"> AND vip_bytxt2 = #{vipBytxt2}</if>
+       	<if test="vipBytxt3 != null"> AND vip_bytxt3 = #{vipBytxt3}</if>
+       	<if test="vipBynum1 != null"> AND vip_bynum1 = #{vipBynum1}</if>
+       	<if test="vipBynum2 != null"> AND vip_bynum2 = #{vipBynum2}</if>
+       	<if test="vipBynum3 != null"> AND vip_bynum3 = #{vipBynum3}</if>
+       	<if test="lockUser != null"> AND lock_user = #{lockUser}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="vipHavePwd != null"> AND vip_have_pwd = #{vipHavePwd}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="initBalanceAmt != null"> AND init_balance_amt = #{initBalanceAmt}</if>
+       	<if test="vipQq != null"> AND vip_qq = #{vipQq}</if>
+       	<if test="vipBirthYear != null"> AND vip_birth_year = #{vipBirthYear}</if>
+       	<if test="vipBirthMonth != null"> AND vip_birth_month = #{vipBirthMonth}</if>
+       	<if test="vipBirthDay != null"> AND vip_birth_day = #{vipBirthDay}</if>
+       	<if test="vipIsLimit != null"> AND vip_IsLimit = #{vipIsLimit}</if>
+       	<if test="baby1Name != null"> AND baby1_name = #{baby1Name}</if>
+       	<if test="baby1BirthFlag != null"> AND baby1_birth_flag = #{baby1BirthFlag}</if>
+       	<if test="baby1BirthYear != null"> AND baby1_birth_year = #{baby1BirthYear}</if>
+       	<if test="baby1BirthMonth != null"> AND baby1_birth_month = #{baby1BirthMonth}</if>
+       	<if test="baby1BirthDay != null"> AND baby1_birth_day = #{baby1BirthDay}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="recomVipNo != null"> AND recom_vip_no = #{recomVipNo}</if>
+       	<if test="vipNotSms != null"> AND vip_not_sms = #{vipNotSms}</if>
+       	<if test="baoxianYxDate != null"> AND baoxian_yx_date = #{baoxianYxDate}</if>
+       	<if test="nianjianYxDate != null"> AND nianjian_yx_date = #{nianjianYxDate}</if>
+       	<if test="vipWebPwd != null"> AND vip_web_pwd = #{vipWebPwd}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="wxOpenid != null"> AND wx_openid = #{wxOpenid}</if>
+       	<if test="vipQRcode != null"> AND vip_QRcode = #{vipQRcode}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipInfo">
+		INSERT INTO t_vip_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{vipNo,jdbcType=VARCHAR},
+		#{vipDispno,jdbcType=VARCHAR},
+		#{viptypeNo,jdbcType=VARCHAR},
+		#{vipAttributeNo,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR},
+		#{cardType,jdbcType=VARCHAR},
+		#{vipName,jdbcType=VARCHAR},
+		#{vipPycode,jdbcType=VARCHAR},
+		#{vipSex,jdbcType=VARCHAR},
+		#{vipAddress,jdbcType=VARCHAR},
+		#{vipZip,jdbcType=VARCHAR},
+		#{vipTel,jdbcType=VARCHAR},
+		#{vipMobil1,jdbcType=VARCHAR},
+		#{vipMobil2,jdbcType=VARCHAR},
+		#{vipFax,jdbcType=VARCHAR},
+		#{vipID,jdbcType=VARCHAR},
+		#{vipEmail,jdbcType=VARCHAR},
+		#{vipBirthFlag,jdbcType=VARCHAR},
+		#{vipInDate,jdbcType=TIMESTAMP},
+		#{vipPwd,jdbcType=VARCHAR},
+		#{vipStatus,jdbcType=VARCHAR},
+		#{ctrlValid,jdbcType=VARCHAR},
+		#{vipStartDate,jdbcType=TIMESTAMP},
+		#{vipEndDate,jdbcType=TIMESTAMP},
+		#{initTotalAmt,jdbcType=NUMERIC},
+		#{initIntegral,jdbcType=NUMERIC},
+		#{vipCreditAmt,jdbcType=NUMERIC},
+		#{vipIsUpgrade,jdbcType=VARCHAR},
+		#{introVipNo,jdbcType=VARCHAR},
+		#{vipAdviserMan,jdbcType=VARCHAR},
+		#{vipMemo,jdbcType=VARCHAR},
+		#{vipLikeMemo,jdbcType=VARCHAR},
+		#{vipDislikeMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{vipCreateMan,jdbcType=VARCHAR},
+		#{vipCreateDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{vipBytxt1,jdbcType=VARCHAR},
+		#{vipBytxt2,jdbcType=VARCHAR},
+		#{vipBytxt3,jdbcType=VARCHAR},
+		#{vipBynum1,jdbcType=NUMERIC},
+		#{vipBynum2,jdbcType=NUMERIC},
+		#{vipBynum3,jdbcType=NUMERIC},
+		#{lockUser,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{vipHavePwd,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{initBalanceAmt,jdbcType=NUMERIC},
+		#{vipQq,jdbcType=VARCHAR},
+		#{vipBirthYear,jdbcType=VARCHAR},
+		#{vipBirthMonth,jdbcType=VARCHAR},
+		#{vipBirthDay,jdbcType=VARCHAR},
+		#{vipIsLimit,jdbcType=VARCHAR},
+		#{baby1Name,jdbcType=VARCHAR},
+		#{baby1BirthFlag,jdbcType=VARCHAR},
+		#{baby1BirthYear,jdbcType=VARCHAR},
+		#{baby1BirthMonth,jdbcType=VARCHAR},
+		#{baby1BirthDay,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{recomVipNo,jdbcType=VARCHAR},
+		#{vipNotSms,jdbcType=VARCHAR},
+		#{baoxianYxDate,jdbcType=TIMESTAMP},
+		#{nianjianYxDate,jdbcType=TIMESTAMP},
+		#{vipWebPwd,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{wxOpenid,jdbcType=VARCHAR},
+		#{vipQRcode,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipInfo">
+		UPDATE t_vip_info SET
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               vip_dispno=#{vipDispno,jdbcType=VARCHAR},
+               viptype_no=#{viptypeNo,jdbcType=VARCHAR},
+               vip_attribute_no=#{vipAttributeNo,jdbcType=VARCHAR},
+               card_no=#{cardNo,jdbcType=VARCHAR},
+               card_type=#{cardType,jdbcType=VARCHAR},
+               vip_name=#{vipName,jdbcType=VARCHAR},
+               vip_pycode=#{vipPycode,jdbcType=VARCHAR},
+               vip_sex=#{vipSex,jdbcType=VARCHAR},
+               vip_address=#{vipAddress,jdbcType=VARCHAR},
+               vip_zip=#{vipZip,jdbcType=VARCHAR},
+               vip_tel=#{vipTel,jdbcType=VARCHAR},
+               vip_mobil1=#{vipMobil1,jdbcType=VARCHAR},
+               vip_mobil2=#{vipMobil2,jdbcType=VARCHAR},
+               vip_fax=#{vipFax,jdbcType=VARCHAR},
+               vip_ID=#{vipID,jdbcType=VARCHAR},
+               vip_email=#{vipEmail,jdbcType=VARCHAR},
+               vip_birth_flag=#{vipBirthFlag,jdbcType=VARCHAR},
+               vip_in_date=#{vipInDate,jdbcType=TIMESTAMP},
+               vip_pwd=#{vipPwd,jdbcType=VARCHAR},
+               vip_status=#{vipStatus,jdbcType=VARCHAR},
+               ctrl_valid=#{ctrlValid,jdbcType=VARCHAR},
+               vip_start_date=#{vipStartDate,jdbcType=TIMESTAMP},
+               vip_end_date=#{vipEndDate,jdbcType=TIMESTAMP},
+               init_total_amt=#{initTotalAmt,jdbcType=NUMERIC},
+               init_integral=#{initIntegral,jdbcType=NUMERIC},
+               vip_credit_amt=#{vipCreditAmt,jdbcType=NUMERIC},
+               vip_IsUpgrade=#{vipIsUpgrade,jdbcType=VARCHAR},
+               intro_vip_no=#{introVipNo,jdbcType=VARCHAR},
+               vip_adviser_man=#{vipAdviserMan,jdbcType=VARCHAR},
+               vip_memo=#{vipMemo,jdbcType=VARCHAR},
+               vip_like_memo=#{vipLikeMemo,jdbcType=VARCHAR},
+               vip_dislike_memo=#{vipDislikeMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               vip_create_man=#{vipCreateMan,jdbcType=VARCHAR},
+               vip_create_date=#{vipCreateDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               vip_bytxt1=#{vipBytxt1,jdbcType=VARCHAR},
+               vip_bytxt2=#{vipBytxt2,jdbcType=VARCHAR},
+               vip_bytxt3=#{vipBytxt3,jdbcType=VARCHAR},
+               vip_bynum1=#{vipBynum1,jdbcType=NUMERIC},
+               vip_bynum2=#{vipBynum2,jdbcType=NUMERIC},
+               vip_bynum3=#{vipBynum3,jdbcType=NUMERIC},
+               lock_user=#{lockUser,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               vip_have_pwd=#{vipHavePwd,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               init_balance_amt=#{initBalanceAmt,jdbcType=NUMERIC},
+               vip_qq=#{vipQq,jdbcType=VARCHAR},
+               vip_birth_year=#{vipBirthYear,jdbcType=VARCHAR},
+               vip_birth_month=#{vipBirthMonth,jdbcType=VARCHAR},
+               vip_birth_day=#{vipBirthDay,jdbcType=VARCHAR},
+               vip_IsLimit=#{vipIsLimit,jdbcType=VARCHAR},
+               baby1_name=#{baby1Name,jdbcType=VARCHAR},
+               baby1_birth_flag=#{baby1BirthFlag,jdbcType=VARCHAR},
+               baby1_birth_year=#{baby1BirthYear,jdbcType=VARCHAR},
+               baby1_birth_month=#{baby1BirthMonth,jdbcType=VARCHAR},
+               baby1_birth_day=#{baby1BirthDay,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               recom_vip_no=#{recomVipNo,jdbcType=VARCHAR},
+               vip_not_sms=#{vipNotSms,jdbcType=VARCHAR},
+               baoxian_yx_date=#{baoxianYxDate,jdbcType=TIMESTAMP},
+               nianjian_yx_date=#{nianjianYxDate,jdbcType=TIMESTAMP},
+               vip_web_pwd=#{vipWebPwd,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               wx_openid=#{wxOpenid,jdbcType=VARCHAR},
+               vip_QRcode=#{vipQRcode,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_info   
+		<include refid="oneWhere" />
+	</select>
+	<!--根据手机号或卡面号码或二维码卡号查询-->
+	<select id="getByBillno" resultMap="TVipInfo" parameterType="java.lang.String" >
+		SELECT <include refid="columns"/>
+		FROM t_vip_info
+		WHERE vip_dispno = #{billno} or vip_mobil1 = #{billno} or vip_mobil2 =#{billno}
+	</select>
+</mapper>	

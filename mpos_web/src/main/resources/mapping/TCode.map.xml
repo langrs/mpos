@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCode">
+	<resultMap id="TCode" type="com.site.entity.TCode">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="codeType" column="code_type" 
+				jdbcType="VARCHAR" />
+			<result property="codeDesc" column="code_desc"
+				jdbcType="VARCHAR" />
+			<result property="codeNo" column="code_no" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="codeValue" column="code_value" 
+				jdbcType="NUMERIC" />
+			<result property="isSys" column="is_sys" 
+				jdbcType="VARCHAR" />
+			<result property="codeAttr" column="code_attr" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		code_type,
+		code_desc,
+		code_no,
+		name,
+		code_value,
+		is_sys,
+		code_attr,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="codeType != null"> AND code_type like '%${codeType}%' </if>
+       <if test="codeDesc != null"> AND code_desc like '%${codeDesc}%' </if>
+       <if test="codeNo != null"> AND code_no like '%${codeNo}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+                   <if test="codeValue != null"> AND code_value =#{codeValue} </if>
+       <if test="isSys != null"> AND is_sys like '%${isSys}%' </if>
+       <if test="codeAttr != null"> AND code_attr like '%${codeAttr}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="codeType != null"> AND code_type =#{codeType} </if>
+			<if test="codeDesc != null"> AND code_desc  =#{codeDesc} </if>
+			<if test="codeNo != null"> AND code_no =#{codeNo} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="codeValue != null"> AND code_value =#{codeValue} </if>
+			<if test="isSys != null"> AND is_sys =#{isSys} </if>
+			<if test="codeAttr != null"> AND code_attr =#{codeAttr} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TCode">
+		INSERT INTO t_code
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{codeType,jdbcType=VARCHAR},#{codeDesc,jdbcType=VARCHAR},#{codeNo,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{codeValue,jdbcType=NUMERIC},#{isSys,jdbcType=VARCHAR},#{codeAttr,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_code 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCode">
+		UPDATE t_code SET
+                     code_type=#{codeType,jdbcType=VARCHAR},
+                     code_desc=#{codeDesc,jdbcType=VARCHAR},
+                     code_no=#{codeNo,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     code_value=#{codeValue,jdbcType=NUMERIC},
+                     is_sys=#{isSys,jdbcType=VARCHAR},
+                     code_attr=#{codeAttr,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TCode">
+		SELECT <include refid="columns"/>
+		FROM t_code
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCode">
+		SELECT <include refid="columns"/>
+		FROM t_code   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCode">
+		SELECT <include refid="columns"/>
+		FROM t_code   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCode">
+		SELECT <include refid="columns"/>
+		FROM t_code   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCode">
+		SELECT <include refid="columns"/>
+		FROM t_code   
+		<include refid="oneWhere" />
+	</select>
+
+	<!-- 通过多个codetype来查询-->
+	<select id="queryByCodeType" resultMap="TCode">
+		SELECT<include refid="columns"/>
+		FROM t_code
+		WHERE code_type in
+		<foreach item="item" index="index" collection="list"  open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+</mapper>

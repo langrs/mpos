@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.PosTPayflow">
+	<resultMap id="PosTPayflow" type="com.site.entity.PosTPayflow">
+		<result property= "flowId" column="flow_id" jdbcType="NUMERIC" />
+		<result property= "flowNo" column="flow_no" jdbcType="VARCHAR" />
+		<result property= "saleAmount" column="sale_amount" jdbcType="NUMERIC" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "payWay" column="pay_way" jdbcType="VARCHAR" />
+		<result property= "sellWay" column="sell_way" jdbcType="VARCHAR" />
+		<result property= "cardNo" column="card_no" jdbcType="VARCHAR" />
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "coinNo" column="coin_no" jdbcType="VARCHAR" />
+		<result property= "coinRate" column="coin_rate" jdbcType="NUMERIC" />
+		<result property= "payAmount" column="pay_amount" jdbcType="NUMERIC" />
+		<result property= "operDate" column="oper_date" jdbcType="TIMESTAMP" />
+		<result property= "operId" column="oper_id" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "saleMan" column="sale_man" jdbcType="VARCHAR" />
+		<result property= "memo" column="memo" jdbcType="VARCHAR" />
+		<result property= "voucherNo" column="voucher_no" jdbcType="VARCHAR" />
+		<result property= "remoteFlag" column="remote_flag" jdbcType="VARCHAR" />
+		<result property= "exchangeFlag" column="exchange_flag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		flow_id,
+		flow_no,
+		sale_amount,
+		branch_no,
+		pay_way,
+		sell_way,
+		card_no,
+		vip_no,
+		coin_no,
+		coin_rate,
+		pay_amount,
+		oper_date,
+		oper_id,
+		counter_no,
+		sale_man,
+		memo,
+		voucher_no,
+		remote_flag,
+		exchange_flag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="flowId != null"> AND flow_id like '%${flowId}%' </if>
+       	<if test="flowNo != null"> AND flow_no like '%${flowNo}%' </if>
+       	<if test="saleAmount != null"> AND sale_amount like '%${saleAmount}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="payWay != null"> AND pay_way like '%${payWay}%' </if>
+       	<if test="sellWay != null"> AND sell_way like '%${sellWay}%' </if>
+       	<if test="cardNo != null"> AND card_no like '%${cardNo}%' </if>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="coinNo != null"> AND coin_no like '%${coinNo}%' </if>
+       	<if test="coinRate != null"> AND coin_rate like '%${coinRate}%' </if>
+       	<if test="payAmount != null"> AND pay_amount like '%${payAmount}%' </if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="operId != null"> AND oper_id like '%${operId}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="saleMan != null"> AND sale_man like '%${saleMan}%' </if>
+       	<if test="memo != null"> AND memo like '%${memo}%' </if>
+       	<if test="voucherNo != null"> AND voucher_no like '%${voucherNo}%' </if>
+       	<if test="remoteFlag != null"> AND remote_flag like '%${remoteFlag}%' </if>
+       	<if test="exchangeFlag != null"> AND exchange_flag like '%${exchangeFlag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="flowId != null"> AND flow_id = #{flowId}</if>
+       	<if test="flowNo != null"> AND flow_no = #{flowNo}</if>
+       	<if test="saleAmount != null"> AND sale_amount = #{saleAmount}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="payWay != null"> AND pay_way = #{payWay}</if>
+       	<if test="sellWay != null"> AND sell_way = #{sellWay}</if>
+       	<if test="cardNo != null"> AND card_no = #{cardNo}</if>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="coinNo != null"> AND coin_no = #{coinNo}</if>
+       	<if test="coinRate != null"> AND coin_rate = #{coinRate}</if>
+       	<if test="payAmount != null"> AND pay_amount = #{payAmount}</if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="operId != null"> AND oper_id = #{operId}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="saleMan != null"> AND sale_man = #{saleMan}</if>
+       	<if test="memo != null"> AND memo = #{memo}</if>
+       	<if test="voucherNo != null"> AND voucher_no = #{voucherNo}</if>
+       	<if test="remoteFlag != null"> AND remote_flag = #{remoteFlag}</if>
+       	<if test="exchangeFlag != null"> AND exchange_flag = #{exchangeFlag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.PosTPayflow">
+		INSERT INTO pos_t_payflow
+		(<include refid="columns"/>)
+		VALUES(
+		#{flowId,jdbcType=NUMERIC},
+		#{flowNo,jdbcType=VARCHAR},
+		#{saleAmount,jdbcType=NUMERIC},
+		#{branchNo,jdbcType=VARCHAR},
+		#{payWay,jdbcType=VARCHAR},
+		#{sellWay,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR},
+		#{vipNo,jdbcType=VARCHAR},
+		#{coinNo,jdbcType=VARCHAR},
+		#{coinRate,jdbcType=NUMERIC},
+		#{payAmount,jdbcType=NUMERIC},
+		#{operDate,jdbcType=TIMESTAMP},
+		#{operId,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{saleMan,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR},
+		#{voucherNo,jdbcType=VARCHAR},
+		#{remoteFlag,jdbcType=VARCHAR},
+		#{exchangeFlag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM pos_t_payflow 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.PosTPayflow">
+		UPDATE pos_t_payflow SET
+               flow_id=#{flowId,jdbcType=NUMERIC},
+               flow_no=#{flowNo,jdbcType=VARCHAR},
+               sale_amount=#{saleAmount,jdbcType=NUMERIC},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               pay_way=#{payWay,jdbcType=VARCHAR},
+               sell_way=#{sellWay,jdbcType=VARCHAR},
+               card_no=#{cardNo,jdbcType=VARCHAR},
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               coin_no=#{coinNo,jdbcType=VARCHAR},
+               coin_rate=#{coinRate,jdbcType=NUMERIC},
+               pay_amount=#{payAmount,jdbcType=NUMERIC},
+               oper_date=#{operDate,jdbcType=TIMESTAMP},
+               oper_id=#{operId,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               sale_man=#{saleMan,jdbcType=VARCHAR},
+               memo=#{memo,jdbcType=VARCHAR},
+               voucher_no=#{voucherNo,jdbcType=VARCHAR},
+               remote_flag=#{remoteFlag,jdbcType=VARCHAR},
+               exchange_flag=#{exchangeFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="PosTPayflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_payflow
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="PosTPayflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_payflow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="PosTPayflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_payflow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="PosTPayflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_payflow   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="PosTPayflow">
+		SELECT <include refid="columns"/>
+		FROM pos_t_payflow   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipFlow">
+	<resultMap id="TVipFlow" type="com.site.entity.TVipFlow">
+		<result property= "vipFlow" column="vip_flow" jdbcType="VARCHAR" />
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "cardNo" column="card_no" jdbcType="VARCHAR" />
+		<result property= "vipDispno" column="vip_dispno" jdbcType="VARCHAR" />
+		<result property= "workMan" column="work_man" jdbcType="VARCHAR" />
+		<result property= "operDate" column="oper_date" jdbcType="TIMESTAMP" />
+		<result property= "operUser" column="oper_user" jdbcType="VARCHAR" />
+		<result property= "branchNo" column="branch_no" jdbcType="VARCHAR" />
+		<result property= "vipOperType" column="vip_oper_type" jdbcType="VARCHAR" />
+		<result property= "salesAmt" column="sales_amt" jdbcType="NUMERIC" />
+		<result property= "saveAmt" column="save_amt" jdbcType="NUMERIC" />
+		<result property= "giveAmt" column="give_amt" jdbcType="NUMERIC" />
+		<result property= "retAmt" column="ret_amt" jdbcType="NUMERIC" />
+		<result property= "integral" column="integral" jdbcType="NUMERIC" />
+		<result property= "fyAmt" column="fy_amt" jdbcType="NUMERIC" />
+		<result property= "paymentNo" column="payment_no" jdbcType="VARCHAR" />
+		<result property= "paymentAmt" column="payment_amt" jdbcType="NUMERIC" />
+		<result property= "coinRate" column="coin_rate" jdbcType="NUMERIC" />
+		<result property= "voucherNo" column="voucher_no" jdbcType="VARCHAR" />
+		<result property= "operMemo" column="oper_memo" jdbcType="VARCHAR" />
+		<result property= "otherBytxt1" column="other_bytxt1" jdbcType="VARCHAR" />
+		<result property= "otherBytxt2" column="other_bytxt2" jdbcType="VARCHAR" />
+		<result property= "otherBytxt3" column="other_bytxt3" jdbcType="VARCHAR" />
+		<result property= "otherBynum1" column="other_bynum1" jdbcType="NUMERIC" />
+		<result property= "otherBynum2" column="other_bynum2" jdbcType="NUMERIC" />
+		<result property= "otherBynum3" column="other_bynum3" jdbcType="NUMERIC" />
+		<result property= "zeroAmt" column="zero_amt" jdbcType="NUMERIC" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		vip_flow,
+		vip_no,
+		card_no,
+		vip_dispno,
+		work_man,
+		oper_date,
+		oper_user,
+		branch_no,
+		vip_oper_type,
+		sales_amt,
+		save_amt,
+		give_amt,
+		ret_amt,
+		integral,
+		fy_amt,
+		payment_no,
+		payment_amt,
+		coin_rate,
+		voucher_no,
+		oper_memo,
+		other_bytxt1,
+		other_bytxt2,
+		other_bytxt3,
+		other_bynum1,
+		other_bynum2,
+		other_bynum3,
+		zero_amt,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="vipFlow != null"> AND vip_flow like '%${vipFlow}%' </if>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="cardNo != null"> AND card_no like '%${cardNo}%' </if>
+       	<if test="vipDispno != null"> AND vip_dispno like '%${vipDispno}%' </if>
+       	<if test="workMan != null"> AND work_man like '%${workMan}%' </if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="operUser != null"> AND oper_user like '%${operUser}%' </if>
+       	<if test="branchNo != null"> AND branch_no like '%${branchNo}%' </if>
+       	<if test="vipOperType != null"> AND vip_oper_type like '%${vipOperType}%' </if>
+       	<if test="salesAmt != null"> AND sales_amt like '%${salesAmt}%' </if>
+       	<if test="saveAmt != null"> AND save_amt like '%${saveAmt}%' </if>
+       	<if test="giveAmt != null"> AND give_amt like '%${giveAmt}%' </if>
+       	<if test="retAmt != null"> AND ret_amt like '%${retAmt}%' </if>
+       	<if test="integral != null"> AND integral like '%${integral}%' </if>
+       	<if test="fyAmt != null"> AND fy_amt like '%${fyAmt}%' </if>
+       	<if test="paymentNo != null"> AND payment_no like '%${paymentNo}%' </if>
+       	<if test="paymentAmt != null"> AND payment_amt like '%${paymentAmt}%' </if>
+       	<if test="coinRate != null"> AND coin_rate like '%${coinRate}%' </if>
+       	<if test="voucherNo != null"> AND voucher_no like '%${voucherNo}%' </if>
+       	<if test="operMemo != null"> AND oper_memo like '%${operMemo}%' </if>
+       	<if test="otherBytxt1 != null"> AND other_bytxt1 like '%${otherBytxt1}%' </if>
+       	<if test="otherBytxt2 != null"> AND other_bytxt2 like '%${otherBytxt2}%' </if>
+       	<if test="otherBytxt3 != null"> AND other_bytxt3 like '%${otherBytxt3}%' </if>
+       	<if test="otherBynum1 != null"> AND other_bynum1 like '%${otherBynum1}%' </if>
+       	<if test="otherBynum2 != null"> AND other_bynum2 like '%${otherBynum2}%' </if>
+       	<if test="otherBynum3 != null"> AND other_bynum3 like '%${otherBynum3}%' </if>
+       	<if test="zeroAmt != null"> AND zero_amt like '%${zeroAmt}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="vipFlow != null"> AND vip_flow = #{vipFlow}</if>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="cardNo != null"> AND card_no = #{cardNo}</if>
+       	<if test="vipDispno != null"> AND vip_dispno = #{vipDispno}</if>
+       	<if test="workMan != null"> AND work_man = #{workMan}</if>
+       	<if test="operDate != null"> AND oper_date = #{operDate}</if>
+       	<if test="operUser != null"> AND oper_user = #{operUser}</if>
+       	<if test="branchNo != null"> AND branch_no = #{branchNo}</if>
+       	<if test="vipOperType != null"> AND vip_oper_type = #{vipOperType}</if>
+       	<if test="salesAmt != null"> AND sales_amt = #{salesAmt}</if>
+       	<if test="saveAmt != null"> AND save_amt = #{saveAmt}</if>
+       	<if test="giveAmt != null"> AND give_amt = #{giveAmt}</if>
+       	<if test="retAmt != null"> AND ret_amt = #{retAmt}</if>
+       	<if test="integral != null"> AND integral = #{integral}</if>
+       	<if test="fyAmt != null"> AND fy_amt = #{fyAmt}</if>
+       	<if test="paymentNo != null"> AND payment_no = #{paymentNo}</if>
+       	<if test="paymentAmt != null"> AND payment_amt = #{paymentAmt}</if>
+       	<if test="coinRate != null"> AND coin_rate = #{coinRate}</if>
+       	<if test="voucherNo != null"> AND voucher_no = #{voucherNo}</if>
+       	<if test="operMemo != null"> AND oper_memo = #{operMemo}</if>
+       	<if test="otherBytxt1 != null"> AND other_bytxt1 = #{otherBytxt1}</if>
+       	<if test="otherBytxt2 != null"> AND other_bytxt2 = #{otherBytxt2}</if>
+       	<if test="otherBytxt3 != null"> AND other_bytxt3 = #{otherBytxt3}</if>
+       	<if test="otherBynum1 != null"> AND other_bynum1 = #{otherBynum1}</if>
+       	<if test="otherBynum2 != null"> AND other_bynum2 = #{otherBynum2}</if>
+       	<if test="otherBynum3 != null"> AND other_bynum3 = #{otherBynum3}</if>
+       	<if test="zeroAmt != null"> AND zero_amt = #{zeroAmt}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipFlow">
+		INSERT INTO t_vip_flow
+		(<include refid="columns"/>)
+		VALUES(
+		#{vipFlow,jdbcType=VARCHAR},
+		#{vipNo,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR},
+		#{vipDispno,jdbcType=VARCHAR},
+		#{workMan,jdbcType=VARCHAR},
+		#{operDate,jdbcType=TIMESTAMP},
+		#{operUser,jdbcType=VARCHAR},
+		#{branchNo,jdbcType=VARCHAR},
+		#{vipOperType,jdbcType=VARCHAR},
+		#{salesAmt,jdbcType=NUMERIC},
+		#{saveAmt,jdbcType=NUMERIC},
+		#{giveAmt,jdbcType=NUMERIC},
+		#{retAmt,jdbcType=NUMERIC},
+		#{integral,jdbcType=NUMERIC},
+		#{fyAmt,jdbcType=NUMERIC},
+		#{paymentNo,jdbcType=VARCHAR},
+		#{paymentAmt,jdbcType=NUMERIC},
+		#{coinRate,jdbcType=NUMERIC},
+		#{voucherNo,jdbcType=VARCHAR},
+		#{operMemo,jdbcType=VARCHAR},
+		#{otherBytxt1,jdbcType=VARCHAR},
+		#{otherBytxt2,jdbcType=VARCHAR},
+		#{otherBytxt3,jdbcType=VARCHAR},
+		#{otherBynum1,jdbcType=NUMERIC},
+		#{otherBynum2,jdbcType=NUMERIC},
+		#{otherBynum3,jdbcType=NUMERIC},
+		#{zeroAmt,jdbcType=NUMERIC},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_flow 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipFlow">
+		UPDATE t_vip_flow SET
+               vip_flow=#{vipFlow,jdbcType=VARCHAR},
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               card_no=#{cardNo,jdbcType=VARCHAR},
+               vip_dispno=#{vipDispno,jdbcType=VARCHAR},
+               work_man=#{workMan,jdbcType=VARCHAR},
+               oper_date=#{operDate,jdbcType=TIMESTAMP},
+               oper_user=#{operUser,jdbcType=VARCHAR},
+               branch_no=#{branchNo,jdbcType=VARCHAR},
+               vip_oper_type=#{vipOperType,jdbcType=VARCHAR},
+               sales_amt=#{salesAmt,jdbcType=NUMERIC},
+               save_amt=#{saveAmt,jdbcType=NUMERIC},
+               give_amt=#{giveAmt,jdbcType=NUMERIC},
+               ret_amt=#{retAmt,jdbcType=NUMERIC},
+               integral=#{integral,jdbcType=NUMERIC},
+               fy_amt=#{fyAmt,jdbcType=NUMERIC},
+               payment_no=#{paymentNo,jdbcType=VARCHAR},
+               payment_amt=#{paymentAmt,jdbcType=NUMERIC},
+               coin_rate=#{coinRate,jdbcType=NUMERIC},
+               voucher_no=#{voucherNo,jdbcType=VARCHAR},
+               oper_memo=#{operMemo,jdbcType=VARCHAR},
+               other_bytxt1=#{otherBytxt1,jdbcType=VARCHAR},
+               other_bytxt2=#{otherBytxt2,jdbcType=VARCHAR},
+               other_bytxt3=#{otherBytxt3,jdbcType=VARCHAR},
+               other_bynum1=#{otherBynum1,jdbcType=NUMERIC},
+               other_bynum2=#{otherBynum2,jdbcType=NUMERIC},
+               other_bynum3=#{otherBynum3,jdbcType=NUMERIC},
+               zero_amt=#{zeroAmt,jdbcType=NUMERIC},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipFlow">
+		SELECT <include refid="columns"/>
+		FROM t_vip_flow
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipFlow">
+		SELECT <include refid="columns"/>
+		FROM t_vip_flow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipFlow">
+		SELECT <include refid="columns"/>
+		FROM t_vip_flow   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipFlow">
+		SELECT <include refid="columns"/>
+		FROM t_vip_flow   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipFlow">
+		SELECT <include refid="columns"/>
+		FROM t_vip_flow   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

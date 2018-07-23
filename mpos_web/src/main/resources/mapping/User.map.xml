@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.User">
+	<resultMap id="User" type="com.site.entity.User">
+		<id property="id" column="id_" jdbcType="NUMERIC" />
+		<result property="name" column="name_" jdbcType="VARCHAR" />
+		<result property="userNo" column="user_no_" jdbcType="VARCHAR" />
+		<result property="passWd" column="pass_wd_" jdbcType="VARCHAR" />
+		<result property="createDate" column="create_date_" jdbcType="TIMESTAMP" />
+
+	</resultMap>
+	<sql id="whereId">
+		id_=#{id}
+	</sql>
+	<sql id="columns">
+		id_,
+		name_,
+		user_no_,
+		pass_wd_,
+		create_date_
+	</sql>
+	<sql id="dynamicWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="name != null"> AND name_ like '%${name}%' </if>
+			<if test="userNo != null"> AND user_no_ like '%${userNo}%' </if>
+			<if test="passWd != null"> AND pass_wd_ like '%${passWd}%' </if>
+			<if test="createDate != null"> AND create_date_ =#{createDate} </if>
+		</where>
+	</sql>
+
+
+	<sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id_ =#{id} </if>
+			<if test="name != null"> AND name_ =#{name} </if>
+			<if test="userNo != null"> AND user_no_ =#{userNo} </if>
+			<if test="passWd != null"> AND pass_wd_ =#{passWd} </if>
+			<if test="createDate != null"> AND create_date_ =#{createDate} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.User">
+		INSERT INTO user_
+		(
+		<include refid="columns" />
+		)
+		VALUES
+		(#{id,jdbcType=NUMERIC},#{name,jdbcType=VARCHAR},#{userNo,jdbcType=VARCHAR},#{passWd,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP})
+	</insert>
+
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM user_
+		WHERE
+		<include refid="whereId" />
+	</delete>
+	<update id="update" parameterType="com.site.entity.User">
+		UPDATE user_ SET
+		name_=#{name,jdbcType=VARCHAR},
+		user_no_=#{userNo,jdbcType=VARCHAR},
+		pass_wd_=#{passWd,jdbcType=VARCHAR},
+		create_date_=#{createDate,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId" />
+
+	</update>
+
+	<select id="get" parameterType="java.lang.Long" resultMap="User">
+		SELECT
+		<include refid="columns" />
+		FROM user_
+		WHERE
+		<include refid="whereId" />
+	</select>
+
+	<select id="query" resultMap="User">
+		SELECT
+		<include refid="columns" />
+		FROM user_
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="User">
+		SELECT
+		<include refid="columns" />
+		FROM user_
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="User">
+		SELECT
+		<include refid="columns" />
+		FROM user_
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="getList" resultMap="User">
+		SELECT
+		<include refid="columns" />
+		FROM user_
+		<include refid="oneWhere" />
+	</select>
+</mapper>

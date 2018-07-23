@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPaymode">
+	<resultMap id="TPaymode" type="com.site.entity.TPaymode">
+		<id property="id" column="id" jdbcType="VARCHAR" />
+		<result property= "paymodeNo" column="paymode_no" jdbcType="VARCHAR" />
+		<result property= "name" column="name" jdbcType="VARCHAR" />
+		<result property= "paymodeQy" column="paymode_qy" jdbcType="VARCHAR" />
+		<result property= "paymodeTypeId" column="paymode_type_id" jdbcType="VARCHAR" />
+		<result property= "shopId" column="shop_id" jdbcType="VARCHAR" />
+		<result property= "isChange" column="is_change" jdbcType="VARCHAR" />
+		<result property= "isPoint" column="is_point" jdbcType="VARCHAR" />
+		<result property= "isInvoice" column="is_invoice" jdbcType="VARCHAR" />
+		<result property= "isCoupon" column="is_coupon" jdbcType="VARCHAR" />
+		<result property= "isRet" column="is_ret" jdbcType="VARCHAR" />
+		<result property= "currencyId" column="currency_id" jdbcType="VARCHAR" />
+		<result property= "createBy" column="create_by" jdbcType="VARCHAR" />
+		<result property= "createTime" column="create_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBy" column="update_by" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "isFlag" column="is_flag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		id,
+		paymode_no,
+		name,
+		paymode_qy,
+		paymode_type_id,
+		shop_id,
+		is_change,
+		is_point,
+		is_invoice,
+		is_coupon,
+		is_ret,
+		currency_id,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="id != null"> AND id like '%${id}%' </if>
+       	<if test="paymodeNo != null"> AND paymode_no like '%${paymodeNo}%' </if>
+       	<if test="name != null"> AND name like '%${name}%' </if>
+       	<if test="paymodeQy != null"> AND paymode_qy like '%${paymodeQy}%' </if>
+       	<if test="paymodeTypeId != null"> AND paymode_type_id like '%${paymodeTypeId}%' </if>
+       	<if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       	<if test="isChange != null"> AND is_change like '%${isChange}%' </if>
+       	<if test="isPoint != null"> AND is_point like '%${isPoint}%' </if>
+       	<if test="isInvoice != null"> AND is_invoice like '%${isInvoice}%' </if>
+       	<if test="isCoupon != null"> AND is_coupon like '%${isCoupon}%' </if>
+       	<if test="isRet != null"> AND is_ret like '%${isRet}%' </if>
+       	<if test="currencyId != null"> AND currency_id like '%${currencyId}%' </if>
+       	<if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+       	<if test="createTime != null"> AND create_time = #{createTime}</if>
+       	<if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="id != null"> AND id = #{id}</if>
+       	<if test="paymodeNo != null"> AND paymode_no = #{paymodeNo}</if>
+       	<if test="name != null"> AND name = #{name}</if>
+       	<if test="paymodeQy != null"> AND paymode_qy = #{paymodeQy}</if>
+       	<if test="paymodeTypeId != null"> AND paymode_type_id = #{paymodeTypeId}</if>
+       	<if test="shopId != null"> AND shop_id = #{shopId}</if>
+       	<if test="isChange != null"> AND is_change = #{isChange}</if>
+       	<if test="isPoint != null"> AND is_point = #{isPoint}</if>
+       	<if test="isInvoice != null"> AND is_invoice = #{isInvoice}</if>
+       	<if test="isCoupon != null"> AND is_coupon = #{isCoupon}</if>
+       	<if test="isRet != null"> AND is_ret = #{isRet}</if>
+       	<if test="currencyId != null"> AND currency_id = #{currencyId}</if>
+       	<if test="createBy != null"> AND create_by = #{createBy}</if>
+       	<if test="createTime != null"> AND create_time = #{createTime}</if>
+       	<if test="updateBy != null"> AND update_by = #{updateBy}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="isFlag != null"> AND is_flag = #{isFlag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPaymode">
+		INSERT INTO t_paymode
+		(<include refid="columns"/>)
+		VALUES(
+		#{id,jdbcType=VARCHAR},
+		#{paymodeNo,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{paymodeQy,jdbcType=VARCHAR},
+		#{paymodeTypeId,jdbcType=VARCHAR},
+		#{shopId,jdbcType=VARCHAR},
+		#{isChange,jdbcType=VARCHAR},
+		#{isPoint,jdbcType=VARCHAR},
+		#{isInvoice,jdbcType=VARCHAR},
+		#{isCoupon,jdbcType=VARCHAR},
+		#{isRet,jdbcType=VARCHAR},
+		#{currencyId,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{updateBy,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{isFlag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_paymode 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPaymode">
+		UPDATE t_paymode SET
+               id=#{id,jdbcType=VARCHAR},
+               paymode_no=#{paymodeNo,jdbcType=VARCHAR},
+               name=#{name,jdbcType=VARCHAR},
+               paymode_qy=#{paymodeQy,jdbcType=VARCHAR},
+               paymode_type_id=#{paymodeTypeId,jdbcType=VARCHAR},
+               shop_id=#{shopId,jdbcType=VARCHAR},
+               is_change=#{isChange,jdbcType=VARCHAR},
+               is_point=#{isPoint,jdbcType=VARCHAR},
+               is_invoice=#{isInvoice,jdbcType=VARCHAR},
+               is_coupon=#{isCoupon,jdbcType=VARCHAR},
+               is_ret=#{isRet,jdbcType=VARCHAR},
+               currency_id=#{currencyId,jdbcType=VARCHAR},
+               create_by=#{createBy,jdbcType=VARCHAR},
+               create_time=#{createTime,jdbcType=TIMESTAMP},
+               update_by=#{updateBy,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPaymode">
+		SELECT <include refid="columns"/>
+		FROM t_paymode
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPaymode">
+		SELECT <include refid="columns"/>
+		FROM t_paymode   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPaymode">
+		SELECT <include refid="columns"/>
+		FROM t_paymode   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPaymode">
+		SELECT <include refid="columns"/>
+		FROM t_paymode   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPaymode">
+		SELECT <include refid="columns"/>
+		FROM t_paymode   
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="queryRight" resultMap="TPaymode" parameterType="java.lang.String">
+		select a.id,
+		a.paymode_no,
+		a.name,
+		a.paymode_qy,
+		a.paymode_type_id,
+		a.shop_id,
+		a.is_change,
+		a.is_point,
+		a.is_invoice,
+		a.is_coupon,
+		a.is_ret,
+		a.currency_id
+		from t_paymode a,t_user b,t_user_role c,t_role_paymode d
+		where a.id = d.paymode_id and b.id = c.user_id and c.role_id = d.role_id and b.user_no = #{userNo}
+	</select>
+
+</mapper>	

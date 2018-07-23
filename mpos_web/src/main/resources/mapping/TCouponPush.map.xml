@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCouponPush">
+	<resultMap id="TCouponPush" type="com.site.entity.TCouponPush">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="couponType" column="coupon_type" 
+				jdbcType="VARCHAR" />
+			<result property="pushLb" column="push_lb" 
+				jdbcType="VARCHAR" />
+			<result property="pushAmt" column="push_amt" 
+				jdbcType="NUMERIC" />
+			<result property="pushNum" column="push_num" 
+				jdbcType="NUMERIC" />
+			<result property="pushType" column="push_type" 
+				jdbcType="VARCHAR" />
+			<result property="pushContent" column="push_content" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		coupon_type,
+		push_lb,
+		push_amt,
+		push_num,
+		push_type,
+		push_content,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="couponType != null"> AND coupon_type like '%${couponType}%' </if>
+       <if test="pushLb != null"> AND push_lb like '%${pushLb}%' </if>
+                   <if test="pushAmt != null"> AND push_amt =#{pushAmt} </if>
+                   <if test="pushNum != null"> AND push_num =#{pushNum} </if>
+       <if test="pushType != null"> AND push_type like '%${pushType}%' </if>
+       <if test="pushContent != null"> AND push_content like '%${pushContent}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="couponType != null"> AND coupon_type =#{couponType} </if>
+			<if test="pushLb != null"> AND push_lb =#{pushLb} </if>
+			<if test="pushAmt != null"> AND push_amt =#{pushAmt} </if>
+			<if test="pushNum != null"> AND push_num =#{pushNum} </if>
+			<if test="pushType != null"> AND push_type =#{pushType} </if>
+			<if test="pushContent != null"> AND push_content =#{pushContent} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TCouponPush">
+		INSERT INTO t_coupon_push
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{couponType,jdbcType=VARCHAR},#{pushLb,jdbcType=VARCHAR},#{pushAmt,jdbcType=NUMERIC},#{pushNum,jdbcType=NUMERIC},#{pushType,jdbcType=VARCHAR},#{pushContent,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_coupon_push 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCouponPush">
+		UPDATE t_coupon_push SET
+                     coupon_type=#{couponType,jdbcType=VARCHAR},
+                     push_lb=#{pushLb,jdbcType=VARCHAR},
+                     push_amt=#{pushAmt,jdbcType=NUMERIC},
+                     push_num=#{pushNum,jdbcType=NUMERIC},
+                     push_type=#{pushType,jdbcType=VARCHAR},
+                     push_content=#{pushContent,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TCouponPush">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_push
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCouponPush">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_push   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCouponPush">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_push   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCouponPush">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_push   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCouponPush">
+		SELECT <include refid="columns"/>
+		FROM t_coupon_push   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TCounterInfo">
+	<resultMap id="TCounterInfo" type="com.site.entity.TCounterInfo">
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "counterName" column="counter_name" jdbcType="VARCHAR" />
+		<result property= "countypeNo" column="countype_no" jdbcType="VARCHAR" />
+		<result property= "counterMan" column="counter_man" jdbcType="VARCHAR" />
+		<result property= "counterAddress" column="counter_address" jdbcType="VARCHAR" />
+		<result property= "counterTel" column="counter_tel" jdbcType="VARCHAR" />
+		<result property= "counterArea" column="counter_area" jdbcType="NUMERIC" />
+		<result property= "outsideFlag" column="outside_flag" jdbcType="VARCHAR" />
+		<result property= "displayFlag" column="display_flag" jdbcType="VARCHAR" />
+		<result property= "counterMemo" column="counter_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "showboxNo" column="showbox_no" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "createMan" column="create_man" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyMan" column="modify_man" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		counter_no,
+		counter_name,
+		countype_no,
+		counter_man,
+		counter_address,
+		counter_tel,
+		counter_area,
+		outside_flag,
+		display_flag,
+		counter_memo,
+		IsSysFlag,
+		update_flow,
+		showbox_no,
+		update_time,
+		update_branch,
+		create_date,
+		create_man,
+		modify_date,
+		modify_man,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="counterName != null"> AND counter_name like '%${counterName}%' </if>
+       	<if test="countypeNo != null"> AND countype_no like '%${countypeNo}%' </if>
+       	<if test="counterMan != null"> AND counter_man like '%${counterMan}%' </if>
+       	<if test="counterAddress != null"> AND counter_address like '%${counterAddress}%' </if>
+       	<if test="counterTel != null"> AND counter_tel like '%${counterTel}%' </if>
+       	<if test="counterArea != null"> AND counter_area like '%${counterArea}%' </if>
+       	<if test="outsideFlag != null"> AND outside_flag like '%${outsideFlag}%' </if>
+       	<if test="displayFlag != null"> AND display_flag like '%${displayFlag}%' </if>
+       	<if test="counterMemo != null"> AND counter_memo like '%${counterMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="showboxNo != null"> AND showbox_no like '%${showboxNo}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man like '%${createMan}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man like '%${modifyMan}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="counterName != null"> AND counter_name = #{counterName}</if>
+       	<if test="countypeNo != null"> AND countype_no = #{countypeNo}</if>
+       	<if test="counterMan != null"> AND counter_man = #{counterMan}</if>
+       	<if test="counterAddress != null"> AND counter_address = #{counterAddress}</if>
+       	<if test="counterTel != null"> AND counter_tel = #{counterTel}</if>
+       	<if test="counterArea != null"> AND counter_area = #{counterArea}</if>
+       	<if test="outsideFlag != null"> AND outside_flag = #{outsideFlag}</if>
+       	<if test="displayFlag != null"> AND display_flag = #{displayFlag}</if>
+       	<if test="counterMemo != null"> AND counter_memo = #{counterMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="showboxNo != null"> AND showbox_no = #{showboxNo}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="createMan != null"> AND create_man = #{createMan}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="modifyMan != null"> AND modify_man = #{modifyMan}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TCounterInfo">
+		INSERT INTO t_counter_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{counterNo,jdbcType=VARCHAR},
+		#{counterName,jdbcType=VARCHAR},
+		#{countypeNo,jdbcType=VARCHAR},
+		#{counterMan,jdbcType=VARCHAR},
+		#{counterAddress,jdbcType=VARCHAR},
+		#{counterTel,jdbcType=VARCHAR},
+		#{counterArea,jdbcType=NUMERIC},
+		#{outsideFlag,jdbcType=VARCHAR},
+		#{displayFlag,jdbcType=VARCHAR},
+		#{counterMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{showboxNo,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{createMan,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{modifyMan,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_counter_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TCounterInfo">
+		UPDATE t_counter_info SET
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               counter_name=#{counterName,jdbcType=VARCHAR},
+               countype_no=#{countypeNo,jdbcType=VARCHAR},
+               counter_man=#{counterMan,jdbcType=VARCHAR},
+               counter_address=#{counterAddress,jdbcType=VARCHAR},
+               counter_tel=#{counterTel,jdbcType=VARCHAR},
+               counter_area=#{counterArea,jdbcType=NUMERIC},
+               outside_flag=#{outsideFlag,jdbcType=VARCHAR},
+               display_flag=#{displayFlag,jdbcType=VARCHAR},
+               counter_memo=#{counterMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               showbox_no=#{showboxNo,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               create_man=#{createMan,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               modify_man=#{modifyMan,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TCounterInfo">
+		SELECT <include refid="columns"/>
+		FROM t_counter_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TCounterInfo">
+		SELECT <include refid="columns"/>
+		FROM t_counter_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TCounterInfo">
+		SELECT <include refid="columns"/>
+		FROM t_counter_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TCounterInfo">
+		SELECT <include refid="columns"/>
+		FROM t_counter_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TCounterInfo">
+		SELECT <include refid="columns"/>
+		FROM t_counter_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

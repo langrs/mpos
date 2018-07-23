@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TStoreDouble">
+    <resultMap id="TStoreDouble" type="com.site.entity.TStoreDouble">
+        <id property="id" column="id" jdbcType="VARCHAR" />
+        <result property= "storeIdMain" column="store_id_main" jdbcType="VARCHAR" />
+        <result property= "storeIdSecond" column="store_id_second" jdbcType="VARCHAR" />
+        <result property= "storeType" column="store_type" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="whereId">
+        id=#{id}
+    </sql>
+
+    <sql id="columns">
+        id,
+        store_id_main,
+        store_id_second,store_type
+    </sql>
+
+    <sql id="dynamicWhere">
+        <where>
+            <if test="id != null"> AND id like '%${id}%' </if>
+            <if test="storeIdMain != null"> AND store_id_main like '%${storeIdMain}%' </if>
+            <if test="storeIdSecond != null"> AND store_id_second like '%${storeIdSecond}%' </if>
+            <if test="storeType != null"> AND store_type like '%${storeType}%' </if>
+        </where>
+    </sql>
+
+    <sql id="oneWhere">
+        <where>
+            <if test="id != null"> AND id = #{id}</if>
+            <if test="storeIdMain != null"> AND store_id_main = #{storeIdMain}</if>
+            <if test="storeIdSecond != null"> AND store_id_second = #{storeIdSecond}</if>
+            <if test="storeType != null"> AND store_type = #{storeType} </if>
+        </where>
+    </sql>
+
+    <insert id="create" parameterType="com.site.entity.TStoreDouble">
+        INSERT INTO t_store_double
+        (<include refid="columns"/>)
+        VALUES(
+        #{id,jdbcType=VARCHAR},
+        #{storeIdMain,jdbcType=VARCHAR},
+        #{storeIdSecond,jdbcType=VARCHAR},
+        #{storeType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <delete id="remove" parameterType="java.lang.Long">
+        DELETE FROM t_store_double
+        WHERE
+        <include refid="whereId"/>
+    </delete>
+    <update id="update" parameterType="com.site.entity.TStoreDouble">
+        UPDATE t_store_double SET
+        id=#{id,jdbcType=VARCHAR},
+        store_id_main=#{storeIdMain,jdbcType=VARCHAR},
+        store_id_second=#{storeIdSecond,jdbcType=VARCHAR},
+        store_type=#{storeType,jdbcType=VARCHAR}
+        WHERE
+        <include refid="whereId"/>
+    </update>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="TStoreDouble">
+        SELECT <include refid="columns"/>
+        FROM t_store_double
+        WHERE
+        <include refid="whereId"/>
+    </select>
+
+    <select id="query" resultMap="TStoreDouble">
+        SELECT <include refid="columns"/>
+        FROM t_store_double
+        <include refid="dynamicWhere" />
+    </select>
+    <select id="search" resultMap="TStoreDouble">
+        SELECT <include refid="columns"/>
+        FROM t_store_double
+        <include refid="dynamicWhere" />
+    </select>
+    <select id="getOne" resultMap="TStoreDouble">
+        SELECT <include refid="columns"/>
+        FROM t_store_double
+        <include refid="oneWhere" />
+    </select>
+
+    <select id="getList" resultMap="TStoreDouble">
+        SELECT <include refid="columns"/>
+        FROM t_store_double
+        <include refid="oneWhere" />
+    </select>
+</mapper>

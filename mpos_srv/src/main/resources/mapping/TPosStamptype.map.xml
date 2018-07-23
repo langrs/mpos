@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPosStamptype">
+	<resultMap id="TPosStamptype" type="com.site.entity.TPosStamptype">
+		<result property= "StampTypeNo" column="StampType_no" jdbcType="VARCHAR" />
+		<result property= "StampTypeName" column="StampType_name" jdbcType="VARCHAR" />
+		<result property= "stampAmt" column="stamp_amt" jdbcType="NUMERIC" />
+		<result property= "stampTypeIsZero" column="stampType_IsZero" jdbcType="VARCHAR" />
+		<result property= "stampTypeMemo" column="stampType_memo" jdbcType="VARCHAR" />
+		<result property= "dateUnit" column="date_unit" jdbcType="VARCHAR" />
+		<result property= "stampTypePeriod" column="stampType_Period" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "IsFixedValid" column="IsFixedValid" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "payruleSaleAmt" column="payrule_sale_amt" jdbcType="NUMERIC" />
+		<result property= "payruleLimitInt" column="payrule_limit_int" jdbcType="VARCHAR" />
+		<result property= "payruleLimitSp" column="payrule_limit_sp" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		StampType_no,
+		StampType_name,
+		stamp_amt,
+		stampType_IsZero,
+		stampType_memo,
+		date_unit,
+		stampType_Period,
+		IsSysFlag,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		IsFixedValid,
+		update_flow,
+		update_time,
+		update_branch,
+		trans_upflag,
+		payrule_sale_amt,
+		payrule_limit_int,
+		payrule_limit_sp
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="StampTypeNo != null"> AND StampType_no like '%${StampTypeNo}%' </if>
+       	<if test="StampTypeName != null"> AND StampType_name like '%${StampTypeName}%' </if>
+       	<if test="stampAmt != null"> AND stamp_amt like '%${stampAmt}%' </if>
+       	<if test="stampTypeIsZero != null"> AND stampType_IsZero like '%${stampTypeIsZero}%' </if>
+       	<if test="stampTypeMemo != null"> AND stampType_memo like '%${stampTypeMemo}%' </if>
+       	<if test="dateUnit != null"> AND date_unit like '%${dateUnit}%' </if>
+       	<if test="stampTypePeriod != null"> AND stampType_Period like '%${stampTypePeriod}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="IsFixedValid != null"> AND IsFixedValid like '%${IsFixedValid}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="payruleSaleAmt != null"> AND payrule_sale_amt like '%${payruleSaleAmt}%' </if>
+       	<if test="payruleLimitInt != null"> AND payrule_limit_int like '%${payruleLimitInt}%' </if>
+       	<if test="payruleLimitSp != null"> AND payrule_limit_sp like '%${payruleLimitSp}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="StampTypeNo != null"> AND StampType_no = #{StampTypeNo}</if>
+       	<if test="StampTypeName != null"> AND StampType_name = #{StampTypeName}</if>
+       	<if test="stampAmt != null"> AND stamp_amt = #{stampAmt}</if>
+       	<if test="stampTypeIsZero != null"> AND stampType_IsZero = #{stampTypeIsZero}</if>
+       	<if test="stampTypeMemo != null"> AND stampType_memo = #{stampTypeMemo}</if>
+       	<if test="dateUnit != null"> AND date_unit = #{dateUnit}</if>
+       	<if test="stampTypePeriod != null"> AND stampType_Period = #{stampTypePeriod}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="IsFixedValid != null"> AND IsFixedValid = #{IsFixedValid}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="payruleSaleAmt != null"> AND payrule_sale_amt = #{payruleSaleAmt}</if>
+       	<if test="payruleLimitInt != null"> AND payrule_limit_int = #{payruleLimitInt}</if>
+       	<if test="payruleLimitSp != null"> AND payrule_limit_sp = #{payruleLimitSp}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPosStamptype">
+		INSERT INTO t_pos_stamptype
+		(<include refid="columns"/>)
+		VALUES(
+		#{StampTypeNo,jdbcType=VARCHAR},
+		#{StampTypeName,jdbcType=VARCHAR},
+		#{stampAmt,jdbcType=NUMERIC},
+		#{stampTypeIsZero,jdbcType=VARCHAR},
+		#{stampTypeMemo,jdbcType=VARCHAR},
+		#{dateUnit,jdbcType=VARCHAR},
+		#{stampTypePeriod,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{IsFixedValid,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{payruleSaleAmt,jdbcType=NUMERIC},
+		#{payruleLimitInt,jdbcType=VARCHAR},
+		#{payruleLimitSp,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos_stamptype 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPosStamptype">
+		UPDATE t_pos_stamptype SET
+               StampType_no=#{StampTypeNo,jdbcType=VARCHAR},
+               StampType_name=#{StampTypeName,jdbcType=VARCHAR},
+               stamp_amt=#{stampAmt,jdbcType=NUMERIC},
+               stampType_IsZero=#{stampTypeIsZero,jdbcType=VARCHAR},
+               stampType_memo=#{stampTypeMemo,jdbcType=VARCHAR},
+               date_unit=#{dateUnit,jdbcType=VARCHAR},
+               stampType_Period=#{stampTypePeriod,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               IsFixedValid=#{IsFixedValid,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               payrule_sale_amt=#{payruleSaleAmt,jdbcType=NUMERIC},
+               payrule_limit_int=#{payruleLimitInt,jdbcType=VARCHAR},
+               payrule_limit_sp=#{payruleLimitSp,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPosStamptype">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamptype
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPosStamptype">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamptype   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPosStamptype">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamptype   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPosStamptype">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamptype   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPosStamptype">
+		SELECT <include refid="columns"/>
+		FROM t_pos_stamptype   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

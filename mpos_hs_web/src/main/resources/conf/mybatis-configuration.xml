@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="conf/site.properties"/>
+	<settings >
+		<setting name="cacheEnabled" value="true"/>
+	</settings> 
+	<plugins>
+		<plugin interceptor="com.site.interceptor.PageInterceptor">
+			<property name="dbType" value="${jdbc.dbType}"/>
+			<property name="Dialect.oracle" value="com.site.core.mybatis.dialect.OracleDialect"/>
+			<property name="Dialect.mysql" value="com.site.core.mybatis.dialect.MySQLDialect"/>
+		</plugin>
+	</plugins>
+	 
+</configuration>

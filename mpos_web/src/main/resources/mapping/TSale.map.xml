@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TSale">
+	<resultMap id="TSale" type="com.site.entity.TSale">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="saleNo" column="sale_no" 
+				jdbcType="VARCHAR" />
+			<result property="saleDate" column="sale_date" 
+				jdbcType="TIMESTAMP" />
+			<result property="userId" column="user_id" 
+				jdbcType="VARCHAR" />
+			<result property="sSaleNo" column="s_sale_no" 
+				jdbcType="VARCHAR" />
+			<result property="saleNoShort" column="sale_no_short" 
+				jdbcType="VARCHAR" />
+			<result property="billNo" column="bill_no" 
+				jdbcType="VARCHAR" />
+			<result property="dealType" column="deal_type" 
+				jdbcType="VARCHAR" />
+			<result property="saleSource" column="sale_source" 
+				jdbcType="VARCHAR" />
+			<result property="saleType" column="sale_type" 
+				jdbcType="VARCHAR" />
+			<result property="companyId" column="company_id" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="regionId" column="region_id" 
+				jdbcType="VARCHAR" />
+			<result property="posId" column="pos_id" 
+				jdbcType="VARCHAR" />
+			<result property="storeId" column="store_id" 
+				jdbcType="VARCHAR" />
+			<result property="salesId" column="sales_id" 
+				jdbcType="VARCHAR" />
+			<result property="vipNo" column="vip_no" 
+				jdbcType="VARCHAR" />
+			<result property="originalPoints" column="original_points" 
+				jdbcType="NUMERIC" />
+			<result property="salePoints" column="sale_points" 
+				jdbcType="NUMERIC" />
+			<result property="originalAmt" column="original_amt" 
+				jdbcType="NUMERIC" />
+			<result property="saleAmt" column="sale_amt" 
+				jdbcType="NUMERIC" />
+			<result property="payAmt" column="pay_amt" 
+				jdbcType="NUMERIC" />
+			<result property="discAmt" column="disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="changeAmt" column="change_amt" 
+				jdbcType="NUMERIC" />
+			<result property="excessAmt" column="excess_amt" 
+				jdbcType="NUMERIC" />
+			<result property="saleTaxAmt" column="sale_tax_amt" 
+				jdbcType="NUMERIC" />
+			<result property="vipDiscAmt" column="vip_disc_amt" 
+				jdbcType="NUMERIC" />
+			<result property="isTrain" column="is_train" 
+				jdbcType="VARCHAR" />
+			<result property="reason" column="reason" 
+				jdbcType="VARCHAR" />
+			<result property="retAmt" column="ret_amt" 
+				jdbcType="NUMERIC" />
+			<result property="ebillType" column="ebill_type" 
+				jdbcType="VARCHAR" />
+			<result property="upFlag" column="up_flag" 
+				jdbcType="VARCHAR" />
+			<result property="upDate" column="up_date" 
+				jdbcType="TIMESTAMP" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		sale_no,
+		sale_date,
+		user_id,
+		s_sale_no,
+		sale_no_short,
+		bill_no,
+		deal_type,
+		sale_source,
+		sale_type,
+		company_id,
+		shop_id,
+		region_id,
+		pos_id,
+		store_id,
+		sales_id,
+		vip_no,
+		original_points,
+		sale_points,
+		original_amt,
+		sale_amt,
+		pay_amt,
+		disc_amt,
+		change_amt,
+		excess_amt,
+		sale_tax_amt,
+		vip_disc_amt,
+		is_train,
+		reason,
+		ret_amt,
+		ebill_type,
+		up_flag,
+		up_date
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="saleNo != null"> AND sale_no like '%${saleNo}%' </if>
+                   <if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+       <if test="userId != null"> AND user_id like '%${userId}%' </if>
+       <if test="sSaleNo != null"> AND s_sale_no like '%${sSaleNo}%' </if>
+       <if test="saleNoShort != null"> AND sale_no_short like '%${saleNoShort}%' </if>
+       <if test="billNo != null"> AND bill_no like '%${billNo}%' </if>
+       <if test="dealType != null"> AND deal_type like '%${dealType}%' </if>
+       <if test="saleSource != null"> AND sale_source like '%${saleSource}%' </if>
+       <if test="saleType != null"> AND sale_type like '%${saleType}%' </if>
+       <if test="companyId != null"> AND company_id like '%${companyId}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="regionId != null"> AND region_id like '%${regionId}%' </if>
+       <if test="posId != null"> AND pos_id like '%${posId}%' </if>
+       <if test="storeId != null"> AND store_id like '%${storeId}%' </if>
+       <if test="salesId != null"> AND sales_id like '%${salesId}%' </if>
+       <if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+                   <if test="originalPoints != null"> AND original_points =#{originalPoints} </if>
+                   <if test="salePoints != null"> AND sale_points =#{salePoints} </if>
+                   <if test="originalAmt != null"> AND original_amt =#{originalAmt} </if>
+                   <if test="saleAmt != null"> AND sale_amt =#{saleAmt} </if>
+                   <if test="payAmt != null"> AND pay_amt =#{payAmt} </if>
+                   <if test="discAmt != null"> AND disc_amt =#{discAmt} </if>
+                   <if test="changeAmt != null"> AND change_amt =#{changeAmt} </if>
+                   <if test="excessAmt != null"> AND excess_amt =#{excessAmt} </if>
+                   <if test="saleTaxAmt != null"> AND sale_tax_amt =#{saleTaxAmt} </if>
+                   <if test="vipDiscAmt != null"> AND vip_disc_amt =#{vipDiscAmt} </if>
+       <if test="isTrain != null"> AND is_train like '%${isTrain}%' </if>
+       <if test="reason != null"> AND reason like '%${reason}%' </if>
+                   <if test="retAmt != null"> AND ret_amt =#{retAmt} </if>
+       <if test="ebillType != null"> AND ebill_type like '%${ebillType}%' </if>
+       <if test="upFlag != null"> AND up_flag like '%${upFlag}%' </if>
+                   <if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="saleNo != null"> AND sale_no =#{saleNo} </if>
+			<if test="saleDate != null"> AND sale_date =#{saleDate} </if>
+			<if test="userId != null"> AND user_id =#{userId} </if>
+			<if test="sSaleNo != null"> AND s_sale_no =#{sSaleNo} </if>
+			<if test="saleNoShort != null"> AND sale_no_short =#{saleNoShort} </if>
+			<if test="billNo != null"> AND bill_no =#{billNo} </if>
+			<if test="dealType != null"> AND deal_type =#{dealType} </if>
+			<if test="saleSource != null"> AND sale_source =#{saleSource} </if>
+			<if test="saleType != null"> AND sale_type =#{saleType} </if>
+			<if test="companyId != null"> AND company_id =#{companyId} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="regionId != null"> AND region_id =#{regionId} </if>
+			<if test="posId != null"> AND pos_id =#{posId} </if>
+			<if test="storeId != null"> AND store_id =#{storeId} </if>
+			<if test="salesId != null"> AND sales_id =#{salesId} </if>
+			<if test="vipNo != null"> AND vip_no =#{vipNo} </if>
+			<if test="originalPoints != null"> AND original_points =#{originalPoints} </if>
+			<if test="salePoints != null"> AND sale_points =#{salePoints} </if>
+			<if test="originalAmt != null"> AND original_amt =#{originalAmt} </if>
+			<if test="saleAmt != null"> AND sale_amt =#{saleAmt} </if>
+			<if test="payAmt != null"> AND pay_amt =#{payAmt} </if>
+			<if test="discAmt != null"> AND disc_amt =#{discAmt} </if>
+			<if test="changeAmt != null"> AND change_amt =#{changeAmt} </if>
+			<if test="excessAmt != null"> AND excess_amt =#{excessAmt} </if>
+			<if test="saleTaxAmt != null"> AND sale_tax_amt =#{saleTaxAmt} </if>
+			<if test="vipDiscAmt != null"> AND vip_disc_amt =#{vipDiscAmt} </if>
+			<if test="isTrain != null"> AND is_train =#{isTrain} </if>
+			<if test="reason != null"> AND reason =#{reason} </if>
+			<if test="retAmt != null"> AND ret_amt =#{retAmt} </if>
+			<if test="ebillType != null"> AND ebill_type =#{ebillType} </if>
+			<if test="upFlag != null"> AND up_flag =#{upFlag} </if>
+			<if test="upDate != null"> AND up_date =#{upDate} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TSale">
+		INSERT INTO t_sale
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{saleNo,jdbcType=VARCHAR},#{saleDate,jdbcType=TIMESTAMP},#{userId,jdbcType=VARCHAR},#{sSaleNo,jdbcType=VARCHAR},#{saleNoShort,jdbcType=VARCHAR},#{billNo,jdbcType=VARCHAR},#{dealType,jdbcType=VARCHAR},#{saleSource,jdbcType=VARCHAR},#{saleType,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{regionId,jdbcType=VARCHAR},#{posId,jdbcType=VARCHAR},#{storeId,jdbcType=VARCHAR},#{salesId,jdbcType=VARCHAR},#{vipNo,jdbcType=VARCHAR},#{originalPoints,jdbcType=NUMERIC},#{salePoints,jdbcType=NUMERIC},#{originalAmt,jdbcType=NUMERIC},#{saleAmt,jdbcType=NUMERIC},#{payAmt,jdbcType=NUMERIC},#{discAmt,jdbcType=NUMERIC},#{changeAmt,jdbcType=NUMERIC},#{excessAmt,jdbcType=NUMERIC},#{saleTaxAmt,jdbcType=NUMERIC},#{vipDiscAmt,jdbcType=NUMERIC},#{isTrain,jdbcType=VARCHAR},#{reason,jdbcType=VARCHAR},#{retAmt,jdbcType=NUMERIC},#{ebillType,jdbcType=VARCHAR},#{upFlag,jdbcType=VARCHAR},#{upDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_sale 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TSale">
+		UPDATE t_sale SET
+                     sale_no=#{saleNo,jdbcType=VARCHAR},
+                     sale_date=#{saleDate,jdbcType=TIMESTAMP},
+                     user_id=#{userId,jdbcType=VARCHAR},
+                     s_sale_no=#{sSaleNo,jdbcType=VARCHAR},
+                     sale_no_short=#{saleNoShort,jdbcType=VARCHAR},
+                     bill_no=#{billNo,jdbcType=VARCHAR},
+                     deal_type=#{dealType,jdbcType=VARCHAR},
+                     sale_source=#{saleSource,jdbcType=VARCHAR},
+                     sale_type=#{saleType,jdbcType=VARCHAR},
+                     company_id=#{companyId,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     region_id=#{regionId,jdbcType=VARCHAR},
+                     pos_id=#{posId,jdbcType=VARCHAR},
+                     store_id=#{storeId,jdbcType=VARCHAR},
+                     sales_id=#{salesId,jdbcType=VARCHAR},
+                     vip_no=#{vipNo,jdbcType=VARCHAR},
+                     original_points=#{originalPoints,jdbcType=NUMERIC},
+                     sale_points=#{salePoints,jdbcType=NUMERIC},
+                     original_amt=#{originalAmt,jdbcType=NUMERIC},
+                     sale_amt=#{saleAmt,jdbcType=NUMERIC},
+                     pay_amt=#{payAmt,jdbcType=NUMERIC},
+                     disc_amt=#{discAmt,jdbcType=NUMERIC},
+                     change_amt=#{changeAmt,jdbcType=NUMERIC},
+                     excess_amt=#{excessAmt,jdbcType=NUMERIC},
+                     sale_tax_amt=#{saleTaxAmt,jdbcType=NUMERIC},
+                     vip_disc_amt=#{vipDiscAmt,jdbcType=NUMERIC},
+                     is_train=#{isTrain,jdbcType=VARCHAR},
+                     reason=#{reason,jdbcType=VARCHAR},
+                     ret_amt=#{retAmt,jdbcType=NUMERIC},
+                     ebill_type=#{ebillType,jdbcType=VARCHAR},
+                     up_flag=#{upFlag,jdbcType=VARCHAR},
+                     up_date=#{upDate,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale   
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="querySaleByTime" resultMap="TSale">
+		SELECT <include refid="columns"/>
+		FROM t_sale
+		WHERE
+		<![CDATA[  shop_id=#{shopId} and pos_id = #{posId} and sale_date >= #{startDate}  and sale_date < DATE_ADD(#{endDate},INTERVAL 1 DAY)  ]]>
+	</select>
+</mapper>

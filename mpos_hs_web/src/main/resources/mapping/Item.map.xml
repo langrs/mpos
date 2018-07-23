@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.Item">
+	<resultMap id="Item" type="com.site.entity.Item">
+		<result property= "itemNo" column="item_no" jdbcType="VARCHAR" />
+		<result property= "itemSubno" column="item_subno" jdbcType="VARCHAR" />
+		<result property= "itemName" column="item_name" jdbcType="VARCHAR" />
+		<result property= "goodstype" column="goodstype" jdbcType="VARCHAR" />
+		<result property= "salerate" column="salerate" jdbcType="NUMERIC" />
+		<result property= "itemSubname" column="item_subname" jdbcType="VARCHAR" />
+		<result property= "classNo" column="class_no" jdbcType="VARCHAR" />
+		<result property= "productArea" column="product_area" jdbcType="VARCHAR" />
+		<result property= "salePrice" column="sale_price" jdbcType="NUMERIC" />
+		<result property= "status" column="status" jdbcType="VARCHAR" />
+		<result property= "displayFlag" column="display_flag" jdbcType="VARCHAR" />
+		<result property= "supNo" column="sup_no" jdbcType="VARCHAR" />
+		<result property= "changepxFlag" column="changepx_flag" jdbcType="VARCHAR" />
+		<result property= "counterNo" column="counter_no" jdbcType="VARCHAR" />
+		<result property= "promtype" column="promtype" jdbcType="VARCHAR" />
+		<result property= "pkzk" column="pkzk" jdbcType="NUMERIC" />
+		<result property= "jkzk" column="jkzk" jdbcType="NUMERIC" />
+		<result property= "zcjfbl" column="zcjfbl" jdbcType="NUMERIC" />
+		<result property= "cxjfbl" column="cxjfbl" jdbcType="NUMERIC" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		item_no,
+		item_subno,
+		item_name,
+		goodstype,
+		salerate,
+		item_subname,
+		class_no,
+		product_area,
+		sale_price,
+		status,
+		display_flag,
+		sup_no,
+		changepx_flag,
+		counter_no,
+		promtype,
+		pkzk,
+		jkzk,
+		zcjfbl,
+		cxjfbl
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       	<if test="itemSubno != null"> AND item_subno like '%${itemSubno}%' </if>
+       	<if test="itemName != null"> AND item_name like '%${itemName}%' </if>
+       	<if test="goodstype != null"> AND goodstype like '%${goodstype}%' </if>
+       	<if test="salerate != null"> AND salerate like '%${salerate}%' </if>
+       	<if test="itemSubname != null"> AND item_subname like '%${itemSubname}%' </if>
+       	<if test="classNo != null"> AND class_no like '%${classNo}%' </if>
+       	<if test="productArea != null"> AND product_area like '%${productArea}%' </if>
+       	<if test="salePrice != null"> AND sale_price like '%${salePrice}%' </if>
+       	<if test="status != null"> AND status like '%${status}%' </if>
+       	<if test="displayFlag != null"> AND display_flag like '%${displayFlag}%' </if>
+       	<if test="supNo != null"> AND sup_no like '%${supNo}%' </if>
+       	<if test="changepxFlag != null"> AND changepx_flag like '%${changepxFlag}%' </if>
+       	<if test="counterNo != null"> AND counter_no like '%${counterNo}%' </if>
+       	<if test="promtype != null"> AND promtype like '%${promtype}%' </if>
+       	<if test="pkzk != null"> AND pkzk like '%${pkzk}%' </if>
+       	<if test="jkzk != null"> AND jkzk like '%${jkzk}%' </if>
+       	<if test="zcjfbl != null"> AND zcjfbl like '%${zcjfbl}%' </if>
+       	<if test="cxjfbl != null"> AND cxjfbl like '%${cxjfbl}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="itemNo != null"> AND item_no = #{itemNo}</if>
+       	<if test="itemSubno != null"> AND item_subno = #{itemSubno}</if>
+       	<if test="itemName != null"> AND item_name = #{itemName}</if>
+       	<if test="goodstype != null"> AND goodstype = #{goodstype}</if>
+       	<if test="salerate != null"> AND salerate = #{salerate}</if>
+       	<if test="itemSubname != null"> AND item_subname = #{itemSubname}</if>
+       	<if test="classNo != null"> AND class_no = #{classNo}</if>
+       	<if test="productArea != null"> AND product_area = #{productArea}</if>
+       	<if test="salePrice != null"> AND sale_price = #{salePrice}</if>
+       	<if test="status != null"> AND status = #{status}</if>
+       	<if test="displayFlag != null"> AND display_flag = #{displayFlag}</if>
+       	<if test="supNo != null"> AND sup_no = #{supNo}</if>
+       	<if test="changepxFlag != null"> AND changepx_flag = #{changepxFlag}</if>
+       	<if test="counterNo != null"> AND counter_no = #{counterNo}</if>
+       	<if test="promtype != null"> AND promtype = #{promtype}</if>
+       	<if test="pkzk != null"> AND pkzk = #{pkzk}</if>
+       	<if test="jkzk != null"> AND jkzk = #{jkzk}</if>
+       	<if test="zcjfbl != null"> AND zcjfbl = #{zcjfbl}</if>
+       	<if test="cxjfbl != null"> AND cxjfbl = #{cxjfbl}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.Item">
+		INSERT INTO item
+		(<include refid="columns"/>)
+		VALUES(
+		#{itemNo,jdbcType=VARCHAR},
+		#{itemSubno,jdbcType=VARCHAR},
+		#{itemName,jdbcType=VARCHAR},
+		#{goodstype,jdbcType=VARCHAR},
+		#{salerate,jdbcType=NUMERIC},
+		#{itemSubname,jdbcType=VARCHAR},
+		#{classNo,jdbcType=VARCHAR},
+		#{productArea,jdbcType=VARCHAR},
+		#{salePrice,jdbcType=NUMERIC},
+		#{status,jdbcType=VARCHAR},
+		#{displayFlag,jdbcType=VARCHAR},
+		#{supNo,jdbcType=VARCHAR},
+		#{changepxFlag,jdbcType=VARCHAR},
+		#{counterNo,jdbcType=VARCHAR},
+		#{promtype,jdbcType=VARCHAR},
+		#{pkzk,jdbcType=NUMERIC},
+		#{jkzk,jdbcType=NUMERIC},
+		#{zcjfbl,jdbcType=NUMERIC},
+		#{cxjfbl,jdbcType=NUMERIC}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM item 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.Item">
+		UPDATE item SET
+               item_no=#{itemNo,jdbcType=VARCHAR},
+               item_subno=#{itemSubno,jdbcType=VARCHAR},
+               item_name=#{itemName,jdbcType=VARCHAR},
+               goodstype=#{goodstype,jdbcType=VARCHAR},
+               salerate=#{salerate,jdbcType=NUMERIC},
+               item_subname=#{itemSubname,jdbcType=VARCHAR},
+               class_no=#{classNo,jdbcType=VARCHAR},
+               product_area=#{productArea,jdbcType=VARCHAR},
+               sale_price=#{salePrice,jdbcType=NUMERIC},
+               status=#{status,jdbcType=VARCHAR},
+               display_flag=#{displayFlag,jdbcType=VARCHAR},
+               sup_no=#{supNo,jdbcType=VARCHAR},
+               changepx_flag=#{changepxFlag,jdbcType=VARCHAR},
+               counter_no=#{counterNo,jdbcType=VARCHAR},
+               promtype=#{promtype,jdbcType=VARCHAR},
+               pkzk=#{pkzk,jdbcType=NUMERIC},
+               jkzk=#{jkzk,jdbcType=NUMERIC},
+               zcjfbl=#{zcjfbl,jdbcType=NUMERIC},
+               cxjfbl=#{cxjfbl,jdbcType=NUMERIC}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="Item">
+		SELECT <include refid="columns"/>
+		FROM item
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="Item">
+		SELECT <include refid="columns"/>
+		FROM item   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="Item">
+		SELECT <include refid="columns"/>
+		FROM item   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="Item">
+		SELECT <include refid="columns"/>
+		FROM item   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="Item">
+		SELECT <include refid="columns"/>
+		FROM item   
+		<include refid="oneWhere" />
+	</select>
+
+	<select id="queryPromName" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select b.promname,a.display_flag,b.promflag from item a,t_promtype b
+		where a.promtype = b.promtype  and a.item_no = #{itemNo}
+	</select>
+</mapper>	

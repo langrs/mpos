@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TProduce">
+	<resultMap id="TProduce" type="com.site.entity.TProduce">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="itemNo" column="item_no" 
+				jdbcType="VARCHAR" />
+			<result property="itemEname" column="item_ename" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="itemSubno" column="item_subno" 
+				jdbcType="VARCHAR" />
+			<result property="storeId" column="store_id" 
+				jdbcType="VARCHAR" />
+			<result property="companyId" column="company_id" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="categoryId" column="category_id" 
+				jdbcType="VARCHAR" />
+			<result property="brandId" column="brand_id" 
+				jdbcType="VARCHAR" />
+			<result property="model" column="model" 
+				jdbcType="VARCHAR" />
+			<result property="itemColor" column="item_color" 
+				jdbcType="VARCHAR" />
+			<result property="itemSize" column="item_size" 
+				jdbcType="VARCHAR" />
+			<result property="produceArea" column="produce_area" 
+				jdbcType="VARCHAR" />
+			<result property="itemUnit" column="item_unit" 
+				jdbcType="VARCHAR" />
+			<result property="salePrice" column="sale_price" 
+				jdbcType="NUMERIC" />
+			<result property="isPrice" column="is_price" 
+				jdbcType="VARCHAR" />
+			<result property="itemAttr" column="item_attr" 
+				jdbcType="VARCHAR" />
+			<result property="state" column="state" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+					<association property="storeIdObj" column="store_id" select="com.site.entity.TStore.get"></association>
+					<association property="companyIdObj" column="company_id" select="com.site.entity.TCompany.get"></association>
+					<association property="shopIdObj" column="shop_id" select="com.site.entity.TShop.get"></association>
+					<association property="categoryIdObj" column="category_id" select="com.site.entity.TCategory.get"></association>
+					<association property="brandIdObj" column="brand_id" select="com.site.entity.TBrand.get"></association>
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		item_no,
+		item_ename,
+		name,
+		item_subno,
+		store_id,
+		company_id,
+		shop_id,
+		category_id,
+		brand_id,
+		model,
+		item_color,
+		item_size,
+		produce_area,
+		item_unit,
+		sale_price,
+		is_price,
+		item_attr,
+		state,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="itemNo != null"> AND item_no like '%${itemNo}%' </if>
+       <if test="itemEname != null"> AND item_ename like '%${itemEname}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+       <if test="itemSubno != null"> AND item_subno like '%${itemSubno}%' </if>
+       <if test="storeId != null"> AND store_id like '%${storeId}%' </if>
+       <if test="companyId != null"> AND company_id like '%${companyId}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="categoryId != null"> AND category_id like '%${categoryId}%' </if>
+       <if test="brandId != null"> AND brand_id like '%${brandId}%' </if>
+       <if test="model != null"> AND model like '%${model}%' </if>
+       <if test="itemColor != null"> AND item_color like '%${itemColor}%' </if>
+       <if test="itemSize != null"> AND item_size like '%${itemSize}%' </if>
+       <if test="produceArea != null"> AND produce_area like '%${produceArea}%' </if>
+       <if test="itemUnit != null"> AND item_unit like '%${itemUnit}%' </if>
+                   <if test="salePrice != null"> AND sale_price =#{salePrice} </if>
+       <if test="isPrice != null"> AND is_price like '%${isPrice}%' </if>
+       <if test="itemAttr != null"> AND item_attr like '%${itemAttr}%' </if>
+       <if test="state != null"> AND state like '%${state}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="itemNo != null"> AND item_no =#{itemNo} </if>
+			<if test="itemEname != null"> AND item_ename =#{itemEname} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="itemSubno != null"> AND item_subno =#{itemSubno} </if>
+			<if test="storeId != null"> AND store_id =#{storeId} </if>
+			<if test="companyId != null"> AND company_id =#{companyId} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="categoryId != null"> AND category_id =#{categoryId} </if>
+			<if test="brandId != null"> AND brand_id =#{brandId} </if>
+			<if test="model != null"> AND model =#{model} </if>
+			<if test="itemColor != null"> AND item_color =#{itemColor} </if>
+			<if test="itemSize != null"> AND item_size =#{itemSize} </if>
+			<if test="produceArea != null"> AND produce_area =#{produceArea} </if>
+			<if test="itemUnit != null"> AND item_unit =#{itemUnit} </if>
+			<if test="salePrice != null"> AND sale_price =#{salePrice} </if>
+			<if test="isPrice != null"> AND is_price =#{isPrice} </if>
+			<if test="itemAttr != null"> AND item_attr =#{itemAttr} </if>
+			<if test="state != null"> AND state =#{state} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TProduce">
+		INSERT INTO t_produce
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{itemNo,jdbcType=VARCHAR},#{itemEname,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{itemSubno,jdbcType=VARCHAR},#{storeId,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{categoryId,jdbcType=VARCHAR},#{brandId,jdbcType=VARCHAR},#{model,jdbcType=VARCHAR},#{itemColor,jdbcType=VARCHAR},#{itemSize,jdbcType=VARCHAR},#{produceArea,jdbcType=VARCHAR},#{itemUnit,jdbcType=VARCHAR},#{salePrice,jdbcType=NUMERIC},#{isPrice,jdbcType=VARCHAR},#{itemAttr,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_produce 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TProduce">
+		UPDATE t_produce SET
+                     item_no=#{itemNo,jdbcType=VARCHAR},
+                     item_ename=#{itemEname,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     item_subno=#{itemSubno,jdbcType=VARCHAR},
+                     store_id=#{storeId,jdbcType=VARCHAR},
+                     company_id=#{companyId,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     category_id=#{categoryId,jdbcType=VARCHAR},
+                     brand_id=#{brandId,jdbcType=VARCHAR},
+                     model=#{model,jdbcType=VARCHAR},
+                     item_color=#{itemColor,jdbcType=VARCHAR},
+                     item_size=#{itemSize,jdbcType=VARCHAR},
+                     produce_area=#{produceArea,jdbcType=VARCHAR},
+                     item_unit=#{itemUnit,jdbcType=VARCHAR},
+                     sale_price=#{salePrice,jdbcType=NUMERIC},
+                     is_price=#{isPrice,jdbcType=VARCHAR},
+                     item_attr=#{itemAttr,jdbcType=VARCHAR},
+                     state=#{state,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TProduce">
+		SELECT <include refid="columns"/>
+		FROM t_produce
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TProduce">
+		SELECT <include refid="columns"/>
+		FROM t_produce   
+		<include refid="dynamicWhere" />
+	</select>
+
+
+	<select id="search" resultMap="TProduce">
+		SELECT <include refid="columns"/>
+		FROM t_produce   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TProduce">
+		SELECT <include refid="columns"/>
+		FROM t_produce   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TProduce">
+		SELECT <include refid="columns"/>
+		FROM t_produce   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

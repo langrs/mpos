@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TItemBrand">
+	<resultMap id="TItemBrand" type="com.site.entity.TItemBrand">
+		<result property= "itemBrand" column="item_brand" jdbcType="VARCHAR" />
+		<result property= "brandName" column="brand_name" jdbcType="VARCHAR" />
+		<result property= "brandMemo" column="brand_memo" jdbcType="VARCHAR" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "brandPy" column="brand_py" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		item_brand,
+		brand_name,
+		brand_memo,
+		IsSysFlag,
+		update_flow,
+		update_time,
+		update_branch,
+		brand_py,
+		trans_upflag
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="itemBrand != null"> AND item_brand like '%${itemBrand}%' </if>
+       	<if test="brandName != null"> AND brand_name like '%${brandName}%' </if>
+       	<if test="brandMemo != null"> AND brand_memo like '%${brandMemo}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="brandPy != null"> AND brand_py like '%${brandPy}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="itemBrand != null"> AND item_brand = #{itemBrand}</if>
+       	<if test="brandName != null"> AND brand_name = #{brandName}</if>
+       	<if test="brandMemo != null"> AND brand_memo = #{brandMemo}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="brandPy != null"> AND brand_py = #{brandPy}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TItemBrand">
+		INSERT INTO t_item_brand
+		(<include refid="columns"/>)
+		VALUES(
+		#{itemBrand,jdbcType=VARCHAR},
+		#{brandName,jdbcType=VARCHAR},
+		#{brandMemo,jdbcType=VARCHAR},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{brandPy,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_item_brand 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TItemBrand">
+		UPDATE t_item_brand SET
+               item_brand=#{itemBrand,jdbcType=VARCHAR},
+               brand_name=#{brandName,jdbcType=VARCHAR},
+               brand_memo=#{brandMemo,jdbcType=VARCHAR},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               brand_py=#{brandPy,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TItemBrand">
+		SELECT <include refid="columns"/>
+		FROM t_item_brand
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TItemBrand">
+		SELECT <include refid="columns"/>
+		FROM t_item_brand   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TItemBrand">
+		SELECT <include refid="columns"/>
+		FROM t_item_brand   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TItemBrand">
+		SELECT <include refid="columns"/>
+		FROM t_item_brand   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TItemBrand">
+		SELECT <include refid="columns"/>
+		FROM t_item_brand   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

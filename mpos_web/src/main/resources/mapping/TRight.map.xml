@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TRight">
+	<resultMap id="TRight" type="com.site.entity.TRight">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="parentId" column="parent_id" 
+				jdbcType="VARCHAR" />
+			<result property="nodeId" column="node_id" 
+				jdbcType="VARCHAR" />
+			<result property="name" column="name" 
+				jdbcType="VARCHAR" />
+			<result property="nodeLevel" column="node_level" 
+				jdbcType="NUMERIC" />
+			<result property="isLastNote" column="is_last_note" 
+				jdbcType="VARCHAR" />
+			<result property="nodeAttr" column="node_attr" 
+				jdbcType="VARCHAR" />
+			<result property="nodeTxt" column="node_txt" 
+				jdbcType="VARCHAR" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		parent_id,
+		node_id,
+		name,
+		node_level,
+		is_last_note,
+		node_attr,
+		node_txt,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="parentId != null"> AND parent_id like '%${parentId}%' </if>
+       <if test="nodeId != null"> AND node_id like '%${nodeId}%' </if>
+       <if test="name != null"> AND name like '%${name}%' </if>
+                   <if test="nodeLevel != null"> AND node_level =#{nodeLevel} </if>
+       <if test="isLastNote != null"> AND is_last_note like '%${isLastNote}%' </if>
+       <if test="nodeAttr != null"> AND node_attr like '%${nodeAttr}%' </if>
+       <if test="nodeTxt != null"> AND node_txt like '%${nodeTxt}%' </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="parentId != null"> AND parent_id =#{parentId} </if>
+			<if test="nodeId != null"> AND node_id =#{nodeId} </if>
+			<if test="name != null"> AND name =#{name} </if>
+			<if test="nodeLevel != null"> AND node_level =#{nodeLevel} </if>
+			<if test="isLastNote != null"> AND is_last_note =#{isLastNote} </if>
+			<if test="nodeAttr != null"> AND node_attr =#{nodeAttr} </if>
+			<if test="nodeTxt != null"> AND node_txt =#{nodeTxt} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TRight">
+		INSERT INTO t_right
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{parentId,jdbcType=VARCHAR},#{nodeId,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{nodeLevel,jdbcType=NUMERIC},#{isLastNote,jdbcType=VARCHAR},#{nodeAttr,jdbcType=VARCHAR},#{nodeTxt,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_right 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TRight">
+		UPDATE t_right SET
+                     parent_id=#{parentId,jdbcType=VARCHAR},
+                     node_id=#{nodeId,jdbcType=VARCHAR},
+                     name=#{name,jdbcType=VARCHAR},
+                     node_level=#{nodeLevel,jdbcType=NUMERIC},
+                     is_last_note=#{isLastNote,jdbcType=VARCHAR},
+                     node_attr=#{nodeAttr,jdbcType=VARCHAR},
+                     node_txt=#{nodeTxt,jdbcType=VARCHAR},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TRight">
+		SELECT <include refid="columns"/>
+		FROM t_right
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TRight">
+		SELECT <include refid="columns"/>
+		FROM t_right   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TRight">
+		SELECT <include refid="columns"/>
+		FROM t_right   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TRight">
+		SELECT <include refid="columns"/>
+		FROM t_right   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TRight">
+		SELECT <include refid="columns"/>
+		FROM t_right   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TPosSalePaymentFore">
+	<resultMap id="TPosSalePaymentFore" type="com.site.entity.TPosSalePaymentFore">
+		<result property= "sheetNo" column="sheet_no" jdbcType="VARCHAR" />
+		<result property= "sheetSort" column="sheet_sort" jdbcType="VARCHAR" />
+		<result property= "paymentNo" column="payment_no" jdbcType="VARCHAR" />
+		<result property= "paymentAmt" column="payment_amt" jdbcType="NUMERIC" />
+		<result property= "isOrder" column="is_order" jdbcType="VARCHAR" />
+		<result property= "coinNo" column="coin_no" jdbcType="VARCHAR" />
+		<result property= "coinRate" column="coin_rate" jdbcType="NUMERIC" />
+		<result property= "vipNo" column="vip_no" jdbcType="VARCHAR" />
+		<result property= "cardNo" column="card_no" jdbcType="VARCHAR" />
+		<result property= "bankType" column="bank_type" jdbcType="VARCHAR" />
+		<result property= "bankNo" column="bank_no" jdbcType="VARCHAR" />
+		<result property= "otherNo" column="other_no" jdbcType="VARCHAR" />
+		<result property= "paymentMemo" column="payment_memo" jdbcType="VARCHAR" />
+		<result property= "parAmt" column="par_amt" jdbcType="NUMERIC" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		sheet_no,
+		sheet_sort,
+		payment_no,
+		payment_amt,
+		is_order,
+		coin_no,
+		coin_rate,
+		vip_no,
+		card_no,
+		bank_type,
+		bank_no,
+		other_no,
+		payment_memo,
+		par_amt
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no like '%${sheetNo}%' </if>
+       	<if test="sheetSort != null"> AND sheet_sort like '%${sheetSort}%' </if>
+       	<if test="paymentNo != null"> AND payment_no like '%${paymentNo}%' </if>
+       	<if test="paymentAmt != null"> AND payment_amt like '%${paymentAmt}%' </if>
+       	<if test="isOrder != null"> AND is_order like '%${isOrder}%' </if>
+       	<if test="coinNo != null"> AND coin_no like '%${coinNo}%' </if>
+       	<if test="coinRate != null"> AND coin_rate like '%${coinRate}%' </if>
+       	<if test="vipNo != null"> AND vip_no like '%${vipNo}%' </if>
+       	<if test="cardNo != null"> AND card_no like '%${cardNo}%' </if>
+       	<if test="bankType != null"> AND bank_type like '%${bankType}%' </if>
+       	<if test="bankNo != null"> AND bank_no like '%${bankNo}%' </if>
+       	<if test="otherNo != null"> AND other_no like '%${otherNo}%' </if>
+       	<if test="paymentMemo != null"> AND payment_memo like '%${paymentMemo}%' </if>
+       	<if test="parAmt != null"> AND par_amt like '%${parAmt}%' </if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="sheetNo != null"> AND sheet_no = #{sheetNo}</if>
+       	<if test="sheetSort != null"> AND sheet_sort = #{sheetSort}</if>
+       	<if test="paymentNo != null"> AND payment_no = #{paymentNo}</if>
+       	<if test="paymentAmt != null"> AND payment_amt = #{paymentAmt}</if>
+       	<if test="isOrder != null"> AND is_order = #{isOrder}</if>
+       	<if test="coinNo != null"> AND coin_no = #{coinNo}</if>
+       	<if test="coinRate != null"> AND coin_rate = #{coinRate}</if>
+       	<if test="vipNo != null"> AND vip_no = #{vipNo}</if>
+       	<if test="cardNo != null"> AND card_no = #{cardNo}</if>
+       	<if test="bankType != null"> AND bank_type = #{bankType}</if>
+       	<if test="bankNo != null"> AND bank_no = #{bankNo}</if>
+       	<if test="otherNo != null"> AND other_no = #{otherNo}</if>
+       	<if test="paymentMemo != null"> AND payment_memo = #{paymentMemo}</if>
+       	<if test="parAmt != null"> AND par_amt = #{parAmt}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TPosSalePaymentFore">
+		INSERT INTO t_pos_sale_payment_fore
+		(<include refid="columns"/>)
+		VALUES(
+		#{sheetNo,jdbcType=VARCHAR},
+		#{sheetSort,jdbcType=VARCHAR},
+		#{paymentNo,jdbcType=VARCHAR},
+		#{paymentAmt,jdbcType=NUMERIC},
+		#{isOrder,jdbcType=VARCHAR},
+		#{coinNo,jdbcType=VARCHAR},
+		#{coinRate,jdbcType=NUMERIC},
+		#{vipNo,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR},
+		#{bankType,jdbcType=VARCHAR},
+		#{bankNo,jdbcType=VARCHAR},
+		#{otherNo,jdbcType=VARCHAR},
+		#{paymentMemo,jdbcType=VARCHAR},
+		#{parAmt,jdbcType=NUMERIC}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_pos_sale_payment_fore 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TPosSalePaymentFore">
+		UPDATE t_pos_sale_payment_fore SET
+               sheet_no=#{sheetNo,jdbcType=VARCHAR},
+               sheet_sort=#{sheetSort,jdbcType=VARCHAR},
+               payment_no=#{paymentNo,jdbcType=VARCHAR},
+               payment_amt=#{paymentAmt,jdbcType=NUMERIC},
+               is_order=#{isOrder,jdbcType=VARCHAR},
+               coin_no=#{coinNo,jdbcType=VARCHAR},
+               coin_rate=#{coinRate,jdbcType=NUMERIC},
+               vip_no=#{vipNo,jdbcType=VARCHAR},
+               card_no=#{cardNo,jdbcType=VARCHAR},
+               bank_type=#{bankType,jdbcType=VARCHAR},
+               bank_no=#{bankNo,jdbcType=VARCHAR},
+               other_no=#{otherNo,jdbcType=VARCHAR},
+               payment_memo=#{paymentMemo,jdbcType=VARCHAR},
+               par_amt=#{parAmt,jdbcType=NUMERIC}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TPosSalePaymentFore">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_payment_fore
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TPosSalePaymentFore">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_payment_fore   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TPosSalePaymentFore">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_payment_fore   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TPosSalePaymentFore">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_payment_fore   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TPosSalePaymentFore">
+		SELECT <include refid="columns"/>
+		FROM t_pos_sale_payment_fore   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	

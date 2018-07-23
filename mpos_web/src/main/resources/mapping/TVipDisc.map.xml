@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipDisc">
+	<resultMap id="TVipDisc" type="com.site.entity.TVipDisc">
+			<id property="id" column="id" jdbcType="VARCHAR" />
+			<result property="vipClass" column="vip_class" 
+				jdbcType="VARCHAR" />
+			<result property="shopId" column="shop_id" 
+				jdbcType="VARCHAR" />
+			<result property="policyType" column="policy_type" 
+				jdbcType="VARCHAR" />
+			<result property="policyNo" column="policy_no" 
+				jdbcType="VARCHAR" />
+			<result property="policyId" column="policy_id" 
+				jdbcType="VARCHAR" />
+			<result property="disccount" column="disccount" 
+				jdbcType="NUMERIC" />
+			<result property="createBy" column="create_by" 
+				jdbcType="VARCHAR" />
+			<result property="createTime" column="create_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="updateBy" column="update_by" 
+				jdbcType="VARCHAR" />
+			<result property="updateTime" column="update_time" 
+				jdbcType="TIMESTAMP" />
+			<result property="isFlag" column="is_flag" 
+				jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="whereId">
+                     id=#{id}
+	</sql>
+	<sql id="columns">
+		id,
+		vip_class,
+		shop_id,
+		policy_type,
+		policy_no,
+		policy_id,
+		disccount,
+		create_by,
+		create_time,
+		update_by,
+		update_time,
+		is_flag
+	</sql>
+        <sql id="dynamicWhere">
+		<where>
+       <if test="id != null"> AND id like '%${id}%' </if>
+       <if test="vipClass != null"> AND vip_class like '%${vipClass}%' </if>
+       <if test="shopId != null"> AND shop_id like '%${shopId}%' </if>
+       <if test="policyType != null"> AND policy_type like '%${policyType}%' </if>
+       <if test="policyNo != null"> AND policy_no like '%${policyNo}%' </if>
+       <if test="policyId != null"> AND policy_id like '%${policyId}%' </if>
+                   <if test="disccount != null"> AND disccount =#{disccount} </if>
+       <if test="createBy != null"> AND create_by like '%${createBy}%' </if>
+                   <if test="createTime != null"> AND create_time =#{createTime} </if>
+       <if test="updateBy != null"> AND update_by like '%${updateBy}%' </if>
+                   <if test="updateTime != null"> AND update_time =#{updateTime} </if>
+       <if test="isFlag != null"> AND is_flag like '%${isFlag}%' </if>
+		</where>
+	</sql>
+
+
+	 <sql id="oneWhere">
+		<where>
+			<if test="id != null"> AND id =#{id} </if>
+			<if test="vipClass != null"> AND vip_class =#{vipClass} </if>
+			<if test="shopId != null"> AND shop_id =#{shopId} </if>
+			<if test="policyType != null"> AND policy_type =#{policyType} </if>
+			<if test="policyNo != null"> AND policy_no =#{policyNo} </if>
+			<if test="policyId != null"> AND policy_id =#{policyId} </if>
+			<if test="disccount != null"> AND disccount =#{disccount} </if>
+			<if test="createBy != null"> AND create_by =#{createBy} </if>
+			<if test="createTime != null"> AND create_time =#{createTime} </if>
+			<if test="updateBy != null"> AND update_by =#{updateBy} </if>
+			<if test="updateTime != null"> AND update_time =#{updateTime} </if>
+			<if test="isFlag != null"> AND is_flag =#{isFlag} </if>
+		</where>
+	</sql>
+
+	<insert id="create" parameterType="com.site.entity.TVipDisc">
+		INSERT INTO t_vip_disc
+		(<include refid="columns"/>)
+		VALUES
+		(#{id,jdbcType=VARCHAR},#{vipClass,jdbcType=VARCHAR},#{shopId,jdbcType=VARCHAR},#{policyType,jdbcType=VARCHAR},#{policyNo,jdbcType=VARCHAR},#{policyId,jdbcType=VARCHAR},#{disccount,jdbcType=NUMERIC},#{createBy,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{isFlag,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_disc 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipDisc">
+		UPDATE t_vip_disc SET
+                     vip_class=#{vipClass,jdbcType=VARCHAR},
+                     shop_id=#{shopId,jdbcType=VARCHAR},
+                     policy_type=#{policyType,jdbcType=VARCHAR},
+                     policy_no=#{policyNo,jdbcType=VARCHAR},
+                     policy_id=#{policyId,jdbcType=VARCHAR},
+                     disccount=#{disccount,jdbcType=NUMERIC},
+                     create_by=#{createBy,jdbcType=VARCHAR},
+                     create_time=#{createTime,jdbcType=TIMESTAMP},
+                     update_by=#{updateBy,jdbcType=VARCHAR},
+                     update_time=#{updateTime,jdbcType=TIMESTAMP},
+                     is_flag=#{isFlag,jdbcType=VARCHAR}
+		WHERE
+		<include refid="whereId"/>
+		
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipDisc">
+		SELECT <include refid="columns"/>
+		FROM t_vip_disc
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipDisc">
+		SELECT <include refid="columns"/>
+		FROM t_vip_disc   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipDisc">
+		SELECT <include refid="columns"/>
+		FROM t_vip_disc   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipDisc">
+		SELECT <include refid="columns"/>
+		FROM t_vip_disc   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipDisc">
+		SELECT <include refid="columns"/>
+		FROM t_vip_disc   
+		<include refid="oneWhere" />
+	</select>
+</mapper>

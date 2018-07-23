@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.entity.TVipTypeInfo">
+	<resultMap id="TVipTypeInfo" type="com.site.entity.TVipTypeInfo">
+		<result property= "viptypeNo" column="viptype_no" jdbcType="VARCHAR" />
+		<result property= "discountNo" column="discount_no" jdbcType="VARCHAR" />
+		<result property= "saveNo" column="save_no" jdbcType="VARCHAR" />
+		<result property= "integralNo" column="integral_no" jdbcType="VARCHAR" />
+		<result property= "viptypeName" column="viptype_name" jdbcType="VARCHAR" />
+		<result property= "priceType" column="price_type" jdbcType="VARCHAR" />
+		<result property= "birthdayDiscountNo" column="birthday_discount_no" jdbcType="VARCHAR" />
+		<result property= "viptypeIsIntegral" column="viptype_IsIntegral" jdbcType="VARCHAR" />
+		<result property= "viptypeIsSave" column="viptype_IsSave" jdbcType="VARCHAR" />
+		<result property= "viptypeValidValue" column="viptype_Valid_value" jdbcType="VARCHAR" />
+		<result property= "dateUnit" column="date_unit" jdbcType="VARCHAR" />
+		<result property= "viptypeInitAmt" column="viptype_init_amt" jdbcType="NUMERIC" />
+		<result property= "vipTypeLeastAmt" column="vipType_least_amt" jdbcType="NUMERIC" />
+		<result property= "IsSysFlag" column="IsSysFlag" jdbcType="VARCHAR" />
+		<result property= "viptypeFyAmt" column="viptype_fy_amt" jdbcType="NUMERIC" />
+		<result property= "viptypeReletAmt" column="viptype_relet_amt" jdbcType="NUMERIC" />
+		<result property= "createUser" column="create_user" jdbcType="VARCHAR" />
+		<result property= "createDate" column="create_date" jdbcType="TIMESTAMP" />
+		<result property= "modifyUser" column="modify_user" jdbcType="VARCHAR" />
+		<result property= "modifyDate" column="modify_date" jdbcType="TIMESTAMP" />
+		<result property= "updateFlow" column="update_flow" jdbcType="NUMERIC" />
+		<result property= "pfIsIntegral" column="pf_IsIntegral" jdbcType="VARCHAR" />
+		<result property= "pfIntegralNo" column="pf_integral_no" jdbcType="VARCHAR" />
+		<result property= "updateTime" column="update_time" jdbcType="TIMESTAMP" />
+		<result property= "updateBranch" column="update_branch" jdbcType="VARCHAR" />
+		<result property= "paysaveIsDiscount" column="paysave_IsDiscount" jdbcType="VARCHAR" />
+		<result property= "level1IntegralNo" column="level1_integral_no" jdbcType="VARCHAR" />
+		<result property= "level2IntegralNo" column="level2_integral_no" jdbcType="VARCHAR" />
+		<result property= "level3IntegralNo" column="level3_integral_no" jdbcType="VARCHAR" />
+		<result property= "pfIntroHaveIntegral" column="pf_intro_have_integral" jdbcType="VARCHAR" />
+		<result property= "transUpflag" column="trans_upflag" jdbcType="VARCHAR" />
+		<result property= "vipHavePwd" column="vip_have_pwd" jdbcType="VARCHAR" />
+		<result property= "limitAmt" column="limit_amt" jdbcType="NUMERIC" />
+		<result property= "limitDateBegin" column="limit_date_begin" jdbcType="TIMESTAMP" />
+		<result property= "limitDateEnd" column="limit_date_end" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="whereId">
+    	id=#{id}
+	</sql>
+	
+	<sql id="columns">
+		viptype_no,
+		discount_no,
+		save_no,
+		integral_no,
+		viptype_name,
+		price_type,
+		birthday_discount_no,
+		viptype_IsIntegral,
+		viptype_IsSave,
+		viptype_Valid_value,
+		date_unit,
+		viptype_init_amt,
+		vipType_least_amt,
+		IsSysFlag,
+		viptype_fy_amt,
+		viptype_relet_amt,
+		create_user,
+		create_date,
+		modify_user,
+		modify_date,
+		update_flow,
+		pf_IsIntegral,
+		pf_integral_no,
+		update_time,
+		update_branch,
+		paysave_IsDiscount,
+		level1_integral_no,
+		level2_integral_no,
+		level3_integral_no,
+		pf_intro_have_integral,
+		trans_upflag,
+		vip_have_pwd,
+		limit_amt,
+		limit_date_begin,
+		limit_date_end
+	</sql>	
+		
+	<sql id="dynamicWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no like '%${viptypeNo}%' </if>
+       	<if test="discountNo != null"> AND discount_no like '%${discountNo}%' </if>
+       	<if test="saveNo != null"> AND save_no like '%${saveNo}%' </if>
+       	<if test="integralNo != null"> AND integral_no like '%${integralNo}%' </if>
+       	<if test="viptypeName != null"> AND viptype_name like '%${viptypeName}%' </if>
+       	<if test="priceType != null"> AND price_type like '%${priceType}%' </if>
+       	<if test="birthdayDiscountNo != null"> AND birthday_discount_no like '%${birthdayDiscountNo}%' </if>
+       	<if test="viptypeIsIntegral != null"> AND viptype_IsIntegral like '%${viptypeIsIntegral}%' </if>
+       	<if test="viptypeIsSave != null"> AND viptype_IsSave like '%${viptypeIsSave}%' </if>
+       	<if test="viptypeValidValue != null"> AND viptype_Valid_value like '%${viptypeValidValue}%' </if>
+       	<if test="dateUnit != null"> AND date_unit like '%${dateUnit}%' </if>
+       	<if test="viptypeInitAmt != null"> AND viptype_init_amt like '%${viptypeInitAmt}%' </if>
+       	<if test="vipTypeLeastAmt != null"> AND vipType_least_amt like '%${vipTypeLeastAmt}%' </if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag like '%${IsSysFlag}%' </if>
+       	<if test="viptypeFyAmt != null"> AND viptype_fy_amt like '%${viptypeFyAmt}%' </if>
+       	<if test="viptypeReletAmt != null"> AND viptype_relet_amt like '%${viptypeReletAmt}%' </if>
+       	<if test="createUser != null"> AND create_user like '%${createUser}%' </if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user like '%${modifyUser}%' </if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow like '%${updateFlow}%' </if>
+       	<if test="pfIsIntegral != null"> AND pf_IsIntegral like '%${pfIsIntegral}%' </if>
+       	<if test="pfIntegralNo != null"> AND pf_integral_no like '%${pfIntegralNo}%' </if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch like '%${updateBranch}%' </if>
+       	<if test="paysaveIsDiscount != null"> AND paysave_IsDiscount like '%${paysaveIsDiscount}%' </if>
+       	<if test="level1IntegralNo != null"> AND level1_integral_no like '%${level1IntegralNo}%' </if>
+       	<if test="level2IntegralNo != null"> AND level2_integral_no like '%${level2IntegralNo}%' </if>
+       	<if test="level3IntegralNo != null"> AND level3_integral_no like '%${level3IntegralNo}%' </if>
+       	<if test="pfIntroHaveIntegral != null"> AND pf_intro_have_integral like '%${pfIntroHaveIntegral}%' </if>
+       	<if test="transUpflag != null"> AND trans_upflag like '%${transUpflag}%' </if>
+       	<if test="vipHavePwd != null"> AND vip_have_pwd like '%${vipHavePwd}%' </if>
+       	<if test="limitAmt != null"> AND limit_amt like '%${limitAmt}%' </if>
+       	<if test="limitDateBegin != null"> AND limit_date_begin = #{limitDateBegin}</if>
+       	<if test="limitDateEnd != null"> AND limit_date_end = #{limitDateEnd}</if>
+		</where>
+	</sql>
+	
+	<sql id="oneWhere">
+		<where>
+       	<if test="viptypeNo != null"> AND viptype_no = #{viptypeNo}</if>
+       	<if test="discountNo != null"> AND discount_no = #{discountNo}</if>
+       	<if test="saveNo != null"> AND save_no = #{saveNo}</if>
+       	<if test="integralNo != null"> AND integral_no = #{integralNo}</if>
+       	<if test="viptypeName != null"> AND viptype_name = #{viptypeName}</if>
+       	<if test="priceType != null"> AND price_type = #{priceType}</if>
+       	<if test="birthdayDiscountNo != null"> AND birthday_discount_no = #{birthdayDiscountNo}</if>
+       	<if test="viptypeIsIntegral != null"> AND viptype_IsIntegral = #{viptypeIsIntegral}</if>
+       	<if test="viptypeIsSave != null"> AND viptype_IsSave = #{viptypeIsSave}</if>
+       	<if test="viptypeValidValue != null"> AND viptype_Valid_value = #{viptypeValidValue}</if>
+       	<if test="dateUnit != null"> AND date_unit = #{dateUnit}</if>
+       	<if test="viptypeInitAmt != null"> AND viptype_init_amt = #{viptypeInitAmt}</if>
+       	<if test="vipTypeLeastAmt != null"> AND vipType_least_amt = #{vipTypeLeastAmt}</if>
+       	<if test="IsSysFlag != null"> AND IsSysFlag = #{IsSysFlag}</if>
+       	<if test="viptypeFyAmt != null"> AND viptype_fy_amt = #{viptypeFyAmt}</if>
+       	<if test="viptypeReletAmt != null"> AND viptype_relet_amt = #{viptypeReletAmt}</if>
+       	<if test="createUser != null"> AND create_user = #{createUser}</if>
+       	<if test="createDate != null"> AND create_date = #{createDate}</if>
+       	<if test="modifyUser != null"> AND modify_user = #{modifyUser}</if>
+       	<if test="modifyDate != null"> AND modify_date = #{modifyDate}</if>
+       	<if test="updateFlow != null"> AND update_flow = #{updateFlow}</if>
+       	<if test="pfIsIntegral != null"> AND pf_IsIntegral = #{pfIsIntegral}</if>
+       	<if test="pfIntegralNo != null"> AND pf_integral_no = #{pfIntegralNo}</if>
+       	<if test="updateTime != null"> AND update_time = #{updateTime}</if>
+       	<if test="updateBranch != null"> AND update_branch = #{updateBranch}</if>
+       	<if test="paysaveIsDiscount != null"> AND paysave_IsDiscount = #{paysaveIsDiscount}</if>
+       	<if test="level1IntegralNo != null"> AND level1_integral_no = #{level1IntegralNo}</if>
+       	<if test="level2IntegralNo != null"> AND level2_integral_no = #{level2IntegralNo}</if>
+       	<if test="level3IntegralNo != null"> AND level3_integral_no = #{level3IntegralNo}</if>
+       	<if test="pfIntroHaveIntegral != null"> AND pf_intro_have_integral = #{pfIntroHaveIntegral}</if>
+       	<if test="transUpflag != null"> AND trans_upflag = #{transUpflag}</if>
+       	<if test="vipHavePwd != null"> AND vip_have_pwd = #{vipHavePwd}</if>
+       	<if test="limitAmt != null"> AND limit_amt = #{limitAmt}</if>
+       	<if test="limitDateBegin != null"> AND limit_date_begin = #{limitDateBegin}</if>
+       	<if test="limitDateEnd != null"> AND limit_date_end = #{limitDateEnd}</if>
+		</where>
+	</sql>
+	
+	<insert id="create" parameterType="com.site.entity.TVipTypeInfo">
+		INSERT INTO t_vip_type_info
+		(<include refid="columns"/>)
+		VALUES(
+		#{viptypeNo,jdbcType=VARCHAR},
+		#{discountNo,jdbcType=VARCHAR},
+		#{saveNo,jdbcType=VARCHAR},
+		#{integralNo,jdbcType=VARCHAR},
+		#{viptypeName,jdbcType=VARCHAR},
+		#{priceType,jdbcType=VARCHAR},
+		#{birthdayDiscountNo,jdbcType=VARCHAR},
+		#{viptypeIsIntegral,jdbcType=VARCHAR},
+		#{viptypeIsSave,jdbcType=VARCHAR},
+		#{viptypeValidValue,jdbcType=VARCHAR},
+		#{dateUnit,jdbcType=VARCHAR},
+		#{viptypeInitAmt,jdbcType=NUMERIC},
+		#{vipTypeLeastAmt,jdbcType=NUMERIC},
+		#{IsSysFlag,jdbcType=VARCHAR},
+		#{viptypeFyAmt,jdbcType=NUMERIC},
+		#{viptypeReletAmt,jdbcType=NUMERIC},
+		#{createUser,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{modifyUser,jdbcType=VARCHAR},
+		#{modifyDate,jdbcType=TIMESTAMP},
+		#{updateFlow,jdbcType=NUMERIC},
+		#{pfIsIntegral,jdbcType=VARCHAR},
+		#{pfIntegralNo,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateBranch,jdbcType=VARCHAR},
+		#{paysaveIsDiscount,jdbcType=VARCHAR},
+		#{level1IntegralNo,jdbcType=VARCHAR},
+		#{level2IntegralNo,jdbcType=VARCHAR},
+		#{level3IntegralNo,jdbcType=VARCHAR},
+		#{pfIntroHaveIntegral,jdbcType=VARCHAR},
+		#{transUpflag,jdbcType=VARCHAR},
+		#{vipHavePwd,jdbcType=VARCHAR},
+		#{limitAmt,jdbcType=NUMERIC},
+		#{limitDateBegin,jdbcType=TIMESTAMP},
+		#{limitDateEnd,jdbcType=TIMESTAMP}
+		)
+	</insert>	
+	
+	<delete id="remove" parameterType="java.lang.Long">
+		DELETE FROM t_vip_type_info 
+		WHERE
+		<include refid="whereId"/>
+	</delete>
+	<update id="update" parameterType="com.site.entity.TVipTypeInfo">
+		UPDATE t_vip_type_info SET
+               viptype_no=#{viptypeNo,jdbcType=VARCHAR},
+               discount_no=#{discountNo,jdbcType=VARCHAR},
+               save_no=#{saveNo,jdbcType=VARCHAR},
+               integral_no=#{integralNo,jdbcType=VARCHAR},
+               viptype_name=#{viptypeName,jdbcType=VARCHAR},
+               price_type=#{priceType,jdbcType=VARCHAR},
+               birthday_discount_no=#{birthdayDiscountNo,jdbcType=VARCHAR},
+               viptype_IsIntegral=#{viptypeIsIntegral,jdbcType=VARCHAR},
+               viptype_IsSave=#{viptypeIsSave,jdbcType=VARCHAR},
+               viptype_Valid_value=#{viptypeValidValue,jdbcType=VARCHAR},
+               date_unit=#{dateUnit,jdbcType=VARCHAR},
+               viptype_init_amt=#{viptypeInitAmt,jdbcType=NUMERIC},
+               vipType_least_amt=#{vipTypeLeastAmt,jdbcType=NUMERIC},
+               IsSysFlag=#{IsSysFlag,jdbcType=VARCHAR},
+               viptype_fy_amt=#{viptypeFyAmt,jdbcType=NUMERIC},
+               viptype_relet_amt=#{viptypeReletAmt,jdbcType=NUMERIC},
+               create_user=#{createUser,jdbcType=VARCHAR},
+               create_date=#{createDate,jdbcType=TIMESTAMP},
+               modify_user=#{modifyUser,jdbcType=VARCHAR},
+               modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+               update_flow=#{updateFlow,jdbcType=NUMERIC},
+               pf_IsIntegral=#{pfIsIntegral,jdbcType=VARCHAR},
+               pf_integral_no=#{pfIntegralNo,jdbcType=VARCHAR},
+               update_time=#{updateTime,jdbcType=TIMESTAMP},
+               update_branch=#{updateBranch,jdbcType=VARCHAR},
+               paysave_IsDiscount=#{paysaveIsDiscount,jdbcType=VARCHAR},
+               level1_integral_no=#{level1IntegralNo,jdbcType=VARCHAR},
+               level2_integral_no=#{level2IntegralNo,jdbcType=VARCHAR},
+               level3_integral_no=#{level3IntegralNo,jdbcType=VARCHAR},
+               pf_intro_have_integral=#{pfIntroHaveIntegral,jdbcType=VARCHAR},
+               trans_upflag=#{transUpflag,jdbcType=VARCHAR},
+               vip_have_pwd=#{vipHavePwd,jdbcType=VARCHAR},
+               limit_amt=#{limitAmt,jdbcType=NUMERIC},
+               limit_date_begin=#{limitDateBegin,jdbcType=TIMESTAMP},
+               limit_date_end=#{limitDateEnd,jdbcType=TIMESTAMP}
+		WHERE
+		<include refid="whereId"/>		
+	</update>	
+	
+	<select id="get" parameterType="java.lang.Long" resultMap="TVipTypeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_info
+		WHERE
+		<include refid="whereId"/>
+	</select>
+	
+	<select id="query" resultMap="TVipTypeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="search" resultMap="TVipTypeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_info   
+		<include refid="dynamicWhere" />
+	</select>
+	<select id="getOne" resultMap="TVipTypeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_info   
+		<include refid="oneWhere" />
+	</select>
+	
+	<select id="getList" resultMap="TVipTypeInfo">
+		SELECT <include refid="columns"/>
+		FROM t_vip_type_info   
+		<include refid="oneWhere" />
+	</select>
+</mapper>	
